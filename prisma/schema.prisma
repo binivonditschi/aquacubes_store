@@ -1,0 +1,24 @@
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Decimal  @db.Decimal(10, 2)
+  image       String?
+  category    String?
+  position    Int      @default(0)
+  isVisible   Boolean  @default(true)
+  stock       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id            String   @id @default(cuid())
+  status        String   @default("pending")
+  total         Decimal  @db.Decimal(10, 2)
+  mollieId      String?
+  customerEmail String
+  items         String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
