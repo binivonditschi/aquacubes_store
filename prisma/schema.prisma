@@ -1,8 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
 model Product {
   id          String   @id @default(cuid())
   name        String
   description String?
-  price       Decimal  @db.Decimal(10, 2)
+  price       Decimal
   image       String?
   category    String?
   position    Int      @default(0)
@@ -15,7 +23,7 @@ model Product {
 model Order {
   id            String   @id @default(cuid())
   status        String   @default("pending")
-  total         Decimal  @db.Decimal(10, 2)
+  total         Decimal
   mollieId      String?
   customerEmail String
   items         String
