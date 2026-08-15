@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useCart } from "@/store/useCart";
 import { formatPrice } from "@/lib/utils";
+import { systemSpecs } from "@/lib/product-specs";
 import type { Product } from "@/lib/types";
 
 const staggerContainer = {
@@ -46,6 +47,7 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
         >
           {products.map((product, i) => {
             const isEnterprise = i === products.length - 1;
+            const specs = systemSpecs[product.id];
             return (
               <motion.div
                 key={product.id}
@@ -71,6 +73,11 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
                   <h3 className="mb-1 font-heading text-lg font-semibold text-navy">{product.name}</h3>
                   <p className="mb-3 font-mono text-lg font-bold text-navy">{formatPrice(product.price)}</p>
                   <p className="mb-4 text-sm text-gray-500">{product.description}</p>
+                  {specs && (
+                    <p className="mb-4 font-mono text-xs text-gray-300">
+                      {specs.power} &middot; {specs.footprint}
+                    </p>
+                  )}
                   {isEnterprise ? (
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                       <Link
