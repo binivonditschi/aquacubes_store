@@ -192,8 +192,8 @@ function TermsContent() {
           {/* 10. Governing Law */}
           <TermsSection id="section-10" title="10. Governing Law">
             <ul className="list-disc space-y-2 pl-5">
-              <li>These terms are governed by the laws of the Netherlands</li>
-              <li>Disputes shall be resolved in the courts of Amsterdam</li>
+              <li>These terms are governed by the laws of Germany</li>
+              <li>Disputes shall be resolved in the courts of Hamburg</li>
             </ul>
           </TermsSection>
 

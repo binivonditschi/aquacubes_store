@@ -193,7 +193,7 @@ function SustainablePractices() {
     },
     {
       title: "Made in the EU",
-      body: "All Aquacubes systems are designed, manufactured, and assembled in the Netherlands. Shorter supply chains mean fewer emissions and support for local industry.",
+      body: "All Aquacubes systems are designed, manufactured, and assembled in Germany. Shorter supply chains mean fewer emissions and support for local industry.",
       side: "left",
     },
   ];

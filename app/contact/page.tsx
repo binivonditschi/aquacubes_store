@@ -197,7 +197,7 @@ function ContactFormAndInfo() {
                 <Phone className="h-5 w-5 text-teal" />
                 <h4 className="font-heading text-h4 text-navy">Phone</h4>
               </div>
-              <p className="text-body-sm text-navy">+31 20 123 4567</p>
+              <p className="text-body-sm text-navy">+49 40 123 4567</p>
               <p className="text-body-sm text-gray-500">Mon-Fri, 9:00-18:00 CET</p>
             </motion.div>
 
@@ -209,9 +209,7 @@ function ContactFormAndInfo() {
               </div>
               <div className="text-body-sm text-gray-500">
                 <p className="text-navy font-medium">Aquacubes B.V.</p>
-                <p>Herengracht 420</p>
-                <p>1017 BZ Amsterdam</p>
-                <p>Netherlands</p>
+                <p>Hamburg, Germany</p>
               </div>
             </motion.div>
 
@@ -251,7 +249,7 @@ function MapSection() {
       className="h-[400px] w-full bg-gray-100"
     >
       <iframe
-        src="https://www.openstreetmap.org/export/embed.html?bbox=4.88%2C52.36%2C4.89%2C52.37&layer=mapnik&marker=52.365%2C4.885"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=9.98%2C53.54%2C10.01%2C53.56&layer=mapnik&marker=53.5511%2C9.9937"
         className="h-full w-full border-0"
         title="Aquacubes Office Location"
       />

@@ -135,11 +135,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+31205551234" className="transition-colors hover:text-teal">
-                  +31 20 555 1234
+                <a href="tel:+4940123456" className="transition-colors hover:text-teal">
+                  +49 40 123 456
                 </a>
               </li>
-              <li className="text-gray-300">Amsterdam, NL</li>
+              <li className="text-gray-300">Hamburg, DE</li>
             </ul>
           </motion.div>
         </motion.div>

@@ -207,9 +207,7 @@ function PolicyContent() {
             </p>
             <p className="mt-2">
               Aquacubes B.V.<br />
-              Herengracht 420<br />
-              1017 BZ Amsterdam<br />
-              Netherlands
+              Hamburg, Germany
             </p>
           </PolicySection>
         </motion.div>
