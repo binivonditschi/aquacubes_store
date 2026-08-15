@@ -68,7 +68,7 @@ function HeaderSection() {
           animate="visible"
           className="text-body text-gray-300"
         >
-          Last updated: December 1, 2024
+          Last updated: August 2026
         </motion.p>
       </div>
     </section>
@@ -119,7 +119,7 @@ function PolicyContent() {
           <PolicySection id="section-2" title="2. Information We Collect">
             <ul className="list-disc space-y-2 pl-5">
               <li><strong className="text-navy">Personal Information:</strong> Name, email address, phone number, shipping address, billing information</li>
-              <li><strong className="text-navy">Account Information:</strong> Login credentials, preferences, order history</li>
+              <li><strong className="text-navy">Order Information:</strong> Order history and status, linked to your email address (no account or password required)</li>
               <li><strong className="text-navy">Device Information:</strong> IP address, browser type, operating system, device identifiers</li>
               <li><strong className="text-navy">Usage Data:</strong> Pages visited, time spent, features used, app interaction data</li>
               <li><strong className="text-navy">Aquaculture Data:</strong> System performance data, sensor readings (anonymized and used for product improvement)</li>
@@ -143,7 +143,7 @@ function PolicyContent() {
               We do not sell your personal information. We may share data with:
             </p>
             <ul className="list-disc space-y-2 pl-5">
-              <li>Payment processors (Stripe, PayPal)</li>
+              <li>Our payment processor (Mollie)</li>
               <li>Shipping providers</li>
               <li>Analytics providers (anonymized)</li>
               <li>Legal authorities when required by law</li>
@@ -180,7 +180,7 @@ function PolicyContent() {
           {/* 8. Third-Party Services */}
           <PolicySection id="section-8" title="8. Third-Party Services">
             <p>
-              Our site uses trusted third-party providers for authentication and payments. These services have their own privacy policies.
+              Our site uses a trusted third-party payment processor (Mollie) to handle transactions. This service has its own privacy policy.
             </p>
           </PolicySection>
 

@@ -23,7 +23,6 @@ const tocItems = [
   "Warranty",
   "Intellectual Property",
   "Limitation of Liability",
-  "User Content",
   "Termination",
   "Governing Law",
   "Changes to Terms",
@@ -70,7 +69,7 @@ function HeaderSection() {
           animate="visible"
           className="text-body text-gray-300"
         >
-          Last updated: December 1, 2024
+          Last updated: August 2026
         </motion.p>
       </div>
     </section>
@@ -121,7 +120,6 @@ function TermsContent() {
           <TermsSection id="section-2" title="2. Use of Services">
             <ul className="list-disc space-y-2 pl-5">
               <li>You must be at least 18 years old to purchase our products</li>
-              <li>You are responsible for maintaining the security of your account</li>
               <li>You agree not to misuse our systems or attempt unauthorized access</li>
               <li>Aquaculture systems must be used in accordance with all local regulations</li>
             </ul>
@@ -131,7 +129,7 @@ function TermsContent() {
           <TermsSection id="section-3" title="3. Purchases and Payments">
             <ul className="list-disc space-y-2 pl-5">
               <li>All prices are in Euros (&euro;) and include VAT where applicable</li>
-              <li>Payment is processed via Stripe, PayPal, or iDEAL</li>
+              <li>Payment is processed securely via Mollie, including iDEAL, credit card, and other supported methods</li>
               <li>Orders are confirmed via email upon successful payment</li>
               <li>We reserve the right to refuse or cancel orders at our discretion</li>
             </ul>
@@ -162,7 +160,7 @@ function TermsContent() {
               <li>All systems include a 2-year limited warranty against manufacturing defects</li>
               <li>Warranty covers repair or replacement at our discretion</li>
               <li>Excludes damage from misuse, accidents, unauthorized modifications, or neglect</li>
-              <li>Consumable parts (grow sponges, nutrients) are not covered</li>
+              <li>Consumable parts and accessories (seedlings, nutrients, filters) are not covered</li>
             </ul>
           </TermsSection>
 
@@ -171,7 +169,7 @@ function TermsContent() {
             <ul className="list-disc space-y-2 pl-5">
               <li>All content, designs, and technology are the property of Aquacubes B.V.</li>
               <li>You may not copy, modify, or distribute our intellectual property</li>
-              <li>The Aquacubes name, logo, and product designs are registered trademarks</li>
+              <li>The Aquacubes name, logo, and product designs are trademarks of Aquacubes B.V.</li>
             </ul>
           </TermsSection>
 
@@ -184,33 +182,23 @@ function TermsContent() {
             </ul>
           </TermsSection>
 
-          {/* 9. User Content */}
-          <TermsSection id="section-9" title="9. User Content">
+          {/* 9. Termination */}
+          <TermsSection id="section-9" title="9. Termination">
             <ul className="list-disc space-y-2 pl-5">
-              <li>You retain ownership of content you submit (reviews, photos)</li>
-              <li>You grant us a license to use submitted content for marketing</li>
-              <li>We may remove content that violates our guidelines</li>
+              <li>We may restrict or refuse access to our Services for violations of these terms</li>
             </ul>
           </TermsSection>
 
-          {/* 10. Termination */}
-          <TermsSection id="section-10" title="10. Termination">
-            <ul className="list-disc space-y-2 pl-5">
-              <li>We may suspend or terminate your account for violations of these terms</li>
-              <li>You may close your account at any time via your account settings</li>
-            </ul>
-          </TermsSection>
-
-          {/* 11. Governing Law */}
-          <TermsSection id="section-11" title="11. Governing Law">
+          {/* 10. Governing Law */}
+          <TermsSection id="section-10" title="10. Governing Law">
             <ul className="list-disc space-y-2 pl-5">
               <li>These terms are governed by the laws of the Netherlands</li>
               <li>Disputes shall be resolved in the courts of Amsterdam</li>
             </ul>
           </TermsSection>
 
-          {/* 12. Changes to Terms */}
-          <TermsSection id="section-12" title="12. Changes to Terms">
+          {/* 11. Changes to Terms */}
+          <TermsSection id="section-11" title="11. Changes to Terms">
             <ul className="list-disc space-y-2 pl-5">
               <li>We may update these terms at any time</li>
               <li>Continued use constitutes acceptance of updated terms</li>
@@ -218,8 +206,8 @@ function TermsContent() {
             </ul>
           </TermsSection>
 
-          {/* 13. Contact */}
-          <TermsSection id="section-13" title="13. Contact">
+          {/* 12. Contact */}
+          <TermsSection id="section-12" title="12. Contact">
             <p>
               For questions about these terms, contact{" "}
               <a href="mailto:legal@aquacubes.com" className="text-teal hover:underline">legal@aquacubes.com</a>.
