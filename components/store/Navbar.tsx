@@ -54,13 +54,8 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto flex max-w-content items-center justify-between px-6 py-5 lg:px-10">
-          <Link href="/" className="flex items-center gap-2">
-            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="4" y="4" width="32" height="32" rx="6" stroke="#0A2540" strokeWidth="2.5" fill="none" />
-              <path d="M12 28c0-8 6-14 8-16 2 2 8 8 8 16" stroke="#00D4AA" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-              <circle cx="20" cy="14" r="2" fill="#00D4AA" />
-            </svg>
-            <span className="font-heading text-xl font-bold text-navy">Aquacubes</span>
+          <Link href="/" className="flex items-center">
+            <span className="font-logo text-2xl font-semibold tracking-tight text-navy">aquacubes</span>
           </Link>
 
           <div className="hidden items-center gap-8 lg:flex">
@@ -133,13 +128,8 @@ export default function Navbar() {
               className="fixed left-0 top-0 z-[70] flex h-full w-[85vw] max-w-[360px] flex-col bg-navy lg:hidden"
             >
               <div className="flex items-center justify-between p-6">
-                <Link href="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-                  <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="4" y="4" width="32" height="32" rx="6" stroke="#FFFFFF" strokeWidth="2.5" fill="none" />
-                    <path d="M12 28c0-8 6-14 8-16 2 2 8 8 8 16" stroke="#00D4AA" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-                    <circle cx="20" cy="14" r="2" fill="#00D4AA" />
-                  </svg>
-                  <span className="font-heading text-xl font-bold text-white">Aquacubes</span>
+                <Link href="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
+                  <span className="font-logo text-2xl font-semibold tracking-tight text-white">aquacubes</span>
                 </Link>
                 <button onClick={() => setMobileOpen(false)} aria-label="Close menu" className="rounded-button p-2 text-white">
                   <X className="h-6 w-6" />

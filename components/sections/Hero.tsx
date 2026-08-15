@@ -49,7 +49,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100dvh] bg-off-white">
-      <div className="mx-auto grid max-w-content grid-cols-1 gap-8 px-6 pt-32 lg:grid-cols-[55%_45%] lg:items-center lg:gap-12 lg:px-10 lg:pt-0">
+      <div className="mx-auto grid max-w-content grid-cols-1 gap-8 px-6 pt-32 lg:grid-cols-[55%_45%] lg:items-center lg:gap-12 lg:px-10 lg:pt-28">
         <div className="flex flex-col justify-center py-8 lg:min-h-[100dvh] lg:py-0">
           <motion.p
             custom={0.3}

@@ -77,13 +77,8 @@ export default function Footer() {
           className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6"
         >
           <motion.div variants={itemVariants} className="col-span-2 lg:col-span-2">
-            <Link href="/" className="mb-4 inline-flex items-center gap-2">
-              <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="4" width="32" height="32" rx="6" stroke="#FFFFFF" strokeWidth="2.5" fill="none" />
-                <path d="M12 28c0-8 6-14 8-16 2 2 8 8 8 16" stroke="#00D4AA" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-                <circle cx="20" cy="14" r="2" fill="#00D4AA" />
-              </svg>
-              <span className="font-heading text-xl font-bold text-white">Aquacubes</span>
+            <Link href="/" className="mb-4 inline-flex items-center">
+              <span className="font-logo text-2xl font-semibold tracking-tight text-white">aquacubes</span>
             </Link>
             <p className="mb-6 max-w-[240px] text-sm text-gray-300">Smart aquaculture for everyone</p>
             <div className="flex gap-4">
