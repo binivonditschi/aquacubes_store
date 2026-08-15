@@ -186,8 +186,7 @@ function ContactFormAndInfo() {
                 <h4 className="font-heading text-h4 text-navy">Email</h4>
               </div>
               <div className="space-y-1 text-body-sm">
-                <p><span className="text-gray-500">General</span> <a href="mailto:hello@aquacubes.com" className="text-teal hover:underline">hello@aquacubes.com</a></p>
-                <p><span className="text-gray-500">Support</span> <a href="mailto:support@aquacubes.com" className="text-teal hover:underline">support@aquacubes.com</a></p>
+                <p><span className="text-gray-500">General</span> <a href="mailto:info@aquacubes.eu" className="text-teal hover:underline">info@aquacubes.eu</a></p>
               </div>
             </motion.div>
 
@@ -197,7 +196,7 @@ function ContactFormAndInfo() {
                 <Phone className="h-5 w-5 text-teal" />
                 <h4 className="font-heading text-h4 text-navy">Phone</h4>
               </div>
-              <p className="text-body-sm text-navy">+49 40 123 4567</p>
+              <p className="text-body-sm text-navy">+49 48 347320 613</p>
               <p className="text-body-sm text-gray-500">Mon-Fri, 9:00-18:00 CET</p>
             </motion.div>
 
@@ -208,8 +207,10 @@ function ContactFormAndInfo() {
                 <h4 className="font-heading text-h4 text-navy">Office</h4>
               </div>
               <div className="text-body-sm text-gray-500">
-                <p className="text-navy font-medium">Aquacubes B.V.</p>
-                <p>Hamburg, Germany</p>
+                <p className="text-navy font-medium">Moina GmbH</p>
+                <p>Markt 5</p>
+                <p>25746 Heide</p>
+                <p>Germany</p>
               </div>
             </motion.div>
 
@@ -249,7 +250,7 @@ function MapSection() {
       className="h-[400px] w-full bg-gray-100"
     >
       <iframe
-        src="https://www.openstreetmap.org/export/embed.html?bbox=9.98%2C53.54%2C10.01%2C53.56&layer=mapnik&marker=53.5511%2C9.9937"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=9.08%2C54.19%2C9.11%2C54.21&layer=mapnik&marker=54.1955%2C9.0967"
         className="h-full w-full border-0"
         title="Aquacubes Office Location"
       />

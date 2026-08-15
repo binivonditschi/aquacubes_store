@@ -29,6 +29,7 @@ const footerColumns = [
     links: [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
+      { label: "Legal Notice", href: "/impressum" },
     ],
   },
 ];
@@ -130,16 +131,16 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3 text-sm text-gray-300">
               <li>
-                <a href="mailto:hello@aquacubes.com" className="transition-colors hover:text-teal">
-                  hello@aquacubes.com
+                <a href="mailto:info@aquacubes.eu" className="transition-colors hover:text-teal">
+                  info@aquacubes.eu
                 </a>
               </li>
               <li>
-                <a href="tel:+4940123456" className="transition-colors hover:text-teal">
-                  +49 40 123 456
+                <a href="tel:+4948347320613" className="transition-colors hover:text-teal">
+                  +49 48 347320 613
                 </a>
               </li>
-              <li className="text-gray-300">Hamburg, DE</li>
+              <li className="text-gray-300">Heide, DE</li>
             </ul>
           </motion.div>
         </motion.div>

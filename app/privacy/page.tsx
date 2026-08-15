@@ -111,7 +111,7 @@ function PolicyContent() {
           {/* 1. Introduction */}
           <PolicySection id="section-1" title="1. Introduction">
             <p>
-              Aquacubes B.V. (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our products and services.
+              Moina GmbH, operating as Aquacubes (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;), is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our products and services.
             </p>
           </PolicySection>
 
@@ -202,12 +202,14 @@ function PolicyContent() {
           <PolicySection id="section-11" title="11. Contact Us">
             <p>
               For privacy-related questions, contact us at{" "}
-              <a href="mailto:privacy@aquacubes.com" className="text-teal hover:underline">privacy@aquacubes.com</a>{" "}
+              <a href="mailto:info@aquacubes.eu" className="text-teal hover:underline">info@aquacubes.eu</a>{" "}
               or:
             </p>
             <p className="mt-2">
-              Aquacubes B.V.<br />
-              Hamburg, Germany
+              Moina GmbH<br />
+              Markt 5<br />
+              25746 Heide<br />
+              Germany
             </p>
           </PolicySection>
         </motion.div>

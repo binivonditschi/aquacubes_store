@@ -167,9 +167,9 @@ function TermsContent() {
           {/* 7. Intellectual Property */}
           <TermsSection id="section-7" title="7. Intellectual Property">
             <ul className="list-disc space-y-2 pl-5">
-              <li>All content, designs, and technology are the property of Aquacubes B.V.</li>
+              <li>All content, designs, and technology are the property of Moina GmbH</li>
               <li>You may not copy, modify, or distribute our intellectual property</li>
-              <li>The Aquacubes name, logo, and product designs are trademarks of Aquacubes B.V.</li>
+              <li>The Aquacubes name, logo, and product designs are trademarks of Moina GmbH</li>
             </ul>
           </TermsSection>
 
@@ -193,7 +193,7 @@ function TermsContent() {
           <TermsSection id="section-10" title="10. Governing Law">
             <ul className="list-disc space-y-2 pl-5">
               <li>These terms are governed by the laws of Germany</li>
-              <li>Disputes shall be resolved in the courts of Hamburg</li>
+              <li>Disputes shall be resolved in the courts of Heide</li>
             </ul>
           </TermsSection>
 
@@ -210,7 +210,7 @@ function TermsContent() {
           <TermsSection id="section-12" title="12. Contact">
             <p>
               For questions about these terms, contact{" "}
-              <a href="mailto:legal@aquacubes.com" className="text-teal hover:underline">legal@aquacubes.com</a>.
+              <a href="mailto:info@aquacubes.eu" className="text-teal hover:underline">info@aquacubes.eu</a>.
             </p>
           </TermsSection>
         </motion.div>
