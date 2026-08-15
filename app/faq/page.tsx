@@ -47,7 +47,7 @@ const faqData = [
       { q: "How much is shipping?", a: "Free shipping on all orders within the EU. Express shipping (2-3 days) is available for €29." },
       { q: "How long does delivery take?", a: "Standard shipping: 5-7 business days within the EU. Express: 2-3 business days. Enterprise systems may require 10-14 days for specialized delivery." },
       { q: "What is your return policy?", a: "30-day money-back guarantee. If you're not satisfied, return your system for a full refund. We cover return shipping. The system must be in original condition." },
-      { q: "Do you ship outside the EU?", a: "Currently we ship to all EU countries plus the UK, Switzerland, and Norway. We're working on expanding to North America in 2025." },
+      { q: "Do you ship outside the EU?", a: "Currently we ship to all EU countries plus the UK, Switzerland, and Norway. We're working on expanding to more regions." },
     ],
   },
   {

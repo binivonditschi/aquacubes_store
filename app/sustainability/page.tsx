@@ -142,7 +142,7 @@ function ImpactMetrics() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const stats = [
-    { value: 2400000, suffix: "", label: "Liters of Water Saved", icon: Droplets },
+    { value: 90, suffix: "%", label: "Less Water Used", icon: Droplets },
     { value: 0, suffix: "", label: "Pesticides Used", icon: ShieldCheck },
     { value: 85, suffix: "%", label: "Lower Carbon Footprint", icon: Leaf },
     { value: 100, suffix: "%", label: "Recyclable Packaging", icon: Recycle },
@@ -236,18 +236,18 @@ function CarbonCommitment() {
 
   const commitments = [
     {
-      title: "Carbon Neutral by 2026",
-      description: "We're measuring, reducing, and offsetting our entire carbon footprint. Full transparency report published annually.",
+      title: "Built to Last",
+      description: "Every system is designed for repair and reuse, not replacement — fewer parts end up in landfill.",
       icon: "target",
     },
     {
-      title: "Circular Design",
-      description: "Every component is designed for repair, reuse, or recycling. We offer a take-back program for end-of-life systems.",
+      title: "Responsible Materials",
+      description: "We choose components and packaging that minimize environmental impact, from manufacturing through delivery.",
       icon: "refresh",
     },
     {
-      title: "1% for the Planet",
-      description: "We donate 1% of revenue to ocean conservation and sustainable aquaculture research organizations.",
+      title: "Closed-Loop by Design",
+      description: "No chemical inputs, minimal water waste — the system does the environmental work automatically.",
       icon: "globe",
     },
   ];

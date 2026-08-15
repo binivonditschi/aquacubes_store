@@ -48,8 +48,8 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
 }
 
 const stats = [
-  { value: 500, suffix: "+", label: "Systems Installed" },
-  { value: 95, suffix: "%", label: "Customer Satisfaction" },
+  { value: 2, suffix: "", label: "Year Warranty" },
+  { value: 30, suffix: "", label: "Day Guarantee" },
   { value: 40, suffix: "%", label: "Avg. Food Cost Savings" },
   { value: 0, suffix: "", label: "Pesticides or Antibiotics" },
 ];
