@@ -1,14 +1,9 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { serializeProduct, formatPrice } from "@/lib/utils";
+import { systemSpecs } from "@/lib/product-specs";
 import AddToCartButton from "@/components/store/AddToCartButton";
 import Newsletter from "@/components/sections/Newsletter";
-
-const systemSpecs: Record<string, { power: string; footprint: string; bestFor: string }> = {
-  standard: { power: "50W", footprint: "Countertop, 60 × 40cm", bestFor: "First-time growers" },
-  pro: { power: "100W", footprint: "Tabletop, 120 × 60cm", bestFor: "Serious home growers" },
-  enterprise: { power: "250W", footprint: "Floor-standing, ~2 × 1m", bestFor: "Restaurants, schools, farms" },
-};
 
 export default async function Shop() {
   const allProducts = await prisma.product.findMany({

@@ -7,6 +7,7 @@ import { useCart } from "@/store/useCart";
 import type { Product } from "@/lib/types";
 
 export default function ProductDetailActions({ product }: { product: Product }) {
+  const isAddOn = product.category === "Add-on";
   const [quantity, setQuantity] = useState(1);
   const addItem = useCart((s) => s.addItem);
 
@@ -19,23 +20,25 @@ export default function ProductDetailActions({ product }: { product: Product }) 
   return (
     <div>
       <div className="mb-6 flex items-center gap-4">
-        <div className="flex items-center rounded-lg border border-gray-100">
-          <button
-            onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-            aria-label="Decrease quantity"
-            className="p-3 text-gray-500 transition-colors hover:text-navy"
-          >
-            <Minus className="h-4 w-4" />
-          </button>
-          <span className="min-w-[2rem] text-center font-mono text-sm text-navy">{quantity}</span>
-          <button
-            onClick={() => setQuantity((q) => q + 1)}
-            aria-label="Increase quantity"
-            className="p-3 text-gray-500 transition-colors hover:text-navy"
-          >
-            <Plus className="h-4 w-4" />
-          </button>
-        </div>
+        {isAddOn && (
+          <div className="flex items-center rounded-lg border border-gray-100">
+            <button
+              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+              aria-label="Decrease quantity"
+              className="p-3 text-gray-500 transition-colors hover:text-navy"
+            >
+              <Minus className="h-4 w-4" />
+            </button>
+            <span className="min-w-[2rem] text-center font-mono text-sm text-navy">{quantity}</span>
+            <button
+              onClick={() => setQuantity((q) => q + 1)}
+              aria-label="Increase quantity"
+              className="p-3 text-gray-500 transition-colors hover:text-navy"
+            >
+              <Plus className="h-4 w-4" />
+            </button>
+          </div>
+        )}
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
