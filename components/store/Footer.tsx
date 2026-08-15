@@ -7,19 +7,13 @@ import type { ReactNode } from "react";
 const footerColumns = [
   {
     title: "Shop",
-    links: [
-      { label: "Products", href: "/shop" },
-      { label: "Accessories", href: "/shop" },
-      { label: "Gift Cards", href: "/shop" },
-    ],
+    links: [{ label: "All Products", href: "/shop" }],
   },
   {
     title: "Company",
     links: [
       { label: "About", href: "/about" },
       { label: "Sustainability", href: "/sustainability" },
-      { label: "Careers", href: "/careers" },
-      { label: "Press", href: "/press" },
     ],
   },
   {

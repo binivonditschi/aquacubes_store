@@ -135,7 +135,6 @@ function ContactFormAndInfo() {
                         <option>Technical Support</option>
                         <option>Sales</option>
                         <option>Partnership</option>
-                        <option>Press &amp; Media</option>
                         <option>Other</option>
                       </select>
                     </motion.div>
@@ -189,7 +188,6 @@ function ContactFormAndInfo() {
               <div className="space-y-1 text-body-sm">
                 <p><span className="text-gray-500">General</span> <a href="mailto:hello@aquacubes.com" className="text-teal hover:underline">hello@aquacubes.com</a></p>
                 <p><span className="text-gray-500">Support</span> <a href="mailto:support@aquacubes.com" className="text-teal hover:underline">support@aquacubes.com</a></p>
-                <p><span className="text-gray-500">Press</span> <a href="mailto:press@aquacubes.com" className="text-teal hover:underline">press@aquacubes.com</a></p>
               </div>
             </motion.div>
 
