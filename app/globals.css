@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -6,11 +7,13 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -23,53 +26,117 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-navy-lighter: var(--navy-lighter);
+  --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
+  --color-coral: var(--coral);
+  --color-coral-dark: var(--coral-dark);
+  --color-off-white: var(--off-white);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
+  --radius-button: 8px;
+  --radius-card: 12px;
+  --radius-card-lg: 16px;
+  --radius-pill: 9999px;
+
+  --text-display: clamp(3rem, 6vw, 5.5rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 700;
+  --text-h1: clamp(2.5rem, 4vw, 3.75rem);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h1--font-weight: 700;
+  --text-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 600;
+  --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --text-h3--line-height: 1.2;
+  --text-h3--font-weight: 600;
+  --text-h4: 1.125rem;
+  --text-h4--line-height: 1.3;
+  --text-h4--font-weight: 600;
+  --text-price: 1.5rem;
+  --text-price--font-weight: 700;
+
+  --spacing-section-mobile: 80px;
+  --spacing-section-desktop: 120px;
+  --spacing-content-max: 1280px;
+  --spacing-gutter-mobile: 24px;
+  --spacing-gutter-desktop: 32px;
+
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-stat: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-nav: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
 :root {
-  --background: #FAFAF9;
-  --foreground: #1C1917;
+  --navy: #0A2540;
+  --navy-light: #103054;
+  --navy-lighter: #163868;
+  --teal: #00D4AA;
+  --teal-dark: #00B894;
+  --coral: #FF6B35;
+  --coral-dark: #E55A2B;
+  --off-white: #F7F9FC;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+
+  --background: #FFFFFF;
+  --foreground: #0A2540;
   --card: #FFFFFF;
-  --card-foreground: #1C1917;
+  --card-foreground: #0A2540;
   --popover: #FFFFFF;
-  --popover-foreground: #1C1917;
-  --primary: #475569;
-  --primary-foreground: #FAFAF9;
-  --secondary: #F5F5F4;
-  --secondary-foreground: #1C1917;
-  --muted: #F5F5F4;
-  --muted-foreground: #78716C;
-  --accent: #F1F5F9;
-  --accent-foreground: #334155;
+  --popover-foreground: #0A2540;
+  --primary: #00D4AA;
+  --primary-foreground: #0A2540;
+  --secondary: #F1F4F8;
+  --secondary-foreground: #0A2540;
+  --muted: #F1F4F8;
+  --muted-foreground: #64748B;
+  --accent: #00D4AA;
+  --accent-foreground: #0A2540;
   --destructive: #EF4444;
-  --border: #E7E5E4;
-  --input: #E7E5E4;
-  --ring: #475569;
+  --destructive-foreground: #FAFAFA;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #00D4AA;
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: #1C1917;
-  --foreground: #FAFAF9;
-  --card: #292524;
-  --card-foreground: #FAFAF9;
-  --popover: #292524;
-  --popover-foreground: #FAFAF9;
-  --primary: #94A3B8;
-  --primary-foreground: #1C1917;
-  --secondary: #292524;
-  --secondary-foreground: #FAFAF9;
-  --muted: #292524;
-  --muted-foreground: #A8A29E;
-  --accent: #334155;
-  --accent-foreground: #F1F5F9;
+  --background: #0A2540;
+  --foreground: #F7F9FC;
+  --card: #103054;
+  --card-foreground: #F7F9FC;
+  --popover: #103054;
+  --popover-foreground: #F7F9FC;
+  --primary: #00D4AA;
+  --primary-foreground: #0A2540;
+  --secondary: #163868;
+  --secondary-foreground: #F7F9FC;
+  --muted: #163868;
+  --muted-foreground: #94A3B8;
+  --accent: #00D4AA;
+  --accent-foreground: #0A2540;
   --destructive: #EF4444;
-  --border: rgba(231, 229, 228, 0.1);
-  --input: rgba(231, 229, 228, 0.15);
-  --ring: #94A3B8;
+  --destructive-foreground: #FAFAFA;
+  --border: rgba(247, 249, 252, 0.1);
+  --input: rgba(247, 249, 252, 0.15);
+  --ring: #00D4AA;
 }
 
 @layer base {
@@ -81,5 +148,90 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--off-white);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #94A3B8;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--navy);
+  }
+
+  ::selection {
+    background: rgba(0, 212, 170, 0.25);
+    color: var(--navy);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  .animate-shimmer {
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+img {
+  transition: opacity 0.3s ease;
+}
+img[loading] {
+  opacity: 0.7;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

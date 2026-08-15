@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { mollieClient } from "@/lib/mollie";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,16 +13,10 @@ export async function POST(req: NextRequest) {
 
     const payment = await mollieClient.payments.get(paymentId);
 
-    if (payment.isPaid()) {
-      const metadata = payment.metadata as Record<string, string> | undefined;
-      console.log("Payment paid:", paymentId);
-      console.log("Has subscriptions:", metadata?.hasSubscriptions);
-      console.log("Has preorder:", metadata?.hasPreorder);
-    } else if (payment.isCanceled()) {
-      console.log("Payment cancelled:", paymentId);
-    } else if (payment.hasFailed()) {
-      console.log("Payment failed:", paymentId);
-    }
+    await prisma.order.updateMany({
+      where: { mollieId: paymentId },
+      data: { status: payment.status },
+    });
 
     return NextResponse.json({ received: true });
   } catch (error) {

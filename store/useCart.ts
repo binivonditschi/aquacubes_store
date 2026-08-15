@@ -1,19 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type PurchaseType = "buy" | "preorder" | "subscription";
-
 export interface CartItem {
   id: string;
   name: string;
   price: number;
   quantity: number;
   image?: string;
-  purchaseType: PurchaseType;
-  subscriptionDuration?: 3 | 5;
-  monthlyPrice?: number;
-  kautionAmount: number;
-  deliveryDate?: string;
 }
 
 interface CartState {
@@ -26,8 +19,6 @@ interface CartState {
   openCart: () => void;
   closeCart: () => void;
   total: () => number;
-  kautionTotal: () => number;
-  subscriptionMonthlyTotal: () => number;
   itemCount: () => number;
 }
 
@@ -37,15 +28,11 @@ export const useCart = create<CartState>()(
       items: [],
       isOpen: false,
       addItem: (item) => {
-        const existing = get().items.find(
-          (i) => i.id === item.id && i.purchaseType === item.purchaseType && i.subscriptionDuration === item.subscriptionDuration
-        );
+        const existing = get().items.find((i) => i.id === item.id);
         if (existing) {
           set({
             items: get().items.map((i) =>
-              i.id === item.id && i.purchaseType === item.purchaseType && i.subscriptionDuration === item.subscriptionDuration
-                ? { ...i, quantity: i.quantity + 1 }
-                : i
+              i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
             ),
           });
         } else {
@@ -71,16 +58,7 @@ export const useCart = create<CartState>()(
       openCart: () => set({ isOpen: true }),
       closeCart: () => set({ isOpen: false }),
       total: () =>
-        get().items.reduce((sum, item) => {
-          if (item.purchaseType === "subscription") {
-            return sum + item.kautionAmount * item.quantity;
-          }
-          return sum + item.price * item.quantity;
-        }, 0),
-      kautionTotal: () =>
-        get().items.reduce((sum, item) => sum + item.kautionAmount * item.quantity, 0),
-      subscriptionMonthlyTotal: () =>
-        get().items.reduce((sum, item) => sum + (item.monthlyPrice || 0) * item.quantity, 0),
+        get().items.reduce((sum, item) => sum + item.price * item.quantity, 0),
       itemCount: () =>
         get().items.reduce((sum, item) => sum + item.quantity, 0),
     }),

@@ -1,18 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
-import { products } from "@/lib/products-store";
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
-  return NextResponse.json(products.sort((a, b) => a.position - b.position));
+  const products = await prisma.product.findMany({ orderBy: { position: "asc" } });
+  return NextResponse.json(products);
 }
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const newProduct = {
-    id: `prod-${Date.now()}`,
-    ...body,
-    position: products.length,
-    isVisible: body.isVisible ?? true,
-  };
-  products.push(newProduct);
-  return NextResponse.json(newProduct, { status: 201 });
+  const count = await prisma.product.count();
+  const product = await prisma.product.create({
+    data: {
+      name: body.name,
+      description: body.description,
+      price: body.price,
+      image: body.image,
+      category: body.category,
+      stock: body.stock ?? 0,
+      isVisible: body.isVisible ?? true,
+      position: count,
+    },
+  });
+  return NextResponse.json(product, { status: 201 });
 }

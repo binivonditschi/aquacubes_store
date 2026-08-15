@@ -1,15 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { products } from "@/lib/products-store";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
   const { orderedIds } = await req.json();
-  
-  orderedIds.forEach((id: string, index: number) => {
-    const product = products.find((p) => p.id === id);
-    if (product) {
-      product.position = index;
-    }
-  });
+
+  await Promise.all(
+    orderedIds.map((id: string, index: number) =>
+      prisma.product.update({ where: { id }, data: { position: index } })
+    )
+  );
 
   return NextResponse.json({ success: true });
 }

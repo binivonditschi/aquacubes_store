@@ -1,78 +1,38 @@
 import Link from "next/link";
-import { LayoutDashboard, Package, ShoppingBag, Settings } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
 
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-background flex">
-      <aside className="w-64 border-r border-border bg-card flex-shrink-0 hidden md:flex flex-col">
-        <div className="p-6 border-b border-border">
-          <Link href="/" className="text-heading-3 font-medium text-foreground">
+    <div className="flex min-h-screen bg-off-white">
+      <aside className="hidden w-64 flex-shrink-0 flex-col border-r border-gray-100 bg-white md:flex">
+        <div className="border-b border-gray-100 p-6">
+          <Link href="/" className="font-heading text-lg font-semibold text-navy">
             Aquacubes
           </Link>
-          <p className="text-caption text-muted-foreground mt-1">Admin Panel</p>
+          <p className="mt-1 text-xs text-gray-300">Admin Panel</p>
         </div>
         <nav className="flex-1 p-4">
-          <ul className="flex flex-col gap-1">
-            <li>
-              <Link
-                href="/admin/dashboard"
-                className="flex items-center gap-3 rounded-md px-3 py-2.5 text-body-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                <LayoutDashboard className="h-4 w-4" strokeWidth={1.5} />
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/admin/dashboard"
-                className="flex items-center gap-3 rounded-md px-3 py-2.5 text-body-sm font-medium text-foreground bg-muted"
-              >
-                <Package className="h-4 w-4" strokeWidth={1.5} />
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/admin/dashboard"
-                className="flex items-center gap-3 rounded-md px-3 py-2.5 text-body-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
-                Orders
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/admin/dashboard"
-                className="flex items-center gap-3 rounded-md px-3 py-2.5 text-body-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                <Settings className="h-4 w-4" strokeWidth={1.5} />
-                Settings
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <div className="p-4 border-t border-border">
           <Link
-            href="/"
-            className="flex items-center gap-2 text-body-sm text-muted-foreground hover:text-foreground transition-colors"
+            href="/admin/dashboard"
+            className="flex items-center gap-3 rounded-lg bg-gray-50 px-3 py-2.5 text-sm font-medium text-navy"
           >
-            ← Back to Store
+            <LayoutDashboard className="h-4 w-4" strokeWidth={1.5} />
+            Dashboard
+          </Link>
+        </nav>
+        <div className="border-t border-gray-100 p-4">
+          <Link href="/" className="text-sm text-gray-500 transition-colors hover:text-navy">
+            &larr; Back to Store
           </Link>
         </div>
       </aside>
 
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 border-b border-border bg-card px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="text-heading-3 font-medium text-foreground">Aquacubes</Link>
-        <span className="text-caption text-muted-foreground">Admin</span>
+      <div className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between border-b border-gray-100 bg-white px-4 py-3 md:hidden">
+        <Link href="/" className="font-heading text-lg font-semibold text-navy">Aquacubes</Link>
+        <span className="text-xs text-gray-300">Admin</span>
       </div>
 
-      <main className="flex-1 overflow-auto md:pt-0 pt-14">
-        {children}
-      </main>
+      <main className="flex-1 overflow-auto pt-14 md:pt-0">{children}</main>
     </div>
   );
 }

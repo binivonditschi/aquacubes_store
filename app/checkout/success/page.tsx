@@ -1,67 +1,61 @@
 "use client";
 
-import { useEffect } from "react";
-import { useCart } from "@/store/useCart";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle, Calendar, Clock, Shield } from "lucide-react";
+import { CheckCircle } from "lucide-react";
+import { useCart } from "@/store/useCart";
+import { formatPrice } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import type { Order } from "@/lib/types";
 
 export default function SuccessPage() {
-  const { items, clearCart } = useCart();
-  const hasSubscriptions = items.some((i) => i.purchaseType === "subscription");
-  const hasPreorder = items.some((i) => i.purchaseType === "preorder");
+  const clearCart = useCart((s) => s.clearCart);
+  const searchParams = useSearchParams();
+  const orderId = searchParams.get("orderId");
+  const [order, setOrder] = useState<Order | null>(null);
 
   useEffect(() => {
     clearCart();
   }, [clearCart]);
 
+  useEffect(() => {
+    if (!orderId) return;
+    fetch(`/api/orders/${orderId}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then(setOrder);
+  }, [orderId]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-6 py-24">
-      <div className="flex flex-col items-center gap-6 text-center max-w-md">
-        <div className="rounded-full bg-emerald-50 p-4">
-          <CheckCircle className="h-12 w-12 text-emerald-600" strokeWidth={1.5} />
+    <main className="flex min-h-screen flex-col items-center justify-center bg-off-white px-6 py-24">
+      <div className="flex max-w-md flex-col items-center gap-6 text-center">
+        <div className="rounded-full bg-teal/10 p-4">
+          <CheckCircle className="h-12 w-12 text-teal" strokeWidth={1.5} />
         </div>
-        <h1 className="text-3xl font-medium tracking-tight text-foreground">
-          Thank you for your order
-        </h1>
-        <p className="text-base text-muted-foreground leading-relaxed">
+        <h1 className="text-h2 font-heading text-navy">Thank you for your order</h1>
+        <p className="text-body leading-relaxed text-gray-500">
           Your payment was successful. We&apos;ve sent a confirmation email with your order details.
         </p>
 
-        {(hasSubscriptions || hasPreorder) && (
-          <div className="w-full rounded-md border border-border bg-muted p-4 text-left">
-            <h3 className="text-sm font-medium text-foreground mb-3">What happens next</h3>
-            <ul className="space-y-3">
-              {hasPreorder && (
-                <li className="flex items-start gap-3">
-                  <Calendar className="h-4 w-4 text-muted-foreground mt-0.5" />
-                  <span className="text-sm text-muted-foreground">
-                    We will email you when your pre-order is ready for delivery.
-                  </span>
-                </li>
-              )}
-              {hasSubscriptions && (
-                <li className="flex items-start gap-3">
-                  <Clock className="h-4 w-4 text-muted-foreground mt-0.5" />
-                  <span className="text-sm text-muted-foreground">
-                    Your subscription will be activated after delivery confirmation. You will receive a setup link via email.
-                  </span>
-                </li>
-              )}
-              <li className="flex items-start gap-3">
-                <Shield className="h-4 w-4 text-muted-foreground mt-0.5" />
-                <span className="text-sm text-muted-foreground">
-                  Your kaution is held securely and is fully refundable.
-                </span>
-              </li>
-            </ul>
+        {order && (
+          <div className="w-full rounded-xl bg-white p-4 text-left shadow-sm">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-500">Order</span>
+              <span className="font-mono-label text-navy">{order.id}</span>
+            </div>
+            <div className="mt-2 flex items-center justify-between text-sm">
+              <span className="text-gray-500">Total</span>
+              <span className="font-mono-label font-semibold text-navy">{formatPrice(order.total)}</span>
+            </div>
+            <div className="mt-2 flex items-center justify-between text-sm">
+              <span className="text-gray-500">Status</span>
+              <span className="capitalize text-teal">{order.status}</span>
+            </div>
           </div>
         )}
 
         <Link href="/">
-          <Button className="rounded-md bg-primary px-8 text-primary-foreground hover:bg-primary/90">
-            Continue Shopping
-          </Button>
+          <Button className="rounded-button bg-teal px-8 text-navy hover:bg-teal-dark">Continue Shopping</Button>
         </Link>
       </div>
     </main>
