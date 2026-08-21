@@ -46,7 +46,7 @@ export default async function Shop() {
                   className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-card transition-shadow duration-300 hover:shadow-card-hover"
                 >
                   {i === 1 && (
-                    <div className="bg-coral py-1.5 text-center font-body text-xs font-semibold text-white">
+                    <div className="bg-coral py-1.5 text-center font-body text-xs font-semibold text-navy">
                       Most Popular
                     </div>
                   )}
@@ -83,14 +83,14 @@ export default async function Shop() {
                       {isEnterprise ? (
                         <Link
                           href="/contact"
-                          className="block w-full rounded-button bg-coral py-3 text-center font-body text-sm font-medium text-white transition-colors hover:bg-coral-dark"
+                          className="block w-full rounded-button bg-coral py-3 text-center font-body text-sm font-medium text-navy transition-colors hover:bg-coral-dark"
                         >
                           Contact Sales
                         </Link>
                       ) : (
                         <AddToCartButton
                           product={product}
-                          className="w-full rounded-button bg-teal py-3 font-body text-sm font-medium text-navy transition-colors hover:bg-teal-dark disabled:opacity-50"
+                          className="w-full rounded-button bg-teal py-3 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark disabled:opacity-50"
                         >
                           Add to Cart
                         </AddToCartButton>
@@ -123,7 +123,7 @@ export default async function Shop() {
                   </div>
                   <AddToCartButton
                     product={addon}
-                    className="rounded-button bg-teal px-3 py-2 text-xs font-medium text-navy transition-colors hover:bg-teal-dark disabled:opacity-50"
+                    className="rounded-button bg-teal px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-teal-dark disabled:opacity-50"
                   >
                     Add
                   </AddToCartButton>

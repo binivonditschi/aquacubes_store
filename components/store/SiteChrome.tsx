@@ -48,7 +48,15 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
     });
     lenisRef.current = lenis;
 
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+    rafId = requestAnimationFrame(raf);
+
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);

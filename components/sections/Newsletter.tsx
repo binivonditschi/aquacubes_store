@@ -50,7 +50,7 @@ export default function Newsletter() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="rounded-xl bg-teal px-8 py-3 font-body text-sm font-medium text-navy transition-colors hover:bg-teal-dark"
+              className="rounded-xl bg-teal px-8 py-3 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
             >
               Subscribe
             </motion.button>

@@ -140,7 +140,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="inline-flex items-center rounded-button bg-teal px-8 py-3 font-body text-sm font-medium text-navy transition-all hover:bg-teal-dark hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center rounded-button bg-teal px-8 py-3 font-body text-sm font-medium text-white transition-all hover:bg-teal-dark hover:scale-[1.02] active:scale-[0.98]"
           >
             Go Home
           </Link>

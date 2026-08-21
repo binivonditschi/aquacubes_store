@@ -55,7 +55,8 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-content items-center justify-between px-6 py-5 lg:px-10">
           <Link href="/" className="flex items-center">
-            <span className="font-logo text-2xl font-semibold tracking-tight text-navy">aquacubes</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="Aquacubes" className="h-11 w-auto" />
           </Link>
 
           <div className="hidden items-center gap-8 lg:flex">
@@ -92,7 +93,7 @@ export default function Navbar() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 500, damping: 25 }}
-                  className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-coral text-[10px] font-bold text-white"
+                  className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-coral text-[10px] font-bold text-navy"
                 >
                   {itemCount}
                 </motion.span>
@@ -129,7 +130,8 @@ export default function Navbar() {
             >
               <div className="flex items-center justify-between p-6">
                 <Link href="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
-                  <span className="font-logo text-2xl font-semibold tracking-tight text-white">aquacubes</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/logo.png" alt="Aquacubes" className="h-11 w-auto" />
                 </Link>
                 <button onClick={() => setMobileOpen(false)} aria-label="Close menu" className="rounded-button p-2 text-white">
                   <X className="h-6 w-6" />

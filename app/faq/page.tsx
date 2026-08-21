@@ -257,8 +257,8 @@ function CTASection() {
         transition={{ duration: 0.6 }}
         className="mx-auto max-w-content px-6 text-center lg:px-10"
       >
-        <h2 className="mb-4 text-h2 text-navy">Still Have Questions?</h2>
-        <p className="mx-auto mb-8 max-w-[500px] text-body text-navy/70">
+        <h2 className="mb-4 text-h2 text-white">Still Have Questions?</h2>
+        <p className="mx-auto mb-8 max-w-[500px] text-body text-white/80">
           Our support team is here to help. Reach out and we&apos;ll get back to you within 24 hours.
         </p>
         <Link

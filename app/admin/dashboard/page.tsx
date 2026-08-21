@@ -131,7 +131,7 @@ export default function AdminDashboard() {
                   setEditingProduct(null);
                   setFormOpen(true);
                 }}
-                className="gap-2 bg-teal text-navy hover:bg-teal-dark"
+                className="gap-2 bg-teal text-white hover:bg-teal-dark"
               >
                 <Plus className="h-4 w-4" />
                 Add Product

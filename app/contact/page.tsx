@@ -161,7 +161,7 @@ function ContactFormAndInfo() {
                     <motion.div variants={staggerChild}>
                       <button
                         type="submit"
-                        className="w-full rounded-button bg-teal px-6 py-3.5 font-body text-sm font-medium text-navy transition-all hover:bg-teal-dark hover:scale-[1.01] active:scale-[0.98]"
+                        className="w-full rounded-button bg-teal px-6 py-3.5 font-body text-sm font-medium text-white transition-all hover:bg-teal-dark hover:scale-[1.01] active:scale-[0.98]"
                       >
                         Send Message
                       </button>

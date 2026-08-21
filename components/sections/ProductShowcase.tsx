@@ -57,7 +57,7 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
                 className="group relative overflow-hidden rounded-2xl bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-shadow duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
               >
                 {i === 1 && (
-                  <span className="absolute left-4 top-4 z-10 rounded-full bg-coral px-3 py-1 font-body text-xs font-semibold text-white">
+                  <span className="absolute left-4 top-4 z-10 rounded-full bg-coral px-3 py-1 font-body text-xs font-semibold text-navy">
                     Most Popular
                   </span>
                 )}
@@ -82,7 +82,7 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                       <Link
                         href="/contact"
-                        className="block w-full rounded-button bg-coral py-3 text-center font-body text-sm font-medium text-white transition-colors hover:bg-coral-dark"
+                        className="block w-full rounded-button bg-coral py-3 text-center font-body text-sm font-medium text-navy transition-colors hover:bg-coral-dark"
                       >
                         Contact Sales
                       </Link>
@@ -92,13 +92,13 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image ?? undefined })}
-                      className="w-full rounded-button bg-teal py-3 font-body text-sm font-medium text-navy transition-colors hover:bg-teal-dark"
+                      className="w-full rounded-button bg-teal py-3 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
                     >
                       Add to Cart
                     </motion.button>
                   )}
                 </div>
-                <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-teal shadow-[0_0_12px_rgba(0,212,170,0.6)] transition-all duration-500 group-hover:w-full" />
+                <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-teal shadow-[0_0_12px_rgba(43,94,141,0.6)] transition-all duration-500 group-hover:w-full" />
               </motion.div>
             );
           })}
@@ -131,7 +131,7 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => addItem({ id: addon.id, name: addon.name, price: addon.price, image: addon.image ?? undefined })}
-                    className="rounded-button bg-teal px-3 py-2 text-xs font-medium text-navy transition-colors hover:bg-teal-dark"
+                    className="rounded-button bg-teal px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-teal-dark"
                   >
                     Add
                   </motion.button>

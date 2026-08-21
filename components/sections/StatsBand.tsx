@@ -37,12 +37,12 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
       <motion.div
         animate={finished ? { scale: [1, 1.05, 1] } : {}}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="font-display text-5xl font-bold text-navy lg:text-6xl"
+        className="font-display text-5xl font-bold text-white lg:text-6xl"
       >
         {count}
         {suffix}
       </motion.div>
-      <div className="mt-1 font-body text-sm font-medium uppercase tracking-[0.05em] text-navy/80">{label}</div>
+      <div className="mt-1 font-body text-sm font-medium uppercase tracking-[0.05em] text-white/80">{label}</div>
     </div>
   );
 }

@@ -200,8 +200,8 @@ function CTABanner() {
         transition={{ duration: 0.6 }}
         className="mx-auto max-w-content px-6 text-center lg:px-10"
       >
-        <h2 className="mb-4 text-h2 text-navy">Ready to Start Growing?</h2>
-        <p className="mx-auto mb-8 max-w-[500px] text-body text-navy/70">
+        <h2 className="mb-4 text-h2 text-white">Ready to Start Growing?</h2>
+        <p className="mx-auto mb-8 max-w-[500px] text-body text-white/80">
           Join the food revolution. Your first harvest is closer than you think.
         </p>
         <Link

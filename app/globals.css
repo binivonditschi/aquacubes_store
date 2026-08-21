@@ -8,7 +8,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-heading: var(--font-space-grotesk);
-  --font-logo: var(--font-baloo);
   --font-mono: var(--font-jetbrains-mono);
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -33,6 +32,7 @@
   --color-navy-lighter: var(--navy-lighter);
   --color-teal: var(--teal);
   --color-teal-dark: var(--teal-dark);
+  --color-teal-glow: var(--teal-glow);
   --color-coral: var(--coral);
   --color-coral-dark: var(--coral-dark);
   --color-off-white: var(--off-white);
@@ -87,10 +87,11 @@
   --navy: #0A2540;
   --navy-light: #103054;
   --navy-lighter: #163868;
-  --teal: #00D4AA;
-  --teal-dark: #00B894;
-  --coral: #FF6B35;
-  --coral-dark: #E55A2B;
+  --teal: #2B5E8D;
+  --teal-dark: #1E4666;
+  --teal-glow: rgba(43, 94, 141, 0.18);
+  --coral: #F7CB2D;
+  --coral-dark: #D4A916;
   --off-white: #F7F9FC;
   --success: #22C55E;
   --warning: #F59E0B;
@@ -102,19 +103,19 @@
   --card-foreground: #0A2540;
   --popover: #FFFFFF;
   --popover-foreground: #0A2540;
-  --primary: #00D4AA;
-  --primary-foreground: #0A2540;
+  --primary: #2B5E8D;
+  --primary-foreground: #FFFFFF;
   --secondary: #F1F4F8;
   --secondary-foreground: #0A2540;
   --muted: #F1F4F8;
   --muted-foreground: #64748B;
-  --accent: #00D4AA;
-  --accent-foreground: #0A2540;
+  --accent: #2B5E8D;
+  --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --destructive-foreground: #FAFAFA;
   --border: #E2E8F0;
   --input: #E2E8F0;
-  --ring: #00D4AA;
+  --ring: #2B5E8D;
   --radius: 0.5rem;
 }
 
@@ -125,19 +126,19 @@
   --card-foreground: #F7F9FC;
   --popover: #103054;
   --popover-foreground: #F7F9FC;
-  --primary: #00D4AA;
-  --primary-foreground: #0A2540;
+  --primary: #2B5E8D;
+  --primary-foreground: #FFFFFF;
   --secondary: #163868;
   --secondary-foreground: #F7F9FC;
   --muted: #163868;
   --muted-foreground: #94A3B8;
-  --accent: #00D4AA;
-  --accent-foreground: #0A2540;
+  --accent: #2B5E8D;
+  --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --destructive-foreground: #FAFAFA;
   --border: rgba(247, 249, 252, 0.1);
   --input: rgba(247, 249, 252, 0.15);
-  --ring: #00D4AA;
+  --ring: #2B5E8D;
 }
 
 @layer base {
@@ -170,7 +171,7 @@
   }
 
   ::selection {
-    background: rgba(0, 212, 170, 0.25);
+    background: rgba(43, 94, 141, 0.25);
     color: var(--navy);
   }
 

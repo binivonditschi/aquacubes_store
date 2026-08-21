@@ -42,7 +42,7 @@ export default function Cart() {
             <ShoppingBag className="mb-6 h-20 w-20 text-gray-100" />
             <h2 className="text-h2 font-heading text-gray-500">Your cart is empty</h2>
             <p className="mt-2 max-w-md font-body text-base text-gray-300">Looks like you haven&apos;t added any items yet.</p>
-            <Link href="/shop" className="mt-8 rounded-lg bg-teal px-8 py-3 font-body text-sm font-semibold text-navy transition-colors hover:bg-teal-dark">
+            <Link href="/shop" className="mt-8 rounded-lg bg-teal px-8 py-3 font-body text-sm font-semibold text-white transition-colors hover:bg-teal-dark">
               Start Shopping
             </Link>
           </div>
@@ -162,7 +162,7 @@ export default function Cart() {
 
                 <Link
                   href="/checkout"
-                  className="mt-6 flex w-full items-center justify-center rounded-lg bg-teal py-4 font-body text-base font-semibold text-navy transition-all hover:bg-teal-dark active:scale-[0.98]"
+                  className="mt-6 flex w-full items-center justify-center rounded-lg bg-teal py-4 font-body text-base font-semibold text-white transition-all hover:bg-teal-dark active:scale-[0.98]"
                 >
                   Proceed to Checkout
                 </Link>

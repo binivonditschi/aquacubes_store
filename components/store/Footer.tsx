@@ -78,7 +78,8 @@ export default function Footer() {
         >
           <motion.div variants={itemVariants} className="col-span-2 lg:col-span-2">
             <Link href="/" className="mb-4 inline-flex items-center">
-              <span className="font-logo text-2xl font-semibold tracking-tight text-white">aquacubes</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo.png" alt="Aquacubes" className="h-8 w-auto" />
             </Link>
             <p className="mb-6 max-w-[240px] text-sm text-gray-300">Smart aquaculture for everyone</p>
             <div className="flex gap-4">

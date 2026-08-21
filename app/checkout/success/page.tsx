@@ -64,7 +64,7 @@ export default function SuccessPage() {
         </Suspense>
 
         <Link href="/">
-          <Button className="rounded-button bg-teal px-8 text-navy hover:bg-teal-dark">Continue Shopping</Button>
+          <Button className="rounded-button bg-teal px-8 text-white hover:bg-teal-dark">Continue Shopping</Button>
         </Link>
       </div>
     </main>

@@ -302,8 +302,8 @@ function CTASection() {
         transition={{ duration: 0.6 }}
         className="mx-auto max-w-content px-6 text-center lg:px-10"
       >
-        <h2 className="mb-4 text-h2 text-navy">Be Part of the Solution</h2>
-        <p className="mx-auto mb-8 max-w-[500px] text-body text-navy/70">
+        <h2 className="mb-4 text-h2 text-white">Be Part of the Solution</h2>
+        <p className="mx-auto mb-8 max-w-[500px] text-body text-white/80">
           Every harvest you grow at home is a step toward a more sustainable food system.
         </p>
         <Link

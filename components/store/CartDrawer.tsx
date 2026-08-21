@@ -64,7 +64,7 @@ export default function CartDrawer() {
                     <Link
                       href="/shop"
                       onClick={closeCart}
-                      className="rounded-button bg-teal px-6 py-3 font-body text-sm font-medium text-navy transition-colors hover:bg-teal-dark"
+                      className="rounded-button bg-teal px-6 py-3 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
                     >
                       Shop Now
                     </Link>
@@ -139,7 +139,7 @@ export default function CartDrawer() {
                   <Link
                     href="/checkout"
                     onClick={closeCart}
-                    className="group relative block w-full overflow-hidden rounded-button bg-teal py-3 text-center font-body text-sm font-medium text-navy transition-all hover:bg-teal-dark active:scale-[0.98]"
+                    className="group relative block w-full overflow-hidden rounded-button bg-teal py-3 text-center font-body text-sm font-medium text-white transition-all hover:bg-teal-dark active:scale-[0.98]"
                   >
                     <span className="relative z-10">Proceed to Checkout</span>
                     <span className="animate-shimmer absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />

@@ -20,7 +20,7 @@ export default function CancelPage() {
             </Button>
           </Link>
           <Link href="/shop">
-            <Button className="rounded-button bg-teal text-navy hover:bg-teal-dark">Back to Shop</Button>
+            <Button className="rounded-button bg-teal text-white hover:bg-teal-dark">Back to Shop</Button>
           </Link>
         </div>
       </div>

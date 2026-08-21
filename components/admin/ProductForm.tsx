@@ -129,7 +129,7 @@ export default function ProductForm({ product, open, onClose, onSave }: ProductF
             <Button type="button" variant="outline" onClick={onClose}>
               Cancel
             </Button>
-            <Button type="submit" className="bg-teal text-navy hover:bg-teal-dark">
+            <Button type="submit" className="bg-teal text-white hover:bg-teal-dark">
               {product ? "Save Changes" : "Add Product"}
             </Button>
           </DialogFooter>

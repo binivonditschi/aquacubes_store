@@ -48,7 +48,7 @@ export default function CheckoutPage() {
     return (
       <div className="flex min-h-[60dvh] flex-col items-center justify-center bg-off-white px-6 py-24 text-center">
         <p className="mb-4 text-body text-gray-500">Your cart is empty.</p>
-        <Button onClick={() => router.push("/shop")} className="rounded-button bg-teal text-navy hover:bg-teal-dark">
+        <Button onClick={() => router.push("/shop")} className="rounded-button bg-teal text-white hover:bg-teal-dark">
           Continue Shopping
         </Button>
       </div>
@@ -111,7 +111,7 @@ export default function CheckoutPage() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full rounded-button bg-teal py-6 text-base font-medium text-navy hover:bg-teal-dark"
+                  className="w-full rounded-button bg-teal py-6 text-base font-medium text-white hover:bg-teal-dark"
                 >
                   {loading ? (
                     <>

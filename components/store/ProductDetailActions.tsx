@@ -44,7 +44,7 @@ export default function ProductDetailActions({ product }: { product: Product }) 
           whileTap={{ scale: 0.98 }}
           onClick={handleAddToCart}
           disabled={product.stock <= 0}
-          className="flex flex-1 items-center justify-center gap-2 rounded-button bg-teal py-3.5 font-body text-sm font-medium text-navy transition-colors hover:bg-teal-dark disabled:opacity-50"
+          className="flex flex-1 items-center justify-center gap-2 rounded-button bg-teal py-3.5 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark disabled:opacity-50"
         >
           <ShoppingCart className="h-4 w-4" />
           {product.stock <= 0 ? "Out of Stock" : "Add to Cart"}
