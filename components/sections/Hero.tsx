@@ -16,87 +16,52 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="bg-off-white px-6 pb-16 pt-36 lg:min-h-[100dvh] lg:px-10 lg:pt-40">
-      <div className="mx-auto flex w-full flex-col items-center gap-12 lg:w-[80%] lg:flex-row lg:justify-between lg:gap-16">
-        {/* Left — copy */}
-        <div className="flex w-full flex-col justify-center lg:w-[480px] lg:shrink-0">
-          <div className="mx-auto w-full max-w-[480px] lg:mx-0">
-            <motion.p
-              custom={0.1}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="mb-5 font-mono text-xs uppercase tracking-[0.1em] text-teal"
-            >
-              Smart Aquaculture, at Home
-            </motion.p>
+    <section className="relative w-full border-b border-black/10 pt-20 shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)] lg:pt-24">
+      <div className="relative flex h-[50vh] min-h-[420px] w-full items-center justify-center overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/product-standard.jpg"
+          alt="Aquacubes tank with fish, close up"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_90%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/50" />
 
-            <motion.h1
-              custom={0.25}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="mb-8 font-serif text-[3rem] leading-[1.05] tracking-tight text-navy sm:text-[4rem] lg:text-[5.5rem]"
-            >
-              Fish Farming,
-              <br />
-              Made Easy
-            </motion.h1>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 flex flex-col items-center px-6 text-center"
+        >
+          <motion.h1
+            custom={0.1}
+            variants={fadeUp}
+            className="font-tesla text-4xl font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0_/_45%)] sm:text-5xl lg:text-6xl"
+          >
+            Aquacubes
+          </motion.h1>
 
-            <motion.p
-              custom={0.4}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="mb-10 max-w-[420px] text-lg text-gray-500"
-            >
-              Making it safe and easy for people and businesses to get fresh organic fish — without any antibiotics or mercury.
-            </motion.p>
+          <motion.p
+            custom={0.25}
+            variants={fadeUp}
+            className="font-tesla mt-3 text-base text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0_/_45%)] sm:text-lg"
+          >
+            Smart Aquaculture, at Home
+          </motion.p>
 
-            <motion.div
-              custom={0.55}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap gap-4"
+          <motion.div custom={0.4} variants={fadeUp} className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/shop"
+              className="font-tesla inline-block rounded-full bg-navy px-7 py-2.5 text-sm font-medium text-white shadow-lg transition-colors hover:bg-navy-light"
             >
-              <Link
-                href="/shop"
-                className="inline-block rounded-button bg-teal px-6 py-3 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
-              >
-                Shop Now
-              </Link>
-              <a
-                href="#how-it-works"
-                className="inline-block rounded-button border-2 border-navy px-6 py-3 font-body text-sm font-medium text-navy transition-all hover:bg-navy hover:text-white"
-              >
-                See How It Works
-              </a>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Right — video */}
-        <div className="flex w-full flex-col items-center gap-4 lg:w-[480px] lg:shrink-0">
-          <div className="relative aspect-[3/4] w-full max-w-[480px] overflow-hidden rounded-card-lg">
-            <video
-              className="absolute inset-0 h-full w-full object-cover object-bottom"
-              src="/hero-video.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              disablePictureInPicture
-              controlsList="nodownload noplaybackrate nofullscreen"
-            />
-          </div>
-          <div className="w-full max-w-[480px] text-right">
-            <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-navy/60">
-              Designed in Germany
-            </p>
-            <div className="ml-auto mt-2 h-px w-16 bg-navy/25" />
-          </div>
-        </div>
+              Order Now
+            </Link>
+            <a
+              href="#how-it-works"
+              className="font-tesla inline-block rounded-full bg-white/95 px-7 py-2.5 text-sm font-medium text-navy shadow-lg backdrop-blur transition-colors hover:bg-white"
+            >
+              Learn More
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

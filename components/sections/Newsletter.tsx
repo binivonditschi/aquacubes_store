@@ -13,7 +13,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="section-padding bg-navy">
+    <section className="section-padding border-b border-black/10 bg-slate-200 shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -21,8 +21,8 @@ export default function Newsletter() {
         transition={{ duration: 0.5 }}
         className="mx-auto max-w-[600px] px-6 text-center lg:px-10"
       >
-        <h2 className="mb-4 text-h2 text-white">Join the Aquacubes Community</h2>
-        <p className="mb-8 text-body text-gray-300">Get growing tips, exclusive offers, and early access to new products.</p>
+        <h2 className="mb-4 text-h2 text-navy">Join the Aquacubes Community</h2>
+        <p className="mb-8 text-body text-navy/70">Get growing tips, exclusive offers, and early access to new products.</p>
 
         {submitted ? (
           <motion.div
@@ -44,7 +44,7 @@ export default function Newsletter() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className="flex-1 rounded-xl bg-white/10 px-4 py-3 font-body text-sm text-white placeholder-gray-300 outline-none transition-all duration-300 focus:bg-white/20 focus:ring-2 focus:ring-teal/50"
+              className="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-3 font-body text-sm text-navy placeholder-gray-400 outline-none transition-all duration-300 focus:ring-2 focus:ring-teal/50"
             />
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -57,7 +57,7 @@ export default function Newsletter() {
           </form>
         )}
 
-        <p className="mt-4 font-body text-xs text-gray-300">No spam, ever. Unsubscribe anytime.</p>
+        <p className="mt-4 font-body text-xs text-navy/60">No spam, ever. Unsubscribe anytime.</p>
       </motion.div>
     </section>
   );

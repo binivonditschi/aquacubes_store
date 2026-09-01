@@ -7,12 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { useCart } from "@/store/useCart";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+const navLinks = [{ label: "Order Now", href: "/shop" }];
 
 const springTransition = { type: "spring" as const, stiffness: 380, damping: 30 };
 
@@ -49,8 +44,8 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-white/85 backdrop-blur-xl shadow-nav" : "bg-transparent"
+        className={`fixed left-0 right-0 top-0 z-50 bg-white transition-shadow duration-500 ${
+          scrolled ? "shadow-nav" : ""
         }`}
       >
         <div className="mx-auto flex max-w-content items-center justify-between px-6 py-5 lg:px-10">

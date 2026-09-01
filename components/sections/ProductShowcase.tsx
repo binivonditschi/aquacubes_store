@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { useCart } from "@/store/useCart";
-import { formatPrice } from "@/lib/utils";
 import { systemSpecs } from "@/lib/product-specs";
 import type { Product } from "@/lib/types";
 
@@ -18,11 +16,11 @@ const staggerChild = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 };
 
-export default function ProductShowcase({ products, addOns }: { products: Product[]; addOns: Product[] }) {
+export default function ProductShowcase({ products }: { products: Product[] }) {
   const addItem = useCart((s) => s.addItem);
 
   return (
-    <section className="section-padding bg-off-white">
+    <section className="section-padding border-b border-black/10 bg-slate-50 shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]">
       <div className="mx-auto max-w-content px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,7 +29,6 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] text-teal">OUR SYSTEMS</p>
           <h2 className="mb-4 text-h2 text-navy">Choose Your Aquacubes System</h2>
           <p className="mx-auto max-w-[500px] text-body text-gray-500">
             From home enthusiasts to commercial operations &mdash; we&apos;ve got you covered.
@@ -61,17 +58,18 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
                     Most Popular
                   </span>
                 )}
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={product.image || "/product-standard.jpg"}
-                    alt={product.name}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  />
+                <div className="p-5 pb-0">
+                  <div className="relative aspect-[4/3] w-2/3 mx-auto overflow-hidden rounded-xl">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={product.image || "/product-standard.jpg"}
+                      alt={product.name}
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                  </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="mb-1 font-heading text-lg font-semibold text-navy">{product.name}</h3>
-                  <p className="mb-3 font-mono text-lg font-bold text-navy">{formatPrice(product.price)}</p>
+                  <h3 className="mb-2 font-heading text-lg font-semibold text-navy">{product.name}</h3>
                   <p className="mb-4 text-sm text-gray-500">{product.description}</p>
                   {specs && (
                     <p className="mb-4 font-mono text-xs text-gray-300">
@@ -94,7 +92,7 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
                       onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image ?? undefined })}
                       className="w-full rounded-button bg-teal py-3 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
                     >
-                      Add to Cart
+                      Order Now
                     </motion.button>
                   )}
                 </div>
@@ -102,50 +100,6 @@ export default function ProductShowcase({ products, addOns }: { products: Produc
               </motion.div>
             );
           })}
-        </motion.div>
-
-        {addOns.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-10"
-          >
-            <h3 className="mb-6 text-center font-heading text-lg font-semibold text-navy">Popular Accessories</h3>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {addOns.map((addon) => (
-                <motion.div
-                  key={addon.id}
-                  whileHover={{ y: -4, boxShadow: "0 8px 25px rgba(0,0,0,0.08)" }}
-                  transition={{ duration: 0.3 }}
-                  className="flex items-center gap-4 rounded-card bg-white p-4 shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={addon.image || "/addon-seedlings.jpg"} alt={addon.name} className="h-16 w-16 rounded-button object-cover" />
-                  <div className="flex-1">
-                    <h4 className="font-body text-sm font-medium text-navy">{addon.name}</h4>
-                    <p className="font-mono text-sm font-bold text-navy">{formatPrice(addon.price)}</p>
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => addItem({ id: addon.id, name: addon.name, price: addon.price, image: addon.image ?? undefined })}
-                    className="rounded-button bg-teal px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-teal-dark"
-                  >
-                    Add
-                  </motion.button>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
-        <motion.div className="text-center" whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-          <Link href="/shop" className="inline-flex items-center gap-2 font-body text-sm font-medium text-teal transition-colors hover:text-teal-dark">
-            View All Products
-            <ArrowRight className="h-4 w-4" />
-          </Link>
         </motion.div>
       </div>
     </section>

@@ -13,12 +13,11 @@ export default async function Home() {
     orderBy: { position: "asc" },
   });
   const products = allProducts.filter((p) => p.category === "System").map(serializeProduct);
-  const addOns = allProducts.filter((p) => p.category === "Add-on").map(serializeProduct);
 
   return (
     <div>
       <Hero />
-      <ProductShowcase products={products} addOns={addOns} />
+      <ProductShowcase products={products} />
       <HowItWorksSection />
       <StatsBand />
       <FaqAccordion />

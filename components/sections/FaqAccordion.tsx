@@ -47,7 +47,7 @@ export default function FaqAccordion() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="section-padding bg-off-white">
+    <section className="section-padding border-b border-black/10 bg-[#f2f2f2] shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]">
       <div className="mx-auto max-w-content px-6 lg:px-10">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[40%_60%] lg:gap-16">
           <motion.div
@@ -56,7 +56,6 @@ export default function FaqAccordion() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] text-teal">FAQ</p>
             <h2 className="mb-4 text-h2 text-navy">Got Questions?</h2>
             <p className="mb-6 text-body text-gray-500">
               Everything you need to know about Aquacubes. Can&apos;t find what you&apos;re looking for?

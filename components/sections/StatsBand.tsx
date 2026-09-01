@@ -37,12 +37,12 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
       <motion.div
         animate={finished ? { scale: [1, 1.05, 1] } : {}}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="font-display text-5xl font-bold text-white lg:text-6xl"
+        className="font-display text-5xl font-bold text-teal lg:text-6xl"
       >
         {count}
         {suffix}
       </motion.div>
-      <div className="mt-1 font-body text-sm font-medium uppercase tracking-[0.05em] text-white/80">{label}</div>
+      <div className="mt-1 font-body text-sm font-medium uppercase tracking-[0.05em] text-navy/60">{label}</div>
     </div>
   );
 }
@@ -56,7 +56,7 @@ const stats = [
 
 export default function StatsBand() {
   return (
-    <section className="bg-teal py-16 lg:py-20">
+    <section className="border-b border-black/10 bg-slate-200 py-16 shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)] lg:py-20">
       <div className="mx-auto max-w-content px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
