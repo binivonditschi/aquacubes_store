@@ -2,12 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 import { mollieClient } from "@/lib/mollie";
 import { prisma } from "@/lib/prisma";
 
+const ALLOWED_COUNTRIES = ["DE", "AT"];
+
 export async function POST(req: NextRequest) {
   try {
-    const { email, name, items, total } = await req.json();
+    const { email, name, country, items, total } = await req.json();
 
     if (!email || !items || items.length === 0) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+
+    if (!ALLOWED_COUNTRIES.includes(country)) {
+      return NextResponse.json({ error: "We currently only ship to Germany and Austria." }, { status: 400 });
     }
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
@@ -17,6 +23,7 @@ export async function POST(req: NextRequest) {
         status: "pending",
         total,
         customerEmail: email,
+        country,
         items: JSON.stringify(items),
       },
     });
@@ -34,6 +41,7 @@ export async function POST(req: NextRequest) {
         orderId: order.id,
         email,
         name,
+        country,
       },
     });
 

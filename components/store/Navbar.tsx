@@ -9,8 +9,6 @@ import { useCart } from "@/store/useCart";
 
 const navLinks = [{ label: "Order Now", href: "/shop" }];
 
-const springTransition = { type: "spring" as const, stiffness: 380, damping: 30 };
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -54,29 +52,7 @@ export default function Navbar() {
             <img src="/logo.png" alt="Aquacubes" className="h-11 w-auto" />
           </Link>
 
-          <div className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`group relative font-body text-sm font-medium uppercase tracking-[0.05em] transition-colors ${
-                  isActive(link.href) ? "text-teal" : "text-navy hover:text-teal"
-                }`}
-              >
-                {link.label}
-                <span className="absolute -bottom-[2px] left-0 h-[2px] w-0 bg-teal/40 transition-all duration-300 group-hover:w-full" />
-                {isActive(link.href) && (
-                  <motion.div
-                    layoutId="activeNav"
-                    transition={springTransition}
-                    className="absolute -bottom-[6px] left-0 right-0 h-[2px] bg-teal"
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden items-center gap-5 lg:flex">
             <button
               onClick={openCart}
               aria-label="Open cart"
@@ -94,6 +70,16 @@ export default function Navbar() {
                 </motion.span>
               )}
             </button>
+
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-full bg-navy px-5 py-2 font-body text-sm font-medium text-white transition-colors hover:bg-navy-light"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
           <button

@@ -16,6 +16,7 @@ export interface Order {
   total: number;
   mollieId: string | null;
   customerEmail: string;
+  country: string | null;
   items: string;
   createdAt: string;
 }

@@ -36,10 +36,12 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
             </ol>
           </nav>
 
-          <div className="grid gap-12 lg:grid-cols-[55%_45%]">
-            <div className="relative aspect-square overflow-hidden rounded-2xl bg-white">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={product.image || "/product-standard.jpg"} alt={product.name} className="h-full w-full object-cover" />
+          <div className="grid items-start gap-12 lg:grid-cols-[55%_45%]">
+            <div className="sticky top-28 rounded-2xl bg-slate-50 p-8">
+              <div className="relative mx-auto aspect-square w-full max-w-[380px] overflow-hidden rounded-xl bg-white">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={product.image || "/product-standard.jpg"} alt={product.name} className="h-full w-full object-cover" />
+              </div>
             </div>
 
             <div>

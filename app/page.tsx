@@ -5,6 +5,7 @@ import ProductShowcase from "@/components/sections/ProductShowcase";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import StatsBand from "@/components/sections/StatsBand";
 import FaqAccordion from "@/components/sections/FaqAccordion";
+import PartnerLogos from "@/components/sections/PartnerLogos";
 import Newsletter from "@/components/sections/Newsletter";
 
 export default async function Home() {
@@ -21,6 +22,7 @@ export default async function Home() {
       <HowItWorksSection />
       <StatsBand />
       <FaqAccordion />
+      <PartnerLogos />
       <Newsletter />
     </div>
   );

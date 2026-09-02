@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
+const investors = ["Plug and Play"];
+
 const footerColumns = [
   {
     title: "Shop",
@@ -141,7 +143,21 @@ export default function Footer() {
           </motion.div>
         </motion.div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-navy-lighter pt-8 lg:flex-row">
+        <div className="mt-12 border-t border-navy-lighter pt-8">
+          <p className="mb-5 text-center font-mono text-xs uppercase tracking-[0.1em] text-gray-300">Backed By</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {investors.map((name) => (
+              <span
+                key={name}
+                className="font-heading text-lg font-semibold text-white/60 transition-colors hover:text-white/90"
+              >
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 pt-2 lg:flex-row">
           <p className="text-sm text-gray-300">&copy; {new Date().getFullYear()} Aquacubes. All rights reserved.</p>
           <div className="flex items-center gap-3 text-gray-300">
             <svg className="h-6 w-10" viewBox="0 0 40 26" fill="none">

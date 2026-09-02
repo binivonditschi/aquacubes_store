@@ -9,6 +9,12 @@ import { formatPrice } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+const ALLOWED_COUNTRIES = [
+  { code: "DE", label: "Germany" },
+  { code: "AT", label: "Austria" },
+];
 
 export default function CheckoutPage() {
   const items = useCart((s) => s.items);
@@ -17,6 +23,7 @@ export default function CheckoutPage() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [country, setCountry] = useState("DE");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,14 +34,14 @@ export default function CheckoutPage() {
       const res = await fetch("/api/mollie/create-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name, items, total }),
+        body: JSON.stringify({ email, name, country, items, total }),
       });
 
       const data = await res.json();
       if (data.checkoutUrl) {
         window.location.href = data.checkoutUrl;
       } else {
-        alert("Payment initialization failed. Please try again.");
+        alert(data.error || "Payment initialization failed. Please try again.");
         setLoading(false);
       }
     } catch (err) {
@@ -99,6 +106,22 @@ export default function CheckoutPage() {
               <div className="flex flex-col gap-2">
                 <Label htmlFor="email">Email Address</Label>
                 <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="country">Shipping Country</Label>
+                <Select value={country} onValueChange={setCountry}>
+                  <SelectTrigger id="country" className="w-full">
+                    <SelectValue placeholder="Select a country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {ALLOWED_COUNTRIES.map((c) => (
+                      <SelectItem key={c.code} value={c.code}>
+                        {c.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <p className="text-xs text-gray-300">We currently only ship to Germany and Austria.</p>
               </div>
 
               <div className="rounded-xl bg-white p-4">

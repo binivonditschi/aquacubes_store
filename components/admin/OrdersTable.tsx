@@ -46,6 +46,7 @@ export default function OrdersTable() {
           <TableRow>
             <TableHead>Order</TableHead>
             <TableHead>Customer</TableHead>
+            <TableHead>Country</TableHead>
             <TableHead>Total</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Date</TableHead>
@@ -56,6 +57,7 @@ export default function OrdersTable() {
             <TableRow key={order.id}>
               <TableCell className="font-mono-label text-xs">{order.id}</TableCell>
               <TableCell>{order.customerEmail}</TableCell>
+              <TableCell>{order.country ?? "—"}</TableCell>
               <TableCell className="font-mono-label">{formatPrice(order.total)}</TableCell>
               <TableCell>
                 <Badge variant={statusVariant[order.status] ?? "outline"} className="capitalize">

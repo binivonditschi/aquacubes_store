@@ -26,6 +26,7 @@ model Order {
   total         Decimal
   mollieId      String?
   customerEmail String
+  country       String?
   items         String
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
