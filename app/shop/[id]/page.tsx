@@ -6,6 +6,16 @@ import { serializeProduct, formatPrice } from "@/lib/utils";
 import { systemSpecs, systemIncludes } from "@/lib/product-specs";
 import ProductDetailActions from "@/components/store/ProductDetailActions";
 
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  const products = await prisma.product.findMany({
+    where: { isVisible: true },
+    select: { id: true },
+  });
+  return products.map((p) => ({ id: p.id }));
+}
+
 export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const record = await prisma.product.findUnique({ where: { id } });
@@ -19,7 +29,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
   const specs = systemSpecs[product.id];
 
   return (
-    <div className="bg-off-white">
+    <div className="bg-white">
       <section className="pb-20 pt-[120px]">
         <div className="mx-auto max-w-content px-6 lg:px-10">
           <nav className="mb-8" aria-label="Breadcrumb">
@@ -36,24 +46,23 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
             </ol>
           </nav>
 
-          <div className="grid items-start gap-12 lg:grid-cols-[55%_45%]">
-            <div className="sticky top-28 rounded-2xl bg-slate-50 p-8">
-              <div className="relative mx-auto aspect-square w-full max-w-[380px] overflow-hidden rounded-xl bg-white">
+          <div className="grid items-start gap-8 lg:grid-cols-[55%_45%]">
+            <div className="sticky top-28">
+              <div className="relative mx-auto aspect-square w-full max-w-[380px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={product.image || "/product-standard.jpg"} alt={product.name} className="h-full w-full object-cover" />
               </div>
             </div>
 
-            <div>
-              <p className="mb-2 font-body text-xs uppercase tracking-[0.05em] text-gray-300">{product.category}</p>
-              <h1 className="mb-3 text-h1 font-heading text-navy">{product.name}</h1>
+            <div className="bg-[#f5f5f5] p-8">
+              <h1 className="mb-3 text-2xl font-heading font-semibold text-navy">{product.name}</h1>
               <p className="mb-6 font-mono text-2xl font-bold text-navy">{formatPrice(product.price)}</p>
               <p className="mb-8 text-body text-gray-500">{product.description}</p>
 
               <ProductDetailActions product={product} />
 
               {isSystem && specs && (
-                <div className="mt-8 rounded-xl bg-white p-6 shadow-card">
+                <div className="mt-8 border border-gray-200 bg-white p-6">
                   <h2 className="mb-4 font-heading text-h4 text-navy">Specifications</h2>
                   <dl className="space-y-3 text-sm">
                     <div className="flex justify-between border-b border-gray-100 pb-3">

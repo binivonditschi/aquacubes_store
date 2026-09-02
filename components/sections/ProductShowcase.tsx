@@ -58,7 +58,7 @@ export default function ProductShowcase({ products }: { products: Product[] }) {
                     Most Popular
                   </span>
                 )}
-                <div className="p-5 pb-0">
+                <Link href={`/shop/${product.id}`} className="block p-5 pb-0">
                   <div className="relative aspect-[4/3] w-2/3 mx-auto overflow-hidden rounded-xl">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -67,9 +67,11 @@ export default function ProductShowcase({ products }: { products: Product[] }) {
                       className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                     />
                   </div>
-                </div>
+                </Link>
                 <div className="p-6">
-                  <h3 className="mb-2 font-heading text-lg font-semibold text-navy">{product.name}</h3>
+                  <Link href={`/shop/${product.id}`}>
+                    <h3 className="mb-2 font-heading text-lg font-semibold text-navy transition-colors hover:text-teal">{product.name}</h3>
+                  </Link>
                   <p className="mb-4 text-sm text-gray-500">{product.description}</p>
                   {specs && (
                     <p className="mb-4 font-mono text-xs text-gray-300">
