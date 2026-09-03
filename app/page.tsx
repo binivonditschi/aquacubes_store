@@ -3,6 +3,7 @@ import { serializeProduct } from "@/lib/utils";
 import Hero from "@/components/sections/Hero";
 import ProductShowcase from "@/components/sections/ProductShowcase";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
+import FishyLifeVideo from "@/components/sections/FishyLifeVideo";
 import StatsBand from "@/components/sections/StatsBand";
 import FaqAccordion from "@/components/sections/FaqAccordion";
 import PartnerLogos from "@/components/sections/PartnerLogos";
@@ -20,6 +21,7 @@ export default async function Home() {
       <Hero />
       <ProductShowcase products={products} />
       <HowItWorksSection />
+      <FishyLifeVideo />
       <StatsBand />
       <FaqAccordion />
       <PartnerLogos />
