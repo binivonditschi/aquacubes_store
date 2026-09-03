@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { serializeProduct, formatPrice } from "@/lib/utils";
 import { systemSpecs } from "@/lib/product-specs";
 import AddToCartButton from "@/components/store/AddToCartButton";
+import PriceGate from "@/components/store/PriceGate";
 import Newsletter from "@/components/sections/Newsletter";
 
 export default async function Shop() {
@@ -65,7 +66,9 @@ export default async function Shop() {
                     <Link href={`/shop/${product.id}`}>
                       <h2 className="font-heading text-h4 text-navy">{product.name}</h2>
                     </Link>
-                    <p className="mt-1 font-mono text-lg font-bold text-navy">{formatPrice(product.price)}</p>
+                    <PriceGate>
+                      <p className="mt-1 font-mono text-lg font-bold text-navy">{formatPrice(product.price)}</p>
+                    </PriceGate>
                     <p className="mt-2 text-sm text-gray-500">{product.description}</p>
 
                     {specs && (

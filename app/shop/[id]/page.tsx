@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { serializeProduct, formatPrice } from "@/lib/utils";
 import { systemSpecs, systemIncludes } from "@/lib/product-specs";
 import ProductDetailActions from "@/components/store/ProductDetailActions";
+import PriceGate from "@/components/store/PriceGate";
 
 export const revalidate = 300;
 
@@ -56,7 +57,9 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
 
             <div className="bg-[#f5f5f5] p-8">
               <h1 className="mb-3 text-2xl font-heading font-semibold text-navy">{product.name}</h1>
-              <p className="mb-6 font-mono text-2xl font-bold text-navy">{formatPrice(product.price)}</p>
+              <PriceGate>
+                <p className="mb-6 font-mono text-2xl font-bold text-navy">{formatPrice(product.price)}</p>
+              </PriceGate>
               <p className="mb-8 text-body text-gray-500">{product.description}</p>
 
               <ProductDetailActions product={product} />

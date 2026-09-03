@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/sonner";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CartDrawer from "./CartDrawer";
+import RegionRestrictionModal from "./RegionRestrictionModal";
 
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
@@ -66,6 +67,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
       <ScrollProgress />
       <Navbar />
       <CartDrawer />
+      <RegionRestrictionModal />
       <main className="flex-1">
         <PageTransition>{children}</PageTransition>
       </main>

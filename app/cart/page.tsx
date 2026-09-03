@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft, Lock } from "lucide-react";
 import { useCart } from "@/store/useCart";
 import { formatPrice } from "@/lib/utils";
+import { usePriceVisible } from "@/lib/usePriceVisible";
 
 const staggerLeft = {
   hidden: { opacity: 0, x: -30 },
@@ -23,6 +24,7 @@ export default function Cart() {
   const itemCount = useCart((s) => s.itemCount());
   const subtotal = useCart((s) => s.total());
   const [highlightedItem, setHighlightedItem] = useState<string | null>(null);
+  const showPrice = usePriceVisible();
 
   const shipping = subtotal > 100 ? 0 : 15;
   const tax = subtotal * 0.21;
@@ -84,7 +86,9 @@ export default function Cart() {
                         <Link href={`/shop/${item.id}`}>
                           <h3 className="font-body text-base font-semibold text-navy transition-colors hover:text-teal">{item.name}</h3>
                         </Link>
-                        <p className="font-mono-label text-xs text-gray-500">{formatPrice(item.price)} each</p>
+                        <p className="font-mono-label text-xs text-gray-500">
+                          {showPrice ? `${formatPrice(item.price)} each` : "Pricing unavailable in your region"}
+                        </p>
                       </div>
 
                       <div className="flex flex-col items-end gap-3">
@@ -122,7 +126,7 @@ export default function Cart() {
                           </div>
 
                           <span className="min-w-[80px] text-right font-mono-label text-base font-semibold text-navy">
-                            {formatPrice(item.price * item.quantity)}
+                            {showPrice ? formatPrice(item.price * item.quantity) : "—"}
                           </span>
                         </div>
                       </div>
@@ -136,29 +140,37 @@ export default function Cart() {
               <div className="sticky top-24 rounded-xl bg-white p-6 shadow-sm">
                 <h3 className="font-heading text-xl font-semibold text-navy">Order Summary</h3>
 
-                <div className="mt-6 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="font-body text-sm text-gray-500">Subtotal</span>
-                    <span className="font-mono-label text-sm font-medium text-navy">{formatPrice(subtotal)}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-body text-sm text-gray-500">Shipping</span>
-                    <span className={`font-body text-sm font-medium ${shipping === 0 ? "text-teal" : "text-navy"}`}>
-                      {shipping === 0 ? "Free" : formatPrice(shipping)}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-body text-sm text-gray-500">Tax (21%)</span>
-                    <span className="font-mono-label text-sm font-medium text-navy">{formatPrice(tax)}</span>
-                  </div>
-                </div>
+                {showPrice ? (
+                  <>
+                    <div className="mt-6 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="font-body text-sm text-gray-500">Subtotal</span>
+                        <span className="font-mono-label text-sm font-medium text-navy">{formatPrice(subtotal)}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="font-body text-sm text-gray-500">Shipping</span>
+                        <span className={`font-body text-sm font-medium ${shipping === 0 ? "text-teal" : "text-navy"}`}>
+                          {shipping === 0 ? "Free" : formatPrice(shipping)}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="font-body text-sm text-gray-500">Tax (21%)</span>
+                        <span className="font-mono-label text-sm font-medium text-navy">{formatPrice(tax)}</span>
+                      </div>
+                    </div>
 
-                <div className="my-4 h-px bg-gray-100" />
+                    <div className="my-4 h-px bg-gray-100" />
 
-                <div className="flex items-center justify-between">
-                  <span className="font-heading text-lg font-semibold text-navy">Total</span>
-                  <span className="font-mono-label text-xl font-bold text-navy">{formatPrice(total)}</span>
-                </div>
+                    <div className="flex items-center justify-between">
+                      <span className="font-heading text-lg font-semibold text-navy">Total</span>
+                      <span className="font-mono-label text-xl font-bold text-navy">{formatPrice(total)}</span>
+                    </div>
+                  </>
+                ) : (
+                  <p className="mt-6 text-sm text-gray-500">
+                    Pricing is available for customers in Germany, Austria, and Denmark.
+                  </p>
+                )}
 
                 <Link
                   href="/checkout"

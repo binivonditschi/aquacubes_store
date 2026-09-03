@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useCart } from "@/store/useCart";
 import { systemSpecs } from "@/lib/product-specs";
 import type { Product } from "@/lib/types";
 
@@ -17,8 +16,6 @@ const staggerChild = {
 };
 
 export default function ProductShowcase({ products }: { products: Product[] }) {
-  const addItem = useCart((s) => s.addItem);
-
   return (
     <section className="section-padding border-b border-black/10 bg-slate-50 shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]">
       <div className="mx-auto max-w-content px-6 lg:px-10">
@@ -88,14 +85,14 @@ export default function ProductShowcase({ products }: { products: Product[] }) {
                       </Link>
                     </motion.div>
                   ) : (
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => addItem({ id: product.id, name: product.name, price: product.price, image: product.image ?? undefined })}
-                      className="w-full rounded-button bg-teal py-3 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
-                    >
-                      Order Now
-                    </motion.button>
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                      <Link
+                        href={`/shop/${product.id}`}
+                        className="block w-full rounded-button bg-teal py-3 text-center font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
+                      >
+                        Order Now
+                      </Link>
+                    </motion.div>
                   )}
                 </div>
                 <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-teal shadow-[0_0_12px_rgba(43,94,141,0.6)] transition-all duration-500 group-hover:w-full" />

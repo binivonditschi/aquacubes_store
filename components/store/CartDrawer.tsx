@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart } from "@/store/useCart";
 import { formatPrice } from "@/lib/utils";
+import { usePriceVisible } from "@/lib/usePriceVisible";
 
 export default function CartDrawer() {
   const items = useCart((s) => s.items);
@@ -14,6 +15,7 @@ export default function CartDrawer() {
   const removeItem = useCart((s) => s.removeItem);
   const total = useCart((s) => s.total());
   const itemCount = useCart((s) => s.itemCount());
+  const showPrice = usePriceVisible();
 
   return (
     <AnimatePresence>
@@ -87,7 +89,9 @@ export default function CartDrawer() {
                           <img src={item.image} alt={item.name} className="h-20 w-20 rounded-button object-cover" />
                           <div className="flex flex-1 flex-col">
                             <h3 className="font-body text-sm font-medium text-navy">{item.name}</h3>
-                            <p className="mt-1 font-mono text-sm font-bold text-navy">{formatPrice(item.price)}</p>
+                            <p className="mt-1 font-mono text-sm font-bold text-navy">
+                              {showPrice ? formatPrice(item.price) : "—"}
+                            </p>
                             <div className="mt-auto flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <button
@@ -131,11 +135,17 @@ export default function CartDrawer() {
 
               {items.length > 0 && (
                 <div className="border-t border-gray-100 p-6">
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="font-body text-sm text-gray-500">Subtotal</span>
-                    <span className="font-mono text-lg font-bold text-navy">{formatPrice(total)}</span>
-                  </div>
-                  <p className="mb-4 text-xs text-gray-300">Shipping and taxes calculated at checkout.</p>
+                  {showPrice ? (
+                    <>
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className="font-body text-sm text-gray-500">Subtotal</span>
+                        <span className="font-mono text-lg font-bold text-navy">{formatPrice(total)}</span>
+                      </div>
+                      <p className="mb-4 text-xs text-gray-300">Shipping and taxes calculated at checkout.</p>
+                    </>
+                  ) : (
+                    <p className="mb-4 text-xs text-gray-500">Pricing is available for Germany, Austria, and Denmark.</p>
+                  )}
                   <Link
                     href="/checkout"
                     onClick={closeCart}

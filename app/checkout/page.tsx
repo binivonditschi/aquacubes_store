@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Loader2, Lock } from "lucide-react";
 import { useCart } from "@/store/useCart";
 import { formatPrice } from "@/lib/utils";
+import { usePriceVisible } from "@/lib/usePriceVisible";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,6 +25,7 @@ export default function CheckoutPage() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [country, setCountry] = useState("DE");
+  const showPrice = usePriceVisible();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,7 +85,9 @@ export default function CheckoutPage() {
                     <span className="font-body text-sm font-medium text-navy">{item.name}</span>
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-gray-300">Qty: {item.quantity}</span>
-                      <span className="font-mono-label text-sm font-semibold text-navy">{formatPrice(item.price * item.quantity)}</span>
+                      <span className="font-mono-label text-sm font-semibold text-navy">
+                        {showPrice ? formatPrice(item.price * item.quantity) : "—"}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -92,7 +96,9 @@ export default function CheckoutPage() {
 
             <div className="mt-6 flex items-center justify-between border-t border-gray-100 pt-6">
               <span className="font-body text-base text-gray-500">Total</span>
-              <span className="font-mono-label text-2xl font-bold text-navy">{formatPrice(total)}</span>
+              <span className="font-mono-label text-2xl font-bold text-navy">
+                {showPrice ? formatPrice(total) : "—"}
+              </span>
             </div>
           </div>
 
@@ -142,7 +148,7 @@ export default function CheckoutPage() {
                       Processing...
                     </>
                   ) : (
-                    `Pay ${formatPrice(total)}`
+                    showPrice ? `Pay ${formatPrice(total)}` : "Pay Now"
                   )}
                 </Button>
               </motion.div>
