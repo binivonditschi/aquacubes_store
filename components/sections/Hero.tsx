@@ -18,11 +18,14 @@ export default function Hero() {
   return (
     <section className="relative w-full border-b border-black/10 pt-20 shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)] lg:pt-24">
       <div className="relative flex h-[50vh] min-h-[420px] w-full items-center justify-center overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/product-standard.jpg"
-          alt="Aquacubes tank with fish, close up"
-          className="absolute inset-0 h-full w-full object-cover object-[50%_90%]"
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/intro.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          disablePictureInPicture
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/50" />
 

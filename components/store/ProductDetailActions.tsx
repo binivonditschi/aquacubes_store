@@ -1,21 +1,54 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Minus, Plus, ShoppingCart, Truck, ShieldCheck, Clock } from "lucide-react";
 import { useCart } from "@/store/useCart";
+import { usePriceVisible } from "@/lib/usePriceVisible";
 import type { Product } from "@/lib/types";
 
 export default function ProductDetailActions({ product }: { product: Product }) {
   const isAddOn = product.category === "Add-on";
   const [quantity, setQuantity] = useState(1);
   const addItem = useCart((s) => s.addItem);
+  const isAllowedCountry = usePriceVisible();
 
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
       addItem({ id: product.id, name: product.name, price: product.price, image: product.image ?? undefined });
     }
   };
+
+  if (!isAllowedCountry) {
+    return (
+      <div>
+        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          <Link
+            href="/contact"
+            className="block w-full bg-coral py-3.5 text-center font-body text-sm font-medium text-navy transition-colors hover:bg-coral-dark"
+          >
+            Contact Sales
+          </Link>
+        </motion.div>
+
+        <div className="mt-4 flex flex-col gap-3 border-t border-gray-100 pt-6 text-sm text-gray-500">
+          <div className="flex items-center gap-2">
+            <Truck className="h-4 w-4 text-teal" />
+            Free shipping on all systems
+          </div>
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-teal" />
+            2-year warranty included
+          </div>
+          <div className="flex items-center gap-2">
+            <Clock className="h-4 w-4 text-teal" />
+            30-day money-back guarantee
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
