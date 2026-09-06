@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { Waves, Building2, Sun, Store, Sailboat, type LucideIcon } from "lucide-react";
 
 const partners: { name: string; icon: LucideIcon }[] = [
-  { name: "Sylt", icon: Waves },
-  { name: "Hamburg", icon: Building2 },
-  { name: "St. Peter-Ording", icon: Sun },
-  { name: "EDEKA", icon: Store },
-  { name: "Büsum", icon: Sailboat },
+  { name: "DE", icon: Waves },
+  { name: "CH", icon: Building2 },
+  { name: "NO", icon: Sun },
+  { name: "DK", icon: Store },
+  { name: "SE", icon: Sailboat },
 ];
 
 const staggerContainer = {
