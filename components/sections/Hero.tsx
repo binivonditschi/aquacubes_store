@@ -39,7 +39,7 @@ export default function Hero() {
             variants={fadeUp}
             className="font-tesla uppercase text-5xl font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0_/_45%)] sm:text-6xl lg:text-7xl"
           >
-            Aquacubes
+            AQUACUBES
           </motion.h1>
 
           <motion.p
