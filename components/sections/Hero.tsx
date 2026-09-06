@@ -37,15 +37,15 @@ export default function Hero() {
           <motion.h1
             custom={0.1}
             variants={fadeUp}
-            className="font-tesla text-4xl font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0_/_45%)] sm:text-5xl lg:text-6xl"
+            className="font-SANS text-4xl font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0_/_45%)] sm:text-5xl lg:text-6xl"
           >
             AQUACUBES
           </motion.h1>
 
           <motion.p
-            custom={0.25}
+            custom={0.5}
             variants={fadeUp}
-            className="font-tesla mt-3 text-base text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0_/_45%)] sm:text-lg"
+            className="font-SANS mt-3 text-base text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0_/_45%)] sm:text-lg"
           >
           A fully autonomous fish farm. Fresh, local, antibiotic-free — harvested where it's eaten, not shipped across the planet.
           </motion.p>
