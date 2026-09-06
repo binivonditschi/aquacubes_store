@@ -39,7 +39,7 @@ export default function Hero() {
             variants={fadeUp}
             className="font-tesla text-4xl font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0_/_45%)] sm:text-5xl lg:text-6xl"
           >
-            Aquacubes
+            AQUACUBES
           </motion.h1>
 
           <motion.p
@@ -53,13 +53,13 @@ export default function Hero() {
           <motion.div custom={0.4} variants={fadeUp} className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/shop"
-              className="font-tesla inline-block rounded-full bg-navy px-7 py-2.5 text-sm font-medium text-white shadow-lg transition-colors hover:bg-navy-light"
+              className="font-SANS inline-block rounded-full bg-navy px-7 py-2.5 text-sm font-medium text-white shadow-lg transition-colors hover:bg-navy-light"
             >
               Order Now
             </Link>
             <a
               href="#how-it-works"
-              className="font-tesla inline-block rounded-full bg-white/95 px-7 py-2.5 text-sm font-medium text-navy shadow-lg backdrop-blur transition-colors hover:bg-white"
+              className="font-SANS inline-block rounded-full bg-white/95 px-7 py-2.5 text-sm font-medium text-navy shadow-lg backdrop-blur transition-colors hover:bg-white"
             >
               Learn More
             </a>
