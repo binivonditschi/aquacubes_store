@@ -28,7 +28,7 @@ export default function ProductShowcase({ products }: { products: Product[] }) {
         >
           <h2 className="mb-4 text-h2 text-navy">Choose Your Aquacubes System</h2>
           <p className="mx-auto max-w-[500px] text-body text-gray-500">
-            From restaurants to large scale commercial operations &mdash; we&apos;ve got you covered./b
+            From restaurants to large scale commercial operations &mdash; we&apos;ve got you covered.
             Aquacubes installations are fully customizable and can be deployed at scale, making them suitable for a variety of project sizes, locations and applications.
           </p>
         </motion.div>
