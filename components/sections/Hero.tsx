@@ -47,7 +47,7 @@ export default function Hero() {
             variants={fadeUp}
             className="font-tesla mt-3 text-base text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0_/_45%)] sm:text-lg"
           >
-            Smart Aquaculture, at Home
+          A fully autonomous fish farm. Fresh, local, antibiotic-free — harvested where it's eaten, not shipped across the planet.
           </motion.p>
 
           <motion.div custom={0.4} variants={fadeUp} className="mt-7 flex flex-wrap items-center justify-center gap-3">
