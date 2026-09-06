@@ -37,7 +37,7 @@ export default function Hero() {
           <motion.h1
             custom={0.1}
             variants={fadeUp}
-            className="font-tesla text-4xl font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0_/_45%)] sm:text-5xl lg:text-6xl"
+            className="font-tesla uppercase text-5xl font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0_/_45%)] sm:text-6xl lg:text-7xl"
           >
             Aquacubes
           </motion.h1>
@@ -45,12 +45,20 @@ export default function Hero() {
           <motion.p
             custom={0.25}
             variants={fadeUp}
-            className="font-tesla mt-3 text-base text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0_/_45%)] sm:text-lg"
+            className="font-tesla mt-4 max-w-2xl text-2xl font-semibold text-white [text-shadow:0_1px_8px_rgb(0_0_0_/_45%)] sm:text-3xl"
           >
-            Smart Aquaculture, at Home
+            A fully autonomous fish farm.
           </motion.p>
 
-          <motion.div custom={0.4} variants={fadeUp} className="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <motion.p
+            custom={0.35}
+            variants={fadeUp}
+            className="font-tesla mt-3 max-w-xl text-base text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0_/_45%)] sm:text-lg"
+          >
+            Fresh, local, antibiotic-free — harvested where it&apos;s eaten, not shipped across the planet.
+          </motion.p>
+
+          <motion.div custom={0.45} variants={fadeUp} className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/shop"
               className="font-tesla inline-block rounded-full bg-navy px-7 py-2.5 text-sm font-medium text-white shadow-lg transition-colors hover:bg-navy-light"
