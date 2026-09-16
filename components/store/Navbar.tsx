@@ -36,6 +36,8 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
+  if (pathname === "/") return null;
+
   return (
     <>
       <motion.nav
@@ -49,7 +51,7 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-content items-center justify-between px-6 py-5 lg:px-10">
           <Link href="/" className="flex items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Aquacubes" className="h-11 w-auto" />
+            <img src="/Aquacubes Logo.png" alt="Aquacubes" className="h-11 w-auto" />
           </Link>
 
           <div className="hidden items-center gap-5 lg:flex">
@@ -112,7 +114,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between p-6">
                 <Link href="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/logo.png" alt="Aquacubes" className="h-11 w-auto" />
+                  <img src="/Aquacubes Logo.png" alt="Aquacubes" className="h-11 w-auto brightness-0 invert" />
                 </Link>
                 <button onClick={() => setMobileOpen(false)} aria-label="Close menu" className="rounded-button p-2 text-white">
                   <X className="h-6 w-6" />

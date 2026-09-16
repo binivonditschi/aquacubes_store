@@ -1,0 +1,148 @@
+{
+  "hero": {
+    "backgroundVideo": "/Landing.mp4",
+    "logo": "/Aquacubes Logo.png",
+    "tagline": "Install • Grow • Harvest • Repeat",
+    "title": "Unlock the New Era of a Fish Farming",
+    "subtitle": "Compact size, Industrial Capabilities",
+    "primaryButtonText": "Reserve now",
+    "leasingText": "Leasing From € 499/mo"
+  },
+  "productShowcase": {
+    "title": "Choose Your Aquacubes",
+    "subtitle": "Start with one and grow as you need.",
+    "plans": [
+      {
+        "id": "starter",
+        "name": "Starter",
+        "tagline": "One cube. One harvest. Proof.",
+        "bestFor": "Restaurants & farmers testing first harvest",
+        "price": "€699",
+        "priceSuffix": "/mo",
+        "terms": "6-month minimum · 1 cube · 1 harvest cycle",
+        "description": "Serve your own fish within one season — and keep 100% of the sales.",
+        "buttonText": "Order Starter"
+      },
+      {
+        "id": "micro-farms",
+        "name": "Micro-Farms",
+        "tagline": "10 cubes farm. Revenue in a year.",
+        "bestFor": "Distributors, retailers & hospitality groups",
+        "price": "€499",
+        "priceSuffix": "/mo",
+        "terms": "24-month minimum · 10 cubes · up to 8 harvest cycle",
+        "description": "A year-round, traceable local supply your business can grow on.",
+        "buttonText": "Reserve Micro-Farm",
+        "badge": "Most Reserved"
+      },
+      {
+        "id": "enterprise",
+        "name": "Enterprise",
+        "tagline": "Custom contract. Dedicated Team.",
+        "bestFor": "Municipalities, retail chains & food service",
+        "price": "Custom",
+        "priceSuffix": "",
+        "terms": "custom contract",
+        "description": "Food sovereignty as infrastructure — sized to your operation.",
+        "buttonText": "Contact Sales"
+      }
+    ],
+    "earlyBirdNote": "Early-Bird reservation gets free stocking fish supply for 1 year* (the first 10 reservations)",
+    "contactTeam": {
+      "label": "Contact Team:",
+      "value": "sales@aquacubes.fish"
+    },
+    "contactSales": {
+      "label": "Contact Sales:",
+      "value": "+49 15781371194"
+    },
+    "orderingNotes": {
+      "title": "Ordering Notes:",
+      "paragraphs": [
+        "Before you order Aquacubes products, please read this ordering precautions carefully.",
+        "※ When you have order our products, you are agreeing to these precautions.",
+        "※ This booking order represents an intention.",
+        "※ After you submit your order, we will contact you within 5 working days to confirm your purchase intention. Please make sure that the information you provide is accurate, especially for the email address.",
+        "※ You can contact us directly to obtain more detailed information.",
+        "☆ By cooperating with us or buying large quantities of our products, you can have privileges and discounts.",
+        "If we do not contact you within the time limit, please submit the order again or contact us on the phone."
+      ]
+    },
+    "delivery": {
+      "label": "Now delivering:",
+      "regions": "Germany · Denmark · Sweden · Norway · Switzerland",
+      "description": "Delivery, installation & service included in these regions. Somewhere else on the planet? International orders are handled personally, case by case.",
+      "buttonText": "Contact for other regions"
+    },
+    "technology": {
+      "eyebrow": "Our Technology",
+      "title": "Bold in Design",
+      "image": "/Aquacu.png",
+      "dimensions": {
+        "height": "1.4 m",
+        "width": "4.0 m",
+        "depth": "2.5 m"
+      },
+      "description": "Aquacubes is futuristic in its design and technology, yet superior in its functionality and reliability.",
+      "specs": [
+        { "label": "Footprint", "value": "≈ 3 m³ per cube" },
+        { "label": "Yield", "value": "≈ 600 kg fish / cube / year" },
+        { "label": "Harvest cycles", "value": "4 × per year" },
+        { "label": "Water use", "value": "99% recirculated, closed loop" },
+        { "label": "Filtration", "value": "In-house biofilter + mechanical, energy-optimized" },
+        { "label": "Control", "value": "App + IoT telemetry, OTA updates" },
+        { "label": "Operation", "value": "Fully autonomous, human-supervised" },
+        { "label": "Installation", "value": "Indoor & outdoor, insulated for Nordic winters" }
+      ]
+    },
+    "valueProps": ["Convenience", "Safety", "Efficiency", "Design", "Fully Autonomous (Human Supervised)"],
+    "exploreFeatures": {
+      "eyebrow": "Meet Model Pro",
+      "title": "Explore the Features.",
+      "video": "/pomelli_creative_video_9_16_0608 (1).mp4",
+      "description": "Every cube collectively make a micro-farm. A network of micro-farms together feed cities without emptying the sea. We built:",
+      "bullets": [
+        "Robot that grows fish",
+        "Feed cities without emptying the sea",
+        "Clean fish in every cycle.",
+        "Closed-loop recirculation.",
+        "Feeding, monitoring, harvesting. The cube does the work",
+        "Run it from your phone. Continous OTA update"
+      ],
+      "closing": "This makes it easier than ever for people to have access into the fish farming business."
+    }
+  },
+  "whyAquacubes": {
+    "features": [
+      {
+        "id": "fish",
+        "title": "Sustainable aquacubes",
+        "description": "Resource-efficient, environmentally friendly, and future-proof.",
+        "iconColor": "#deedfb"
+      },
+      {
+        "id": "shield",
+        "title": "Healthy fish",
+        "description": "Raised without antibiotics or harmful chemicals for the highest quality.",
+        "iconColor": "#deedfb"
+      },
+      {
+        "id": "cpu",
+        "title": "Modern technology",
+        "description": "AI-powered monitoring and automation for maximum efficiency.",
+        "iconColor": "#38b6ff"
+      }
+    ],
+    "inspireTitle": "Are You Inspired?",
+    "inspireText": "Join us in redefining the future of food. We're looking for visionaries, engineers, and ocean advocates who believe technology can heal our planet.",
+    "primaryButtonText": "Invest in Aquacubes",
+    "secondaryButtonText": "View Careers"
+  },
+  "newsletter": {
+    "title": "Stay Connected",
+    "description": "Sign up for updates to get the latest on Aquacubes, our technology, and where we're headed next.",
+    "placeholder": "Enter your email",
+    "buttonText": "Sign Up",
+    "successMessage": "You're in! Welcome to the community."
+  }
+}

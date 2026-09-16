@@ -1,9 +1,9 @@
 "use client";
 
+import { Fragment } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { systemSpecs } from "@/lib/product-specs";
-import type { Product } from "@/lib/types";
+import content from "@/content/home.json";
 
 const staggerContainer = {
   hidden: {},
@@ -15,9 +15,27 @@ const staggerChild = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 };
 
-export default function ProductShowcase({ products }: { products: Product[] }) {
+const planConfig: Record<string, { buttonHref: string; buttonStyle: string }> = {
+  starter: {
+    buttonHref: "/shop",
+    buttonStyle: "border-2 border-[#38b6ff] text-[#38b6ff] hover:bg-[#38b6ff] hover:text-white",
+  },
+  "micro-farms": {
+    buttonHref: "/shop",
+    buttonStyle: "border-2 border-navy text-navy hover:bg-navy hover:text-white",
+  },
+  enterprise: {
+    buttonHref: "/contact",
+    buttonStyle: "border-2 border-success text-success hover:bg-success hover:text-white",
+  },
+};
+
+const { productShowcase } = content;
+const plans = productShowcase.plans.map((plan) => ({ ...plan, ...planConfig[plan.id] }));
+
+export default function ProductShowcase() {
   return (
-    <section className="section-padding border-b border-black/10 bg-slate-50 shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]">
+    <section className="section-padding border-b border-black/10 shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]" style={{ backgroundColor: "#f6f6f6" }}>
       <div className="mx-auto max-w-content px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -26,10 +44,9 @@ export default function ProductShowcase({ products }: { products: Product[] }) {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <h2 className="mb-4 text-h2 text-navy">Choose Your Aquacubes System</h2>
+          <h2 className="mb-4 text-h1 uppercase text-navy">{productShowcase.title}</h2>
           <p className="mx-auto max-w-[500px] text-body text-gray-500">
-            From restaurants to large scale commercial operations &mdash; we&apos;ve got you covered.
-            Aquacubes installations are fully customizable and can be deployed at scale, making them suitable for a variety of project sizes, locations and applications.
+            {productShowcase.subtitle}
           </p>
         </motion.div>
 
@@ -38,69 +55,195 @@ export default function ProductShowcase({ products }: { products: Product[] }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+          className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3"
         >
-          {products.map((product, i) => {
-            const isEnterprise = i === products.length - 1;
-            const specs = systemSpecs[product.id];
-            return (
-              <motion.div
-                key={product.id}
-                variants={staggerChild}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-shadow duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
-              >
-                {i === 1 && (
-                  <span className="absolute left-4 top-4 z-10 rounded-full bg-coral px-3 py-1 font-body text-xs font-semibold text-navy">
-                    Most Popular
-                  </span>
-                )}
-                <Link href={`/shop/${product.id}`} className="block p-5 pb-0">
-                  <div className="relative aspect-[4/3] w-2/3 mx-auto overflow-hidden rounded-xl">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={product.image || "/product-standard.jpg"}
-                      alt={product.name}
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                    />
-                  </div>
+          {plans.map((plan) => (
+            <motion.div
+              key={plan.id}
+              variants={staggerChild}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative flex flex-col rounded-2xl border border-black/10 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-shadow duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
+            >
+              {plan.badge && (
+                <span className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-coral px-4 py-1 font-body text-xs font-semibold text-navy">
+                  {plan.badge}
+                </span>
+              )}
+              <h3 className="mb-2 font-heading text-xl font-bold uppercase text-navy underline decoration-2 underline-offset-4">
+                {plan.name}
+              </h3>
+              <p className="mb-3 text-sm text-navy/80">{plan.tagline}</p>
+              <p className="mb-4 text-xs text-gray-400">Best for: {plan.bestFor}</p>
+
+              <p className="mb-1 font-heading text-3xl font-bold text-navy">
+                {plan.price}
+                {plan.priceSuffix && <span className="text-lg font-medium text-gray-400">{plan.priceSuffix}</span>}
+              </p>
+              <p className="mb-4 text-xs text-gray-400">{plan.terms}</p>
+
+              <div className="mb-4 border-t border-black/10 pt-4">
+                <p className="text-sm text-gray-500">{plan.description}</p>
+              </div>
+
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-auto">
+                <Link
+                  href={plan.buttonHref}
+                  className={`block w-full rounded-button py-3 text-center font-body text-sm font-medium uppercase transition-colors ${plan.buttonStyle}`}
+                >
+                  {plan.buttonText}
                 </Link>
-                <div className="p-6">
-                  <Link href={`/shop/${product.id}`}>
-                    <h3 className="mb-2 font-heading text-lg font-semibold text-navy transition-colors hover:text-teal">{product.name}</h3>
-                  </Link>
-                  <p className="mb-4 text-sm text-gray-500">{product.description}</p>
-                  {specs && (
-                    <p className="mb-4 font-mono text-xs text-gray-300">
-                      {specs.power} &middot; {specs.footprint}
-                    </p>
-                  )}
-                  {isEnterprise ? (
-                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                      <Link
-                        href="/contact"
-                        className="block w-full rounded-button bg-coral py-3 text-center font-body text-sm font-medium text-navy transition-colors hover:bg-coral-dark"
-                      >
-                        Contact Sales
-                      </Link>
-                    </motion.div>
-                  ) : (
-                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                      <Link
-                        href={`/shop/${product.id}`}
-                        className="block w-full rounded-button bg-teal py-3 text-center font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark"
-                      >
-                        Order Now
-                      </Link>
-                    </motion.div>
-                  )}
-                </div>
-                <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-teal shadow-[0_0_12px_rgba(43,94,141,0.6)] transition-all duration-500 group-hover:w-full" />
               </motion.div>
-            );
-          })}
+            </motion.div>
+          ))}
         </motion.div>
+
+        <p className="mt-20 text-left text-sm font-medium text-black">
+          {productShowcase.earlyBirdNote}
+        </p>
+
+        <div className="grid grid-cols-1 gap-6 text-left sm:grid-cols-2">
+          <div>
+            <p className="mb-1 text-sm font-bold text-black">{productShowcase.contactTeam.label}</p>
+            <p className="text-sm text-black">{productShowcase.contactTeam.value}</p>
+          </div>
+          <div>
+            <p className="mb-1 text-sm font-bold text-black">{productShowcase.contactSales.label}</p>
+            <p className="text-sm text-black">{productShowcase.contactSales.value}</p>
+          </div>
+        </div>
+
+        <div className="mt-6 text-left text-xs text-black">
+          <p className="mb-1 font-bold">{productShowcase.orderingNotes.title}</p>
+          {productShowcase.orderingNotes.paragraphs.map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+
+      <div className="my-12 bg-white py-10">
+        <div className="mx-auto max-w-content px-6 lg:px-10">
+          <hr className="mx-auto my-15 w-64 border-t border-[#89e6aa]" />
+
+          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+            <div>
+              <p className="mb-2 text-sm text-gray-500">{productShowcase.delivery.label}</p>
+              <p className="mb-2 text-lg font-bold text-black">{productShowcase.delivery.regions}</p>
+              <p className="max-w-xl text-sm text-gray-500">
+                {productShowcase.delivery.description}
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="whitespace-nowrap rounded-full border-2 border-[#89e6aa] px-6 py-3 text-center font-body text-sm font-medium text-black transition-colors hover:bg-[#89e6aa]"
+            >
+              {productShowcase.delivery.buttonText}
+            </Link>
+          </div>
+
+          <hr className="mx-auto my-15 w-64 border-t border-[#89e6aa]" />
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-content px-6 lg:px-10">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase leading-none tracking-wide text-teal">
+              {productShowcase.technology.eyebrow}
+            </p>
+            <h3 className="mb-2 text-h1 font-extrabold uppercase text-navy">{productShowcase.technology.title}</h3>
+            <div className="mb-8 h-0.5 w-10 bg-navy" />
+
+            <div className="relative mx-auto max-w-sm overflow-visible">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={productShowcase.technology.image} alt="Aquacubes system" className="w-full" />
+
+              <div className="absolute -left-6 top-[12%] h-[76%] w-px bg-gray-300" />
+              <div className="absolute left-[18%] top-[85%] h-16 w-px origin-top rotate-45 bg-gray-300" />
+              <div className="absolute right-[18%] top-[85%] h-16 w-px origin-top -rotate-45 bg-gray-300" />
+
+              <span className="absolute left-[-2.5rem] top-1/2 -translate-y-1/2 -rotate-90 text-xs text-gray-400">
+                {productShowcase.technology.dimensions.height}
+              </span>
+              <span className="absolute bottom-[-1.75rem] left-[2%] text-xs text-gray-400">
+                {productShowcase.technology.dimensions.width}
+              </span>
+              <span className="absolute bottom-[-1.75rem] right-[8%] text-xs text-gray-400">
+                {productShowcase.technology.dimensions.depth}
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <p className="mt-28 text-body text-gray-500">{productShowcase.technology.description}</p>
+            <div className="divide-y-2 divide-white overflow-hidden rounded-xl">
+              {productShowcase.technology.specs.map((spec) => (
+                <div
+                  key={spec.label}
+                  className="flex items-center justify-between gap-6 px-4 py-3 text-sm"
+                  style={{ backgroundColor: "#f2f2f2" }}
+                >
+                  <span className="text-navy/70">{spec.label}</span>
+                  <span className="text-right text-navy">{spec.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <hr className="mx-auto mt-16 w-64 border-t border-[#89e6aa] lg:mt-20" />
+      </div>
+
+      <div className="mt-8 w-full bg-white py-6">
+        <div className="flex flex-wrap items-center px-6 text-xs font-semibold uppercase tracking-wide text-navy/70 sm:text-sm lg:px-10">
+          {productShowcase.valueProps.map((prop, i) => (
+            <Fragment key={prop}>
+              {i > 0 && <span>&bull;</span>}
+              <span className={i === 0 ? "px-0 ml-0 sm:px-4 sm:ml-16" : "px-0 sm:px-6"}>
+                {prop}
+              </span>
+            </Fragment>
+          ))}
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-content px-6 lg:px-10">
+        <div
+          className="mt-10 rounded-2xl p-8 lg:p-12"
+          style={{ background: "linear-gradient(90deg, #ffffff, #eaeaea, #eaeaea)" }}
+        >
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-teal">
+                {productShowcase.exploreFeatures.eyebrow}
+              </p>
+              <h3 className="mb-4 text-h2 font-extrabold text-navy">{productShowcase.exploreFeatures.title}</h3>
+              <div className="mb-4 h-0.5 w-10 bg-navy" />
+
+              <p className="mb-4 text-body text-gray-600">{productShowcase.exploreFeatures.description}</p>
+              <ul className="mb-4 list-disc space-y-1 pl-5 text-sm text-gray-600">
+                {productShowcase.exploreFeatures.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+              <p className="text-body text-gray-600">{productShowcase.exploreFeatures.closing}</p>
+            </div>
+
+            <div
+              className="mx-auto aspect-[9/16] w-full max-w-xs overflow-hidden rounded-2xl"
+              style={{ background: "linear-gradient(90deg, #ffffff, #eaeaea, #eaeaea)" }}
+            >
+              <video
+                className="h-full w-full object-cover"
+                src={productShowcase.exploreFeatures.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
