@@ -31,6 +31,21 @@ export default async function LoginPage({
         <form action={isSignUp ? signUp : signIn} className="space-y-4">
           <input type="hidden" name="next" value={next} />
 
+          {isSignUp && (
+            <div>
+              <label htmlFor="name" className="mb-1 block text-sm font-medium text-navy">
+                {content.nameLabel}
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                className="w-full rounded-button border border-gray-200 px-4 py-2.5 text-sm text-navy outline-none focus:border-teal focus:ring-2 focus:ring-teal/30"
+              />
+            </div>
+          )}
+
           <div>
             <label htmlFor="email" className="mb-1 block text-sm font-medium text-navy">
               {content.emailLabel}

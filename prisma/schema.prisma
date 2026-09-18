@@ -35,6 +35,7 @@ model Order {
 model Profile {
   id        String   @id
   email     String   @unique
+  name      String?
   role      String   @default("customer")
   createdAt DateTime @default(now())
 }

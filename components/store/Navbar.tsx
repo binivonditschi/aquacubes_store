@@ -2,45 +2,23 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Menu, X, User } from "lucide-react";
+import { ShoppingBag, Menu, X } from "lucide-react";
 import { useCart } from "@/store/useCart";
-import { createClient } from "@/lib/supabase/client";
+import AccountMenu from "./AccountMenu";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [userEmail, setUserEmail] = useState<string | null>(null);
   const pathname = usePathname();
-  const router = useRouter();
   const itemCount = useCart((s) => s.itemCount());
   const openCart = useCart((s) => s.openCart);
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getUser().then(({ data }) => setUserEmail(data.user?.email ?? null));
-    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUserEmail(session?.user?.email ?? null);
-    });
-    return () => subscription.subscription.unsubscribe();
-  }, []);
-
-  const handleAccountClick = async () => {
-    if (userEmail) {
-      const supabase = createClient();
-      await supabase.auth.signOut();
-      router.push("/");
-      router.refresh();
-    } else {
-      router.push("/login");
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -64,21 +42,14 @@ export default function Navbar() {
           scrolled ? "shadow-nav" : ""
         }`}
       >
-        <div className="mx-auto flex max-w-content items-center justify-between px-6 py-5 lg:px-10">
-          <Link href="/" className="flex items-center">
+        <div className="relative mx-auto flex h-20 max-w-content items-center px-6 lg:px-10">
+          <Link href="/" className="absolute left-6 top-1/2 z-10 -translate-y-1/2 lg:left-10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/Aquacubes Logo.png" alt="Aquacubes" className="h-96 w-auto lg:h-48" />
           </Link>
 
-          <div className="hidden items-center gap-5 lg:flex">
-            <button
-              onClick={handleAccountClick}
-              aria-label={userEmail ? "Sign out" : "Sign in"}
-              title={userEmail ?? "Sign in"}
-              className="rounded-button p-2 transition-colors hover:bg-gray-50"
-            >
-              <User className="h-5 w-5 text-navy" />
-            </button>
+          <div className="ml-auto hidden items-center gap-5 lg:flex">
+            <AccountMenu variant="light" />
 
             <button
               onClick={openCart}
@@ -102,7 +73,7 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
-            className="rounded-button p-2 lg:hidden"
+            className="ml-auto rounded-button p-2 lg:hidden"
           >
             <Menu className="h-6 w-6 text-navy" />
           </button>

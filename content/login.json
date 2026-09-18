@@ -10,6 +10,7 @@
     "submitText": "Create account"
   },
   "checkoutRedirectDescription": "Sign in to continue to checkout.",
+  "nameLabel": "Full Name",
   "emailLabel": "Email",
   "passwordLabel": "Password",
   "confirmPasswordLabel": "Confirm Password",

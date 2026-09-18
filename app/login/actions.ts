@@ -27,6 +27,7 @@ export async function signIn(formData: FormData) {
 }
 
 export async function signUp(formData: FormData) {
+  const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
@@ -39,7 +40,11 @@ export async function signUp(formData: FormData) {
   }
 
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.signUp({ email, password });
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { full_name: name } },
+  });
 
   if (error) {
     redirect(`/login?mode=signup&next=${encodeURIComponent(next)}&error=${encodeURIComponent(error.message)}`);
@@ -49,8 +54,8 @@ export async function signUp(formData: FormData) {
     const userEmail = data.user.email ?? email;
     await prisma.profile.upsert({
       where: { email: userEmail },
-      update: { id: data.user.id },
-      create: { id: data.user.id, email: userEmail, role: "customer" },
+      update: { id: data.user.id, name },
+      create: { id: data.user.id, email: userEmail, name, role: "customer" },
     });
   }
 

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import content from "@/content/home.json";
+import AccountMenu from "@/components/store/AccountMenu";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -38,6 +39,10 @@ export default function Hero() {
           alt="Aquacubes"
           className="absolute left-6 top-2 h-96 w-auto brightness-0 invert lg:left-6 lg:top-2 lg:h-48"
         />
+
+        <div className="absolute right-6 top-6 z-20 flex items-center gap-2 lg:right-10 lg:top-8">
+          <AccountMenu variant="dark" />
+        </div>
 
         <motion.div
           initial="hidden"
