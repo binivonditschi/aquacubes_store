@@ -1,0 +1,38 @@
+{
+  "login": {
+    "title": "Admin Sign In",
+    "description": "Restricted to authorized Aquacubes staff.",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "submitText": "Sign in"
+  },
+  "layout": {
+    "brandName": "Aquacubes",
+    "panelLabel": "Admin Panel",
+    "dashboardLinkText": "Dashboard",
+    "backToStoreText": "← Back to Store",
+    "signOutText": "Sign out",
+    "mobileBadge": "Admin"
+  },
+  "dashboard": {
+    "title": "Admin",
+    "description": "Manage products and view orders.",
+    "productsTab": "Products",
+    "ordersTab": "Orders",
+    "reorderHint": "Drag to reorder. Click edit to modify details.",
+    "saveOrderButton": "Save Order",
+    "addProductButton": "Add Product",
+    "loadingText": "Loading products...",
+    "emptyState": {
+      "message": "No products yet.",
+      "buttonText": "Add your first product"
+    },
+    "toasts": {
+      "orderSaved": "Order saved",
+      "productUpdated": "Product updated",
+      "productAdded": "Product added",
+      "productDeleted": "Product deleted"
+    },
+    "deleteConfirm": "Delete this product?"
+  }
+}

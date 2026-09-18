@@ -1,33 +1,23 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
-import { prisma } from "@/lib/prisma";
-import { serializeProduct, formatPrice } from "@/lib/utils";
-import { systemSpecs, systemIncludes } from "@/lib/product-specs";
+import { getPlan, getPlans, isPurchasable, planToProduct, planButtonStyle } from "@/lib/plans";
+import { systemIncludes } from "@/lib/product-specs";
 import ProductDetailActions from "@/components/store/ProductDetailActions";
-import PriceGate from "@/components/store/PriceGate";
 
-export const revalidate = 300;
-
-export async function generateStaticParams() {
-  const products = await prisma.product.findMany({
-    where: { isVisible: true },
-    select: { id: true },
-  });
-  return products.map((p) => ({ id: p.id }));
+export function generateStaticParams() {
+  return getPlans().map((plan) => ({ id: plan.id }));
 }
 
 export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const record = await prisma.product.findUnique({ where: { id } });
+  const plan = getPlan(id);
 
-  if (!record || !record.isVisible) {
+  if (!plan) {
     notFound();
   }
 
-  const product = serializeProduct(record);
-  const isSystem = product.category === "System";
-  const specs = systemSpecs[product.id];
+  const purchasable = isPurchasable(plan);
 
   return (
     <div className="bg-white">
@@ -43,59 +33,47 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
                 <Link href="/shop" className="text-teal transition-colors hover:text-teal-dark">Shop</Link>
               </li>
               <li>/</li>
-              <li className="text-gray-500">{product.name}</li>
+              <li className="text-gray-500">{plan.name}</li>
             </ol>
           </nav>
 
-          <div className="grid items-start gap-8 lg:grid-cols-[55%_45%]">
-            <div className="sticky top-28">
-              <div className="relative mx-auto aspect-square w-full max-w-[380px]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={product.image || "/product-standard.jpg"} alt={product.name} className="h-full w-full object-cover" />
-              </div>
-            </div>
+          <div className="mx-auto max-w-xl rounded-2xl border border-black/10 bg-white p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+            <h1 className="font-heading text-2xl font-bold uppercase text-navy underline decoration-2 underline-offset-4">
+              {plan.name}
+            </h1>
+            <p className="mt-2 text-sm text-navy/80">{plan.tagline}</p>
+            <p className="mt-1 text-xs text-gray-400">Best for: {plan.bestFor}</p>
 
-            <div className="bg-[#f5f5f5] p-8">
-              <h1 className="mb-3 text-2xl font-heading font-semibold text-navy">{product.name}</h1>
-              <PriceGate>
-                <p className="mb-6 font-mono text-2xl font-bold text-navy">{formatPrice(product.price)}</p>
-              </PriceGate>
-              <p className="mb-8 text-body text-gray-500">{product.description}</p>
+            <p className="mt-4 font-heading text-3xl font-bold text-navy">
+              {plan.price}
+              {plan.priceSuffix && <span className="text-lg font-medium text-gray-400">{plan.priceSuffix}</span>}
+            </p>
+            <p className="mt-1 text-xs text-gray-400">{plan.terms}</p>
 
-              <ProductDetailActions product={product} />
+            <p className="mt-4 border-t border-black/10 pt-4 text-sm text-gray-500">{plan.description}</p>
 
-              {isSystem && specs && (
-                <div className="mt-8 border border-gray-200 bg-white p-6">
-                  <h2 className="mb-4 font-heading text-h4 text-navy">Specifications</h2>
-                  <dl className="space-y-3 text-sm">
-                    <div className="flex justify-between border-b border-gray-100 pb-3">
-                      <dt className="text-gray-500">Power draw</dt>
-                      <dd className="font-medium text-navy">{specs.power}</dd>
-                    </div>
-                    <div className="flex justify-between border-b border-gray-100 pb-3">
-                      <dt className="text-gray-500">Footprint</dt>
-                      <dd className="font-medium text-navy">{specs.footprint}</dd>
-                    </div>
-                    <div className="flex justify-between">
-                      <dt className="text-gray-500">Best for</dt>
-                      <dd className="font-medium text-navy">{specs.bestFor}</dd>
-                    </div>
-                  </dl>
-                </div>
-              )}
+            <ul className="mt-4 space-y-2">
+              {systemIncludes.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-gray-500">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-teal" strokeWidth={2.5} />
+                  {item}
+                </li>
+              ))}
+            </ul>
 
-              {isSystem && (
-                <div className="mt-6">
-                  <h2 className="mb-3 font-heading text-h4 text-navy">What&apos;s Included</h2>
-                  <ul className="space-y-2">
-                    {systemIncludes.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-gray-500">
-                        <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-teal" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="mt-6">
+              {purchasable ? (
+                <ProductDetailActions
+                  product={planToProduct(plan, 0)}
+                  colorClassName={planButtonStyle[plan.id].solid}
+                />
+              ) : (
+                <Link
+                  href="/contact"
+                  className={`block w-full rounded-button py-3.5 text-center font-body text-sm font-medium transition-colors ${planButtonStyle[plan.id].outline}`}
+                >
+                  Contact Sales
+                </Link>
               )}
             </div>
           </div>

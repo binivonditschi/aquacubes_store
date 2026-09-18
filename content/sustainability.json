@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "eyebrow": "Sustainability",
+    "title": "Growing Better, Not Just Bigger",
+    "description": "Every Aquacubes system is designed with the planet in mind. From materials to water use to shipping, we measure our impact and constantly improve.",
+    "image": "/sustainability-hero.jpg"
+  },
+  "impact": {
+    "title": "Our Impact",
+    "stats": [
+      { "value": 90, "suffix": "%", "label": "Less Water Used", "icon": "droplets" },
+      { "value": 0, "suffix": "", "label": "Pesticides Used", "icon": "shield" },
+      { "value": 85, "suffix": "%", "label": "Lower Carbon Footprint", "icon": "leaf" },
+      { "value": 100, "suffix": "%", "label": "Recyclable Packaging", "icon": "recycle" }
+    ]
+  },
+  "practices": [
+    {
+      "title": "90% Less Water",
+      "body": "Our closed-loop recirculating system uses just 10% of the water traditional aquaculture requires. Every drop is filtered, oxygenated, and reused.",
+      "side": "left"
+    },
+    {
+      "title": "Zero Chemical Inputs",
+      "body": "Nature does the work. Beneficial bacteria convert fish waste into plant nutrients. No pesticides, no antibiotics, no synthetic fertilizers. Ever.",
+      "side": "right"
+    },
+    {
+      "title": "Made in the EU",
+      "body": "All Aquacubes systems are designed, manufactured, and assembled in Germany. Shorter supply chains mean fewer emissions and support for local industry.",
+      "side": "left"
+    }
+  ],
+  "commitments": {
+    "title": "Our Carbon Commitment",
+    "items": [
+      {
+        "title": "Built to Last",
+        "description": "Every system is designed for repair and reuse, not replacement — fewer parts end up in landfill."
+      },
+      {
+        "title": "Responsible Materials",
+        "description": "We choose components and packaging that minimize environmental impact, from manufacturing through delivery."
+      },
+      {
+        "title": "Closed-Loop by Design",
+        "description": "No chemical inputs, minimal water waste — the system does the environmental work automatically."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Be Part of the Solution",
+    "description": "Every harvest you grow at home is a step toward a more sustainable food system.",
+    "buttonText": "Get Your System"
+  }
+}

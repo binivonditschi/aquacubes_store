@@ -86,7 +86,11 @@ export default function CartDrawer() {
                           className="flex gap-4 rounded-card bg-off-white p-4"
                         >
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={item.image} alt={item.name} className="h-20 w-20 rounded-button object-cover" />
+                          <img
+                            src={item.image || "/AQUACUBES.png"}
+                            alt={item.name}
+                            className="h-20 w-20 rounded-button object-cover"
+                          />
                           <div className="flex flex-1 flex-col">
                             <h3 className="font-body text-sm font-medium text-navy">{item.name}</h3>
                             <p className="mt-1 font-mono text-sm font-bold text-navy">

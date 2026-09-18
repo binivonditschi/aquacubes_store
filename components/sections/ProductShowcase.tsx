@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import content from "@/content/home.json";
+import { planButtonStyle } from "@/lib/plans";
 
 const staggerContainer = {
   hidden: {},
@@ -15,23 +16,14 @@ const staggerChild = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 };
 
-const planConfig: Record<string, { buttonHref: string; buttonStyle: string }> = {
-  starter: {
-    buttonHref: "/shop",
-    buttonStyle: "border-2 border-[#38b6ff] text-[#38b6ff] hover:bg-[#38b6ff] hover:text-white",
-  },
-  "micro-farms": {
-    buttonHref: "/shop",
-    buttonStyle: "border-2 border-navy text-navy hover:bg-navy hover:text-white",
-  },
-  enterprise: {
-    buttonHref: "/contact",
-    buttonStyle: "border-2 border-success text-success hover:bg-success hover:text-white",
-  },
-};
+const MotionLink = motion.create(Link);
 
 const { productShowcase } = content;
-const plans = productShowcase.plans.map((plan) => ({ ...plan, ...planConfig[plan.id] }));
+const plans = productShowcase.plans.map((plan) => ({
+  ...plan,
+  buttonHref: `/shop/${plan.id}`,
+  buttonStyle: planButtonStyle[plan.id].outline,
+}));
 
 export default function ProductShowcase() {
   return (
@@ -58,8 +50,9 @@ export default function ProductShowcase() {
           className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3"
         >
           {plans.map((plan) => (
-            <motion.div
+            <MotionLink
               key={plan.id}
+              href={plan.buttonHref}
               variants={staggerChild}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -86,15 +79,12 @@ export default function ProductShowcase() {
                 <p className="text-sm text-gray-500">{plan.description}</p>
               </div>
 
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-auto">
-                <Link
-                  href={plan.buttonHref}
-                  className={`block w-full rounded-button py-3 text-center font-body text-sm font-medium uppercase transition-colors ${plan.buttonStyle}`}
-                >
-                  {plan.buttonText}
-                </Link>
-              </motion.div>
-            </motion.div>
+              <span
+                className={`mt-auto block w-full rounded-button py-3 text-center font-body text-sm font-medium uppercase transition-colors ${plan.buttonStyle}`}
+              >
+                {plan.buttonText}
+              </span>
+            </MotionLink>
           ))}
         </motion.div>
 
@@ -188,6 +178,15 @@ export default function ProductShowcase() {
                 </div>
               ))}
             </div>
+
+            <a
+              href="https://calculat.ok.kimi.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 block w-full rounded-button border-2 border-teal py-3 text-center font-body text-sm font-medium uppercase text-teal transition-colors hover:bg-teal hover:text-white"
+            >
+              Calculate How Many Cubes You Need
+            </a>
           </div>
         </div>
 

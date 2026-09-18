@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "eyebrow": "The Process",
+    "title": "From Box to Harvest in Three Easy Steps",
+    "description": "No green thumb required. Our smart system guides you every step of the way."
+  },
+  "steps": [
+    {
+      "number": "01",
+      "title": "Unbox & Set Up",
+      "image": "/how-it-works-1.jpg",
+      "paragraphs": [
+        "Your Aquacubes system arrives at your door in sustainable, plastic-free packaging. Inside, you'll find your tank, pre-assembled components, a starter kit with seedlings and fish food, and a quick-start guide.",
+        "Setup takes about 30 minutes. Fill the tank with tap water, place the grow trays, add the provided bio-filter media, and plug it in. The guided setup in our app walks you through every step with videos and tips."
+      ],
+      "timeline": "Setup time: 20-30 minutes",
+      "features": ["Pre-assembled components", "Step-by-step video guide", "No tools required"]
+    },
+    {
+      "number": "02",
+      "title": "Grow & Monitor",
+      "image": "/how-it-works-2.jpg",
+      "paragraphs": [
+        "Add your fish and seedlings. The system immediately begins cycling water through the biological filter, where beneficial bacteria convert fish waste into plant nutrients.",
+        "Our smart sensors monitor water temperature, pH, ammonia, nitrite, and nitrate levels 24/7. The Aquacubes app sends you alerts only when something needs your attention — usually just a weekly feeding reminder.",
+        "The LED grow light automatically adjusts its spectrum and intensity based on your plants' growth stage and ambient light conditions."
+      ],
+      "timeline": "First harvest: 4-6 weeks",
+      "features": ["24/7 automated monitoring", "Smart LED grow lights", "App alerts & guidance"]
+    },
+    {
+      "number": "03",
+      "title": "Harvest & Enjoy",
+      "image": "/how-it-works-3.jpg",
+      "paragraphs": [
+        "In 4-6 weeks, your first batch of leafy greens will be ready to harvest. Use the cut-and-come-again method — snip outer leaves and let the plant keep producing. A single grow tray can yield 2-3 harvests per month.",
+        "Fish like tilapia and barramundi reach harvest size in 4-6 months. Shrimp mature faster — 3-4 months. The app tells you exactly when each species is ready.",
+        "Replace harvested plants with new seedlings from our seedling packs or start your own from seeds. The system is designed for continuous, year-round production."
+      ],
+      "timeline": "Continuous harvests year-round",
+      "features": ["Cut-and-come-again harvesting", "Continuous production cycle", "Recipe suggestions in app"]
+    }
+  ],
+  "comparison": {
+    "title": "Aquacubes vs. Traditional Methods",
+    "rows": [
+      { "factor": "Water Usage", "aquacubes": "90% less", "traditional": "Standard" },
+      { "factor": "Setup Time", "aquacubes": "30 minutes", "traditional": "Days/weeks" },
+      { "factor": "Space Needed", "aquacubes": "Countertop", "traditional": "Garden/pond" },
+      { "factor": "Harvest Time", "aquacubes": "4-6 weeks", "traditional": "Seasonal" },
+      { "factor": "Pesticides", "aquacubes": "Zero", "traditional": "Often required" }
+    ],
+    "buttonText": "Get Started"
+  }
+}

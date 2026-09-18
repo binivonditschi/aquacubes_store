@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "eyebrow": "Legal",
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: August 2026"
+  },
+  "sections": [
+    {
+      "title": "1. Agreement to Terms",
+      "paragraphs": [
+        "By accessing or using the Aquacubes website, mobile application, and products (collectively, the \"Services\"), you agree to be bound by these Terms of Service. If you do not agree, you may not use our Services."
+      ]
+    },
+    {
+      "title": "2. Use of Services",
+      "list": [
+        "You must be at least 18 years old to purchase our products",
+        "You agree not to misuse our systems or attempt unauthorized access",
+        "Aquaculture systems must be used in accordance with all local regulations"
+      ]
+    },
+    {
+      "title": "3. Purchases and Payments",
+      "list": [
+        "All prices are in Euros (€) and include VAT where applicable",
+        "Payment is processed securely via Mollie, including iDEAL, credit card, and other supported methods",
+        "Orders are confirmed via email upon successful payment",
+        "We reserve the right to refuse or cancel orders at our discretion"
+      ]
+    },
+    {
+      "title": "4. Shipping and Delivery",
+      "list": [
+        "Delivery estimates are provided at checkout and are not guaranteed",
+        "Risk of loss transfers upon delivery to the shipping address",
+        "You must inspect products upon delivery and report damage within 48 hours"
+      ]
+    },
+    {
+      "title": "5. Returns and Refunds",
+      "list": [
+        "30-day money-back guarantee on all systems",
+        "Products must be returned in original condition with all components",
+        "Refunds are processed within 5-7 business days of receiving the return",
+        "Shipping costs for returns are covered by Aquacubes"
+      ]
+    },
+    {
+      "title": "6. Warranty",
+      "list": [
+        "All systems include a 2-year limited warranty against manufacturing defects",
+        "Warranty covers repair or replacement at our discretion",
+        "Excludes damage from misuse, accidents, unauthorized modifications, or neglect",
+        "Consumable parts and accessories (seedlings, nutrients, filters) are not covered"
+      ]
+    },
+    {
+      "title": "7. Intellectual Property",
+      "list": [
+        "All content, designs, and technology are the property of Moina GmbH",
+        "You may not copy, modify, or distribute our intellectual property",
+        "The Aquacubes name, logo, and product designs are trademarks of Moina GmbH"
+      ]
+    },
+    {
+      "title": "8. Limitation of Liability",
+      "list": [
+        "Aquacubes is not liable for indirect, incidental, or consequential damages",
+        "Our total liability shall not exceed the amount paid for the product",
+        "We are not responsible for outcomes related to home aquaculture (e.g., fish health)"
+      ]
+    },
+    {
+      "title": "9. Termination",
+      "list": ["We may restrict or refuse access to our Services for violations of these terms"]
+    },
+    {
+      "title": "10. Governing Law",
+      "list": ["These terms are governed by the laws of Germany", "Disputes shall be resolved in the courts of Heide"]
+    },
+    {
+      "title": "11. Changes to Terms",
+      "list": [
+        "We may update these terms at any time",
+        "Continued use constitutes acceptance of updated terms",
+        "Significant changes will be notified via email"
+      ]
+    },
+    {
+      "title": "12. Contact",
+      "paragraphs": ["For questions about these terms, contact {{email}}."]
+    }
+  ],
+  "contactEmail": "info@aquacubes.eu"
+}

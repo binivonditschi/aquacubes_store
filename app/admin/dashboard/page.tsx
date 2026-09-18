@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Save } from "lucide-react";
 import { toast } from "sonner";
+import content from "@/content/admin.json";
 
 export default function AdminDashboard() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -63,7 +64,7 @@ export default function AdminDashboard() {
       body: JSON.stringify({ orderedIds }),
     });
     setHasChanges(false);
-    toast.success("Order saved");
+    toast.success(content.dashboard.toasts.orderSaved);
   };
 
   const handleSaveProduct = async (formData: Partial<Product>) => {
@@ -73,14 +74,14 @@ export default function AdminDashboard() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      toast.success("Product updated");
+      toast.success(content.dashboard.toasts.productUpdated);
     } else {
       await fetch("/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      toast.success("Product added");
+      toast.success(content.dashboard.toasts.productAdded);
     }
     setFormOpen(false);
     setEditingProduct(null);
@@ -88,9 +89,9 @@ export default function AdminDashboard() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Delete this product?")) return;
+    if (!confirm(content.dashboard.deleteConfirm)) return;
     await fetch(`/api/products/${id}`, { method: "DELETE" });
-    toast.success("Product deleted");
+    toast.success(content.dashboard.toasts.productDeleted);
     fetchProducts();
   };
 
@@ -106,24 +107,24 @@ export default function AdminDashboard() {
   return (
     <div className="mx-auto max-w-4xl p-6 md:p-10">
       <div className="mb-8">
-        <h1 className="mb-1 font-heading text-3xl font-semibold text-navy">Admin</h1>
-        <p className="text-sm text-gray-500">Manage products and view orders.</p>
+        <h1 className="mb-1 font-heading text-3xl font-semibold text-navy">{content.dashboard.title}</h1>
+        <p className="text-sm text-gray-500">{content.dashboard.description}</p>
       </div>
 
       <Tabs defaultValue="products">
         <TabsList className="mb-6">
-          <TabsTrigger value="products">Products</TabsTrigger>
-          <TabsTrigger value="orders">Orders</TabsTrigger>
+          <TabsTrigger value="products">{content.dashboard.productsTab}</TabsTrigger>
+          <TabsTrigger value="orders">{content.dashboard.ordersTab}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="products">
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-gray-500">Drag to reorder. Click edit to modify details.</p>
+            <p className="text-sm text-gray-500">{content.dashboard.reorderHint}</p>
             <div className="flex items-center gap-3">
               {hasChanges && (
                 <Button onClick={saveOrder} variant="outline" className="gap-2 border-teal text-teal hover:bg-teal/5">
                   <Save className="h-4 w-4" />
-                  Save Order
+                  {content.dashboard.saveOrderButton}
                 </Button>
               )}
               <Button
@@ -134,13 +135,13 @@ export default function AdminDashboard() {
                 className="gap-2 bg-teal text-white hover:bg-teal-dark"
               >
                 <Plus className="h-4 w-4" />
-                Add Product
+                {content.dashboard.addProductButton}
               </Button>
             </div>
           </div>
 
           {loading ? (
-            <p className="text-sm text-gray-500">Loading products...</p>
+            <p className="text-sm text-gray-500">{content.dashboard.loadingText}</p>
           ) : (
             <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
               <SortableContext items={products.map((p) => p.id)} strategy={verticalListSortingStrategy}>
@@ -164,7 +165,7 @@ export default function AdminDashboard() {
 
           {!loading && products.length === 0 && (
             <div className="rounded-xl border border-dashed border-gray-100 p-12 text-center">
-              <p className="mb-4 text-gray-500">No products yet.</p>
+              <p className="mb-4 text-gray-500">{content.dashboard.emptyState.message}</p>
               <Button
                 onClick={() => {
                   setEditingProduct(null);
@@ -172,7 +173,7 @@ export default function AdminDashboard() {
                 }}
                 variant="outline"
               >
-                Add your first product
+                {content.dashboard.emptyState.buttonText}
               </Button>
             </div>
           )}

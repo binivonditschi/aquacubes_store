@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "eyebrow": "Get In Touch",
+    "title": "We'd Love to Hear From You",
+    "description": "Whether you have a question about your system, need technical support, or want to explore a partnership, our team is here to help."
+  },
+  "form": {
+    "successTitle": "Message Sent!",
+    "successDescription": "We'll get back to you within 24 hours.",
+    "subjectOptions": ["General Inquiry", "Technical Support", "Sales", "Partnership", "Other"],
+    "submitText": "Send Message"
+  },
+  "info": {
+    "email": {
+      "label": "General",
+      "value": "info@aquacubes.eu"
+    },
+    "phone": {
+      "value": "+49 48 347320 613",
+      "hours": "Mon-Fri, 9:00-18:00 CET"
+    },
+    "office": {
+      "name": "Moina GmbH",
+      "addressLines": ["Markt 5", "25746 Heide", "Germany"]
+    }
+  }
+}

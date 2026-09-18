@@ -7,6 +7,7 @@ import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft, Lock } from "lucide-react"
 import { useCart } from "@/store/useCart";
 import { formatPrice } from "@/lib/utils";
 import { usePriceVisible } from "@/lib/usePriceVisible";
+import content from "@/content/cart.json";
 
 const staggerLeft = {
   hidden: { opacity: 0, x: -30 },
@@ -42,10 +43,10 @@ export default function Cart() {
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <ShoppingBag className="mb-6 h-20 w-20 text-gray-100" />
-            <h2 className="text-h2 font-heading text-gray-500">Your cart is empty</h2>
-            <p className="mt-2 max-w-md font-body text-base text-gray-300">Looks like you haven&apos;t added any items yet.</p>
+            <h2 className="text-h2 font-heading text-gray-500">{content.empty.title}</h2>
+            <p className="mt-2 max-w-md font-body text-base text-gray-300">{content.empty.description}</p>
             <Link href="/shop" className="mt-8 rounded-lg bg-teal px-8 py-3 font-body text-sm font-semibold text-white transition-colors hover:bg-teal-dark">
-              Start Shopping
+              {content.empty.buttonText}
             </Link>
           </div>
         ) : (
@@ -53,14 +54,14 @@ export default function Cart() {
             <div>
               <div className="mb-6 flex items-center justify-between">
                 <div>
-                  <h1 className="text-h1 font-heading text-navy">Your Cart</h1>
+                  <h1 className="text-h1 font-heading text-navy">{content.title}</h1>
                   <p className="mt-1 font-body text-base text-gray-500">
                     ({itemCount} item{itemCount !== 1 ? "s" : ""})
                   </p>
                 </div>
                 <Link href="/shop" className="flex items-center gap-2 font-body text-sm font-medium text-teal transition-colors hover:text-teal-dark">
                   <ArrowLeft className="h-4 w-4" />
-                  Continue Shopping
+                  {content.continueShoppingText}
                 </Link>
               </div>
 
@@ -77,9 +78,12 @@ export default function Cart() {
                       layout
                       className="flex items-center gap-5 rounded-xl bg-white p-5 shadow-sm"
                     >
-                      <Link href={`/shop/${item.id}`} className="flex-shrink-0">
+                      <Link
+                        href={`/shop/${item.id}`}
+                        className="flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-teal/10"
+                      >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={item.image} alt={item.name} className="h-20 w-20 rounded-lg object-cover" />
+                        <img src={item.image || "/AQUACUBES.png"} alt={item.name} className="h-full w-full object-cover" />
                       </Link>
 
                       <div className="flex flex-1 flex-col gap-1">
@@ -87,7 +91,7 @@ export default function Cart() {
                           <h3 className="font-body text-base font-semibold text-navy transition-colors hover:text-teal">{item.name}</h3>
                         </Link>
                         <p className="font-mono-label text-xs text-gray-500">
-                          {showPrice ? `${formatPrice(item.price)} each` : "Pricing unavailable in your region"}
+                          {showPrice ? `${formatPrice(item.price)} each` : content.priceUnavailableText}
                         </p>
                       </div>
 
@@ -138,23 +142,23 @@ export default function Cart() {
 
             <div>
               <div className="sticky top-24 rounded-xl bg-white p-6 shadow-sm">
-                <h3 className="font-heading text-xl font-semibold text-navy">Order Summary</h3>
+                <h3 className="font-heading text-xl font-semibold text-navy">{content.summary.title}</h3>
 
                 {showPrice ? (
                   <>
                     <div className="mt-6 space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="font-body text-sm text-gray-500">Subtotal</span>
+                        <span className="font-body text-sm text-gray-500">{content.summary.subtotalLabel}</span>
                         <span className="font-mono-label text-sm font-medium text-navy">{formatPrice(subtotal)}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="font-body text-sm text-gray-500">Shipping</span>
+                        <span className="font-body text-sm text-gray-500">{content.summary.shippingLabel}</span>
                         <span className={`font-body text-sm font-medium ${shipping === 0 ? "text-teal" : "text-navy"}`}>
-                          {shipping === 0 ? "Free" : formatPrice(shipping)}
+                          {shipping === 0 ? content.summary.freeShippingText : formatPrice(shipping)}
                         </span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="font-body text-sm text-gray-500">Tax (21%)</span>
+                        <span className="font-body text-sm text-gray-500">{content.summary.taxLabel}</span>
                         <span className="font-mono-label text-sm font-medium text-navy">{formatPrice(tax)}</span>
                       </div>
                     </div>
@@ -162,26 +166,24 @@ export default function Cart() {
                     <div className="my-4 h-px bg-gray-100" />
 
                     <div className="flex items-center justify-between">
-                      <span className="font-heading text-lg font-semibold text-navy">Total</span>
+                      <span className="font-heading text-lg font-semibold text-navy">{content.summary.totalLabel}</span>
                       <span className="font-mono-label text-xl font-bold text-navy">{formatPrice(total)}</span>
                     </div>
                   </>
                 ) : (
-                  <p className="mt-6 text-sm text-gray-500">
-                    Pricing is available for customers in Germany, Austria, and Denmark.
-                  </p>
+                  <p className="mt-6 text-sm text-gray-500">{content.summary.regionRestrictedText}</p>
                 )}
 
                 <Link
                   href="/checkout"
                   className="mt-6 flex w-full items-center justify-center rounded-lg bg-teal py-4 font-body text-base font-semibold text-white transition-all hover:bg-teal-dark active:scale-[0.98]"
                 >
-                  Proceed to Checkout
+                  {content.summary.checkoutButtonText}
                 </Link>
 
                 <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-300">
                   <Lock className="h-3.5 w-3.5" />
-                  Secure SSL Checkout
+                  {content.summary.secureCheckoutText}
                 </div>
               </div>
             </div>

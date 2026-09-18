@@ -11,11 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-
-const ALLOWED_COUNTRIES = [
-  { code: "DE", label: "Germany" },
-  { code: "AT", label: "Austria" },
-];
+import content from "@/content/checkout.json";
 
 export default function CheckoutPage() {
   const items = useCart((s) => s.items);
@@ -43,12 +39,12 @@ export default function CheckoutPage() {
       if (data.checkoutUrl) {
         window.location.href = data.checkoutUrl;
       } else {
-        alert(data.error || "Payment initialization failed. Please try again.");
+        alert(data.error || content.paymentForm.genericErrorMessage);
         setLoading(false);
       }
     } catch (err) {
       console.error(err);
-      alert("Something went wrong.");
+      alert(content.paymentForm.networkErrorMessage);
       setLoading(false);
     }
   };
@@ -56,9 +52,9 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     return (
       <div className="flex min-h-[60dvh] flex-col items-center justify-center bg-off-white px-6 py-24 text-center">
-        <p className="mb-4 text-body text-gray-500">Your cart is empty.</p>
+        <p className="mb-4 text-body text-gray-500">{content.emptyCart.message}</p>
         <Button onClick={() => router.push("/shop")} className="rounded-button bg-teal text-white hover:bg-teal-dark">
-          Continue Shopping
+          {content.emptyCart.buttonText}
         </Button>
       </div>
     );
@@ -67,19 +63,17 @@ export default function CheckoutPage() {
   return (
     <div className="bg-off-white pb-20 pt-[120px]">
       <div className="mx-auto max-w-content px-6 lg:px-10">
-        <h1 className="mb-8 text-h1 font-heading text-navy">Checkout</h1>
+        <h1 className="mb-8 text-h1 font-heading text-navy">{content.title}</h1>
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div className="order-2 lg:order-1">
-            <h2 className="mb-6 font-heading text-lg font-semibold text-navy">Order Summary</h2>
+            <h2 className="mb-6 font-heading text-lg font-semibold text-navy">{content.orderSummary.title}</h2>
             <div className="flex flex-col gap-4">
               {items.map((item) => (
                 <div key={item.id} className="flex gap-4 rounded-xl bg-white p-4 shadow-sm">
                   <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-50">
-                    {item.image && (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
-                    )}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.image || "/AQUACUBES.png"} alt={item.name} className="h-full w-full object-cover" />
                   </div>
                   <div className="flex flex-1 flex-col justify-between">
                     <span className="font-body text-sm font-medium text-navy">{item.name}</span>
@@ -95,7 +89,7 @@ export default function CheckoutPage() {
             </div>
 
             <div className="mt-6 flex items-center justify-between border-t border-gray-100 pt-6">
-              <span className="font-body text-base text-gray-500">Total</span>
+              <span className="font-body text-base text-gray-500">{content.orderSummary.totalLabel}</span>
               <span className="font-mono-label text-2xl font-bold text-navy">
                 {showPrice ? formatPrice(total) : "—"}
               </span>
@@ -103,37 +97,35 @@ export default function CheckoutPage() {
           </div>
 
           <div className="order-1 lg:order-2">
-            <h2 className="mb-6 font-heading text-lg font-semibold text-navy">Payment Details</h2>
+            <h2 className="mb-6 font-heading text-lg font-semibold text-navy">{content.paymentForm.title}</h2>
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="flex flex-col gap-2">
-                <Label htmlFor="name">Full Name</Label>
+                <Label htmlFor="name">{content.paymentForm.nameLabel}</Label>
                 <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required />
               </div>
               <div className="flex flex-col gap-2">
-                <Label htmlFor="email">Email Address</Label>
+                <Label htmlFor="email">{content.paymentForm.emailLabel}</Label>
                 <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
               <div className="flex flex-col gap-2">
-                <Label htmlFor="country">Shipping Country</Label>
+                <Label htmlFor="country">{content.paymentForm.countryLabel}</Label>
                 <Select value={country} onValueChange={setCountry}>
                   <SelectTrigger id="country" className="w-full">
                     <SelectValue placeholder="Select a country" />
                   </SelectTrigger>
                   <SelectContent>
-                    {ALLOWED_COUNTRIES.map((c) => (
+                    {content.paymentForm.countries.map((c) => (
                       <SelectItem key={c.code} value={c.code}>
                         {c.label}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-                <p className="text-xs text-gray-300">We currently only ship to Germany and Austria.</p>
+                <p className="text-xs text-gray-300">{content.paymentForm.countryHelp}</p>
               </div>
 
               <div className="rounded-xl bg-white p-4">
-                <p className="text-xs leading-relaxed text-gray-500">
-                  You will be redirected to Mollie&apos;s secure payment page to complete your purchase.
-                </p>
+                <p className="text-xs leading-relaxed text-gray-500">{content.paymentForm.redirectNotice}</p>
               </div>
 
               <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
@@ -145,17 +137,19 @@ export default function CheckoutPage() {
                   {loading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Processing...
+                      {content.paymentForm.processingText}
                     </>
+                  ) : showPrice ? (
+                    `${content.paymentForm.payButtonPrefix} ${formatPrice(total)}`
                   ) : (
-                    showPrice ? `Pay ${formatPrice(total)}` : "Pay Now"
+                    content.paymentForm.payButtonFallback
                   )}
                 </Button>
               </motion.div>
 
               <div className="flex items-center justify-center gap-2 text-xs text-gray-300">
                 <Lock className="h-3.5 w-3.5" />
-                Secure SSL Checkout
+                {content.paymentForm.secureCheckoutText}
               </div>
             </form>
           </div>

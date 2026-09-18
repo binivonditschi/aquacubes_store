@@ -2,24 +2,45 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { ShoppingBag, Menu, X, User } from "lucide-react";
 import { useCart } from "@/store/useCart";
-
-const navLinks = [{ label: "Order Now", href: "/shop" }];
+import { createClient } from "@/lib/supabase/client";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
   const itemCount = useCart((s) => s.itemCount());
   const openCart = useCart((s) => s.openCart);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => setUserEmail(data.user?.email ?? null));
+    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUserEmail(session?.user?.email ?? null);
+    });
+    return () => subscription.subscription.unsubscribe();
+  }, []);
+
+  const handleAccountClick = async () => {
+    if (userEmail) {
+      const supabase = createClient();
+      await supabase.auth.signOut();
+      router.push("/");
+      router.refresh();
+    } else {
+      router.push("/login");
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -30,11 +51,6 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
-
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  };
 
   if (pathname === "/") return null;
 
@@ -51,10 +67,19 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-content items-center justify-between px-6 py-5 lg:px-10">
           <Link href="/" className="flex items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Aquacubes Logo.png" alt="Aquacubes" className="h-11 w-auto" />
+            <img src="/Aquacubes Logo.png" alt="Aquacubes" className="h-96 w-auto lg:h-48" />
           </Link>
 
           <div className="hidden items-center gap-5 lg:flex">
+            <button
+              onClick={handleAccountClick}
+              aria-label={userEmail ? "Sign out" : "Sign in"}
+              title={userEmail ?? "Sign in"}
+              className="rounded-button p-2 transition-colors hover:bg-gray-50"
+            >
+              <User className="h-5 w-5 text-navy" />
+            </button>
+
             <button
               onClick={openCart}
               aria-label="Open cart"
@@ -72,16 +97,6 @@ export default function Navbar() {
                 </motion.span>
               )}
             </button>
-
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-full bg-navy px-5 py-2 font-body text-sm font-medium text-white transition-colors hover:bg-navy-light"
-              >
-                {link.label}
-              </Link>
-            ))}
           </div>
 
           <button
@@ -121,26 +136,6 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <nav className="flex flex-1 flex-col gap-2 px-6 py-4">
-                {navLinks.map((link, i) => (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 24, delay: i * 0.05 }}
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`block py-3 font-heading text-2xl font-semibold transition-colors ${
-                        isActive(link.href) ? "text-teal" : "text-white hover:text-teal"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                ))}
-              </nav>
             </motion.div>
           </>
         )}

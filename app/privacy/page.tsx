@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, Fragment } from "react";
 import { motion, useInView } from "framer-motion";
+import content from "@/content/privacy.json";
 
 /* ─── Animation helpers ─── */
 const fadeUp = {
@@ -13,20 +14,26 @@ const fadeUp = {
   }),
 };
 
-/* ─── TOC items ─── */
-const tocItems = [
-  "Introduction",
-  "Information We Collect",
-  "How We Use Your Information",
-  "Sharing Your Information",
-  "Data Security",
-  "Your Rights",
-  "Cookies",
-  "Third-Party Services",
-  "Children's Privacy",
-  "Changes to This Policy",
-  "Contact Us",
-];
+const tocItems = content.sections.map((s) => s.title.replace(/^\d+\.\s*/, ""));
+
+function renderParagraph(text: string, email: string) {
+  const withEmail = text.split("{{email}}");
+  return withEmail.map((chunk, i) => (
+    <Fragment key={i}>
+      {chunk.split("\n").map((line, j, arr) => (
+        <Fragment key={j}>
+          {line}
+          {j < arr.length - 1 && <br />}
+        </Fragment>
+      ))}
+      {i < withEmail.length - 1 && (
+        <a href={`mailto:${email}`} className="text-teal hover:underline">
+          {email}
+        </a>
+      )}
+    </Fragment>
+  ));
+}
 
 /* ═══════════════════ PRIVACY PAGE ═══════════════════ */
 export default function Privacy() {
@@ -50,7 +57,7 @@ function HeaderSection() {
           animate="visible"
           className="mb-4 font-mono text-xs uppercase tracking-[0.1em] text-teal"
         >
-          LEGAL
+          {content.hero.eyebrow.toUpperCase()}
         </motion.p>
         <motion.h1
           custom={0.15}
@@ -59,7 +66,7 @@ function HeaderSection() {
           animate="visible"
           className="mb-4 text-h1 text-white"
         >
-          Privacy Policy
+          {content.hero.title}
         </motion.h1>
         <motion.p
           custom={0.3}
@@ -68,7 +75,7 @@ function HeaderSection() {
           animate="visible"
           className="text-body text-gray-300"
         >
-          Last updated: August 2026
+          {content.hero.lastUpdated}
         </motion.p>
       </div>
     </section>
@@ -108,110 +115,18 @@ function PolicyContent() {
             </ul>
           </nav>
 
-          {/* 1. Introduction */}
-          <PolicySection id="section-1" title="1. Introduction">
-            <p>
-              Moina GmbH, operating as Aquacubes (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;), is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our products and services.
-            </p>
-          </PolicySection>
-
-          {/* 2. Information We Collect */}
-          <PolicySection id="section-2" title="2. Information We Collect">
-            <ul className="list-disc space-y-2 pl-5">
-              <li><strong className="text-navy">Personal Information:</strong> Name, email address, phone number, shipping address, billing information</li>
-              <li><strong className="text-navy">Order Information:</strong> Order history and status, linked to your email address (no account or password required)</li>
-              <li><strong className="text-navy">Device Information:</strong> IP address, browser type, operating system, device identifiers</li>
-              <li><strong className="text-navy">Usage Data:</strong> Pages visited, time spent, features used, app interaction data</li>
-              <li><strong className="text-navy">Aquaculture Data:</strong> System performance data, sensor readings (anonymized and used for product improvement)</li>
-            </ul>
-          </PolicySection>
-
-          {/* 3. How We Use Your Information */}
-          <PolicySection id="section-3" title="3. How We Use Your Information">
-            <ul className="list-disc space-y-2 pl-5">
-              <li>Process orders and payments</li>
-              <li>Provide customer support</li>
-              <li>Improve our products and services</li>
-              <li>Send transactional emails and marketing communications (with consent)</li>
-              <li>Ensure system security and prevent fraud</li>
-            </ul>
-          </PolicySection>
-
-          {/* 4. Sharing Your Information */}
-          <PolicySection id="section-4" title="4. Sharing Your Information">
-            <p>
-              We do not sell your personal information. We may share data with:
-            </p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>Our payment processor (Mollie)</li>
-              <li>Shipping providers</li>
-              <li>Analytics providers (anonymized)</li>
-              <li>Legal authorities when required by law</li>
-            </ul>
-          </PolicySection>
-
-          {/* 5. Data Security */}
-          <PolicySection id="section-5" title="5. Data Security">
-            <p>
-              We use industry-standard encryption (SSL/TLS) and security measures. Your payment information is processed by PCI-compliant third parties and never stored on our servers.
-            </p>
-          </PolicySection>
-
-          {/* 6. Your Rights */}
-          <PolicySection id="section-6" title="6. Your Rights">
-            <p>Under GDPR, you have the right to:</p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>Access your personal data</li>
-              <li>Correct inaccurate data</li>
-              <li>Request deletion of your data</li>
-              <li>Object to processing</li>
-              <li>Data portability</li>
-              <li>Withdraw consent</li>
-            </ul>
-          </PolicySection>
-
-          {/* 7. Cookies */}
-          <PolicySection id="section-7" title="7. Cookies">
-            <p>
-              We use essential cookies for site functionality and analytics cookies to improve our service. You can manage cookie preferences in your browser settings.
-            </p>
-          </PolicySection>
-
-          {/* 8. Third-Party Services */}
-          <PolicySection id="section-8" title="8. Third-Party Services">
-            <p>
-              Our site uses a trusted third-party payment processor (Mollie) to handle transactions. This service has its own privacy policy.
-            </p>
-          </PolicySection>
-
-          {/* 9. Children's Privacy */}
-          <PolicySection id="section-9" title="9. Children's Privacy">
-            <p>
-              Our services are not directed at children under 16. We do not knowingly collect data from children.
-            </p>
-          </PolicySection>
-
-          {/* 10. Changes to This Policy */}
-          <PolicySection id="section-10" title="10. Changes to This Policy">
-            <p>
-              We may update this policy periodically. Changes will be posted on this page with an updated date.
-            </p>
-          </PolicySection>
-
-          {/* 11. Contact Us */}
-          <PolicySection id="section-11" title="11. Contact Us">
-            <p>
-              For privacy-related questions, contact us at{" "}
-              <a href="mailto:info@aquacubes.eu" className="text-teal hover:underline">info@aquacubes.eu</a>{" "}
-              or:
-            </p>
-            <p className="mt-2">
-              Moina GmbH<br />
-              Markt 5<br />
-              25746 Heide<br />
-              Germany
-            </p>
-          </PolicySection>
+          {content.sections.map((section, i) => (
+            <PolicySection key={section.title} id={`section-${i + 1}`} title={section.title}>
+              {section.paragraphs?.map((p, j) => <p key={j}>{renderParagraph(p, content.contactEmail)}</p>)}
+              {section.list && (
+                <ul className="list-disc space-y-2 pl-5">
+                  {section.list.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </PolicySection>
+          ))}
         </motion.div>
       </div>
     </section>

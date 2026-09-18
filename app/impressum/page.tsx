@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, Fragment } from "react";
 import { motion, useInView } from "framer-motion";
+import content from "@/content/impressum.json";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -12,15 +13,34 @@ const fadeUp = {
   }),
 };
 
-const tocItems = [
-  "Provider Information",
-  "Contact",
-  "Commercial Register Entry",
-  "VAT Identification Number",
-  "Disclaimer — Liability for Content",
-  "Disclaimer — Liability for Links",
-  "Copyright",
-];
+const tocItems = content.sections.map((s) => s.title.replace(/^\d+\.\s*/, ""));
+
+const placeholders: Record<string, { value: string; href: string }> = {
+  phone: { value: content.phone, href: `tel:${content.phone.replace(/\s/g, "")}` },
+  mobile: { value: content.mobile, href: `tel:${content.mobile.replace(/\s/g, "")}` },
+  email: { value: content.email, href: `mailto:${content.email}` },
+};
+
+function renderParagraph(text: string) {
+  const parts = text.split(/(\{\{\w+\}\})/g);
+  return parts.map((part, i) => {
+    const match = part.match(/^\{\{(\w+)\}\}$/);
+    if (match) {
+      const p = placeholders[match[1]];
+      return (
+        <a key={i} href={p.href} className="text-teal hover:underline">
+          {p.value}
+        </a>
+      );
+    }
+    return part.split("\n").map((line, j, arr) => (
+      <Fragment key={`${i}-${j}`}>
+        {line}
+        {j < arr.length - 1 && <br />}
+      </Fragment>
+    ));
+  });
+}
 
 export default function Impressum() {
   return (
@@ -42,7 +62,7 @@ function HeaderSection() {
           animate="visible"
           className="mb-4 font-mono text-xs uppercase tracking-[0.1em] text-teal"
         >
-          LEGAL
+          {content.hero.eyebrow.toUpperCase()}
         </motion.p>
         <motion.h1
           custom={0.15}
@@ -51,7 +71,7 @@ function HeaderSection() {
           animate="visible"
           className="mb-4 text-h1 text-white"
         >
-          Legal Notice (Impressum)
+          {content.hero.title}
         </motion.h1>
         <motion.p
           custom={0.3}
@@ -60,7 +80,7 @@ function HeaderSection() {
           animate="visible"
           className="text-body text-gray-300"
         >
-          Information pursuant to &sect; 5 TMG (German Telemedia Act)
+          {content.hero.subtitle}
         </motion.p>
       </div>
     </section>
@@ -95,57 +115,15 @@ function ImpressumContent() {
             </ul>
           </nav>
 
-          <ImpressumSection id="section-1" title="1. Provider Information">
-            <p>Information pursuant to &sect; 5 TMG (German Telemedia Act):</p>
-            <p className="mt-2">
-              Aquacubes &mdash; a brand of Moina GmbH<br />
-              Markt 5<br />
-              25746 Heide<br />
-              Germany
-            </p>
-            <p className="mt-2">Represented by: Biniam Samuel</p>
-          </ImpressumSection>
-
-          <ImpressumSection id="section-2" title="2. Contact">
-            <p>
-              Phone: <a href="tel:+4948347320613" className="text-teal hover:underline">+49 48 347320 613</a><br />
-              Mobile: <a href="tel:+4915781371194" className="text-teal hover:underline">+49 157 8137 1194</a><br />
-              Email: <a href="mailto:info@aquacubes.eu" className="text-teal hover:underline">info@aquacubes.eu</a>
-            </p>
-          </ImpressumSection>
-
-          <ImpressumSection id="section-3" title="3. Commercial Register Entry">
-            <p>
-              Entered in the Commercial Register.<br />
-              Register court: Amtsgericht Pinneberg<br />
-              Register number: HRB 144462 PI
-            </p>
-          </ImpressumSection>
-
-          <ImpressumSection id="section-4" title="4. VAT Identification Number">
-            <p>
-              VAT identification number pursuant to &sect; 27a of the German VAT Act (UStG): to be added.
-            </p>
-          </ImpressumSection>
-
-          <ImpressumSection id="section-5" title="5. Disclaimer — Liability for Content">
-            <p>
-              The contents of our pages were created with the greatest possible care. However, we cannot guarantee the accuracy, completeness, or timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with general laws pursuant to &sect; 7 (1) TMG. However, pursuant to &sect;&sect; 8 to 10 TMG, we as a service provider are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the point in time at which a specific infringement becomes known. Upon becoming aware of any such infringements, we will remove this content immediately.
-            </p>
-          </ImpressumSection>
-
-          <ImpressumSection id="section-6" title="6. Disclaimer — Liability for Links">
-            <p>
-              Our website contains links to external third-party websites over whose content we have no influence. Therefore, we cannot accept any liability for this external content. The respective provider or operator of the linked pages is always responsible for their content. The linked pages were checked for possible legal violations at the time of linking. No illegal content was identifiable at the time of linking. However, permanent monitoring of the content of linked pages is unreasonable without concrete evidence of a legal violation. Upon becoming aware of any legal violations, we will remove such links immediately.
-            </p>
-          </ImpressumSection>
-
-          <ImpressumSection id="section-7" title="7. Copyright">
-            <p>
-              The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any form of exploitation outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are permitted for private, non-commercial use only. Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is identified as such. Should you nevertheless become aware of a copyright infringement, please notify us accordingly. Upon becoming aware of any legal violations, we will remove such content immediately.
-            </p>
-            <p className="mt-4 text-body-sm text-gray-300">Source: Disclaimer by eRecht24</p>
-          </ImpressumSection>
+          {content.sections.map((section, i) => (
+            <ImpressumSection key={section.title} id={`section-${i + 1}`} title={section.title}>
+              {section.paragraphs.map((p, j) => (
+                <p key={j} className={j > 0 ? "mt-2" : ""}>
+                  {renderParagraph(p)}
+                </p>
+              ))}
+            </ImpressumSection>
+          ))}
         </motion.div>
       </div>
     </section>

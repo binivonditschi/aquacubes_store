@@ -1,0 +1,43 @@
+{
+  "title": "Checkout",
+  "emptyCart": {
+    "message": "Your cart is empty.",
+    "buttonText": "Continue Shopping"
+  },
+  "orderSummary": {
+    "title": "Order Summary",
+    "totalLabel": "Total"
+  },
+  "paymentForm": {
+    "title": "Payment Details",
+    "nameLabel": "Full Name",
+    "emailLabel": "Email Address",
+    "countryLabel": "Shipping Country",
+    "countryHelp": "We currently only ship to Germany and Austria.",
+    "countries": [
+      { "code": "DE", "label": "Germany" },
+      { "code": "AT", "label": "Austria" }
+    ],
+    "redirectNotice": "You will be redirected to Mollie's secure payment page to complete your purchase.",
+    "payButtonPrefix": "Pay",
+    "payButtonFallback": "Pay Now",
+    "processingText": "Processing...",
+    "secureCheckoutText": "Secure SSL Checkout",
+    "genericErrorMessage": "Payment initialization failed. Please try again.",
+    "networkErrorMessage": "Something went wrong."
+  },
+  "success": {
+    "title": "Thank you for your order",
+    "description": "Your payment was successful. We've sent a confirmation email with your order details.",
+    "orderLabel": "Order",
+    "totalLabel": "Total",
+    "statusLabel": "Status",
+    "buttonText": "Continue Shopping"
+  },
+  "cancel": {
+    "title": "Payment cancelled",
+    "description": "Your payment was not completed. No charges have been made. You can return to your cart and try again whenever you're ready.",
+    "retryButtonText": "Try Again",
+    "shopButtonText": "Back to Shop"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "logo": "/Aquacubes Logo.png",
+  "columns": [
+    {
+      "title": "Info",
+      "links": [
+        { "label": "About Us", "href": "/about" },
+        { "label": "Impressum", "href": "/impressum" },
+        { "label": "Blog", "href": "#" },
+        { "label": "FAQ", "href": "/faq" },
+        { "label": "Contact us", "href": "/contact" },
+        { "label": "Become a Distributor", "href": "/contact" },
+        { "label": "Sign In", "href": "/login" }
+      ]
+    },
+    {
+      "title": "Service",
+      "links": [
+        { "label": "Privacy Policy", "href": "/privacy" },
+        { "label": "About Payment", "href": "#" },
+        { "label": "Shipping Policy", "href": "#" },
+        { "label": "Terms of Service", "href": "/terms" },
+        { "label": "Return & Refund Policy", "href": "#" }
+      ]
+    }
+  ],
+  "contact": {
+    "title": "Contact Us",
+    "email": "sales@aquacubes.fish",
+    "businessNameLabel": "Business Name:",
+    "businessName": "Aquacubes – eine marke der Moina GmbH",
+    "address": "Address: Hafentörn 3, 25761 Büsum, Germany",
+    "phone": "+4915781371194",
+    "whatsapp": "Whatsapp: Available (Mon-Fri, 10:00 - 17:00 CET)"
+  },
+  "social": [
+    { "id": "linkedin", "href": "https://linkedin.com" },
+    { "id": "instagram", "href": "https://instagram.com" },
+    { "id": "facebook", "href": "https://facebook.com" }
+  ],
+  "copyrightSuffix": "Aquacubes. All rights reserved."
+}

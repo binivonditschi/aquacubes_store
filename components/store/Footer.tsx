@@ -2,32 +2,15 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Linkedin, Instagram, Facebook } from "lucide-react";
+import { Linkedin, Instagram, Facebook, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import content from "@/content/footer.json";
 
-const footerColumns = [
-  {
-    title: "Info",
-    links: [
-      { label: "About Us", href: "/about" },
-      { label: "Impressum", href: "/impressum" },
-      { label: "Blog", href: "#" },
-      { label: "FAQ", href: "/faq" },
-      { label: "Contact us", href: "/contact" },
-      { label: "Become a Distributor", href: "/contact" },
-    ],
-  },
-  {
-    title: "Service",
-    links: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "About Payment", href: "#" },
-      { label: "Shipping Policy", href: "#" },
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Return & Refund Policy", href: "#" },
-    ],
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  linkedin: Linkedin,
+  instagram: Instagram,
+  facebook: Facebook,
+};
 
 const containerVariants = {
   hidden: {},
@@ -73,7 +56,7 @@ export default function Footer() {
         >
           <Link href="/" className="inline-flex items-center gap-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Aquacubes Logo.png" alt="Aquacubes" className="h-40 w-auto brightness-0 invert" />
+            <img src={content.logo} alt="Aquacubes" className="h-40 w-auto brightness-0 invert" />
           </Link>
         </motion.div>
 
@@ -84,7 +67,7 @@ export default function Footer() {
           viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 gap-10 sm:grid-cols-3"
         >
-          {footerColumns.map((column) => (
+          {content.columns.map((column) => (
             <motion.div key={column.title} variants={itemVariants}>
               <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.05em] text-white">
                 {column.title}
@@ -106,45 +89,44 @@ export default function Footer() {
 
           <motion.div variants={itemVariants}>
             <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.05em] text-white">
-              Contact Us
+              {content.contact.title}
             </h3>
             <ul className="space-y-3 text-sm text-white/70">
               <li>
                 Email:{" "}
-                <a href="mailto:sales@aquacubes.fish" className="transition-colors hover:text-[#38b6ff]">
-                  sales@aquacubes.fish
+                <a href={`mailto:${content.contact.email}`} className="transition-colors hover:text-[#38b6ff]">
+                  {content.contact.email}
                 </a>
               </li>
-              <li>Business Name:</li>
-              <li>Aquacubes &ndash; eine marke der Moina GmbH</li>
-              <li>Address: Hafent&ouml;rn 3, 25761 B&uuml;sum, Germany</li>
+              <li>{content.contact.businessNameLabel}</li>
+              <li>{content.contact.businessName}</li>
+              <li>{content.contact.address}</li>
               <li>
                 Phone:{" "}
-                <a href="tel:+4915781371194" className="transition-colors hover:text-[#38b6ff]">
-                  +4915781371194
+                <a href={`tel:${content.contact.phone}`} className="transition-colors hover:text-[#38b6ff]">
+                  {content.contact.phone}
                 </a>
               </li>
-              <li>Whatsapp: Available (Mon-Fri, 10:00 - 17:00 CET)</li>
+              <li>{content.contact.whatsapp}</li>
             </ul>
           </motion.div>
         </motion.div>
 
         <div className="mt-6 flex flex-col items-center gap-6 sm:flex-row sm:justify-end">
           <div className="flex items-center gap-3">
-            <SocialIcon href="https://linkedin.com">
-              <Linkedin className="h-4 w-4" />
-            </SocialIcon>
-            <SocialIcon href="https://instagram.com">
-              <Instagram className="h-4 w-4" />
-            </SocialIcon>
-            <SocialIcon href="https://facebook.com">
-              <Facebook className="h-4 w-4" />
-            </SocialIcon>
+            {content.social.map((social) => {
+              const Icon = iconMap[social.id];
+              return (
+                <SocialIcon key={social.id} href={social.href}>
+                  <Icon className="h-4 w-4" />
+                </SocialIcon>
+              );
+            })}
           </div>
         </div>
 
         <p className="mt-4 text-right text-sm text-white/50">
-          {new Date().getFullYear()} Aquacubes. All rights reserved.
+          {new Date().getFullYear()} {content.copyrightSuffix}
         </p>
       </div>
     </motion.footer>

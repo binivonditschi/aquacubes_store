@@ -1,8 +1,30 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { updateSession } from "@/lib/supabase/middleware";
+import { prisma } from "@/lib/prisma";
 
-export async function middleware(request: NextRequest) {
-  const response = NextResponse.next();
+export async function proxy(request: NextRequest) {
+  let response = NextResponse.next();
+
+  const { response: refreshedResponse, user } = await updateSession(request, response);
+  response = refreshedResponse;
+
+  const { pathname } = request.nextUrl;
+  if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
+    if (!user) {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
+    const profile = await prisma.profile.findUnique({ where: { id: user.id } });
+    if (profile?.role !== "admin") {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
+  }
+
+  if (pathname === "/checkout" && !user) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("next", pathname);
+    return NextResponse.redirect(loginUrl);
+  }
 
   // Vercel's production edge network sets this automatically per visitor.
   let country = request.headers.get("x-vercel-ip-country") || "";

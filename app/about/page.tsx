@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { Leaf, Lightbulb, Users } from "lucide-react";
+import { Leaf, Lightbulb, Users, type LucideIcon } from "lucide-react";
+import content from "@/content/about.json";
 
 /* ─── Animation helpers ─── */
 const fadeUp = {
@@ -23,6 +24,12 @@ const staggerContainer = {
 const staggerChild = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+};
+
+const iconMap: Record<string, LucideIcon> = {
+  leaf: Leaf,
+  lightbulb: Lightbulb,
+  users: Users,
 };
 
 /* ═══════════════════ ABOUT PAGE ═══════════════════ */
@@ -49,7 +56,7 @@ function HeroSection() {
           animate="visible"
           className="mb-4 font-mono text-xs uppercase tracking-[0.1em] text-teal"
         >
-          ABOUT AQUACUBES
+          {content.hero.eyebrow.toUpperCase()}
         </motion.p>
         <motion.h1
           custom={0.15}
@@ -58,7 +65,7 @@ function HeroSection() {
           animate="visible"
           className="mx-auto mb-6 max-w-[800px] text-display text-white"
         >
-          Growing the Future of Food
+          {content.hero.title}
         </motion.h1>
         <motion.p
           custom={0.3}
@@ -67,7 +74,7 @@ function HeroSection() {
           animate="visible"
           className="mx-auto max-w-[600px] text-body text-[#94A3B8]"
         >
-          We&apos;re on a mission to make sustainable seafood accessible at home. Aquacubes combines closed-loop aquaculture with nature&apos;s wisdom, so anyone can grow fresh, healthy food without a farm.
+          {content.hero.description}
         </motion.p>
       </div>
     </section>
@@ -89,21 +96,18 @@ function OurStory() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-6 text-h2 text-navy">Our Story</h2>
+            <h2 className="mb-6 text-h2 text-navy">{content.story.title}</h2>
             <div className="space-y-4 text-body text-gray-500">
-              <p>
-                Aquacubes started with a simple question: why should growing your own fresh seafood and greens require a farm? We design closed-loop aquaculture systems that fit in a home, a classroom, or a small commercial kitchen.
-              </p>
-              <p>
-                Every system is built to handle the hard parts automatically — water quality, temperature, feeding schedules — so you can focus on the harvest.
-              </p>
+              {content.story.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
             <div className="mt-8">
               <Link
                 href="/shop"
                 className="inline-flex items-center rounded-button border-2 border-navy px-6 py-3 font-body text-sm font-medium text-navy transition-all hover:bg-navy hover:text-white"
               >
-                Shop Systems
+                {content.story.buttonText}
               </Link>
             </div>
           </motion.div>
@@ -116,7 +120,7 @@ function OurStory() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/about-facility.jpg"
+              src={content.story.image}
               alt="Aquacubes R&D facility"
               className="w-full rounded-card-lg object-cover"
             />
@@ -132,24 +136,6 @@ function MissionValues() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const values = [
-    {
-      icon: Leaf,
-      title: "Sustainability",
-      description: "We believe food production should give back more than it takes. Every Aquacubes system uses 90% less water and zero chemicals.",
-    },
-    {
-      icon: Lightbulb,
-      title: "Innovation",
-      description: "Technology should serve nature, not replace it. Our smart sensors work with biological processes, not against them.",
-    },
-    {
-      icon: Users,
-      title: "Community",
-      description: "Food connects people. We're building a global community of home aquaculturists who share knowledge, harvests, and stories.",
-    },
-  ];
-
   return (
     <section ref={ref} className="section-padding bg-white">
       <div className="mx-auto max-w-content px-6 lg:px-10">
@@ -159,7 +145,7 @@ function MissionValues() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center text-h2 text-navy"
         >
-          What We Believe
+          {content.values.title}
         </motion.h2>
 
         <motion.div
@@ -168,19 +154,18 @@ function MissionValues() {
           animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 gap-8 md:grid-cols-3"
         >
-          {values.map((value) => (
-            <motion.div
-              key={value.title}
-              variants={staggerChild}
-              className="text-center"
-            >
-              <div className="mb-4 inline-flex items-center justify-center">
-                <value.icon className="h-12 w-12 text-teal" strokeWidth={1.5} />
-              </div>
-              <h4 className="mb-3 font-heading text-h4 text-navy">{value.title}</h4>
-              <p className="text-body text-gray-500">{value.description}</p>
-            </motion.div>
-          ))}
+          {content.values.items.map((value) => {
+            const Icon = iconMap[value.icon];
+            return (
+              <motion.div key={value.title} variants={staggerChild} className="text-center">
+                <div className="mb-4 inline-flex items-center justify-center">
+                  <Icon className="h-12 w-12 text-teal" strokeWidth={1.5} />
+                </div>
+                <h4 className="mb-3 font-heading text-h4 text-navy">{value.title}</h4>
+                <p className="text-body text-gray-500">{value.description}</p>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
@@ -200,15 +185,13 @@ function CTABanner() {
         transition={{ duration: 0.6 }}
         className="mx-auto max-w-content px-6 text-center lg:px-10"
       >
-        <h2 className="mb-4 text-h2 text-white">Ready to Start Growing?</h2>
-        <p className="mx-auto mb-8 max-w-[500px] text-body text-white/80">
-          Join the food revolution. Your first harvest is closer than you think.
-        </p>
+        <h2 className="mb-4 text-h2 text-white">{content.cta.title}</h2>
+        <p className="mx-auto mb-8 max-w-[500px] text-body text-white/80">{content.cta.description}</p>
         <Link
           href="/shop"
           className="inline-flex items-center rounded-button bg-navy px-8 py-3 font-body text-sm font-medium text-white transition-all hover:bg-navy-light hover:scale-[1.02] active:scale-[0.98]"
         >
-          Shop Now
+          {content.cta.buttonText}
         </Link>
       </motion.div>
     </section>

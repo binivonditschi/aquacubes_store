@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mail, Phone, MapPin, Instagram, Twitter, Linkedin, Youtube, CheckCircle } from "lucide-react";
+import content from "@/content/contact.json";
 
 /* ─── Animation helpers ─── */
 const fadeUp = {
@@ -47,7 +48,7 @@ function HeroSection() {
           animate="visible"
           className="mb-4 font-mono text-xs uppercase tracking-[0.1em] text-teal"
         >
-          GET IN TOUCH
+          {content.hero.eyebrow.toUpperCase()}
         </motion.p>
         <motion.h1
           custom={0.15}
@@ -56,7 +57,7 @@ function HeroSection() {
           animate="visible"
           className="mb-6 text-h1 text-white"
         >
-          We&apos;d Love to Hear From You
+          {content.hero.title}
         </motion.h1>
         <motion.p
           custom={0.3}
@@ -65,7 +66,7 @@ function HeroSection() {
           animate="visible"
           className="mx-auto max-w-[550px] text-body text-gray-300"
         >
-          Whether you have a question about your system, need technical support, or want to explore a partnership, our team is here to help.
+          {content.hero.description}
         </motion.p>
       </div>
     </section>
@@ -102,8 +103,8 @@ function ContactFormAndInfo() {
                   className="flex flex-col items-center justify-center py-12 text-center"
                 >
                   <CheckCircle className="mb-4 h-16 w-16 text-success" />
-                  <h3 className="mb-2 text-h3 text-navy">Message Sent!</h3>
-                  <p className="text-body text-gray-500">We&apos;ll get back to you within 24 hours.</p>
+                  <h3 className="mb-2 text-h3 text-navy">{content.form.successTitle}</h3>
+                  <p className="text-body text-gray-500">{content.form.successDescription}</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit}>
@@ -131,11 +132,9 @@ function ContactFormAndInfo() {
                     <motion.div variants={staggerChild}>
                       <label className="mb-1.5 block font-body text-sm font-medium text-gray-700">Subject</label>
                       <select className="w-full rounded-button border border-gray-100 bg-white px-4 py-3 font-body text-sm text-navy outline-none transition-all focus:border-teal focus:ring-[3px] focus:ring-teal-glow">
-                        <option>General Inquiry</option>
-                        <option>Technical Support</option>
-                        <option>Sales</option>
-                        <option>Partnership</option>
-                        <option>Other</option>
+                        {content.form.subjectOptions.map((option) => (
+                          <option key={option}>{option}</option>
+                        ))}
                       </select>
                     </motion.div>
 
@@ -163,7 +162,7 @@ function ContactFormAndInfo() {
                         type="submit"
                         className="w-full rounded-button bg-teal px-6 py-3.5 font-body text-sm font-medium text-white transition-all hover:bg-teal-dark hover:scale-[1.01] active:scale-[0.98]"
                       >
-                        Send Message
+                        {content.form.submitText}
                       </button>
                     </motion.div>
                   </div>
@@ -186,7 +185,12 @@ function ContactFormAndInfo() {
                 <h4 className="font-heading text-h4 text-navy">Email</h4>
               </div>
               <div className="space-y-1 text-body-sm">
-                <p><span className="text-gray-500">General</span> <a href="mailto:info@aquacubes.eu" className="text-teal hover:underline">info@aquacubes.eu</a></p>
+                <p>
+                  <span className="text-gray-500">{content.info.email.label}</span>{" "}
+                  <a href={`mailto:${content.info.email.value}`} className="text-teal hover:underline">
+                    {content.info.email.value}
+                  </a>
+                </p>
               </div>
             </motion.div>
 
@@ -196,8 +200,8 @@ function ContactFormAndInfo() {
                 <Phone className="h-5 w-5 text-teal" />
                 <h4 className="font-heading text-h4 text-navy">Phone</h4>
               </div>
-              <p className="text-body-sm text-navy">+49 48 347320 613</p>
-              <p className="text-body-sm text-gray-500">Mon-Fri, 9:00-18:00 CET</p>
+              <p className="text-body-sm text-navy">{content.info.phone.value}</p>
+              <p className="text-body-sm text-gray-500">{content.info.phone.hours}</p>
             </motion.div>
 
             {/* Office */}
@@ -207,10 +211,10 @@ function ContactFormAndInfo() {
                 <h4 className="font-heading text-h4 text-navy">Office</h4>
               </div>
               <div className="text-body-sm text-gray-500">
-                <p className="text-navy font-medium">Moina GmbH</p>
-                <p>Markt 5</p>
-                <p>25746 Heide</p>
-                <p>Germany</p>
+                <p className="text-navy font-medium">{content.info.office.name}</p>
+                {content.info.office.addressLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
               </div>
             </motion.div>
 

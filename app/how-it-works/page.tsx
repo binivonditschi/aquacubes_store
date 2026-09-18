@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { Check } from "lucide-react";
+import content from "@/content/how-it-works.json";
 
 /* ─── Animation helpers ─── */
 const fadeUp = {
@@ -25,60 +26,14 @@ const staggerChild = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 };
 
-/* ─── Steps data ─── */
-const steps = [
-  {
-    number: "01",
-    title: "Unbox & Set Up",
-    image: "/how-it-works-1.jpg",
-    paragraphs: [
-      "Your Aquacubes system arrives at your door in sustainable, plastic-free packaging. Inside, you'll find your tank, pre-assembled components, a starter kit with seedlings and fish food, and a quick-start guide.",
-      "Setup takes about 30 minutes. Fill the tank with tap water, place the grow trays, add the provided bio-filter media, and plug it in. The guided setup in our app walks you through every step with videos and tips.",
-    ],
-    timeline: "Setup time: 20-30 minutes",
-    features: ["Pre-assembled components", "Step-by-step video guide", "No tools required"],
-  },
-  {
-    number: "02",
-    title: "Grow & Monitor",
-    image: "/how-it-works-2.jpg",
-    paragraphs: [
-      "Add your fish and seedlings. The system immediately begins cycling water through the biological filter, where beneficial bacteria convert fish waste into plant nutrients.",
-      "Our smart sensors monitor water temperature, pH, ammonia, nitrite, and nitrate levels 24/7. The Aquacubes app sends you alerts only when something needs your attention — usually just a weekly feeding reminder.",
-      "The LED grow light automatically adjusts its spectrum and intensity based on your plants' growth stage and ambient light conditions.",
-    ],
-    timeline: "First harvest: 4-6 weeks",
-    features: ["24/7 automated monitoring", "Smart LED grow lights", "App alerts & guidance"],
-  },
-  {
-    number: "03",
-    title: "Harvest & Enjoy",
-    image: "/how-it-works-3.jpg",
-    paragraphs: [
-      "In 4-6 weeks, your first batch of leafy greens will be ready to harvest. Use the cut-and-come-again method — snip outer leaves and let the plant keep producing. A single grow tray can yield 2-3 harvests per month.",
-      "Fish like tilapia and barramundi reach harvest size in 4-6 months. Shrimp mature faster — 3-4 months. The app tells you exactly when each species is ready.",
-      "Replace harvested plants with new seedlings from our seedling packs or start your own from seeds. The system is designed for continuous, year-round production.",
-    ],
-    timeline: "Continuous harvests year-round",
-    features: ["Cut-and-come-again harvesting", "Continuous production cycle", "Recipe suggestions in app"],
-  },
-];
-
-/* ─── Comparison table data ─── */
-const comparisonRows = [
-  { factor: "Water Usage", aquacubes: "90% less", traditional: "Standard" },
-  { factor: "Setup Time", aquacubes: "30 minutes", traditional: "Days/weeks" },
-  { factor: "Space Needed", aquacubes: "Countertop", traditional: "Garden/pond" },
-  { factor: "Harvest Time", aquacubes: "4-6 weeks", traditional: "Seasonal" },
-  { factor: "Pesticides", aquacubes: "Zero", traditional: "Often required" },
-];
+type Step = (typeof content.steps)[number];
 
 /* ═══════════════════ HOW IT WORKS PAGE ═══════════════════ */
 export default function HowItWorks() {
   return (
     <div>
       <HeroSection />
-      {steps.map((step, i) => (
+      {content.steps.map((step, i) => (
         <StepSection key={step.number} step={step} index={i} />
       ))}
       <ComparisonTable />
@@ -98,7 +53,7 @@ function HeroSection() {
           animate="visible"
           className="mb-4 font-mono text-xs uppercase tracking-[0.1em] text-teal"
         >
-          THE PROCESS
+          {content.hero.eyebrow.toUpperCase()}
         </motion.p>
         <motion.h1
           custom={0.15}
@@ -107,7 +62,7 @@ function HeroSection() {
           animate="visible"
           className="mx-auto mb-6 max-w-[700px] text-h1 text-white"
         >
-          From Box to Harvest in Three Easy Steps
+          {content.hero.title}
         </motion.h1>
         <motion.p
           custom={0.3}
@@ -116,7 +71,7 @@ function HeroSection() {
           animate="visible"
           className="mx-auto max-w-[500px] text-body text-gray-300"
         >
-          No green thumb required. Our smart system guides you every step of the way.
+          {content.hero.description}
         </motion.p>
       </div>
     </section>
@@ -124,7 +79,7 @@ function HeroSection() {
 }
 
 /* ── Step Section ── */
-function StepSection({ step, index }: { step: (typeof steps)[0]; index: number }) {
+function StepSection({ step, index }: { step: Step; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const isReversed = index % 2 === 1;
@@ -193,7 +148,7 @@ function ComparisonTable() {
           transition={{ duration: 0.6 }}
           className="mb-10 text-center text-h2 text-white"
         >
-          Aquacubes vs. Traditional Methods
+          {content.comparison.title}
         </motion.h2>
 
         <motion.div
@@ -210,7 +165,7 @@ function ComparisonTable() {
           </div>
 
           {/* Table Rows */}
-          {comparisonRows.map((row, i) => (
+          {content.comparison.rows.map((row, i) => (
             <motion.div
               key={row.factor}
               variants={staggerChild}
@@ -233,7 +188,7 @@ function ComparisonTable() {
             href="/shop"
             className="inline-flex items-center rounded-button bg-teal px-8 py-3 font-body text-sm font-medium text-white transition-all hover:bg-teal-dark hover:scale-[1.02] active:scale-[0.98]"
           >
-            Get Started
+            {content.comparison.buttonText}
           </Link>
         </motion.div>
       </div>

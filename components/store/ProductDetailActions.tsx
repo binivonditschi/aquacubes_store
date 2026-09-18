@@ -2,22 +2,45 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Minus, Plus, ShoppingCart, Truck, ShieldCheck, Clock } from "lucide-react";
 import { useCart } from "@/store/useCart";
 import { usePriceVisible } from "@/lib/usePriceVisible";
+import { createClient } from "@/lib/supabase/client";
 import type { Product } from "@/lib/types";
 
-export default function ProductDetailActions({ product }: { product: Product }) {
+export default function ProductDetailActions({
+  product,
+  colorClassName = "bg-teal hover:bg-teal-dark",
+}: {
+  product: Product;
+  colorClassName?: string;
+}) {
   const isAddOn = product.category === "Add-on";
   const [quantity, setQuantity] = useState(1);
+  const [checking, setChecking] = useState(false);
   const addItem = useCart((s) => s.addItem);
   const isAllowedCountry = usePriceVisible();
+  const pathname = usePathname();
+  const router = useRouter();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
+    setChecking(true);
+    const supabase = createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      router.push(`/login?next=${encodeURIComponent(pathname)}`);
+      return;
+    }
+
     for (let i = 0; i < quantity; i++) {
       addItem({ id: product.id, name: product.name, price: product.price, image: product.image ?? undefined });
     }
+    setChecking(false);
   };
 
   if (!isAllowedCountry) {
@@ -76,8 +99,8 @@ export default function ProductDetailActions({ product }: { product: Product }) 
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleAddToCart}
-          disabled={product.stock <= 0}
-          className="flex flex-1 items-center justify-center gap-2 bg-teal py-3.5 font-body text-sm font-medium text-white transition-colors hover:bg-teal-dark disabled:opacity-50"
+          disabled={product.stock <= 0 || checking}
+          className={`flex flex-1 items-center justify-center gap-2 py-3.5 font-body text-sm font-medium text-white transition-colors disabled:opacity-50 ${colorClassName}`}
         >
           <ShoppingCart className="h-4 w-4" />
           {product.stock <= 0 ? "Out of Stock" : "Order Now"}

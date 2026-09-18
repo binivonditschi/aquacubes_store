@@ -3,7 +3,8 @@
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { Droplets, ShieldCheck, Leaf, Recycle } from "lucide-react";
+import { Droplets, ShieldCheck, Leaf, Recycle, type LucideIcon } from "lucide-react";
+import content from "@/content/sustainability.json";
 
 /* ─── Animation helpers ─── */
 const fadeUp = {
@@ -23,6 +24,13 @@ const staggerContainer = {
 const staggerChild = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+};
+
+const iconMap: Record<string, LucideIcon> = {
+  droplets: Droplets,
+  shield: ShieldCheck,
+  leaf: Leaf,
+  recycle: Recycle,
 };
 
 /* ─── CountUp hook ─── */
@@ -52,10 +60,11 @@ function useCountUp(end: number, duration: number = 1.5, start: boolean = false)
 }
 
 /* ─── Stat Card ─── */
-function StatCard({ value, suffix, label, icon: Icon, delay }: { value: number; suffix: string; label: string; icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; delay: number }) {
+function StatCard({ value, suffix, label, icon }: { value: number; suffix: string; label: string; icon: string }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
   const count = useCountUp(value, 1.5, isInView);
+  const Icon = iconMap[icon];
 
   return (
     <motion.div
@@ -95,7 +104,7 @@ function HeroSection() {
       <div className="absolute inset-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/sustainability-hero.jpg"
+          src={content.hero.image}
           alt="Sustainable aquaculture facility"
           className="h-full w-full object-cover"
         />
@@ -110,7 +119,7 @@ function HeroSection() {
             animate="visible"
             className="mb-4 font-mono text-xs uppercase tracking-[0.1em] text-teal"
           >
-            SUSTAINABILITY
+            {content.hero.eyebrow.toUpperCase()}
           </motion.p>
           <motion.h1
             custom={0.15}
@@ -119,7 +128,7 @@ function HeroSection() {
             animate="visible"
             className="mx-auto mb-6 max-w-[800px] text-display text-white"
           >
-            Growing Better, Not Just Bigger
+            {content.hero.title}
           </motion.h1>
           <motion.p
             custom={0.3}
@@ -128,7 +137,7 @@ function HeroSection() {
             animate="visible"
             className="mx-auto max-w-[550px] text-body text-gray-300"
           >
-            Every Aquacubes system is designed with the planet in mind. From materials to water use to shipping, we measure our impact and constantly improve.
+            {content.hero.description}
           </motion.p>
         </div>
       </div>
@@ -141,13 +150,6 @@ function ImpactMetrics() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const stats = [
-    { value: 90, suffix: "%", label: "Less Water Used", icon: Droplets },
-    { value: 0, suffix: "", label: "Pesticides Used", icon: ShieldCheck },
-    { value: 85, suffix: "%", label: "Lower Carbon Footprint", icon: Leaf },
-    { value: 100, suffix: "%", label: "Recyclable Packaging", icon: Recycle },
-  ];
-
   return (
     <section ref={ref} className="section-padding bg-off-white">
       <div className="mx-auto max-w-content px-6 lg:px-10">
@@ -157,7 +159,7 @@ function ImpactMetrics() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center text-h2 text-navy"
         >
-          Our Impact
+          {content.impact.title}
         </motion.h2>
 
         <motion.div
@@ -166,8 +168,8 @@ function ImpactMetrics() {
           animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {stats.map((stat) => (
-            <StatCard key={stat.label} {...stat} delay={0} />
+          {content.impact.stats.map((stat) => (
+            <StatCard key={stat.label} {...stat} />
           ))}
         </motion.div>
       </div>
@@ -180,29 +182,11 @@ function SustainablePractices() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
-  const practices = [
-    {
-      title: "90% Less Water",
-      body: "Our closed-loop recirculating system uses just 10% of the water traditional aquaculture requires. Every drop is filtered, oxygenated, and reused.",
-      side: "left",
-    },
-    {
-      title: "Zero Chemical Inputs",
-      body: "Nature does the work. Beneficial bacteria convert fish waste into plant nutrients. No pesticides, no antibiotics, no synthetic fertilizers. Ever.",
-      side: "right",
-    },
-    {
-      title: "Made in the EU",
-      body: "All Aquacubes systems are designed, manufactured, and assembled in Germany. Shorter supply chains mean fewer emissions and support for local industry.",
-      side: "left",
-    },
-  ];
-
   return (
     <section ref={ref} className="section-padding bg-white">
       <div className="mx-auto max-w-content px-6 lg:px-10">
         <div className="space-y-20">
-          {practices.map((practice, i) => (
+          {content.practices.map((practice, i) => (
             <motion.div
               key={practice.title}
               initial={{ opacity: 0, y: 30 }}
@@ -234,24 +218,6 @@ function CarbonCommitment() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const commitments = [
-    {
-      title: "Built to Last",
-      description: "Every system is designed for repair and reuse, not replacement — fewer parts end up in landfill.",
-      icon: "target",
-    },
-    {
-      title: "Responsible Materials",
-      description: "We choose components and packaging that minimize environmental impact, from manufacturing through delivery.",
-      icon: "refresh",
-    },
-    {
-      title: "Closed-Loop by Design",
-      description: "No chemical inputs, minimal water waste — the system does the environmental work automatically.",
-      icon: "globe",
-    },
-  ];
-
   return (
     <section ref={ref} className="section-padding bg-navy">
       <div className="mx-auto max-w-content px-6 lg:px-10">
@@ -261,7 +227,7 @@ function CarbonCommitment() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center text-h2 text-white"
         >
-          Our Carbon Commitment
+          {content.commitments.title}
         </motion.h2>
 
         <motion.div
@@ -270,7 +236,7 @@ function CarbonCommitment() {
           animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 gap-6 md:grid-cols-3"
         >
-          {commitments.map((commitment) => (
+          {content.commitments.items.map((commitment) => (
             <motion.div
               key={commitment.title}
               variants={staggerChild}
@@ -302,15 +268,13 @@ function CTASection() {
         transition={{ duration: 0.6 }}
         className="mx-auto max-w-content px-6 text-center lg:px-10"
       >
-        <h2 className="mb-4 text-h2 text-white">Be Part of the Solution</h2>
-        <p className="mx-auto mb-8 max-w-[500px] text-body text-white/80">
-          Every harvest you grow at home is a step toward a more sustainable food system.
-        </p>
+        <h2 className="mb-4 text-h2 text-white">{content.cta.title}</h2>
+        <p className="mx-auto mb-8 max-w-[500px] text-body text-white/80">{content.cta.description}</p>
         <Link
           href="/shop"
           className="inline-flex items-center rounded-button bg-navy px-8 py-3 font-body text-sm font-medium text-white transition-all hover:bg-navy-light hover:scale-[1.02] active:scale-[0.98]"
         >
-          Get Your System
+          {content.cta.buttonText}
         </Link>
       </motion.div>
     </section>

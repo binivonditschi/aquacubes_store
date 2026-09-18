@@ -1,0 +1,41 @@
+{
+  "hero": {
+    "eyebrow": "About Aquacubes",
+    "title": "Growing the Future of Food",
+    "description": "We're on a mission to make sustainable seafood accessible at home. Aquacubes combines closed-loop aquaculture with nature's wisdom, so anyone can grow fresh, healthy food without a farm."
+  },
+  "story": {
+    "title": "Our Story",
+    "paragraphs": [
+      "Aquacubes started with a simple question: why should growing your own fresh seafood and greens require a farm? We design closed-loop aquaculture systems that fit in a home, a classroom, or a small commercial kitchen.",
+      "Every system is built to handle the hard parts automatically — water quality, temperature, feeding schedules — so you can focus on the harvest."
+    ],
+    "buttonText": "Shop Systems",
+    "image": "/about-facility.jpg"
+  },
+  "values": {
+    "title": "What We Believe",
+    "items": [
+      {
+        "icon": "leaf",
+        "title": "Sustainability",
+        "description": "We believe food production should give back more than it takes. Every Aquacubes system uses 90% less water and zero chemicals."
+      },
+      {
+        "icon": "lightbulb",
+        "title": "Innovation",
+        "description": "Technology should serve nature, not replace it. Our smart sensors work with biological processes, not against them."
+      },
+      {
+        "icon": "users",
+        "title": "Community",
+        "description": "Food connects people. We're building a global community of home aquaculturists who share knowledge, harvests, and stories."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Start Growing?",
+    "description": "Join the food revolution. Your first harvest is closer than you think.",
+    "buttonText": "Shop Now"
+  }
+}

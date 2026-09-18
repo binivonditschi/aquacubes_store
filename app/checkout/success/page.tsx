@@ -8,6 +8,7 @@ import { useCart } from "@/store/useCart";
 import { formatPrice } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import type { Order } from "@/lib/types";
+import content from "@/content/checkout.json";
 
 function OrderSummary() {
   const searchParams = useSearchParams();
@@ -26,15 +27,15 @@ function OrderSummary() {
   return (
     <div className="w-full rounded-xl bg-white p-4 text-left shadow-sm">
       <div className="flex items-center justify-between text-sm">
-        <span className="text-gray-500">Order</span>
+        <span className="text-gray-500">{content.success.orderLabel}</span>
         <span className="font-mono-label text-navy">{order.id}</span>
       </div>
       <div className="mt-2 flex items-center justify-between text-sm">
-        <span className="text-gray-500">Total</span>
+        <span className="text-gray-500">{content.success.totalLabel}</span>
         <span className="font-mono-label font-semibold text-navy">{formatPrice(order.total)}</span>
       </div>
       <div className="mt-2 flex items-center justify-between text-sm">
-        <span className="text-gray-500">Status</span>
+        <span className="text-gray-500">{content.success.statusLabel}</span>
         <span className="capitalize text-teal">{order.status}</span>
       </div>
     </div>
@@ -54,17 +55,15 @@ export default function SuccessPage() {
         <div className="rounded-full bg-teal/10 p-4">
           <CheckCircle className="h-12 w-12 text-teal" strokeWidth={1.5} />
         </div>
-        <h1 className="text-h2 font-heading text-navy">Thank you for your order</h1>
-        <p className="text-body leading-relaxed text-gray-500">
-          Your payment was successful. We&apos;ve sent a confirmation email with your order details.
-        </p>
+        <h1 className="text-h2 font-heading text-navy">{content.success.title}</h1>
+        <p className="text-body leading-relaxed text-gray-500">{content.success.description}</p>
 
         <Suspense fallback={null}>
           <OrderSummary />
         </Suspense>
 
         <Link href="/">
-          <Button className="rounded-button bg-teal px-8 text-white hover:bg-teal-dark">Continue Shopping</Button>
+          <Button className="rounded-button bg-teal px-8 text-white hover:bg-teal-dark">{content.success.buttonText}</Button>
         </Link>
       </div>
     </main>
