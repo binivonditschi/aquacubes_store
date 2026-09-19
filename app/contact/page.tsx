@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mail, Phone, MapPin, Instagram, Twitter, Linkedin, Youtube, CheckCircle } from "lucide-react";
 import content from "@/content/contact.json";
+import { createClient } from "@/lib/supabase/client";
 
 /* ─── Animation helpers ─── */
 const fadeUp = {
@@ -78,6 +79,18 @@ function ContactFormAndInfo() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getSession().then(({ data }) => {
+      const user = data.session?.user;
+      if (!user) return;
+      setEmail(user.email ?? "");
+      setName((user.user_metadata?.full_name as string) ?? "");
+    });
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -115,6 +128,8 @@ function ContactFormAndInfo() {
                         type="text"
                         required
                         placeholder="Your name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         className="w-full rounded-button border border-gray-100 bg-white px-4 py-3 font-body text-sm text-navy outline-none transition-all placeholder:text-gray-300 focus:border-teal focus:ring-[3px] focus:ring-teal-glow"
                       />
                     </motion.div>
@@ -125,6 +140,8 @@ function ContactFormAndInfo() {
                         type="email"
                         required
                         placeholder="you@example.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="w-full rounded-button border border-gray-100 bg-white px-4 py-3 font-body text-sm text-navy outline-none transition-all placeholder:text-gray-300 focus:border-teal focus:ring-[3px] focus:ring-teal-glow"
                       />
                     </motion.div>

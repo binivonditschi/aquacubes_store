@@ -22,9 +22,11 @@ export default function AccountMenu({ variant = "light" }: { variant?: "light" |
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.auth.getUser().then(({ data }) => {
-      setEmail(data.user?.email ?? null);
-      setName((data.user?.user_metadata?.full_name as string) ?? null);
+    // getSession() reads the cached session from storage instantly, avoiding a
+    // network round-trip that would otherwise flash "Sign In" on every page load.
+    supabase.auth.getSession().then(({ data }) => {
+      setEmail(data.session?.user?.email ?? null);
+      setName((data.session?.user?.user_metadata?.full_name as string) ?? null);
     });
     const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
       setEmail(session?.user?.email ?? null);
