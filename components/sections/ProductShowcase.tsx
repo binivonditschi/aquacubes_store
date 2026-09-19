@@ -152,7 +152,7 @@ export default function ProductShowcase() {
               <div className="absolute left-[18%] top-[85%] h-16 w-px origin-top rotate-45 bg-gray-300" />
               <div className="absolute right-[18%] top-[85%] h-16 w-px origin-top -rotate-45 bg-gray-300" />
 
-              { /*<span className="absolute left-[-2.5rem] top-1/2 -translate-y-1/2 -rotate-90 text-xs text-gray-400">
+              <span className="absolute left-[-2.5rem] top-1/2 -translate-y-1/2 -rotate-90 text-xs text-gray-400">
                 {productShowcase.technology.dimensions.height}
               </span>
               <span className="absolute bottom-[-1.75rem] left-[2%] text-xs text-gray-400">
@@ -160,7 +160,7 @@ export default function ProductShowcase() {
               </span>
               <span className="absolute bottom-[-1.75rem] right-[8%] text-xs text-gray-400">
                 {productShowcase.technology.dimensions.depth}
-              </span>*/}
+              </span>
             </div>
           </div>
 
