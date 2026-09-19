@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { mollieClient } from "@/lib/mollie";
 import { prisma } from "@/lib/prisma";
 
-const ALLOWED_COUNTRIES = ["DE", "AT"];
+const ALLOWED_COUNTRIES = ["DE", "AT", "DK", "CN", "NO"];
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,7 +13,10 @@ export async function POST(req: NextRequest) {
     }
 
     if (!ALLOWED_COUNTRIES.includes(country)) {
-      return NextResponse.json({ error: "We currently only ship to Germany and Austria." }, { status: 400 });
+      return NextResponse.json(
+        { error: "We currently only ship to Germany, Austria, Denmark, China, and Norway." },
+        { status: 400 }
+      );
     }
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";

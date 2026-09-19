@@ -22,18 +22,25 @@ export default function AccountMenu({ variant = "light" }: { variant?: "light" |
 
   useEffect(() => {
     const supabase = createClient();
-    // getSession() reads the cached session from storage instantly, avoiding a
-    // network round-trip that would otherwise flash "Sign In" on every page load.
-    supabase.auth.getSession().then(({ data }) => {
-      setEmail(data.session?.user?.email ?? null);
-      setName((data.session?.user?.user_metadata?.full_name as string) ?? null);
-    });
     const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
       setEmail(session?.user?.email ?? null);
       setName((session?.user?.user_metadata?.full_name as string) ?? null);
     });
     return () => subscription.subscription.unsubscribe();
   }, []);
+
+  useEffect(() => {
+    const supabase = createClient();
+    // Re-read on every navigation: sign-in/out via server actions (e.g. the
+    // login form) sets cookies server-side, which this browser client's
+    // onAuthStateChange never sees since it wasn't the one that changed them.
+    // getSession() reads the cached session from storage instantly, avoiding a
+    // network round-trip that would otherwise flash "Sign In" on every page load.
+    supabase.auth.getSession().then(({ data }) => {
+      setEmail(data.session?.user?.email ?? null);
+      setName((data.session?.user?.user_metadata?.full_name as string) ?? null);
+    });
+  }, [pathname]);
 
   const handleSignOut = async () => {
     const supabase = createClient();

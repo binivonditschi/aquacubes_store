@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const ALLOWED_COUNTRIES = ["DE", "AT", "DK"];
+const ALLOWED_COUNTRIES = ["DE", "AT", "DK", "CN", "NO"];
 const DISMISS_KEY = "regionNoticeDismissed";
 
 function getCookie(name: string): string | null {
