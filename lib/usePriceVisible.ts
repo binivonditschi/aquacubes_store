@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const ALLOWED_COUNTRIES = ["DE", "CH", "DK", "SE", "NO"];
+const ALLOWED_COUNTRIES = ["DE", "CH", "DK", "IT", "SE", "NO"];
 
 function getCookie(name: string): string | null {
   const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
