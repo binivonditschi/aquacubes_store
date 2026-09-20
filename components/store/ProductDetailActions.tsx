@@ -40,7 +40,7 @@ export default function ProductDetailActions({
     for (let i = 0; i < quantity; i++) {
       addItem({ id: product.id, name: product.name, price: product.price, image: product.image ?? undefined });
     }
-    setChecking(false);
+    router.push("/checkout");
   };
 
   if (!isAllowedCountry) {

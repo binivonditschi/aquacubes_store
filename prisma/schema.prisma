@@ -24,7 +24,7 @@ model Order {
   id            String   @id @default(cuid())
   status        String   @default("pending")
   total         Decimal
-  mollieId      String?
+  stripeSessionId String?
   customerEmail String
   country       String?
   items         String

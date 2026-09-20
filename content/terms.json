@@ -23,7 +23,7 @@
       "title": "3. Purchases and Payments",
       "list": [
         "All prices are in Euros (€) and include VAT where applicable",
-        "Payment is processed securely via Mollie, including iDEAL, credit card, and other supported methods",
+        "Payment is processed securely via Stripe, including credit card and other supported methods",
         "Orders are confirmed via email upon successful payment",
         "We reserve the right to refuse or cancel orders at our discretion"
       ]

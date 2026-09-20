@@ -8,7 +8,6 @@ import Lenis from "lenis";
 import { Toaster } from "@/components/ui/sonner";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import CartDrawer from "./CartDrawer";
 import RegionRestrictionModal from "./RegionRestrictionModal";
 
 function ScrollProgress() {
@@ -66,7 +65,6 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
     <div className="relative flex min-h-[100dvh] flex-col">
       <ScrollProgress />
       <Navbar />
-      <CartDrawer />
       <RegionRestrictionModal />
       <main className="flex-1">
         <PageTransition>{children}</PageTransition>

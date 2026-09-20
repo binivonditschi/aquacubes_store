@@ -35,7 +35,7 @@
       "title": "4. Sharing Your Information",
       "paragraphs": ["We do not sell your personal information. We may share data with:"],
       "list": [
-        "Our payment processor (Mollie)",
+        "Our payment processor (Stripe)",
         "Shipping providers",
         "Analytics providers (anonymized)",
         "Legal authorities when required by law"
@@ -68,7 +68,7 @@
     {
       "title": "8. Third-Party Services",
       "paragraphs": [
-        "Our site uses a trusted third-party payment processor (Mollie) to handle transactions. This service has its own privacy policy."
+        "Our site uses a trusted third-party payment processor (Stripe) to handle transactions. This service has its own privacy policy."
       ]
     },
     {

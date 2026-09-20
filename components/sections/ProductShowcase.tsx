@@ -144,23 +144,9 @@ export default function ProductShowcase() {
             <h3 className="mb-2 text-h1 font-extrabold uppercase text-navy">{productShowcase.technology.title}</h3>
             <div className="mb-8 h-0.5 w-10 bg-navy" />
 
-            <div className="relative mx-auto max-w-sm overflow-visible">
+            <div className="relative overflow-visible">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={productShowcase.technology.image} alt="Aquacubes system" className="w-full" />
-
-              <div className="absolute -left-6 top-[12%] h-[76%] w-px bg-gray-300" />
-              <div className="absolute left-[18%] top-[85%] h-16 w-px origin-top rotate-45 bg-gray-300" />
-              <div className="absolute right-[18%] top-[85%] h-16 w-px origin-top -rotate-45 bg-gray-300" />
-
-              <span className="absolute left-[-2.5rem] top-1/2 -translate-y-1/2 -rotate-90 text-xs text-gray-400">
-                {productShowcase.technology.dimensions.height}
-              </span>
-              <span className="absolute bottom-[-1.75rem] left-[2%] text-xs text-gray-400">
-                {productShowcase.technology.dimensions.width}
-              </span>
-              <span className="absolute bottom-[-1.75rem] right-[8%] text-xs text-gray-400">
-                {productShowcase.technology.dimensions.depth}
-              </span>
             </div>
           </div>
 

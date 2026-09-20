@@ -14,7 +14,7 @@ export interface Order {
   id: string;
   status: string;
   total: number;
-  mollieId: string | null;
+  stripeSessionId: string | null;
   customerEmail: string;
   country: string | null;
   items: string;

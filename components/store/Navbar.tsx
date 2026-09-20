@@ -14,7 +14,6 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const itemCount = useCart((s) => s.itemCount());
-  const openCart = useCart((s) => s.openCart);
 
   useEffect(() => {
     setMounted(true);
@@ -51,9 +50,9 @@ export default function Navbar() {
           <div className="ml-auto hidden items-center gap-5 lg:flex">
             <AccountMenu variant="light" />
 
-            <button
-              onClick={openCart}
-              aria-label="Open cart"
+            <Link
+              href="/checkout"
+              aria-label="Go to checkout"
               className="relative rounded-button p-2 transition-colors hover:bg-gray-50"
             >
               <ShoppingBag className="h-5 w-5 text-navy" />
@@ -67,7 +66,7 @@ export default function Navbar() {
                   {itemCount}
                 </motion.span>
               )}
-            </button>
+            </Link>
           </div>
 
           <button

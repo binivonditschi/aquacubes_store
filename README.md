@@ -11,7 +11,7 @@
    ```
    copy .env.example .env
    ```
-   Then open `.env` and add a real Mollie test API key from https://my.mollie.com/dashboard/developers/api-keys
+   Then open `.env` and add a real Stripe test secret key from https://dashboard.stripe.com/test/apikeys
 
 3. Set up the database (only needed once)
    ```
