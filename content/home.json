@@ -77,7 +77,12 @@
     "technology": {
       "eyebrow": "Our Technology",
       "title": "Bold in Design",
-      "image": "/Aquacubes System.png"
+      "image": "/Aquacubes System.png",
+      "dimensions": {
+  "height": "1.41 m",
+  "width": "2.5 m",
+  "depth": "4 m"
+},
        },
       "description": "Aquacubes is futuristic in its design and technology, yet superior in its functionality and reliability.",
       "specs": [
