@@ -74,11 +74,11 @@
       "description": "Delivery, installation & service included in these regions. Somewhere else on the planet? International orders are handled personally, case by case.",
       "buttonText": "Contact for other regions"
     },
-    "technology": {
+    "technology": {[
       "eyebrow": "Our Technology",
       "title": "Bold in Design",
       "image": "/Aquacubes System.png",
-    
+      ]
       },
       "description": "Aquacubes is futuristic in its design and technology, yet superior in its functionality and reliability.",
       "specs": [
