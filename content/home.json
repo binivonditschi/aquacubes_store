@@ -77,12 +77,12 @@
     "technology": {
       "eyebrow": "Our Technology",
       "title": "Bold in Design",
-      "image": "/Aquacubes system.png",
+      "image": "/Aquacubes System.png",
     
       },
       "description": "Aquacubes is futuristic in its design and technology, yet superior in its functionality and reliability.",
       "specs": [
-        { "label": "Footprint", "value": "≈ 3 m³ per cube" },
+        { "label": "Footprint", "value": "4m x 2.5m x 1.41m ≈ 3 m³ per cube" },
         { "label": "Yield", "value": "≈ 600 kg fish / cube / year" },
         { "label": "Harvest cycles", "value": "4 × per year" },
         { "label": "Water use", "value": "99% recirculated, closed loop" },
