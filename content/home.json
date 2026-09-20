@@ -79,11 +79,10 @@
       "title": "Bold in Design",
       "image": "/Aquacubes System.png",
       "dimensions": {
-  "height": "1.41 m",
-  "width": "2.5 m",
-  "depth": "4 m"
-},
-       },
+        "height": "1.41 m",
+        "width": "2.5 m",
+        "depth": "4 m"
+      },
       "description": "Aquacubes is futuristic in its design and technology, yet superior in its functionality and reliability.",
       "specs": [
         { "label": "Footprint", "value": "4m x 2.5m x 1.41m ≈ 3 m³ per cube" },
