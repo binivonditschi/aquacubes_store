@@ -17,7 +17,7 @@ export default function Home() {
       <Hero />
       <ProductShowcase />
       <WhyAquacubes />
-      <Newsletter />
+      <NewsletterForm />
     </div>
   );
 }
