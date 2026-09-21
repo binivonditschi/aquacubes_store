@@ -1,5 +1,49 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import content from "@/content/home.json";
+
+const { newsletter } = content;
+
+export default function Newsletter() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // 1. Load the embed script once
+    if (!document.querySelector('script[src*="leadform.js"]')) {
+      const script = document.createElement("script");
+      script.src = "https://aquacubes.fish/embed/leadform.js"; // ← your real domain
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    // 2. Register the custom element with React
+    const el = document.createElement("aquacubes-leadform");
+    containerRef.current?.appendChild(el);
+  }, []);
+
+  return (
+    <section className="section-padding border-b border-black/10 bg-white shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5 }}
+        className="mx-auto max-w-[600px] px-6 text-center lg:px-10"
+      >
+        <h2 className="mb-4 font-heading text-2xl font-bold uppercase text-black sm:text-3xl">{newsletter.title}</h2>
+        <p className="mb-8 text-body text-gray-500">{newsletter.description}</p>
+
+        {/* The embed form renders into this div */}
+        <div ref={containerRef} />
+      </motion.div>
+    </section>
+  );
+}
+
+/*{"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import content from "@/content/home.json";
@@ -62,4 +106,4 @@ export default function Newsletter() {
       </motion.div>
     </section>
   );
-}
+}}*/
