@@ -1,5 +1,4 @@
-import { SalesForm } from "@/components/embeds";
-/*{"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
@@ -7,6 +6,7 @@ import { Mail, Phone, MapPin, Instagram, Twitter, Linkedin, Youtube, CheckCircle
 import content from "@/content/contact.json";
 import { createClient } from "@/lib/supabase/client";
 
+/* ─── Animation helpers ─── */
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (delay: number = 0) => ({
@@ -26,7 +26,7 @@ const staggerChild = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 };
 
- ═══════════════════ CONTACT PAGE ═══════════════════ 
+/* ═══════════════════ CONTACT PAGE ═══════════════════ */
 export default function Contact() {
   return (
     <div>
@@ -37,8 +37,7 @@ export default function Contact() {
   );
 }
 
-── Section 1 — Hero ── 
-
+/* ── Section 1 — Hero ── */
 function HeroSection() {
   return (
     <section className="bg-navy pb-16 pt-40">
@@ -75,8 +74,7 @@ function HeroSection() {
   );
 }
 
- ── Section 2 — Contact Form + Info ── 
- 
+/* ── Section 2 — Contact Form + Info ── */
 function ContactFormAndInfo() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -103,9 +101,7 @@ function ContactFormAndInfo() {
     <section ref={ref} className="section-padding bg-off-white">
       <div className="mx-auto max-w-content px-6 lg:px-10">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[60%_40%] lg:gap-12">
-        
-         
-          
+          {/* Left — Contact Form */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -192,14 +188,14 @@ function ContactFormAndInfo() {
             </div>
           </motion.div>
 
-         }
+          {/* Right — Contact Info */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className="space-y-6"
           >
-            }
+            {/* Email */}
             <motion.div variants={staggerChild} className="rounded-card bg-white p-6 shadow-card">
               <div className="mb-3 flex items-center gap-3">
                 <Mail className="h-5 w-5 text-teal" />
@@ -215,7 +211,7 @@ function ContactFormAndInfo() {
               </div>
             </motion.div>
 
-       }
+            {/* Phone */}
             <motion.div variants={staggerChild} className="rounded-card bg-white p-6 shadow-card">
               <div className="mb-3 flex items-center gap-3">
                 <Phone className="h-5 w-5 text-teal" />
@@ -225,7 +221,7 @@ function ContactFormAndInfo() {
               <p className="text-body-sm text-gray-500">{content.info.phone.hours}</p>
             </motion.div>
 
-}
+            {/* Office */}
             <motion.div variants={staggerChild} className="rounded-card bg-white p-6 shadow-card">
               <div className="mb-3 flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-teal" />
@@ -239,7 +235,7 @@ function ContactFormAndInfo() {
               </div>
             </motion.div>
 
-}
+            {/* Social */}
             <motion.div variants={staggerChild} className="rounded-card bg-white p-6 shadow-card">
               <h4 className="mb-4 font-heading text-h4 text-navy">Follow Us</h4>
               <div className="flex gap-4">
@@ -261,6 +257,7 @@ function ContactFormAndInfo() {
   );
 }
 
+/* ── Section 3 — Map ── */
 function MapSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -280,4 +277,4 @@ function MapSection() {
       />
     </motion.section>
   );
-}}*/
+}

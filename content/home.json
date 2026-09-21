@@ -137,7 +137,9 @@
     "title": "Stay Connected",
     "description": "Sign up for updates to get the latest on Aquacubes, our technology, and where we're headed next.",
     "placeholder": "Enter your email",
-    "buttonText": "Sign Up",
+    "buttonText": "Subscribe",
+    "processingText": "Subscribing...",
+    "errorMessage": "Something went wrong. Please try again.",
     "successMessage": "You're in! Welcome to the community."
   }
 }

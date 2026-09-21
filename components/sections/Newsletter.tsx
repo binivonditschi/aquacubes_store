@@ -1,62 +1,51 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import content from "@/content/home.json";
-
-const { newsletter } = content;
-
-export default function Newsletter() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // 1. Load the embed script once
-    if (!document.querySelector('script[src*="leadform.js"]')) {
-      const script = document.createElement("script");
-      script.src = "https://aquacubes.fish/embed/leadform.js"; // ← your real domain
-      script.async = true;
-      document.body.appendChild(script);
-    }
-
-    // 2. Register the custom element with React
-    const el = document.createElement("aquacubes-leadform");
-    containerRef.current?.appendChild(el);
-  }, []);
-
-  return (
-    <section className="section-padding border-b border-black/10 bg-white shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5 }}
-        className="mx-auto max-w-[600px] px-6 text-center lg:px-10"
-      >
-        <h2 className="mb-4 font-heading text-2xl font-bold uppercase text-black sm:text-3xl">{newsletter.title}</h2>
-        <p className="mb-8 text-body text-gray-500">{newsletter.description}</p>
-
-        {/* The embed form renders into this div */}
-        <div ref={containerRef} />
-      </motion.div>
-    </section>
-  );
-}
-
-/*{"use client";
-
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { createClient } from "@/lib/supabase/client";
 import content from "@/content/home.json";
 
 const { newsletter } = content;
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session?.user?.email) setEmail(data.session.user.email);
+      const fullName = data.session?.user?.user_metadata?.full_name as string | undefined;
+      if (fullName) setName(fullName);
+    });
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) setSubmitted(true);
+    if (!email.trim()) return;
+
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, name }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError(newsletter.errorMessage);
+      }
+    } catch {
+      setError(newsletter.errorMessage);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -84,26 +73,30 @@ export default function Newsletter() {
             <span className="font-body text-sm font-medium text-[#38b6ff]">{newsletter.successMessage}</span>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder={newsletter.placeholder}
-              required
-              className="flex-1 rounded-full border-0 bg-gray-200 px-5 py-3 font-body text-sm text-navy placeholder-gray-500 outline-none transition-all duration-300 focus:ring-2 focus:ring-[#38b6ff]/50"
-            />
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              className="rounded-full bg-[#38b6ff] px-8 py-3 font-body text-sm font-medium text-white transition-colors hover:brightness-95"
-            >
-              {newsletter.buttonText}
-            </motion.button>
-          </form>
+          <>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={newsletter.placeholder}
+                required
+                className="flex-1 rounded-full border-0 bg-gray-200 px-5 py-3 font-body text-sm text-navy placeholder-gray-500 outline-none transition-all duration-300 focus:ring-2 focus:ring-[#38b6ff]/50"
+              />
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                disabled={loading}
+                className="rounded-full bg-[#38b6ff] px-8 py-3 font-body text-sm font-medium text-white transition-colors hover:brightness-95 disabled:opacity-60"
+              >
+                {loading ? newsletter.processingText : newsletter.buttonText}
+              </motion.button>
+            </form>
+            {error && <p className="mt-3 text-sm text-error">{error}</p>}
+          </>
         )}
       </motion.div>
     </section>
   );
-}}*/
+}
