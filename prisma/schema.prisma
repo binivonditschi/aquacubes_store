@@ -21,15 +21,15 @@ model Product {
 }
 
 model Order {
-  id            String   @id @default(cuid())
-  status        String   @default("pending")
-  total         Decimal
+  id              String   @id @default(cuid())
+  status          String   @default("pending")
+  total           Decimal
   stripeSessionId String?
-  customerEmail String
-  country       String?
-  items         String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  customerEmail   String
+  country         String?
+  items           String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 model Profile {
