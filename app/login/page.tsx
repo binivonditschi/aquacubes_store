@@ -1,4 +1,14 @@
-import Link from "next/link";
+// e.g. src/app/login/page.tsx
+import { SignInForm } from "@/components/embeds";
+
+export default function LoginPage() {
+  return (
+    <main className="flex min-h-screen items-center justify-center">
+      <SignInForm />
+    </main>
+  );
+}
+/*{import Link from "next/link";
 import { signIn, signUp } from "./actions";
 import content from "@/content/login.json";
 
@@ -116,4 +126,4 @@ export default async function LoginPage({
       </div>
     </div>
   );
-}
+})*/
