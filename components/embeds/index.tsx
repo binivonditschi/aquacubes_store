@@ -1,6 +1,6 @@
 import EmbedForm from "@/components/EmbedForm";
 
-const DOMAIN = "https://your-domain"; // ← your real domain
+const DOMAIN = "https://cs.aquacubes.fish";
 
 export const SignInForm = () => (
   <EmbedForm scriptSrc={`${DOMAIN}/embed/signin.js`} tagName="aquacubes-signin" />

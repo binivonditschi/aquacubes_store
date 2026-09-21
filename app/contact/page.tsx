@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, Phone, MapPin, Instagram, Twitter, Linkedin, Youtube, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
 import content from "@/content/contact.json";
-import { createClient } from "@/lib/supabase/client";
+import { SalesForm } from "@/components/embeds";
 
 /* ─── Animation helpers ─── */
 const fadeUp = {
@@ -78,24 +78,6 @@ function HeroSection() {
 function ContactFormAndInfo() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-  const [submitted, setSubmitted] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-
-  useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getSession().then(({ data }) => {
-      const user = data.session?.user;
-      if (!user) return;
-      setEmail(user.email ?? "");
-      setName((user.user_metadata?.full_name as string) ?? "");
-    });
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
 
   return (
     <section ref={ref} className="section-padding bg-off-white">
@@ -108,83 +90,7 @@ function ContactFormAndInfo() {
             animate={isInView ? "visible" : "hidden"}
           >
             <div className="rounded-card-lg bg-white p-8 shadow-card lg:p-10">
-              {submitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4 }}
-                  className="flex flex-col items-center justify-center py-12 text-center"
-                >
-                  <CheckCircle className="mb-4 h-16 w-16 text-success" />
-                  <h3 className="mb-2 text-h3 text-navy">{content.form.successTitle}</h3>
-                  <p className="text-body text-gray-500">{content.form.successDescription}</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  <div className="space-y-5">
-                    <motion.div variants={staggerChild}>
-                      <label className="mb-1.5 block font-body text-sm font-medium text-gray-700">Name *</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Your name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="w-full rounded-button border border-gray-100 bg-white px-4 py-3 font-body text-sm text-navy outline-none transition-all placeholder:text-gray-300 focus:border-teal focus:ring-[3px] focus:ring-teal-glow"
-                      />
-                    </motion.div>
-
-                    <motion.div variants={staggerChild}>
-                      <label className="mb-1.5 block font-body text-sm font-medium text-gray-700">Email *</label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="you@example.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full rounded-button border border-gray-100 bg-white px-4 py-3 font-body text-sm text-navy outline-none transition-all placeholder:text-gray-300 focus:border-teal focus:ring-[3px] focus:ring-teal-glow"
-                      />
-                    </motion.div>
-
-                    <motion.div variants={staggerChild}>
-                      <label className="mb-1.5 block font-body text-sm font-medium text-gray-700">Subject</label>
-                      <select className="w-full rounded-button border border-gray-100 bg-white px-4 py-3 font-body text-sm text-navy outline-none transition-all focus:border-teal focus:ring-[3px] focus:ring-teal-glow">
-                        {content.form.subjectOptions.map((option) => (
-                          <option key={option}>{option}</option>
-                        ))}
-                      </select>
-                    </motion.div>
-
-                    <motion.div variants={staggerChild}>
-                      <label className="mb-1.5 block font-body text-sm font-medium text-gray-700">Order Number</label>
-                      <input
-                        type="text"
-                        placeholder="AC-2024-XXXXX (if applicable)"
-                        className="w-full rounded-button border border-gray-100 bg-white px-4 py-3 font-body text-sm text-navy outline-none transition-all placeholder:text-gray-300 focus:border-teal focus:ring-[3px] focus:ring-teal-glow"
-                      />
-                    </motion.div>
-
-                    <motion.div variants={staggerChild}>
-                      <label className="mb-1.5 block font-body text-sm font-medium text-gray-700">Message *</label>
-                      <textarea
-                        required
-                        rows={6}
-                        placeholder="How can we help?"
-                        className="w-full resize-none rounded-button border border-gray-100 bg-white px-4 py-3 font-body text-sm text-navy outline-none transition-all placeholder:text-gray-300 focus:border-teal focus:ring-[3px] focus:ring-teal-glow"
-                      />
-                    </motion.div>
-
-                    <motion.div variants={staggerChild}>
-                      <button
-                        type="submit"
-                        className="w-full rounded-button bg-teal px-6 py-3.5 font-body text-sm font-medium text-white transition-all hover:bg-teal-dark hover:scale-[1.01] active:scale-[0.98]"
-                      >
-                        {content.form.submitText}
-                      </button>
-                    </motion.div>
-                  </div>
-                </form>
-              )}
+              <SalesForm />
             </div>
           </motion.div>
 
