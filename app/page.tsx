@@ -1,7 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import ProductShowcase from "@/components/sections/ProductShowcase";
 import WhyAquacubes from "@/components/sections/WhyAquacubes";
-import Newsletter from "@/components/sections/Newsletter";
 import { motion } from "framer-motion";
 import { NewsletterForm, LeadForm } from "@/components/embeds";
 import content from "@/content/home.json";
