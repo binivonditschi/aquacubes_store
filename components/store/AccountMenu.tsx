@@ -55,13 +55,13 @@ export default function AccountMenu({ variant = "light" }: { variant?: "light" |
         <>
           <Link
             href={`/login?next=${encodeURIComponent(pathname)}`}
-            className="font-tesla rounded-full border border-white/40 px-4 py-2 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-white hover:text-navy sm:text-sm"
+            className="font-sans rounded-full border border-white/40 px-4 py-2 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-white hover:text-navy sm:text-sm"
           >
             Sign In
           </Link>
           <Link
             href={`/login?mode=signup&next=${encodeURIComponent(pathname)}`}
-            className="font-tesla rounded-full bg-white px-4 py-2 text-xs font-medium text-navy transition-colors hover:bg-white/90 sm:text-sm"
+            className="font-sans rounded-full bg-white px-4 py-2 text-xs font-medium text-navy transition-colors hover:bg-white/90 sm:text-sm"
           >
             Sign Up
           </Link>

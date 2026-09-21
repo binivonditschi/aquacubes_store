@@ -52,7 +52,7 @@ export default function Hero() {
           <motion.p
             custom={0.05}
             variants={fadeUp}
-            className="font-tesla mt-15 text-sm font-semibold uppercase tracking-wide text-amber-400 sm:text-base"
+            className="font-sans mt-15 text-sm font-semibold uppercase tracking-wide text-amber-400 sm:text-base"
           >
             {hero.tagline}
           </motion.p>
@@ -60,7 +60,7 @@ export default function Hero() {
           <motion.h1
             custom={0.1}
             variants={fadeUp}
-            className="font-tesla mt-3 max-w-4xl uppercase text-4xl font-extrabold leading-tight tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0_/_45%)] sm:text-5xl lg:text-6xl"
+            className="font-sans mt-3 max-w-4xl uppercase text-4xl font-extrabold leading-tight tracking-tight text-white [text-shadow:0_2px_16px_rgb(0_0_0_/_45%)] sm:text-5xl lg:text-6xl"
           >
             {hero.title}
           </motion.h1>
@@ -68,7 +68,7 @@ export default function Hero() {
           <motion.p
             custom={0.25}
             variants={fadeUp}
-            className="font-tesla mt-4 max-w-xl text-lg text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0_/_45%)] sm:text-xl"
+            className="font-sans mt-4 max-w-xl text-lg text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0_/_45%)] sm:text-xl"
           >
             {hero.subtitle}
           </motion.p>
@@ -76,11 +76,11 @@ export default function Hero() {
           <motion.div custom={0.45} variants={fadeUp} className="mt-15 flex flex-col items-center gap-3">
             <Link
               href="/shop"
-              className="font-tesla inline-block rounded-full bg-navy px-8 py-3 text-sm font-medium text-white shadow-lg transition-colors hover:bg-navy-light"
+              className="font-sans inline-block rounded-full bg-navy px-8 py-3 text-sm font-medium text-white shadow-lg transition-colors hover:bg-navy-light"
             >
               {hero.primaryButtonText}
             </Link>
-            <span className="font-tesla text-sm text-white/70">{hero.leasingText}</span>
+            <span className="font-sans text-sm text-white/70">{hero.leasingText}</span>
           </motion.div>
         </motion.div>
       </div>

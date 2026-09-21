@@ -135,48 +135,50 @@ export default function ProductShowcase() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-content px-6 lg:px-10">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
-          <div>
-            <p className="mb-2 text-xs font-semibold uppercase leading-none tracking-wide text-teal">
-              {productShowcase.technology.eyebrow}
-            </p>
-            <h3 className="mb-2 text-h1 font-extrabold uppercase text-navy">{productShowcase.technology.title}</h3>
-            <div className="mb-8 h-0.5 w-10 bg-navy" />
+      <div className="bg-white py-10">
+        <div className="mx-auto max-w-content px-6 lg:px-10">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+            <div>
+              <p className="mb-2 text-xs font-semibold uppercase leading-none tracking-wide text-teal">
+                {productShowcase.technology.eyebrow}
+              </p>
+              <h3 className="mb-2 text-h1 font-extrabold uppercase text-navy">{productShowcase.technology.title}</h3>
+              <div className="mb-8 h-0.5 w-10 bg-navy" />
 
-            <div className="relative overflow-visible">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={productShowcase.technology.image} alt="Aquacubes system" className="w-full" />
+              <div className="relative overflow-visible">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={productShowcase.technology.image} alt="Aquacubes system" className="w-full" />
+              </div>
+            </div>
+
+            <div>
+              <p className="mt-28 text-body text-gray-500">{productShowcase.technology.description}</p>
+              <div className="divide-y-2 divide-white overflow-hidden rounded-xl">
+                {productShowcase.technology.specs.map((spec) => (
+                  <div
+                    key={spec.label}
+                    className="flex items-center justify-between gap-6 px-4 py-3 text-sm"
+                    style={{ backgroundColor: "#f2f2f2" }}
+                  >
+                    <span className="text-navy/70">{spec.label}</span>
+                    <span className="text-right text-navy">{spec.value}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href="https://calculat.ok.kimi.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 block w-full rounded-button border-2 border-teal py-3 text-center font-body text-sm font-medium uppercase text-teal transition-colors hover:bg-teal hover:text-white"
+              >
+                Calculate How Many Cubes You Need
+              </a>
             </div>
           </div>
 
-          <div>
-            <p className="mt-28 text-body text-gray-500">{productShowcase.technology.description}</p>
-            <div className="divide-y-2 divide-white overflow-hidden rounded-xl">
-              {productShowcase.technology.specs.map((spec) => (
-                <div
-                  key={spec.label}
-                  className="flex items-center justify-between gap-6 px-4 py-3 text-sm"
-                  style={{ backgroundColor: "#f2f2f2" }}
-                >
-                  <span className="text-navy/70">{spec.label}</span>
-                  <span className="text-right text-navy">{spec.value}</span>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href="https://calculat.ok.kimi.link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 block w-full rounded-button border-2 border-teal py-3 text-center font-body text-sm font-medium uppercase text-teal transition-colors hover:bg-teal hover:text-white"
-            >
-              Calculate How Many Cubes You Need
-            </a>
-          </div>
+          <hr className="mx-auto mt-16 w-64 border-t border-[#89e6aa] lg:mt-20" />
         </div>
-
-        <hr className="mx-auto mt-16 w-64 border-t border-[#89e6aa] lg:mt-20" />
       </div>
 
       <div className="mt-8 w-full bg-white py-6">
@@ -192,40 +194,36 @@ export default function ProductShowcase() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-content px-6 lg:px-10">
-        <div
-          className="mt-10 rounded-2xl p-8 lg:p-12"
-          style={{ background: "linear-gradient(90deg, #ffffff, #eaeaea, #eaeaea)" }}
-        >
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-teal">
-                {productShowcase.exploreFeatures.eyebrow}
-              </p>
-              <h3 className="mb-4 text-h2 font-extrabold text-navy">{productShowcase.exploreFeatures.title}</h3>
-              <div className="mb-4 h-0.5 w-10 bg-navy" />
+      <div className="bg-off-white py-10">
+        <div className="mx-auto max-w-content px-6 lg:px-10">
+          <div className="mt-10 rounded-2xl bg-off-white p-8 lg:p-12">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              <div>
+                <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-teal">
+                  {productShowcase.exploreFeatures.eyebrow}
+                </p>
+                <h3 className="mb-4 text-h2 font-extrabold text-navy">{productShowcase.exploreFeatures.title}</h3>
+                <div className="mb-4 h-0.5 w-10 bg-navy" />
 
-              <p className="mb-4 text-body text-gray-600">{productShowcase.exploreFeatures.description}</p>
-              <ul className="mb-4 list-disc space-y-1 pl-5 text-sm text-gray-600">
-                {productShowcase.exploreFeatures.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-              <p className="text-body text-gray-600">{productShowcase.exploreFeatures.closing}</p>
-            </div>
+                <p className="mb-4 text-body text-gray-600">{productShowcase.exploreFeatures.description}</p>
+                <ul className="mb-4 list-disc space-y-1 pl-5 text-sm text-gray-600">
+                  {productShowcase.exploreFeatures.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+                <p className="text-body text-gray-600">{productShowcase.exploreFeatures.closing}</p>
+              </div>
 
-            <div
-              className="mx-auto aspect-[9/16] w-full max-w-xs overflow-hidden rounded-2xl"
-              style={{ background: "linear-gradient(90deg, #ffffff, #eaeaea, #eaeaea)" }}
-            >
-              <video
-                className="h-full w-full object-cover"
-                src={productShowcase.exploreFeatures.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-              />
+              <div className="mx-auto aspect-[9/16] w-full max-w-xs overflow-hidden rounded-2xl bg-off-white">
+                <video
+                  className="h-full w-full object-cover"
+                  src={productShowcase.exploreFeatures.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              </div>
             </div>
           </div>
         </div>
