@@ -2,7 +2,7 @@ import Hero from "@/components/sections/Hero";
 import ProductShowcase from "@/components/sections/ProductShowcase";
 import WhyAquacubes from "@/components/sections/WhyAquacubes";
 import { motion } from "framer-motion";
-import { NewsletterForm, LeadForm } from "@/components/embeds";
+import Newsletter from "@/components/Newsletter";
 import content from "@/content/home.json";
 
 const { newsletter } = content;
@@ -21,7 +21,7 @@ export default function Home() {
     </div>
   );
 }
-
+      {/* Newsletter section — your design, embed handles the form */}
       <section className="section-padding border-b border-black/10 bg-white shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -38,8 +38,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-
-    
+      {/* Lead capture — maybe in the footer or a "Get a demo" block */}
       <section className="section-padding bg-gray-50">
         <div className="mx-auto max-w-[600px] px-6">
           <LeadForm />
