@@ -32,7 +32,7 @@ export default function WhyAquacubes() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-1 gap-8 border-b border-white/10 pb-12 sm:grid-cols-3"
+          className="grid grid-cols-1 gap-8 border-b border-white/10 pb-12 md:grid-cols-3"
         >
           {whyAquacubes.features.map((feature, i) => {
             const Icon = iconMap[feature.id];
@@ -40,7 +40,7 @@ export default function WhyAquacubes() {
               <motion.div
                 key={feature.id}
                 variants={staggerChild}
-                className={`flex items-start gap-4 sm:pl-6 ${i > 0 ? "sm:border-l sm:border-white/10" : ""}`}
+                className={`flex items-start gap-4 md:pl-6 ${i > 0 ? "md:border-l md:border-white/10" : ""}`}
               >
                 <div
                   className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border"

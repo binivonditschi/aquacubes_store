@@ -36,7 +36,7 @@ export default function ProductShowcase() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <h2 className="mb-4 text-h1 uppercase text-navy">{productShowcase.title}</h2>
+          <h2 className="mb-4 break-words text-h1 uppercase text-navy">{productShowcase.title}</h2>
           <p className="mx-auto max-w-[500px] text-body text-gray-500">
             {productShowcase.subtitle}
           </p>
@@ -88,7 +88,7 @@ export default function ProductShowcase() {
           ))}
         </motion.div>
 
-        <p className="mt-20 text-left text-sm font-medium text-black">
+        <p className="mb-6 mt-12 text-left text-sm font-medium text-black sm:mt-20">
           {productShowcase.earlyBirdNote}
         </p>
 
@@ -125,7 +125,7 @@ export default function ProductShowcase() {
             </div>
             <Link
               href="/contact"
-              className="whitespace-nowrap rounded-full border-2 border-[#89e6aa] px-6 py-3 text-center font-body text-sm font-medium text-black transition-colors hover:bg-[#89e6aa]"
+              className="w-full rounded-full border-2 sm:w-auto sm:shrink-0 sm:whitespace-nowrap border-[#89e6aa] px-6 py-3 text-center font-body text-sm font-medium text-black transition-colors hover:bg-[#89e6aa]"
             >
               {productShowcase.delivery.buttonText}
             </Link>
@@ -142,7 +142,7 @@ export default function ProductShowcase() {
               <p className="mb-2 text-xs font-semibold uppercase leading-none tracking-wide text-teal">
                 {productShowcase.technology.eyebrow}
               </p>
-              <h3 className="mb-2 text-h1 font-extrabold uppercase text-navy">{productShowcase.technology.title}</h3>
+              <h3 className="mb-2 break-words text-h1 font-extrabold uppercase text-navy">{productShowcase.technology.title}</h3>
               <div className="mb-8 h-0.5 w-10 bg-navy" />
 
               <div className="relative overflow-visible">
@@ -152,12 +152,12 @@ export default function ProductShowcase() {
             </div>
 
             <div>
-              <p className="mt-28 text-body text-gray-500">{productShowcase.technology.description}</p>
+              <p className="mb-6 text-body text-gray-500 lg:mt-28">{productShowcase.technology.description}</p>
               <div className="divide-y-2 divide-white overflow-hidden rounded-xl">
                 {productShowcase.technology.specs.map((spec) => (
                   <div
                     key={spec.label}
-                    className="flex items-center justify-between gap-6 px-4 py-3 text-sm"
+                    className="flex items-center justify-between gap-4 px-4 py-3 text-sm sm:gap-6"
                     style={{ backgroundColor: "#f2f2f2" }}
                   >
                     <span className="text-navy/70">{spec.label}</span>
@@ -182,11 +182,11 @@ export default function ProductShowcase() {
       </div>
 
       <div className="mt-8 w-full bg-white py-6">
-        <div className="flex flex-wrap items-center px-6 text-xs font-semibold uppercase tracking-wide text-navy/70 sm:text-sm lg:px-10">
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-6 text-center text-xs sm:justify-start sm:gap-x-0 sm:text-left font-semibold uppercase tracking-wide text-navy/70 sm:text-sm lg:px-10">
           {productShowcase.valueProps.map((prop, i) => (
             <Fragment key={prop}>
               {i > 0 && <span>&bull;</span>}
-              <span className={i === 0 ? "px-0 ml-0 sm:px-4 sm:ml-16" : "px-0 sm:px-6"}>
+              <span className={i === 0 ? "sm:ml-16 sm:px-4" : "sm:px-6"}>
                 {prop}
               </span>
             </Fragment>
@@ -196,7 +196,7 @@ export default function ProductShowcase() {
 
       <div className="bg-off-white py-10">
         <div className="mx-auto max-w-content px-6 lg:px-10">
-          <div className="mt-10 rounded-2xl bg-off-white p-8 lg:p-12">
+          <div className="rounded-2xl bg-off-white py-4 sm:mt-10 sm:p-8 lg:p-12">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
               <div>
                 <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-teal">
