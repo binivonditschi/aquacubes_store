@@ -19,8 +19,8 @@
         "bestFor": "Restaurants & farmers testing first harvest",
         "price": "€699",
         "priceSuffix": "/mo",
-        "terms": "6-month minimum · 1 cube · 1 harvest cycle",
-        "description": "Serve your own fish within one season — and keep 100% of the sales.",
+        "terms": "6-months minimum · 1 cube · 1 harvest cycle",
+        "description": "Serve your own fish within one season — and grow to Micro-Farm.",
         "buttonText": "Order Starter"
       },
       {
@@ -29,8 +29,8 @@
         "tagline": "10 cubes farm. Revenue in a year.",
         "bestFor": "Distributors, retailers & hospitality groups",
         "price": "€499",
-        "priceSuffix": "/mo",
-        "terms": "24-month minimum · 10 cubes · up to 8 harvest cycle",
+        "priceSuffix": "/mo/aquacubes",
+        "terms": "24-months minimum · 10 cubes · up to 8 harvest cycle",
         "description": "A year-round, traceable local supply your business can grow on.",
         "buttonText": "Reserve Micro-Farm",
         "badge": "Most Reserved"
@@ -39,7 +39,7 @@
         "id": "enterprise",
         "name": "Enterprise",
         "tagline": "Custom contract. Dedicated Team.",
-        "bestFor": "Municipalities, retail chains & food service",
+        "bestFor": "Municipalities, corporates, retail chains & food service",
         "price": "Custom",
         "priceSuffix": "",
         "terms": "custom contract",
@@ -47,7 +47,7 @@
         "buttonText": "Contact Sales"
       }
     ],
-    "earlyBirdNote": "Early-Bird reservation gets free stocking fish supply for 1 year* (the first 10 reservations)",
+    "earlyBirdNote": "Early-Bird reservation gets free merch and dedicated support for 1 year* (the first 10 reservations)",
     "contactTeam": {
       "label": "Contact Team:",
       "value": "sales@aquacubes.fish"
@@ -60,11 +60,11 @@
       "title": "Ordering Notes:",
       "paragraphs": [
         "Before you order Aquacubes products, please read this ordering precautions carefully.",
-        "※ When you have order our products, you are agreeing to these precautions.",
-        "※ This booking order represents an intention.",
+        "When you have order our products, you are agreeing to these precautions.",
+        "※ This booking order represents an intention. One month payment is due at order. Monthly subscription starts after delivery.",
         "※ After you submit your order, we will contact you within 5 working days to confirm your purchase intention. Please make sure that the information you provide is accurate, especially for the email address.",
         "※ You can contact us directly to obtain more detailed information.",
-        "☆ By cooperating with us or buying large quantities of our products, you can have privileges and discounts.",
+        "☆ By partnering with us or buying large quantities of our products, you can have privileges and discounts.",
         "If we do not contact you within the time limit, please submit the order again or contact us on the phone."
       ]
     },
@@ -80,7 +80,7 @@
       "image": "/25e.png",
       "description": "Aquacubes is futuristic in its design and technology, yet superior in its functionality and reliability.",
       "specs": [
-        { "label": "Footprint", "value": "≈ 3 m³ per cube" },
+        { "label": "Footprint", "value": "4m x 2m x 1.4m ≈ 3 m³ per cube" },
         { "label": "Yield", "value": "≈ 600 kg fish / cube / year" },
         { "label": "Harvest cycles", "value": "4 × per year" },
         { "label": "Water use", "value": "99% recirculated, closed loop" },
@@ -140,7 +140,7 @@
     "buttonText": "Subscribe",
     "processingText": "Subscribing...",
     "errorMessage": "Something went wrong. Please try again.",
-    "successMessage": "You're in! Welcome to the community."
+    "successMessage": "Success! Welcome to the community."
   }
 }
 
