@@ -13,15 +13,15 @@
   "info": {
     "email": {
       "label": "General",
-      "value": "info@aquacubes.eu"
+      "value": "sales@aquacubes.eu"
     },
     "phone": {
-      "value": "+49 48 347320 613",
+      "value": "+49 15781371194",
       "hours": "Mon-Fri, 9:00-18:00 CET"
     },
     "office": {
       "name": "Moina GmbH",
-      "addressLines": ["Markt 5", "25746 Heide", "Germany"]
+      "addressLines": ["Hafentörn 3", "25761 Büsum", "Germany"]
     }
   }
 }
