@@ -44,7 +44,7 @@ export default function HowItWorks() {
 /* ── Section 1 — Hero ── */
 function HeroSection() {
   return (
-    <section className="bg-navy pb-20 pt-40">
+    <section className="bg-navy pb-20 pt-24">
       <div className="mx-auto max-w-content px-6 text-center lg:px-10">
         <motion.p
           custom={0}

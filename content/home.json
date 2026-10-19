@@ -1,146 +1,244 @@
 {
+  "announcement": "Limitiertes Angebot: Lieferfenster Q2–Q4 2027",
   "hero": {
-    "backgroundVideo": "/Landing.mp4",
-    "logo": "/Aquacubes Logo.png",
-    "tagline": "Install • Grow • Harvest • Repeat",
-    "title": "Fish Farming made easy - The New Era with Aquacubes",
-    "subtitle": "Compact size, Industrial Capabilities",
-    "primaryButtonText": "Reserve now",
-    "leasingText": "Leasing From € 499/mo"
+    "badges": ["INSTALLIEREN • ZÜCHTEN • ERNTEN • WIEDERHOLEN", "BIO-RAS 3.0 ARCHITECTURE"],
+    "title": "Gewerbliche Fischzucht wird planbar:",
+    "titleHighlight": "Die autonome Aquacube Micro-Farm.",
+    "description": "Industrielle Kreislaufanlagen-Leistung (RAS) auf kompakter Grundfläche von 4,0 m × 2,0 m × 1,41 m. Ernten Sie bis zu ~600 kg frischen, hochwertigen Speisefisch pro Cube und Jahr – mit sterilem, zu 99% geschlossenem Kreislaufsystem ohne Abwasser.",
+    "pricing": {
+      "label": "Gewerbliches B2B-Betriebsleasing",
+      "price": "ab €499",
+      "suffix": "/ Monat netto (zzgl. USt.)",
+      "depositStrong": "1.000 € Sicherheitskaution",
+      "depositText": "bei verbindlicher Auftragsbestätigung."
+    },
+    "primaryButtonText": "Cubes konfigurieren & reservieren",
+    "trust": [
+      { "icon": "verified", "label": "CE Zertifiziert" },
+      { "icon": "sensors", "label": "24/7 IoT Sensorik" },
+      { "icon": "ac_unit", "label": "-25°C bis +40°C" },
+      { "icon": "water", "label": "99% Bio-Recirc" }
+    ],
+    "card": {
+      "eyebrow": "MODEL PRO — INDUSTRIE-AUSFÜHRUNG",
+      "status": "RESERVIERBAR",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDbN-CYdgUjb34G_arSLZU7Y0smQmrTyk0uHt-8sgqhwLZZ41vyVSM5NBcDPMdtZ3twhy9Qiu9H-rCsvro3H5m-E-4cDRIV3lCACsrUNQscPmK_oJNuqZiBx-7oq62xGsIyUMZNycl2kKEtS2wdkv-BbkowgS5ak94IFsfwEaWTi6rBWJUEL9-uihFckYYcUagHbEI4r07tmomf3McyXJx_6xmcbGq9zt1ESxOpwYct9QxEkVvQ_nLV8w",
+      "imageAlt": "Hochtechnologischer industrieller Aquacube Model Pro Tank mit integrierter transparenter Beobachtungskuppel, elegantem Titan-Gehäuse, Biofilter-Verkleidung, automatischer Fütterungsklappe und digitalem Telemetrie-Display.",
+      "dimensions": { "length": "4.0m", "width": "2.0m", "height": "1.41m" },
+      "stats": [
+        { "value": "3 m³", "label": "Tankvolumen", "highlight": false },
+        { "value": "4×", "label": "Zyklen / Jahr", "highlight": true },
+        { "value": "600 kg", "label": "Ertrag / Cube", "highlight": false }
+      ]
+    }
   },
-  "productShowcase": {
-    "title": "Choose Your Aquacubes",
-    "subtitle": "Start with one and grow as you need.",
+  "delivery": {
+    "label": "Aktive Liefer- & Servicezone mit Komplett-Montage",
+    "regions": "Deutschland · Dänemark · Schweden · Norwegen · Schweiz",
+    "description": "Schlüsselfertige Lieferung, Einbringung, Bio-System-Impfung & quartalsweise Wartung vor Ort inklusive.",
+    "buttonText": "Andere Regionen anfragen"
+  },
+  "pricing": {
+    "eyebrow": "Verbindliche B2B-Konditionen",
+    "title": "Wählen Sie Ihre modularen Aquacubes",
+    "subtitle": "Starten Sie mit einem einzelnen Testwürfel oder skalieren Sie sofort zur profitablen Micro-Farm mit bis zu 6.000 kg Jahresertrag. Alle Preise rein netto zzgl. gesetzl. MwSt.",
     "plans": [
       {
         "id": "starter",
         "name": "Starter",
-        "tagline": "One cube. One harvest. Proof.",
-        "bestFor": "Restaurants & farmers testing first harvest",
+        "eyebrow": "Proof of Concept",
+        "sizeBadge": "1-Cube-System",
+        "description": "Optimal für Restaurants, Gastrobetriebe und landwirtschaftliche Erprobung des ersten Zuchtzyklus.",
         "price": "€699",
-        "priceSuffix": "/mo/aquacubes",
-        "terms": "6-months minimum · 1 cube · 1 harvest cycle",
-        "description": "Serve your own fish within one season — and grow to Micro-Farm.",
-        "buttonText": "Order Starter"
+        "priceSuffix": "/ Monat / Cube",
+        "terms": "Netto zzgl. 19% MwSt. · 6 Monate Mindestlaufzeit",
+        "features": [
+          { "icon": "check_circle", "strong": "1 Ernte-Testzyklus", "text": "(≈ 150 kg Ernte je Zyklus)" },
+          { "icon": "check_circle", "text": "In-House Biofilter-Starterkultur & Basispaket Futter" },
+          { "icon": "check_circle", "text": "Vollständige IoT-Sensorsuite (DO, pH, Temp, Trübung)" },
+          { "icon": "check_circle", "text": "Aquacubes Cloud iOS / Android Lizenz (1 Admin)" },
+          { "icon": "schedule", "muted": true, "text": "Upgrade-Option auf Micro-Farm unter Anrechnung" }
+        ],
+        "buttonText": "Starter Test-Einheit reservieren",
+        "footnote": "Einmalige Reservierung: 1.000 € netto"
       },
       {
         "id": "micro-farms",
         "name": "Micro-Farms",
-        "tagline": "10 cubes farm. Revenue in a year.",
-        "bestFor": "Distributors, retailers & hospitality groups",
+        "eyebrow": "Kommerzielle Zuchtfarm",
+        "sizeBadge": "10 Cubes Cluster",
+        "badge": "Meistreserviert · Empfohlener Business-Case",
+        "description": "Schlüsselfertige, ganzjährige Eigenproduktion für Großhändler, Hotels, LEH und Fischereigenossenschaften.",
         "price": "€499",
-        "priceSuffix": "/mo/aquacubes",
-        "terms": "24-months minimum · 10 cubes · up to 8 harvest cycle",
-        "description": "A year-round, traceable local supply your business can grow on.",
-        "buttonText": "Reserve Micro-Farm",
-        "badge": "Most Reserved"
+        "priceSuffix": "/ Monat / Cube",
+        "terms": "Gesamt: €4.990 / Monat netto · 24 Monate Leasingvertrag",
+        "features": [
+          { "icon": "verified", "strong": "≈ 6.000 kg Jahresertrag", "text": "(bis zu 8 Erntezyklen gesamt)" },
+          { "icon": "verified", "text": "Prio-Speditionszustellung & Vor-Ort Inbetriebnahme" },
+          { "icon": "verified", "text": "Automatisierte Fütterungsrobotik mit Großsilo-Anbindung" },
+          { "icon": "verified", "text": "Fester biologischer Account Manager der Moina GmbH" },
+          { "icon": "verified", "text": "Vor-Ort Ersatzteilkit & 4h Remote-Notfall-Monitoring" }
+        ],
+        "buttonText": "10-Cube Micro-Farm verbindlich vormerken",
+        "footnote": "✓ Jetzt nur 10.000 € zahlen"
       },
       {
         "id": "enterprise",
         "name": "Enterprise",
-        "tagline": "Custom contract. Dedicated Team.",
-        "bestFor": "Municipalities, corporates, retail chains & food service",
+        "eyebrow": "Industrie & Kommunen",
+        "sizeBadge": "Ab 25+ Cubes",
+        "description": "Individuelle Ernährungssouveränität, Agrarinfrastruktur und industrielle RAS-Großanlagen.",
         "price": "Custom",
-        "priceSuffix": "",
-        "terms": "custom contract",
-        "description": "Food sovereignty as infrastructure — sized to your operation.",
-        "buttonText": "Contact Sales"
+        "priceSuffix": "Rahmenvertrag",
+        "terms": "Staffelrabatte, Capex- oder Master-Lease Modelle nach Maß",
+        "features": [
+          { "icon": "check_circle", "text": "Modulare Skalierung bis 100+ Cubes (>60 Tonnen/Jahr)" },
+          { "icon": "check_circle", "text": "Individuelles Biosicherheits-Audit & Umweltprüfung" },
+          { "icon": "check_circle", "text": "Dediziertes Vor-Ort Wartungsteam mit 24/7 SLA" },
+          { "icon": "check_circle", "text": "Integration in bestehende Gebäudeleittechnik & ERP" }
+        ],
+        "buttonText": "Enterprise-Beratung kontaktieren",
+        "contactHref": "mailto:sales@aquacubes.fish?subject=Enterprise%20Aquacubes%20Inquiry",
+        "footnote": ""
       }
     ],
-    "earlyBirdNote": "Early-Bird reservation gets free merch and dedicated support for 1 year* (the first 10 reservations)",
-    "contactTeam": {
-      "label": "Contact Team:",
-      "value": "sales@aquacubes.fish"
-    },
-    "contactSales": {
-      "label": "Contact Sales:",
-      "value": "+49 15781371194"
-    },
-    "orderingNotes": {
-      "title": "Ordering Notes:",
-      "paragraphs": [
-        "Before you order Aquacubes products, please read this ordering precautions carefully.",
-        "When you have order our products, you are agreeing to these precautions.",
-        "※ This booking order represents an intention. One month payment is due at order. Monthly subscription starts after delivery.",
-        "※ After you submit your order, we will contact you within 5 working days to confirm your purchase intention. Please make sure that the information you provide is accurate, especially for the email address.",
-        "※ You can contact us directly to obtain more detailed information.",
-        "☆ By partnering with us or buying large quantities of our products, you can have privileges and discounts.",
-        "If we do not contact you within the time limit, please submit the order again or contact us on the phone."
-      ]
-    },
-    "delivery": {
-      "label": "Now delivering:",
-      "regions": "Germany · Denmark · Sweden · Norway · Switzerland",
-      "description": "Delivery, installation & service included in these regions. Somewhere else on the planet? International orders are handled personally, case by case.",
-      "buttonText": "Contact for other regions"
-    },
-    "technology": {
-      "eyebrow": "Our Technology",
-      "title": "Bold in Design",
-      "image": "/25e.png",
-      "description": "Aquacubes is futuristic in its design and technology, yet superior in its functionality and reliability.",
-      "specs": [
-        { "label": "Footprint", "value": "4m x 2m x 1.4m ≈ 3 m³ per cube" },
-        { "label": "Yield", "value": "≈ 600 kg fish / cube / year" },
-        { "label": "Harvest cycles", "value": "4 × per year" },
-        { "label": "Water use", "value": "99% recirculated, closed loop" },
-        { "label": "Filtration", "value": "In-house biofilter + mechanical, energy-optimized" },
-        { "label": "Control", "value": "App + IoT telemetry, OTA updates" },
-        { "label": "Operation", "value": "Fully autonomous, human-supervised" },
-        { "label": "Installation", "value": "Indoor & outdoor, insulated for Nordic winters" }
-      ]
-    },
-    "valueProps": ["Convenience", "Safety", "Efficiency", "Design", "Fully Autonomous (Human Supervised)"],
-    "exploreFeatures": {
-      "eyebrow": "Meet Model Pro",
-      "title": "Explore the Features.",
-      "video": "/pomelli_creative_video_9_16_0608 (1).mp4",
-      "description": "Every cube collectively make a micro-farm. A network of micro-farms together feed cities without emptying the sea. We built:",
-      "bullets": [
-        "Robot that grows fish",
-        "Feed cities without emptying the sea",
-        "Clean fish in every cycle.",
-        "Closed-loop recirculation.",
-        "Feeding, monitoring, harvesting. The cube does the work",
-        "Run it from your phone. Continous OTA update"
-      ],
-      "closing": "This makes it easier than ever for people to have access into the fish farming business."
+    "earlyBird": {
+      "title": "Frühbucher-Kontingent: Die ersten 10 Vorbestellungen",
+      "description": "Erhalten 1 Jahr kostenloses Enterprise-IoT-Tracking & ein komplettes Ersatzteil-Verschleißset im Wert von €1.850 netto kostenfrei beigelegt.",
+      "availability": "Noch 4 Einheiten verfügbar"
     }
   },
-  "whyAquacubes": {
-    "features": [
+  "calculator": {
+    "eyebrow": "Wirtschaftlichkeits-Simulator",
+    "title": "Interaktiver Ertrags- & ROI-Kalkulator",
+    "subtitle": "Berechnen Sie Ihren prognostizierten Fischertrag, Großhandelswert und Flächenbedarf auf Basis realer Zyklen.",
+    "species": [
+      { "label": "Seesaibling (Premium-Gastro ~€28 / kg)", "pricePerKg": 28 },
+      { "label": "Regenbogenforelle (~€19 / kg)", "pricePerKg": 19 },
+      { "label": "Wolfsbarsch (~€34 / kg)", "pricePerKg": 34 },
+      { "label": "Nil-Tilapia / Bio-Gastro (~€15 / kg)", "pricePerKg": 15 }
+    ],
+    "speciesNote": "*Netto-Großhandelspreise im DACH/Nordic-Raum bei regionaler Lebend- oder Frischfrisch-Lieferung.",
+    "buttonText": "Diese Konfiguration jetzt reservieren"
+  },
+  "technology": {
+    "eyebrow": "Unsere Technologie & Maschinenbau",
+    "title": "Mutig im Design. Kompromisslos in der Zuverlässigkeit.",
+    "description": "Modernste maritime Biotechnologie aus Schleswig-Holstein. Gebaut für raue mitteleuropäische und skandinavische Winterbedingungen.",
+    "tableTitle": "Technische Spezifikationsmatrix (DIN EN 16738)",
+    "specs": [
+      { "label": "Abmessungen (Grundfläche)", "value": "4.0m (L) × 2.0m (B) × 1.41m (H)" },
+      { "label": "Nutzbares Tankvolumen", "value": "≈ 3.000 Liter (3 m³)" },
+      { "label": "Jahresgesamtertrag pro Cube", "value": "≈ 600 kg Speisefisch / Jahr", "tone": "primary" },
+      { "label": "Erntezyklen", "value": "4 Zyklen / Kalenderjahr" },
+      { "label": "Wasserrückführung", "value": "99% geschlossener Kreislauf (Zero-Discharge)", "tone": "green" },
+      { "label": "Biologische & mech. Filterung", "value": "Hauseigener Biofilter + Feinpartikel-Mikrosieb" },
+      { "label": "Sensorik & Automation", "value": "Autonom: O₂, pH, Redox, Leitfähigkeit, Temp." },
+      { "label": "Betriebsmodus", "value": "Vollautonom (Menschlich supervidiert)" },
+      { "label": "Einsatzumgebung", "value": "Halle oder Freiland (-25°C bis +40°C)" }
+    ],
+    "calculatorLink": "Berechnen Sie, wie viele Cubes Sie für Ihren Bedarf benötigen"
+  },
+  "features": {
+    "eyebrow": "Systemarchitektur im Detail",
+    "title": "Die Features im Überblick. Die Zukunft urbaner Fischzucht.",
+    "subtitle": "Jeder Cube fungiert als eigenständige bio-technische Einheit. Im Verbund bilden sie widerstandsfähige Micro-Farms, die Ballungsräume lokal versorgen, ohne die Weltmeere zu überfischen.",
+    "items": [
       {
-        "id": "fish",
-        "title": "Sustainable aquacubes",
-        "description": "Resource-efficient, environmentally friendly, and future-proof.",
-        "iconColor": "#deedfb"
+        "icon": "smart_toy",
+        "tone": "cyan",
+        "title": "Roboter, die Fische züchten",
+        "description": "Fütterung, Überwachung, Entsorgung und Ausdünnung erfolgen nach parametrierten Zuchtalgorithmen. Reduziert manuelle Arbeitszeit um über 85%.",
+        "footer": "Autonome Aktorik & Sensorik"
       },
       {
-        "id": "shield",
-        "title": "Healthy fish",
-        "description": "Raised without antibiotics or harmful chemicals for the highest quality.",
-        "iconColor": "#deedfb"
+        "icon": "eco",
+        "tone": "green",
+        "title": "Frei von Antibiotika & Chemie",
+        "description": "Durch streng geschlossene Biosegregation und UV-C-Entkeimung wachsen Speisefische rückstandsfrei in Quellwasserqualität auf – ohne Mikroplastik oder Schwermetalle.",
+        "footer": "Zertifizierte Lebensmittelreinheit"
       },
       {
-        "id": "cpu",
-        "title": "Modern technology",
-        "description": "AI-powered monitoring and automation for maximum efficiency.",
-        "iconColor": "#38b6ff"
+        "icon": "phone_iphone",
+        "tone": "navy",
+        "title": "Volle Steuerung via App",
+        "description": "Echtzeit-Telemetrie auf Ihrem Smartphone oder Tablet. Kontinuierliche OTA-Firmwareupdates optimieren Zuchtbiologie und Energieeffizienz vollautomatisch.",
+        "footer": "Cloud B2B Monitoring SLA"
+      }
+    ]
+  },
+  "process": {
+    "title": "Verbindlicher Bestell- und Bereitstellungsprozess",
+    "subtitle": "Transparente Schritte vom ersten Intent-Deposit bis zur bezugsfertigen Inbetriebnahme.",
+    "steps": [
+      {
+        "title": "Reservierungsabsicht",
+        "description": "Gewerbliche Vormerkung mit Hinterlegung der 1.000 € Kaution zur Sicherung des Produktionsslots.",
+        "note": "Rückzahlbar bis zur finalen Auftragsbestätigung."
+      },
+      {
+        "title": "B2B-Validierung",
+        "description": "Prüfung Ihrer Gewerbedaten (USt-IdNr.) sowie telefonische Vor-Ort-Machbarkeitsanalyse durch unsere Ingenieure innerhalb von 5 Werktagen.",
+        "note": "Gewerbeprüfung gem. § 14 BGB."
+      },
+      {
+        "title": "Leasingvertrag (AGB)",
+        "description": "Zusendung des rechtssicheren Haupt-Leasingvertrags via DocuSign inklusive garantierter SLAs, Lieferfristen und Serviceplänen.",
+        "note": "Rechtsverbindlicher Vertragsabschluss."
+      },
+      {
+        "title": "Lieferung & Start",
+        "description": "Speditionslieferung, Wasseranschluss, biologische Systemanimpfung und Schulung Ihres Personals. Die monatliche Rate startet erst nach erfolgreicher Abnahme!",
+        "note": "Inklusive Vor-Ort Abnahmeprotokoll."
       }
     ],
-    "inspireTitle": "Are You Inspired?",
-    "inspireText": "Join us in redefining the future of food. We're looking for visionaries, engineers, and ocean advocates who believe technology can heal our planet.",
-    "primaryButtonText": "Invest in Aquacubes",
-    "secondaryButtonText": "View Careers"
+    "shopBanner": {
+      "eyebrow": "Schnellster Weg zum Cube",
+      "title": "Direkt im AquaCubes Shop reservieren",
+      "buttonText": "Zum Shop"
+    }
+  },
+  "contactDesk": {
+    "title": "Sprechen Sie direkt mit unserem Team.",
+    "phone": {
+      "label": "Vertriebs-Hotline",
+      "value": "+49 15781371194",
+      "href": "tel:+4915781371194",
+      "note": "Mo - Fr: 09:00 – 18:00 Uhr CET"
+    },
+    "email": {
+      "label": "Vertragsmanagement",
+      "value": "sales@aquacubes.fish",
+      "href": "mailto:sales@aquacubes.fish",
+      "note": "Reaktionszeit < 24 Stunden"
+    },
+    "whatsapp": {
+      "title": "WhatsApp B2B Express-Kanal",
+      "description": "Für Eil-Rückfragen zu Lieferterminen und Transportdimensionen steht Ihnen unser Servicedesk via WhatsApp zur Verfügung.",
+      "buttonText": "WhatsApp Chat starten (+49 15781371194)",
+      "href": "https://wa.me/4915781371194",
+      "location": "Firmensitz: 25761 Büsum",
+      "park": "Biotechnologiepark Nord"
+    }
+  },
+  "supporters": {
+    "title": "Gefördert & unterstützt durch",
+    "logos": [
+      { "src": "/logos/plugandplay.png", "alt": "Plug and Play Accelerator" },
+      { "src": "/logos/german-accelerator.png", "alt": "German Accelerator" },
+      { "src": "/logos/eit-food.png", "alt": "EIT Food" },
+      { "src": "/logos/exist.png", "alt": "EXIST – Existenzgründungen aus der Wissenschaft" },
+      { "src": "/logos/smart-green.png", "alt": "Smart Green Startup Accelerator" }
+    ]
   },
   "newsletter": {
-    "title": "Stay Connected",
-    "description": "Sign up for updates to get the latest on Aquacubes, our technology, and where we're headed next.",
-    "placeholder": "Enter your email",
-    "buttonText": "Subscribe",
-    "processingText": "Subscribing...",
-    "errorMessage": "Something went wrong. Please try again.",
-    "successMessage": "Success! Welcome to the community."
+    "eyebrow": "Updates",
+    "title": "Bleiben Sie auf dem Laufenden",
+    "description": "Erhalten Sie Neuigkeiten zu Aquacubes, unserer Technologie und den nächsten Auslieferungen.",
+    "placeholder": "Geschäftliche E-Mail-Adresse",
+    "buttonText": "Anmelden",
+    "processingText": "Wird angemeldet...",
+    "errorMessage": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "successMessage": "Vielen Dank! Sie sind jetzt angemeldet."
   }
 }
-

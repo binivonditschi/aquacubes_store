@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { createClient } from "@/lib/supabase/client";
+import Icon from "@/components/b2b/Icon";
 import content from "@/content/home.json";
 
 const { newsletter } = content;
@@ -49,53 +50,54 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="section-padding border-b border-black/10 bg-white shadow-[0_10px_12px_-10px_rgba(0,0,0,0.15)]">
+    <section className="bg-surface px-margin py-space-2xl md:px-margin-tablet lg:px-margin-desktop">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-[600px] px-6 text-center lg:px-10"
+        className="mx-auto flex max-w-4xl flex-col items-center gap-space-lg rounded-2xl bg-surface-canvas p-space-lg shadow-sm md:flex-row md:p-space-xl"
       >
-        <h2 className="mb-4 font-heading text-2xl font-bold uppercase text-black sm:text-3xl">{newsletter.title}</h2>
-        <p className="mb-8 text-body text-gray-500">{newsletter.description}</p>
+        <div className="flex-1 text-center md:text-left">
+          <div className="mb-space-xs text-label-technical font-semibold uppercase text-primary">{newsletter.eyebrow}</div>
+          <h2 className="mb-space-xs text-headline-lg text-surface-navy">{newsletter.title}</h2>
+          <p className="text-body-md text-steel">{newsletter.description}</p>
+        </div>
 
-        {submitted ? (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4 }}
-            className="flex items-center justify-center gap-3 rounded-full bg-[#38b6ff]/10 py-4"
-          >
-            <svg className="h-6 w-6 text-[#38b6ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            <span className="font-body text-sm font-medium text-[#38b6ff]">{newsletter.successMessage}</span>
-          </motion.div>
-        ) : (
-          <>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={newsletter.placeholder}
-                required
-                className="flex-1 rounded-full border-0 bg-gray-200 px-5 py-3 font-body text-sm text-navy placeholder-gray-500 outline-none transition-all duration-300 focus:ring-2 focus:ring-[#38b6ff]/50"
-              />
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                disabled={loading}
-                className="rounded-full bg-[#38b6ff] px-8 py-3 font-body text-sm font-medium text-white transition-colors hover:brightness-95 disabled:opacity-60"
-              >
-                {loading ? newsletter.processingText : newsletter.buttonText}
-              </motion.button>
-            </form>
-            {error && <p className="mt-3 text-sm text-error">{error}</p>}
-          </>
-        )}
+        <div className="w-full md:w-auto md:min-w-[360px]">
+          {submitted ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              className="flex items-center justify-center gap-2 rounded bg-compliance-green-bg px-space-md py-3.5 text-body-md font-semibold text-compliance-green"
+            >
+              <Icon name="check_circle" size={20} />
+              {newsletter.successMessage}
+            </motion.div>
+          ) : (
+            <>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-space-sm sm:flex-row">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={newsletter.placeholder}
+                  required
+                  className="flex-1 rounded bg-surface-subtle px-space-md py-3 text-body-md text-surface-navy shadow-sm outline-none placeholder:text-steel focus:ring-2 focus:ring-primary/40"
+                />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="rounded bg-primary-container px-space-lg py-3 text-body-md font-bold text-on-primary shadow-md transition-colors hover:bg-primary disabled:opacity-60"
+                >
+                  {loading ? newsletter.processingText : newsletter.buttonText}
+                </button>
+              </form>
+              {error && <p className="mt-2 text-body-sm text-error">{error}</p>}
+            </>
+          )}
+        </div>
       </motion.div>
     </section>
   );

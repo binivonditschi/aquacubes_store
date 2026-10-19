@@ -1,0 +1,22 @@
+{
+  "title": "About Us",
+  "subtitle": "Aquacubes – eine Marke der Moina GmbH · Büsum, Schleswig-Holstein",
+  "sections": [
+    {
+      "heading": "Wer wir sind",
+      "html": "<p>Aquacubes ist eine Marke der <strong>Moina GmbH</strong> mit Sitz in Büsum an der schleswig-holsteinischen Nordseeküste. Wir entwickeln und bauen vollautonome Kreislaufanlagen (RAS) für die gewerbliche Fischzucht – kompakt, planbar und ohne Abwasser.</p>"
+    },
+    {
+      "heading": "Unsere Mission",
+      "html": "<p>Ernährungssouveränität durch lokale, frische Fischproduktion: Ein einzelner Aquacube liefert bis zu <strong>600 kg Speisefisch pro Jahr</strong> auf nur 8 m² Grundfläche – mit 99 % geschlossenem Wasserkreislauf, ganz ohne Antibiotika und ohne die Weltmeere zu überfischen.</p>"
+    },
+    {
+      "heading": "Technologie aus Dithmarschen",
+      "html": "<ul><li>Vollautonome Aktorik &amp; Sensorik (O₂, pH, Redox, Temperatur) mit 24/7-IoT-Telemetrie</li><li>4 Erntezyklen pro Jahr, FCR &lt; 1,15 dank präziser Fütterungsrobotik</li><li>Entwickelt und gefertigt in Deutschland – gebaut für mitteleuropäische und skandinavische Bedingungen (-25 °C bis +40 °C)</li></ul>"
+    },
+    {
+      "heading": "Kontakt",
+      "html": "<p>Moina GmbH · Hafentörn 3, 25761 Büsum, Germany<br/>Phone: +49 15781371194 · Email: sales@aquacubes.fish</p>"
+    }
+  ]
+}

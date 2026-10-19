@@ -9,13 +9,14 @@ import { Toaster } from "@/components/ui/sonner";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import RegionRestrictionModal from "./RegionRestrictionModal";
+import CookieConsent from "./CookieConsent";
 
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
   return (
     <motion.div
-      className="fixed left-0 right-0 top-0 z-[100] h-[3px] origin-left bg-teal"
+      className="fixed left-0 right-0 top-0 z-[100] h-[3px] origin-left bg-accent-aquamarine"
       style={{ scaleX }}
     />
   );
@@ -40,6 +41,7 @@ function PageTransition({ children }: { children: ReactNode }) {
 
 export default function SiteChrome({ children }: { children: ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
+  const isAdmin = usePathname().startsWith("/admin");
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -61,15 +63,25 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  if (isAdmin) {
+    return (
+      <>
+        {children}
+        <Toaster />
+      </>
+    );
+  }
+
   return (
     <div className="relative flex min-h-[100dvh] flex-col">
       <ScrollProgress />
       <Navbar />
       <RegionRestrictionModal />
-      <main className="flex-1">
+      <main className="flex-1 pt-16">
         <PageTransition>{children}</PageTransition>
       </main>
       <Footer />
+      <CookieConsent />
       <Toaster />
     </div>
   );

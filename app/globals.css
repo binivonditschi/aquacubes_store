@@ -6,9 +6,87 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-poppins);
-  --font-heading: var(--font-poppins);
-  --font-mono: var(--font-poppins);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-inter);
+  --font-mono: var(--font-inter);
+
+  /* ── B2B design system (ported from the b2bfinal Tailwind config) ── */
+  --color-surface: #faf8ff;
+  --color-surface-canvas: #ffffff;
+  --color-surface-subtle: #f8fafc;
+  --color-surface-navy: #0b192c;
+  --color-surface-navy-elevated: #0f2027;
+  --color-surface-container: #eaedff;
+  --color-surface-container-low: #f2f3ff;
+  --color-surface-container-high: #e2e7ff;
+  --color-on-surface: #131b2e;
+  --color-on-surface-variant: #3c4946;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #00a896;
+  --color-primary-fixed: #79f7e3;
+  --color-primary-fixed-dim: #59dbc7;
+  --color-tertiary: #006876;
+  --color-accent-aquamarine: #00c49f;
+  --color-accent-cyan-light: #deedfb;
+  --color-secondary-container: #d6e3fe;
+  --color-secondary-fixed-dim: #bac7e1;
+  --color-steel: #525f75; /* "secondary" text color in the b2b config */
+  --color-compliance-green: #15803d;
+  --color-compliance-green-bg: #f0fdf4;
+  --color-border-subtle: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2.5rem;
+  --spacing-space-2xl: 4rem;
+  --spacing-space-3xl: 6rem;
+  --spacing-margin: 1rem;
+  --spacing-margin-tablet: 2rem;
+  --spacing-margin-desktop: 3rem;
+
+  --text-display-hero: 48px;
+  --text-display-hero--line-height: 56px;
+  --text-display-hero--letter-spacing: -0.03em;
+  --text-display-hero--font-weight: 800;
+  --text-display-hero-mobile: 32px;
+  --text-display-hero-mobile--line-height: 40px;
+  --text-display-hero-mobile--letter-spacing: -0.02em;
+  --text-display-hero-mobile--font-weight: 800;
+  --text-headline-xl: 36px;
+  --text-headline-xl--line-height: 44px;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-xl--font-weight: 700;
+  --text-headline-xl-mobile: 26px;
+  --text-headline-xl-mobile--line-height: 34px;
+  --text-headline-xl-mobile--letter-spacing: -0.01em;
+  --text-headline-xl-mobile--font-weight: 700;
+  --text-headline-lg: 24px;
+  --text-headline-lg--line-height: 32px;
+  --text-headline-lg--letter-spacing: -0.015em;
+  --text-headline-lg--font-weight: 700;
+  --text-headline-md: 18px;
+  --text-headline-md--line-height: 26px;
+  --text-headline-md--letter-spacing: -0.01em;
+  --text-headline-md--font-weight: 600;
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 26px;
+  --text-body-md: 14px;
+  --text-body-md--line-height: 22px;
+  --text-body-sm: 12px;
+  --text-body-sm--line-height: 18px;
+  --text-label-technical: 11px;
+  --text-label-technical--line-height: 16px;
+  --text-label-technical--letter-spacing: 0.08em;
+  --text-label-technical--font-weight: 600;
+  --text-label-numeric-lg: 32px;
+  --text-label-numeric-lg--line-height: 36px;
+  --text-label-numeric-lg--letter-spacing: -0.02em;
+  --text-label-numeric-lg--font-weight: 700;
+  --text-label-legal: 11px;
+  --text-label-legal--line-height: 15px;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -83,39 +161,40 @@
   --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
+/* Legacy token names (used by admin, 404 and older pages) mapped onto the b2b palette. */
 :root {
-  --navy: #0A2540;
-  --navy-light: #103054;
-  --navy-lighter: #163868;
-  --teal: #2B5E8D;
-  --teal-dark: #1E4666;
-  --teal-glow: rgba(43, 94, 141, 0.18);
-  --coral: #F7CB2D;
-  --coral-dark: #D4A916;
-  --off-white: #F7F9FC;
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  --navy: #0B192C;
+  --navy-light: #0F2027;
+  --navy-lighter: #1E293B;
+  --teal: #006B5F;
+  --teal-dark: #005047;
+  --teal-glow: rgba(0, 107, 95, 0.18);
+  --coral: #00C49F;
+  --coral-dark: #00A896;
+  --off-white: #F8FAFC;
+  --success: #15803D;
+  --warning: #B45309;
+  --error: #BA1A1A;
 
-  --background: #FFFFFF;
-  --foreground: #0A2540;
+  --background: #FAF8FF;
+  --foreground: #131B2E;
   --card: #FFFFFF;
-  --card-foreground: #0A2540;
+  --card-foreground: #131B2E;
   --popover: #FFFFFF;
-  --popover-foreground: #0A2540;
-  --primary: #2B5E8D;
+  --popover-foreground: #131B2E;
+  --primary: #006B5F;
   --primary-foreground: #FFFFFF;
-  --secondary: #F1F4F8;
-  --secondary-foreground: #0A2540;
-  --muted: #F1F4F8;
-  --muted-foreground: #64748B;
-  --accent: #2B5E8D;
-  --accent-foreground: #FFFFFF;
-  --destructive: #EF4444;
-  --destructive-foreground: #FAFAFA;
+  --secondary: #F8FAFC;
+  --secondary-foreground: #0B192C;
+  --muted: #F8FAFC;
+  --muted-foreground: #525F75;
+  --accent: #F2F3FF;
+  --accent-foreground: #131B2E;
+  --destructive: #BA1A1A;
+  --destructive-foreground: #FFFFFF;
   --border: #E2E8F0;
   --input: #E2E8F0;
-  --ring: #2B5E8D;
+  --ring: #006B5F;
   --radius: 0.5rem;
 }
 
@@ -171,7 +250,7 @@
   }
 
   ::selection {
-    background: rgba(43, 94, 141, 0.25);
+    background: rgba(0, 196, 159, 0.25);
     color: var(--navy);
   }
 
@@ -205,6 +284,41 @@
   .animate-shimmer {
     animation: shimmer 1.5s infinite;
   }
+}
+
+/* Rich-text body of the legal / info pages (same rules as the b2b `.legal` class). */
+.legal h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0b192c;
+  margin: 1.75rem 0 0.5rem;
+}
+.legal p,
+.legal li {
+  color: #3c4946;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 0.5rem;
+}
+.legal ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.legal a {
+  color: var(--teal);
+  text-decoration: underline;
+}
+.legal mark {
+  background: #fef08a;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  line-height: 1;
+  user-select: none;
 }
 
 img {

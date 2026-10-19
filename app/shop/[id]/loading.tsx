@@ -1,25 +1,21 @@
 export default function Loading() {
   return (
-    <div className="animate-pulse bg-off-white">
-      <section className="pb-20 pt-[120px]">
-        <div className="mx-auto max-w-content px-6 lg:px-10">
-          <div className="mb-8 h-4 w-40 rounded bg-gray-100" />
-
-          <div className="grid items-start gap-12 lg:grid-cols-[55%_45%]">
-            <div className="rounded-2xl bg-slate-50 p-8">
-              <div className="mx-auto aspect-square w-full max-w-[380px] rounded-xl bg-gray-100" />
-            </div>
-
-            <div>
-              <div className="mb-3 h-3 w-16 rounded bg-gray-100" />
-              <div className="mb-4 h-10 w-2/3 rounded bg-gray-100" />
-              <div className="mb-6 h-6 w-24 rounded bg-gray-100" />
-              <div className="mb-8 h-16 w-full rounded bg-gray-100" />
-              <div className="h-12 w-full rounded-button bg-gray-100" />
-            </div>
+    <div className="animate-pulse bg-surface-subtle px-margin py-space-2xl md:px-margin-tablet lg:px-margin-desktop">
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-space-lg h-4 w-40 rounded bg-surface-container" />
+        <div className="grid grid-cols-1 gap-space-lg lg:grid-cols-12">
+          <div className="rounded-2xl bg-surface-canvas p-space-xl shadow-sm lg:col-span-7">
+            <div className="mb-3 h-3 w-24 rounded bg-surface-container" />
+            <div className="mb-4 h-10 w-2/3 rounded bg-surface-container" />
+            <div className="mb-8 h-16 w-full rounded bg-surface-container" />
+            <div className="h-32 w-full rounded bg-surface-container" />
+          </div>
+          <div className="rounded-2xl bg-surface-canvas p-space-xl shadow-sm lg:col-span-5">
+            <div className="mb-6 h-20 w-full rounded bg-surface-container" />
+            <div className="h-12 w-full rounded bg-surface-container" />
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

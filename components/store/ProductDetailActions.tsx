@@ -3,20 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import { Minus, Plus, ShoppingCart, Truck, ShieldCheck, Clock } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
+import Icon from "@/components/b2b/Icon";
 import { useCart } from "@/store/useCart";
 import { usePriceVisible } from "@/lib/usePriceVisible";
 import { createClient } from "@/lib/supabase/client";
 import type { Product } from "@/lib/types";
+import content from "@/content/shop.json";
 
-export default function ProductDetailActions({
-  product,
-  colorClassName = "bg-teal hover:bg-teal-dark",
-}: {
-  product: Product;
-  colorClassName?: string;
-}) {
+export default function ProductDetailActions({ product }: { product: Product }) {
   const isAddOn = product.category === "Add-on";
   const [quantity, setQuantity] = useState(1);
   const [checking, setChecking] = useState(false);
@@ -46,81 +41,46 @@ export default function ProductDetailActions({
   if (!isAllowedCountry) {
     return (
       <div>
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Link
-            href="/contact"
-            className="block w-full bg-coral py-3.5 text-center font-body text-sm font-medium text-navy transition-colors hover:bg-coral-dark"
-          >
-            Contact Sales
-          </Link>
-        </motion.div>
-
-        <div className="mt-4 flex flex-col gap-3 border-t border-gray-100 pt-6 text-sm text-gray-500">
-          <div className="flex items-center gap-2">
-            <Truck className="h-4 w-4 text-teal" />
-            Free shipping on all systems
-          </div>
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-teal" />
-            2-year warranty included
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-teal" />
-            30-day money-back guarantee
-          </div>
-        </div>
+        <p className="mb-space-md text-body-sm text-steel">{content.detail.regionNotice}</p>
+        <Link
+          href="/kontakt"
+          className="block w-full rounded bg-surface-navy py-3.5 text-center text-body-md font-bold text-on-primary shadow-sm transition-colors hover:bg-surface-navy-elevated"
+        >
+          {content.detail.contactButtonText}
+        </Link>
       </div>
     );
   }
 
   return (
-    <div>
-      <div className="mb-6 flex items-center gap-4">
-        {isAddOn && (
-          <div className="flex items-center border border-gray-100">
-            <button
-              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-              aria-label="Decrease quantity"
-              className="p-3 text-gray-500 transition-colors hover:text-navy"
-            >
-              <Minus className="h-4 w-4" />
-            </button>
-            <span className="min-w-[2rem] text-center font-mono text-sm text-navy">{quantity}</span>
-            <button
-              onClick={() => setQuantity((q) => q + 1)}
-              aria-label="Increase quantity"
-              className="p-3 text-gray-500 transition-colors hover:text-navy"
-            >
-              <Plus className="h-4 w-4" />
-            </button>
-          </div>
-        )}
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={handleAddToCart}
-          disabled={product.stock <= 0 || checking}
-          className={`flex flex-1 items-center justify-center gap-2 py-3.5 font-body text-sm font-medium text-white transition-colors disabled:opacity-50 ${colorClassName}`}
-        >
-          <ShoppingCart className="h-4 w-4" />
-          {product.stock <= 0 ? "Out of Stock" : "Order Now"}
-        </motion.button>
-      </div>
-
-      <div className="flex flex-col gap-3 border-t border-gray-100 pt-6 text-sm text-gray-500">
-        <div className="flex items-center gap-2">
-          <Truck className="h-4 w-4 text-teal" />
-          Free shipping on all systems
+    <div className="flex items-center gap-space-sm">
+      {isAddOn && (
+        <div className="flex items-center rounded bg-surface-subtle">
+          <button
+            onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+            aria-label="Menge verringern"
+            className="p-3 text-steel transition-colors hover:text-surface-navy"
+          >
+            <Minus className="h-4 w-4" />
+          </button>
+          <span className="min-w-[2rem] text-center text-body-md text-surface-navy">{quantity}</span>
+          <button
+            onClick={() => setQuantity((q) => q + 1)}
+            aria-label="Menge erhöhen"
+            className="p-3 text-steel transition-colors hover:text-surface-navy"
+          >
+            <Plus className="h-4 w-4" />
+          </button>
         </div>
-        <div className="flex items-center gap-2">
-          <ShieldCheck className="h-4 w-4 text-teal" />
-          2-year warranty included
-        </div>
-        <div className="flex items-center gap-2">
-          <Clock className="h-4 w-4 text-teal" />
-          30-day money-back guarantee
-        </div>
-      </div>
+      )}
+      <button
+        onClick={handleAddToCart}
+        disabled={product.stock <= 0 || checking}
+        className="flex flex-1 items-center justify-center gap-2 rounded bg-primary-container py-3.5 text-body-md font-bold text-on-primary shadow-md transition-colors hover:bg-primary disabled:opacity-50"
+      >
+        <Icon name="shopping_cart_checkout" size={20} />
+        {product.stock <= 0 ? content.detail.outOfStockText : content.detail.orderButtonText}
+      </button>
     </div>
   );
 }

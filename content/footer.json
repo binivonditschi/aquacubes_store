@@ -1,42 +1,57 @@
 {
-  "logo": "/Aquacubes Logo.png",
+  "badges": [
+    { "icon": "verified", "title": "DIN ISO 9001:2015", "text": "Zertifiziertes Qualitätsmanagement" },
+    { "icon": "build_circle", "title": "CE-KONFORMITÄT", "text": "Machinery Directive 2006/42/EC" },
+    { "icon": "engineering", "title": "ENTWICKELT IN DEUTSCHLAND", "text": "Schleswig-Holstein Biotech" },
+    { "icon": "water_drop", "title": "99% GESCHLOSSENER KREISLAUF", "text": "Bio-RAS ohne Abwasser" }
+  ],
+  "brand": "Aquacubes – Eine Marke der Moina GmbH",
+  "companyDetails": "Hafentörn 3, 25761 Büsum, Deutschland · Registergericht: Amtsgericht Pinneberg HRB · USt. ID: DE32 5521 952 · SteuerNr. 18 292 121 39 · Vertreten durch die Geschäftsführung der Moina GmbH. Aufsichtsbehörde: Kreis Dithmarschen Veterinärwesen und Lebensmittelüberwachung.",
+  "legalNotice": {
+    "title": "Gesetzlicher B2B-Hinweis gem. HGB/BGB:",
+    "text": "Alle Angebote, Spezifikationen und Preisangaben richten sich ausschließlich an gewerbliche Abnehmer (Unternehmer i.S.d. § 14 BGB), juristische Personen des öffentlichen Rechts oder öffentlich-rechtliche Sondervermögen. Sämtliche Beträge verstehen sich rein netto in Euro zzgl. gesetzlicher Umsatzsteuer sowie Fracht- und Bereitstellungspauschale. Der verbindliche Reservierungs-, Leasing- oder Kaufvertrag kommt erst durch die schriftliche Auftragsbestätigung durch die Moina GmbH zustande."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "email": "sales@aquacubes.fish",
+    "businessName": "Aquacubes – eine Marke der Moina GmbH",
+    "address": "Hafentörn 3, 25761 Büsum, Germany",
+    "phone": "+49 15781371194",
+    "phoneHref": "tel:+4915781371194",
+    "whatsapp": "Available (Mon-Fri, 10:00 - 17:00 CET)",
+    "whatsappHref": "https://wa.me/4915781371194"
+  },
+  "social": [
+    { "id": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com/company/aquacubesfish" },
+    { "id": "facebook", "label": "Facebook", "href": "https://www.facebook.com/aquacubes2017/" }
+  ],
   "columns": [
     {
       "title": "Info",
       "links": [
-        { "label": "About Us", "href": "/about" },
+        { "label": "About Us", "href": "/ueber-uns" },
         { "label": "Impressum", "href": "/impressum" },
-        { "label": "Blog", "href": "#" },
+        { "label": "Blog", "href": "/blog" },
         { "label": "FAQ", "href": "/faq" },
-        { "label": "Contact us", "href": "/contact" },
-        { "label": "Become a Distributor", "href": "/contact" },
+        { "label": "Contact us", "href": "/kontakt" },
+        { "label": "Become a Distributor", "href": "/distributor" },
         { "label": "Sign In", "href": "/login" }
       ]
     },
     {
       "title": "Service",
       "links": [
-        { "label": "Privacy Policy", "href": "/privacy" },
-        { "label": "About Payment", "href": "#" },
-        { "label": "Shipping Policy", "href": "#" },
-        { "label": "Terms of Service", "href": "/terms" },
-        { "label": "Return & Refund Policy", "href": "#" }
+        { "label": "Privacy Policy", "href": "/datenschutz" },
+        { "label": "About Payment", "href": "/zahlung-lieferung#zahlung" },
+        { "label": "Shipping Policy", "href": "/zahlung-lieferung#lieferung" },
+        { "label": "Terms of Service", "href": "/agb" },
+        { "label": "Return & Refund Policy", "href": "/widerruf" },
+        { "label": "Contact Us", "href": "/kontakt" },
+        { "label": "Batterie- & ElektroG Rücknahme", "href": "/elektrog" }
       ]
     }
   ],
-  "contact": {
-    "title": "Contact Us",
-    "email": "sales@aquacubes.fish",
-    "businessNameLabel": "Business Name:",
-    "businessName": "Aquacubes – eine marke der Moina GmbH",
-    "address": "Address: Hafentörn 3, 25761 Büsum, Germany",
-    "phone": "+4915781371194",
-    "whatsapp": "Whatsapp: Available (Mon-Fri, 10:00 - 17:00 CET)"
-  },
-  "social": [
-    { "id": "linkedin", "href": "https://linkedin.com" },
-    { "id": "instagram", "href": "https://instagram.com" },
-    { "id": "facebook", "href": "https://facebook.com" }
-  ],
-  "copyrightSuffix": "Aquacubes. All rights reserved."
+  "cookieSettingsLabel": "Cookie-Einstellungen",
+  "copyright": "Aquacubes. All rights reserved.",
+  "seals": ["DIN 8580 Fabrikationsstandard", "TÜV-Süd geprüfte Sensorik", "Dithmarschen Bio-Innovation"]
 }

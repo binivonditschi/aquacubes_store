@@ -1,0 +1,14 @@
+{
+  "title": "Blog",
+  "subtitle": "Neuigkeiten aus der autonomen Aquakultur",
+  "sections": [
+    {
+      "heading": "Demnächst",
+      "html": "<p>Unser Blog startet in Kürze mit Einblicken in die Aquacubes-Technologie, Ertragsberichte aus laufenden Micro-Farms und Neuigkeiten zur Auslieferung 2027.</p>"
+    },
+    {
+      "heading": "Bleiben Sie auf dem Laufenden",
+      "html": "<p>Aktuelle Updates veröffentlichen wir bereits jetzt über unsere Kanäle:</p><ul><li><a href=\"https://www.linkedin.com/company/aquacubesfish\" target=\"_blank\" rel=\"noopener\">LinkedIn – Aquacubes</a></li><li><a href=\"https://www.facebook.com/aquacubes2017/\" target=\"_blank\" rel=\"noopener\">Facebook – Aquacubes</a></li></ul>"
+    }
+  ]
+}

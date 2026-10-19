@@ -1,0 +1,22 @@
+{
+  "title": "Contact Us",
+  "subtitle": "So erreichen Sie das Aquacubes-Team",
+  "sections": [
+    {
+      "heading": "Sales & Beratung",
+      "html": "<p>Email: <a href=\"mailto:sales@aquacubes.fish\">sales@aquacubes.fish</a><br/>Phone: <a href=\"tel:+4915781371194\">+49 15781371194</a> (Mon–Fri, 09:00–18:00 CET)<br/>Whatsapp: <a href=\"https://wa.me/4915781371194\" target=\"_blank\" rel=\"noopener\">Available (Mon-Fri, 10:00 - 17:00 CET)</a></p>"
+    },
+    {
+      "heading": "Adresse",
+      "html": "<p>Aquacubes – eine Marke der Moina GmbH<br/>Hafentörn 3, 25761 Büsum, Germany</p>"
+    },
+    {
+      "heading": "Social Media",
+      "html": "<p><a href=\"https://www.linkedin.com/company/aquacubesfish\" target=\"_blank\" rel=\"noopener\">LinkedIn</a> · <a href=\"https://www.facebook.com/aquacubes2017/\" target=\"_blank\" rel=\"noopener\">Facebook</a></p>"
+    },
+    {
+      "heading": "Reservierung",
+      "html": "<p>Die schnellste Art, Ihren Produktionsslot zu sichern: direkt über unseren <a href=\"/shop\">Shop</a>.</p>"
+    }
+  ]
+}

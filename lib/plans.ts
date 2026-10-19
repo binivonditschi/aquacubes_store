@@ -1,29 +1,17 @@
 import type { Product } from "@/lib/types";
 import content from "@/content/home.json";
 
-export type Plan = (typeof content.productShowcase.plans)[number];
-
-export const planButtonStyle: Record<string, { solid: string; outline: string }> = {
-  starter: {
-    outline: "border-2 border-[#38b6ff] text-[#38b6ff] hover:bg-[#38b6ff] hover:text-white",
-    solid: "bg-[#38b6ff] text-white hover:brightness-95",
-  },
-  "micro-farms": {
-    outline: "border-2 border-navy text-navy hover:bg-navy hover:text-white",
-    solid: "bg-navy text-white hover:bg-navy-light",
-  },
-  enterprise: {
-    outline: "border-2 border-success text-success hover:bg-success hover:text-white",
-    solid: "bg-success text-white hover:brightness-95",
-  },
+export type Plan = (typeof content.pricing.plans)[number] & {
+  badge?: string;
+  contactHref?: string;
 };
 
 export function getPlans(): Plan[] {
-  return content.productShowcase.plans;
+  return content.pricing.plans;
 }
 
 export function getPlan(id: string): Plan | undefined {
-  return content.productShowcase.plans.find((plan) => plan.id === id);
+  return getPlans().find((plan) => plan.id === id);
 }
 
 export function isPurchasable(plan: Plan): boolean {

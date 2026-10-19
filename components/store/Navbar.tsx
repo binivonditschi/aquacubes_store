@@ -2,114 +2,57 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
+import Icon from "@/components/b2b/Icon";
 import { useCart } from "@/store/useCart";
 import AccountMenu from "./AccountMenu";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const pathname = usePathname();
   const itemCount = useCart((s) => s.itemCount());
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
-  if (pathname === "/") return null;
-
   return (
-    <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed left-0 right-0 top-0 z-50 bg-white transition-shadow duration-500 ${
-          scrolled ? "shadow-nav" : ""
-        }`}
-      >
-        <div className="relative mx-auto flex h-20 max-w-content items-center px-6 lg:px-10">
-          <Link href="/" className="absolute left-6 top-1/2 z-10 -translate-y-1/2 lg:left-10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Aquacubes Logo.png" alt="Aquacubes" className="h-96 w-auto lg:h-48" />
+    <header className="fixed top-0 z-50 w-full bg-surface-canvas/95 shadow-[0_1px_8px_rgba(0,0,0,0.04)] backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-space-sm px-margin md:px-margin-tablet lg:px-margin-desktop">
+        <Link href="/" className="flex shrink-0 items-center" aria-label="Aquacubes Startseite">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logos/aquacubes-logo.png" alt="Aquacubes Logo" className="h-7 w-auto object-contain sm:h-9" />
+        </Link>
+
+        <div className="flex items-center gap-space-sm sm:gap-space-md">
+          <AccountMenu />
+
+          <Link
+            href="/checkout"
+            aria-label="Warenkorb"
+            className="relative flex h-9 w-9 items-center justify-center rounded text-surface-navy transition-colors hover:bg-surface-subtle"
+          >
+            <Icon name="shopping_bag" size={22} />
+            {mounted && itemCount > 0 && (
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-accent-aquamarine text-[10px] font-bold text-surface-navy"
+              >
+                {itemCount}
+              </motion.span>
+            )}
           </Link>
 
-          <div className="ml-auto hidden items-center gap-5 lg:flex">
-            <AccountMenu variant="light" />
-
-            <Link
-              href="/checkout"
-              aria-label="Go to checkout"
-              className="relative rounded-button p-2 transition-colors hover:bg-gray-50"
-            >
-              <ShoppingBag className="h-5 w-5 text-navy" />
-              {mounted && itemCount > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 500, damping: 25 }}
-                  className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-coral text-[10px] font-bold text-navy"
-                >
-                  {itemCount}
-                </motion.span>
-              )}
-            </Link>
-          </div>
-
-          <button
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
-            className="ml-auto rounded-button p-2 lg:hidden"
+          <Link
+            href="/shop"
+            className="inline-flex items-center rounded-xs bg-primary-container px-space-sm py-2 text-body-sm font-semibold text-on-primary shadow-sm transition-colors hover:bg-primary sm:px-space-md sm:text-body-md"
           >
-            <Menu className="h-6 w-6 text-navy" />
-          </button>
+            <span className="sm:hidden">Reservieren</span>
+            <span className="hidden sm:inline">Cube reservieren / bestellen</span>
+          </Link>
         </div>
-      </motion.nav>
-
-      <AnimatePresence>
-        {mobileOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[60] bg-navy/50 backdrop-blur-sm lg:hidden"
-              onClick={() => setMobileOpen(false)}
-            />
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed left-0 top-0 z-[70] flex h-full w-[85vw] max-w-[360px] flex-col bg-navy lg:hidden"
-            >
-              <div className="flex items-center justify-between p-6">
-                <Link href="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/Aquacubes Logo.png" alt="Aquacubes" className="h-11 w-auto brightness-0 invert" />
-                </Link>
-                <button onClick={() => setMobileOpen(false)} aria-label="Close menu" className="rounded-button p-2 text-white">
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
-
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+      </div>
+    </header>
   );
 }

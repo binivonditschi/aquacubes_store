@@ -1,0 +1,38 @@
+{
+  "title": "Allgemeine Geschäftsbedingungen (B2B)",
+  "subtitle": "Gewerbliche Leasing- und Kaufbedingungen der Moina GmbH · Stand: Oktober 2026",
+  "sections": [
+    {
+      "heading": "§ 1 Geltungsbereich",
+      "html": "<p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge über die Bereitstellung, das Leasing und den Kauf von AquaCubes-Kreislaufanlagen (RAS) sowie zugehörige Dienstleistungen zwischen der Moina GmbH, Hafentörn 3, 25761 Büsum („Anbieter\") und Unternehmern im Sinne des § 14 BGB, juristischen Personen des öffentlichen Rechts oder öffentlich-rechtlichen Sondervermögen („Kunde\").</p><p>Abweichende Bedingungen des Kunden werden nicht Vertragsinhalt, es sei denn, der Anbieter stimmt ihrer Geltung ausdrücklich schriftlich zu.</p>"
+    },
+    {
+      "heading": "§ 2 Vertragsschluss",
+      "html": "<p>Angebote des Anbieters sind freibleibend. Eine Vormerkung (Reservierung) über die Website oder den Shop ist unverbindlich und stellt kein Vertragsangebot dar. Ein Vertrag kommt erst durch die schriftliche Auftragsbestätigung des Anbieters bzw. durch beidseitige Unterzeichnung des Leasing- oder Kaufvertrags zustande.</p>"
+    },
+    {
+      "heading": "§ 3 Preise und Zahlung",
+      "html": "<ul><li>Alle Preise verstehen sich netto in Euro zzgl. gesetzlicher Umsatzsteuer sowie Fracht- und Bereitstellungspauschale.</li><li>Leasingraten sind monatlich im Voraus fällig. Die Mindestlaufzeit ergibt sich aus dem jeweiligen Vertrag (Starter: 6 Monate, Micro-Farm: 24 Monate).</li><li>Die bei Reservierung hinterlegte Kaution (1.000 € netto) wird bei Vertragsaktivierung auf die Sicherheitsleistung angerechnet und ist bis zur finalen Auftragsbestätigung rückzahlbar.</li><li>Bei Zahlungsverzug gelten die gesetzlichen Regelungen (§ 288 Abs. 2 BGB).</li></ul>"
+    },
+    {
+      "heading": "§ 4 Lieferung, Aufstellung und Inbetriebnahme",
+      "html": "<p>Lieferung erfolgt per Spedition in die Regionen Deutschland, Dänemark, Schweden, Norwegen und Schweiz. Das vereinbarte Lieferfenster (derzeit Q3/Q4 2026) wird mit Auftragsbestätigung verbindlich festgelegt. Aufstellung, Wasseranschluss, biologische Systemanimpfung und Einweisung sind Bestandteil des vereinbarten Serviceumfangs. Die monatliche Rate beginnt erst nach erfolgreicher Abnahme (Abnahmeprotokoll).</p>"
+    },
+    {
+      "heading": "§ 5 Eigentumsvorbehalt",
+      "html": "<p>Die Anlagen bleiben bis zur vollständigen Bezahlung aller Forderungen Eigentum des Anbieters. Bei Leasingverträgen verbleibt das Eigentum während der gesamten Laufzeit beim Anbieter.</p>"
+    },
+    {
+      "heading": "§ 6 Gewährleistung und Wartung",
+      "html": "<p>Es gilt das gesetzliche Mängelrecht für Unternehmer mit der Maßgabe, dass die Gewährleistungsfrist für neue Anlagen 12 Monate ab Abnahme beträgt. Wartungs- und Serviceleistungen richten sich nach dem jeweils vereinbarten Serviceplan (quartalsweise Vor-Ort-Wartung, 24/7-Remote-Monitoring je nach Paket).</p>"
+    },
+    {
+      "heading": "§ 7 Haftung",
+      "html": "<p>Der Anbieter haftet unbeschränkt bei Vorsatz und grober Fahrlässigkeit sowie bei Verletzung von Leben, Körper und Gesundheit. Bei leicht fahrlässiger Verletzung wesentlicher Vertragspflichten ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt. Eine Haftung für Ertragsausfälle der Fischzucht (z. B. durch witterungsbedingte, biologische oder bedienungsbedingte Ereignisse außerhalb des Verantwortungsbereichs des Anbieters) ist ausgeschlossen.</p>"
+    },
+    {
+      "heading": "§ 8 Schlussbestimmungen",
+      "html": "<p>Es gilt das Recht der Bundesrepublik Deutschland. Gerichtsstand ist – soweit zulässig – der Sitz des Anbieters (Büsum). Sollten einzelne Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>"
+    }
+  ]
+}

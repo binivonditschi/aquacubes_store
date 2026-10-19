@@ -3,10 +3,9 @@
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle } from "lucide-react";
+import Icon from "@/components/b2b/Icon";
 import { useCart } from "@/store/useCart";
 import { formatPrice } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import type { Order } from "@/lib/types";
 import content from "@/content/checkout.json";
 
@@ -25,18 +24,18 @@ function OrderSummary() {
   if (!order) return null;
 
   return (
-    <div className="w-full rounded-xl bg-white p-4 text-left shadow-sm">
-      <div className="flex items-center justify-between text-sm">
-        <span className="text-gray-500">{content.success.orderLabel}</span>
-        <span className="font-mono-label text-navy">{order.id}</span>
+    <div className="w-full space-y-space-xs rounded-lg bg-surface-subtle p-space-md text-left text-body-sm">
+      <div className="flex items-center justify-between gap-4">
+        <span className="text-steel">{content.success.orderLabel}</span>
+        <span className="truncate font-medium text-surface-navy">{order.id}</span>
       </div>
-      <div className="mt-2 flex items-center justify-between text-sm">
-        <span className="text-gray-500">{content.success.totalLabel}</span>
-        <span className="font-mono-label font-semibold text-navy">{formatPrice(order.total)}</span>
+      <div className="flex items-center justify-between">
+        <span className="text-steel">{content.success.totalLabel}</span>
+        <span className="font-semibold text-surface-navy">{formatPrice(order.total)}</span>
       </div>
-      <div className="mt-2 flex items-center justify-between text-sm">
-        <span className="text-gray-500">{content.success.statusLabel}</span>
-        <span className="capitalize text-teal">{order.status}</span>
+      <div className="flex items-center justify-between">
+        <span className="text-steel">{content.success.statusLabel}</span>
+        <span className="font-semibold capitalize text-compliance-green">{order.status}</span>
       </div>
     </div>
   );
@@ -50,22 +49,25 @@ export default function SuccessPage() {
   }, [clearCart]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-off-white px-6 py-24">
-      <div className="flex max-w-md flex-col items-center gap-6 text-center">
-        <div className="rounded-full bg-teal/10 p-4">
-          <CheckCircle className="h-12 w-12 text-teal" strokeWidth={1.5} />
+    <div className="flex min-h-[70dvh] items-center justify-center bg-surface-subtle px-margin py-space-3xl">
+      <div className="flex w-full max-w-md flex-col items-center gap-space-md rounded-2xl bg-surface-canvas p-space-xl text-center shadow-xl">
+        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-compliance-green-bg text-compliance-green">
+          <Icon name="check_circle" size={36} />
         </div>
-        <h1 className="text-h2 font-heading text-navy">{content.success.title}</h1>
-        <p className="text-body leading-relaxed text-gray-500">{content.success.description}</p>
+        <h1 className="text-headline-lg text-surface-navy">{content.success.title}</h1>
+        <p className="text-body-md text-steel">{content.success.description}</p>
 
         <Suspense fallback={null}>
           <OrderSummary />
         </Suspense>
 
-        <Link href="/">
-          <Button className="rounded-button bg-teal px-8 text-white hover:bg-teal-dark">{content.success.buttonText}</Button>
+        <Link
+          href="/"
+          className="rounded bg-primary-container px-space-lg py-3 text-body-md font-bold text-on-primary shadow-md transition-colors hover:bg-primary"
+        >
+          {content.success.buttonText}
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

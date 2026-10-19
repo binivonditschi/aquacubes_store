@@ -1,134 +1,114 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Linkedin, Instagram, Facebook, type LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import Icon from "@/components/b2b/Icon";
+import { openCookieSettings } from "./CookieConsent";
 import content from "@/content/footer.json";
 
-const iconMap: Record<string, LucideIcon> = {
-  linkedin: Linkedin,
-  instagram: Instagram,
-  facebook: Facebook,
+const socialIcons: Record<string, string> = {
+  linkedin:
+    "M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z",
+  facebook:
+    "M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z",
 };
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.06 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
-};
-
-function SocialIcon({ href, children }: { href: string; children: ReactNode }) {
-  return (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      whileHover={{ scale: 1.1 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-      className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-white/40 hover:text-[#38b6ff]"
-    >
-      {children}
-    </motion.a>
-  );
-}
+const linkClass = "transition-colors hover:text-primary-fixed";
 
 export default function Footer() {
+  const { contact } = content;
+
   return (
-    <motion.footer
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.5 }}
-      style={{ backgroundColor: "#061326" }}
-    >
-      <div className="mx-auto max-w-content px-6 py-16 lg:px-10 lg:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.4 }}
-          className="mb-10"
-        >
-          <Link href="/" className="inline-flex items-center gap-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={content.logo} alt="Aquacubes" className="h-40 w-auto brightness-0 invert" />
-          </Link>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 gap-10 sm:grid-cols-3"
-        >
-          {content.columns.map((column) => (
-            <motion.div key={column.title} variants={itemVariants}>
-              <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.05em] text-white">
-                {column.title}
-              </h3>
-              <ul className="space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="inline-block text-sm text-white/70 transition-all duration-200 hover:translate-x-1 hover:text-[#38b6ff]"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+    <footer className="w-full bg-surface-navy pb-space-xl pt-space-2xl text-on-primary">
+      <div className="mx-auto max-w-7xl px-margin md:px-margin-tablet lg:px-margin-desktop">
+        <div className="grid grid-cols-1 gap-space-md pb-space-xl min-[420px]:grid-cols-2 lg:grid-cols-4">
+          {content.badges.map((badge) => (
+            <div key={badge.title} className="flex items-center gap-space-sm rounded-xs bg-surface-navy-elevated p-space-md">
+              <Icon name={badge.icon} className="text-primary-fixed" />
+              <div>
+                <div className="text-label-technical text-primary-fixed">{badge.title}</div>
+                <div className="text-body-sm text-secondary-fixed-dim">{badge.text}</div>
+              </div>
+            </div>
           ))}
-
-          <motion.div variants={itemVariants}>
-            <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.05em] text-white">
-              {content.contact.title}
-            </h3>
-            <ul className="space-y-3 text-sm text-white/70">
-              <li>
-                Email:{" "}
-                <a href={`mailto:${content.contact.email}`} className="transition-colors hover:text-[#38b6ff]">
-                  {content.contact.email}
-                </a>
-              </li>
-              <li>{content.contact.businessNameLabel}</li>
-              <li>{content.contact.businessName}</li>
-              <li>{content.contact.address}</li>
-              <li>
-                Phone:{" "}
-                <a href={`tel:${content.contact.phone}`} className="transition-colors hover:text-[#38b6ff]">
-                  {content.contact.phone}
-                </a>
-              </li>
-              <li>{content.contact.whatsapp}</li>
-            </ul>
-          </motion.div>
-        </motion.div>
-
-        <div className="mt-6 flex flex-col items-center gap-6 sm:flex-row sm:justify-end">
-          <div className="flex items-center gap-3">
-            {content.social.map((social) => {
-              const Icon = iconMap[social.id];
-              return (
-                <SocialIcon key={social.id} href={social.href}>
-                  <Icon className="h-4 w-4" />
-                </SocialIcon>
-              );
-            })}
-          </div>
         </div>
 
-        <p className="mt-4 text-right text-sm text-white/50">
-          {new Date().getFullYear()} {content.copyrightSuffix}
-        </p>
+        <div className="py-space-lg">
+          <div className="mb-space-xs text-body-md font-semibold text-primary-fixed">{content.brand}</div>
+          <div className="max-w-4xl text-body-sm leading-relaxed text-secondary-fixed-dim">{content.companyDetails}</div>
+        </div>
+
+        <div className="rounded-xs bg-surface-navy-elevated/70 p-space-md text-label-legal leading-relaxed text-secondary-fixed-dim">
+          <span className="font-semibold text-primary-fixed">{content.legalNotice.title}</span> {content.legalNotice.text}
+        </div>
+
+        <div className="grid grid-cols-1 gap-space-xl border-t border-surface-navy-elevated py-space-lg md:grid-cols-3">
+          <div>
+            <div className="mb-space-sm text-body-md font-semibold text-primary-fixed">{contact.title}</div>
+            <div className="space-y-1.5 text-body-sm text-secondary-fixed-dim">
+              <div>
+                Email: <a className={linkClass} href={`mailto:${contact.email}`}>{contact.email}</a>
+              </div>
+              <div>Business Name: {contact.businessName}</div>
+              <div>Address: {contact.address}</div>
+              <div>
+                Phone: <a className={linkClass} href={contact.phoneHref}>{contact.phone}</a>
+              </div>
+              <div>
+                Whatsapp:{" "}
+                <a className={linkClass} href={contact.whatsappHref} target="_blank" rel="noopener noreferrer">
+                  {contact.whatsapp}
+                </a>
+              </div>
+            </div>
+            <div className="mt-space-md flex items-center gap-space-sm">
+              {content.social.map((social) => (
+                <a
+                  key={social.id}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-navy-elevated text-secondary-fixed-dim transition-colors hover:bg-primary-container hover:text-primary-fixed"
+                >
+                  <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d={socialIcons[social.id]} />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {content.columns.map((column) => (
+            <div key={column.title}>
+              <div className="mb-space-sm text-body-md font-semibold text-primary-fixed">{column.title}</div>
+              <nav className="flex flex-col gap-y-1.5 text-body-sm text-secondary-fixed-dim">
+                {column.links.map((link) => (
+                  <Link key={link.label} href={link.href} className={linkClass}>
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          ))}
+        </div>
+
+        <nav className="flex flex-wrap gap-x-space-lg gap-y-space-xs border-t border-surface-navy-elevated py-space-md text-body-sm text-secondary-fixed-dim">
+          <button type="button" onClick={openCookieSettings} className={linkClass}>
+            {content.cookieSettingsLabel}
+          </button>
+        </nav>
+
+        <div className="flex flex-col items-center justify-between gap-space-sm pt-space-lg text-label-legal text-secondary-fixed-dim sm:flex-row">
+          <div>
+            © {new Date().getFullYear()} {content.copyright}
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-space-md gap-y-1">
+            {content.seals.map((seal) => (
+              <span key={seal}>{seal}</span>
+            ))}
+          </div>
+        </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

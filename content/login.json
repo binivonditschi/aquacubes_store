@@ -1,25 +1,26 @@
 {
+  "eyebrow": "Kundenkonto",
   "signIn": {
-    "title": "Sign in",
-    "description": "Welcome back to Aquacubes.",
-    "submitText": "Sign in"
+    "title": "Anmelden",
+    "description": "Willkommen zurück bei Aquacubes.",
+    "submitText": "Anmelden"
   },
   "signUp": {
-    "title": "Create an account",
-    "description": "Join Aquacubes to track your orders.",
-    "submitText": "Create account"
+    "title": "Konto erstellen",
+    "description": "Erstellen Sie ein Konto, um Cubes zu reservieren und Ihre Bestellungen zu verfolgen.",
+    "submitText": "Konto erstellen"
   },
-  "checkoutRedirectDescription": "Sign in to continue to checkout.",
-  "nameLabel": "Full Name",
-  "emailLabel": "Email",
-  "passwordLabel": "Password",
-  "confirmPasswordLabel": "Confirm Password",
+  "checkoutRedirectDescription": "Bitte melden Sie sich an, um mit Ihrer Reservierung fortzufahren.",
+  "nameLabel": "Vollständiger Name",
+  "emailLabel": "Geschäftliche E-Mail",
+  "passwordLabel": "Passwort",
+  "confirmPasswordLabel": "Passwort bestätigen",
   "toggleToSignIn": {
-    "prompt": "Already have an account?",
-    "linkText": "Sign in"
+    "prompt": "Bereits ein Konto?",
+    "linkText": "Anmelden"
   },
   "toggleToSignUp": {
-    "prompt": "Don't have an account?",
-    "linkText": "Create one"
+    "prompt": "Noch kein Konto?",
+    "linkText": "Jetzt registrieren"
   }
 }

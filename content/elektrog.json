@@ -1,0 +1,18 @@
+{
+  "title": "Batterie- & ElektroG-Rücknahme",
+  "subtitle": "Gesetzliche Hinweise nach ElektroG und BattG",
+  "sections": [
+    {
+      "heading": "Rücknahme von Elektroaltgeräten (ElektroG)",
+      "html": "<p>Unsere AquaCubes-Anlagen enthalten elektrische und elektronische Komponenten (Steuerung, Sensorik, Pumpen, Beleuchtung). Elektroaltgeräte dürfen nicht über den Hausmüll entsorgt werden.</p><p>Als Hersteller/Vertreiber im Sinne des Elektrogesetzes bieten wir unseren gewerblichen Kunden die <strong>kostenfreie Rücknahme</strong> von Geräten unserer Marke an. Zur Abstimmung einer Rückgabe kontaktieren Sie uns unter sales@aquacubes.fish oder +49 15781371194.</p><p>WEEE-Registrierungsnummer: <mark>{WEEE-Reg.-Nr. DE eintragen}</mark></p>"
+    },
+    {
+      "heading": "Hinweise nach dem Batteriegesetz (BattG)",
+      "html": "<p>Im Zusammenhang mit dem Vertrieb von Geräten mit Batterien oder Akkus (z. B. Pufferbatterien der Steuerung, IoT-Sensoren) sind wir verpflichtet, auf Folgendes hinzuweisen:</p><ul><li>Batterien und Akkus dürfen nicht im Hausmüll entsorgt werden; Endnutzer sind zur Rückgabe gebrauchter Batterien gesetzlich verpflichtet.</li><li>Altbatterien können bei kommunalen Sammelstellen, im Handel oder an uns zurückgegeben werden.</li><li>Batterien mit Schadstoffen sind mit dem Symbol der durchgestrichenen Mülltonne gekennzeichnet; chemische Symbole (Cd, Hg, Pb) weisen auf Cadmium, Quecksilber bzw. Blei hin.</li></ul>"
+    },
+    {
+      "heading": "Datenlöschung auf Altgeräten",
+      "html": "<p>Bitte beachten Sie, dass Endnutzer dafür verantwortlich sind, personenbezogene Daten (z. B. in der Steuerung gespeicherte Zugangsdaten) vor der Rückgabe zu löschen. Auf Wunsch unterstützen wir bei der Zurücksetzung der Geräte.</p>"
+    }
+  ]
+}

@@ -1,15 +1,21 @@
-import Hero from "@/components/sections/Hero";
-import ProductShowcase from "@/components/sections/ProductShowcase";
-import WhyAquacubes from "@/components/sections/WhyAquacubes";
+import Hero from "@/components/home/Hero";
+import Pricing from "@/components/home/Pricing";
+import RoiCalculator from "@/components/home/RoiCalculator";
+import Technology from "@/components/home/Technology";
+import Process from "@/components/home/Process";
+import Supporters from "@/components/home/Supporters";
 import Newsletter from "@/components/sections/Newsletter";
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex w-full flex-col text-on-surface">
       <Hero />
-      <ProductShowcase />
-      <WhyAquacubes />
+      <Pricing />
+      <RoiCalculator />
+      <Technology />
+      <Process />
       <Newsletter />
+      <Supporters />
     </div>
   );
 }

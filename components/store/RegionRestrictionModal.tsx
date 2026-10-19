@@ -47,20 +47,20 @@ export default function RegionRestrictionModal() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="region-modal-title"
-            className="fixed left-1/2 top-1/2 z-[100] w-[92vw] max-w-md -translate-x-1/2 -translate-y-1/2 bg-white p-8 text-center shadow-modal"
+            className="fixed left-1/2 top-1/2 z-[100] w-[92vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-surface-canvas p-space-xl text-center shadow-2xl"
           >
-            <h2 id="region-modal-title" className="mb-3 font-heading text-xl font-semibold text-navy">
-              Not Available in Your Region
+            <h2 id="region-modal-title" className="mb-3 text-headline-lg text-surface-navy">
+              In Ihrer Region nicht verfügbar
             </h2>
-            <p className="mb-6 text-sm text-gray-500">
-              Aquacubes currently only ships to and accepts orders from Germany, Austria, and Denmark. Ordering
-              is not available outside these countries yet.
+            <p className="mb-6 text-body-md text-steel">
+              Aquacubes liefert und nimmt Bestellungen derzeit nur aus Deutschland, Österreich und Dänemark an.
+              Für andere Regionen kontaktieren Sie bitte unser Vertriebsteam.
             </p>
             <button
               onClick={close}
-              className="w-full rounded-button bg-navy py-3 font-body text-sm font-medium text-white transition-colors hover:bg-navy-light"
+              className="w-full rounded bg-surface-navy py-3 text-body-md font-bold text-on-primary transition-colors hover:bg-surface-navy-elevated"
             >
-              Got it
+              Verstanden
             </button>
           </motion.div>
         </>

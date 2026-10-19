@@ -2,6 +2,10 @@ import Link from "next/link";
 import { signIn, signUp } from "./actions";
 import content from "@/content/login.json";
 
+const inputClass =
+  "w-full rounded bg-surface-subtle px-space-md py-3 text-body-md text-surface-navy shadow-sm outline-none focus:ring-2 focus:ring-primary/40";
+const labelClass = "mb-1 block text-body-sm font-semibold text-surface-navy";
+
 export default async function LoginPage({
   searchParams,
 }: {
@@ -14,18 +18,19 @@ export default async function LoginPage({
   const mode = isSignUp ? content.signUp : content.signIn;
 
   return (
-    <div className="flex min-h-[80vh] items-center justify-center bg-off-white px-6 py-20">
-      <div className="w-full max-w-md rounded-card bg-white p-8 shadow-card">
-        <h1 className="mb-2 text-h3 text-navy">{mode.title}</h1>
-        <p className="mb-6 text-sm text-gray-500">
+    <div className="flex min-h-[80vh] items-center justify-center bg-surface-subtle px-margin py-space-3xl">
+      <div className="w-full max-w-md rounded-2xl bg-surface-canvas p-space-lg shadow-xl sm:p-space-xl">
+        <div className="mb-space-xs text-label-technical font-semibold uppercase text-primary">{content.eyebrow}</div>
+        <h1 className="mb-2 text-headline-lg text-surface-navy">{mode.title}</h1>
+        <p className="mb-6 text-body-md text-steel">
           {next !== "/" ? content.checkoutRedirectDescription : mode.description}
         </p>
 
         {params.message && (
-          <p className="mb-4 rounded-button bg-teal/10 px-4 py-3 text-sm text-teal">{params.message}</p>
+          <p className="mb-4 rounded bg-compliance-green-bg px-4 py-3 text-body-sm text-compliance-green">{params.message}</p>
         )}
         {params.error && (
-          <p className="mb-4 rounded-button bg-error/10 px-4 py-3 text-sm text-error">{params.error}</p>
+          <p className="mb-4 rounded bg-error/10 px-4 py-3 text-body-sm text-error">{params.error}</p>
         )}
 
         <form action={isSignUp ? signUp : signIn} className="space-y-4">
@@ -33,48 +38,29 @@ export default async function LoginPage({
 
           {isSignUp && (
             <div>
-              <label htmlFor="name" className="mb-1 block text-sm font-medium text-navy">
+              <label htmlFor="name" className={labelClass}>
                 {content.nameLabel}
               </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                className="w-full rounded-button border border-gray-200 px-4 py-2.5 text-sm text-navy outline-none focus:border-teal focus:ring-2 focus:ring-teal/30"
-              />
+              <input id="name" name="name" type="text" required className={inputClass} />
             </div>
           )}
 
           <div>
-            <label htmlFor="email" className="mb-1 block text-sm font-medium text-navy">
+            <label htmlFor="email" className={labelClass}>
               {content.emailLabel}
             </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="w-full rounded-button border border-gray-200 px-4 py-2.5 text-sm text-navy outline-none focus:border-teal focus:ring-2 focus:ring-teal/30"
-            />
+            <input id="email" name="email" type="email" required className={inputClass} />
           </div>
           <div>
-            <label htmlFor="password" className="mb-1 block text-sm font-medium text-navy">
+            <label htmlFor="password" className={labelClass}>
               {content.passwordLabel}
             </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              minLength={6}
-              className="w-full rounded-button border border-gray-200 px-4 py-2.5 text-sm text-navy outline-none focus:border-teal focus:ring-2 focus:ring-teal/30"
-            />
+            <input id="password" name="password" type="password" required minLength={6} className={inputClass} />
           </div>
 
           {isSignUp && (
             <div>
-              <label htmlFor="confirmPassword" className="mb-1 block text-sm font-medium text-navy">
+              <label htmlFor="confirmPassword" className={labelClass}>
                 {content.confirmPasswordLabel}
               </label>
               <input
@@ -83,31 +69,31 @@ export default async function LoginPage({
                 type="password"
                 required
                 minLength={6}
-                className="w-full rounded-button border border-gray-200 px-4 py-2.5 text-sm text-navy outline-none focus:border-teal focus:ring-2 focus:ring-teal/30"
+                className={inputClass}
               />
             </div>
           )}
 
           <button
             type="submit"
-            className="w-full rounded-button bg-teal py-3 text-sm font-medium text-white transition-colors hover:bg-teal-dark"
+            className="w-full rounded bg-primary-container py-3.5 text-body-md font-bold text-on-primary shadow-md transition-colors hover:bg-primary"
           >
             {mode.submitText}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-500">
+        <p className="mt-6 text-center text-body-md text-steel">
           {isSignUp ? (
             <>
               {content.toggleToSignIn.prompt}{" "}
-              <Link href={modeQuery("signin")} className="font-medium text-teal hover:text-teal-dark">
+              <Link href={modeQuery("signin")} className="font-semibold text-primary hover:underline">
                 {content.toggleToSignIn.linkText}
               </Link>
             </>
           ) : (
             <>
               {content.toggleToSignUp.prompt}{" "}
-              <Link href={modeQuery("signup")} className="font-medium text-teal hover:text-teal-dark">
+              <Link href={modeQuery("signup")} className="font-semibold text-primary hover:underline">
                 {content.toggleToSignUp.linkText}
               </Link>
             </>

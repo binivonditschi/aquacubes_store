@@ -1,0 +1,32 @@
+{
+  "title": "Zahlungs- & Lieferbedingungen",
+  "subtitle": "Stand: Oktober 2026",
+  "sections": [
+    {
+      "heading": "Preise",
+      "html": "<p>Alle Preise verstehen sich <strong>netto in Euro zzgl. gesetzlicher Umsatzsteuer</strong> (derzeit 19 %) sowie zzgl. Fracht- und Bereitstellungspauschale, sofern im Angebot nicht anders ausgewiesen.</p>"
+    },
+    {
+      "heading": "Zahlungsmodalitäten",
+      "id": "zahlung",
+      "html": "<ul><li><strong>Kaution bei Reservierung:</strong> 1.000 € netto je Reservierung, hinterlegt über unseren Shop. Anrechnung auf die Sicherheitsleistung bei Vertragsaktivierung; rückzahlbar bis zur finalen Auftragsbestätigung.</li><li><strong>Leasingraten:</strong> monatlich im Voraus, Beginn erst nach erfolgreicher Abnahme vor Ort.</li><li><strong>Zahlungsmethoden:</strong> Überweisung, SEPA-Lastschrift sowie die im Shop angebotenen Zahlungsarten.</li></ul>"
+    },
+    {
+      "heading": "Liefergebiete",
+      "id": "lieferung",
+      "html": "<p>Wir liefern schlüsselfertig inkl. Komplett-Montage nach: <strong>Deutschland, Dänemark, Schweden, Norwegen, Schweiz</strong>. Andere Regionen auf Anfrage über unser Vertriebsteam.</p>"
+    },
+    {
+      "heading": "Lieferzeit",
+      "html": "<p>Aktuelles Lieferfenster: <strong>Q2–Q4 2027</strong> (limitiertes Kontingent) in Reihenfolge der verbindlichen Auftragsbestätigungen. Der konkrete Liefertermin wird im Vertrag festgelegt.</p>"
+    },
+    {
+      "heading": "Lieferung und Inbetriebnahme",
+      "html": "<ul><li>Speditionslieferung bis zum Aufstellort, Einbringung und Verankerung der Anlage</li><li>Biologische Systemanimpfung (Biofilter-Starterkultur) und Funktionsprüfung</li><li>Schulung Ihres Personals sowie Abnahme mit Abnahmeprotokoll</li></ul>"
+    },
+    {
+      "heading": "Gefahrübergang und Eigentum",
+      "html": "<p>Die Gefahr geht mit Übergabe am Aufstellort auf den Kunden über. Bis zur vollständigen Zahlung bzw. während der Leasinglaufzeit verbleibt das Eigentum an der Anlage bei der Moina GmbH (Eigentumsvorbehalt).</p>"
+    }
+  ]
+}

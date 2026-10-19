@@ -1,28 +1,31 @@
 import Link from "next/link";
-import { XCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Icon from "@/components/b2b/Icon";
 import content from "@/content/checkout.json";
 
 export default function CancelPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-off-white px-6 py-24">
-      <div className="flex flex-col items-center gap-6 text-center">
-        <div className="rounded-full bg-gray-50 p-4">
-          <XCircle className="h-12 w-12 text-gray-300" strokeWidth={1.5} />
+    <div className="flex min-h-[70dvh] items-center justify-center bg-surface-subtle px-margin py-space-3xl">
+      <div className="flex w-full max-w-md flex-col items-center gap-space-md rounded-2xl bg-surface-canvas p-space-xl text-center shadow-xl">
+        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-surface-subtle text-steel">
+          <Icon name="cancel" size={36} />
         </div>
-        <h1 className="text-h2 font-heading text-navy">{content.cancel.title}</h1>
-        <p className="max-w-md text-body leading-relaxed text-gray-500">{content.cancel.description}</p>
-        <div className="flex gap-3">
-          <Link href="/checkout">
-            <Button variant="outline" className="rounded-button border-navy text-navy hover:bg-navy hover:text-white">
-              {content.cancel.retryButtonText}
-            </Button>
+        <h1 className="text-headline-lg text-surface-navy">{content.cancel.title}</h1>
+        <p className="text-body-md text-steel">{content.cancel.description}</p>
+        <div className="flex flex-col gap-space-sm sm:flex-row">
+          <Link
+            href="/checkout"
+            className="rounded bg-surface-subtle px-space-lg py-3 text-body-md font-bold text-surface-navy transition-colors hover:bg-surface-container"
+          >
+            {content.cancel.retryButtonText}
           </Link>
-          <Link href="/shop">
-            <Button className="rounded-button bg-teal text-white hover:bg-teal-dark">{content.cancel.shopButtonText}</Button>
+          <Link
+            href="/shop"
+            className="rounded bg-primary-container px-space-lg py-3 text-body-md font-bold text-on-primary shadow-md transition-colors hover:bg-primary"
+          >
+            {content.cancel.shopButtonText}
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

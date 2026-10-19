@@ -1,0 +1,26 @@
+{
+  "title": "Widerrufsbelehrung & B2B-Ausschluss",
+  "subtitle": "Informationen zum Widerrufsrecht bei Fernabsatzverträgen",
+  "sections": [
+    {
+      "heading": "Ausschließlich gewerbliche Abnehmer",
+      "html": "<p>Die Angebote, Spezifikationen und Preisangaben der Moina GmbH (AquaCubes) richten sich <strong>ausschließlich an Unternehmer im Sinne des § 14 BGB</strong>, juristische Personen des öffentlichen Rechts und öffentlich-rechtliche Sondervermögen. Ein Verkauf an Verbraucher (§ 13 BGB) findet nicht statt.</p>"
+    },
+    {
+      "heading": "Kein Widerrufsrecht im B2B-Bereich",
+      "html": "<p>Das gesetzliche Widerrufsrecht bei Fernabsatzverträgen (§§ 312g, 355 BGB) steht nur Verbrauchern zu. Da wir ausschließlich mit Unternehmern Verträge schließen, besteht <strong>kein gesetzliches Widerrufsrecht</strong>. Mit Absenden einer Reservierung oder Bestellung bestätigen Sie, als Unternehmer zu handeln.</p>"
+    },
+    {
+      "heading": "Freiwillige Rückzahlung der Kaution",
+      "html": "<p>Unbeschadet dessen gilt: Die bei einer Vormerkung hinterlegte Kaution (1.000 € netto) ist <strong>bis zur finalen schriftlichen Auftragsbestätigung vollständig rückzahlbar</strong>. Erst mit beidseitiger Zeichnung des Leasing- oder Kaufvertrags wird Ihre Vormerkung rechtsverbindlich.</p>"
+    },
+    {
+      "heading": "Vertragsbeendigung",
+      "html": "<p>Die Beendigung bestehender Leasingverhältnisse richtet sich nach den Kündigungsregelungen des jeweiligen Vertrags (Mindestlaufzeiten: Starter 6 Monate, Micro-Farm 24 Monate).</p>"
+    },
+    {
+      "heading": "Fragen",
+      "html": "<p>Bei Fragen zu Ihrem Vertrag wenden Sie sich an: sales@aquacubes.fish oder +49 15781371194 (Mo–Fr, 09:00–18:00 Uhr).</p>"
+    }
+  ]
+}

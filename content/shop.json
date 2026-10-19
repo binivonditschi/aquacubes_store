@@ -1,4 +1,17 @@
 {
-  "title": "Pre-Order Aquacubes",
-  "subtitle": "Start with one and grow as you need."
+  "eyebrow": "Verbindliche B2B-Konditionen",
+  "title": "Aquacubes reservieren",
+  "subtitle": "Starten Sie mit einem einzelnen Testwürfel oder skalieren Sie sofort zur profitablen Micro-Farm. Alle Preise rein netto zzgl. gesetzl. MwSt.",
+  "detail": {
+    "includesTitle": "Im Paket enthalten",
+    "contactButtonText": "Vertrieb kontaktieren",
+    "orderButtonText": "Jetzt verbindlich vormerken",
+    "outOfStockText": "Ausverkauft",
+    "regionNotice": "Online-Reservierung ist in Ihrer Region nicht verfügbar – unser Vertrieb erstellt Ihnen gerne ein individuelles Angebot.",
+    "trust": [
+      { "icon": "local_shipping", "text": "Lieferung, Montage & Inbetriebnahme inklusive" },
+      { "icon": "verified", "text": "CE-zertifiziert · entwickelt in Deutschland" },
+      { "icon": "payments", "text": "Kaution rückzahlbar bis zur finalen Auftragsbestätigung" }
+    ]
+  }
 }

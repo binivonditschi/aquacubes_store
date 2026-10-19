@@ -35,7 +35,7 @@ export async function signUp(formData: FormData) {
 
   if (password !== confirmPassword) {
     redirect(
-      `/login?mode=signup&next=${encodeURIComponent(next)}&error=${encodeURIComponent("Passwords do not match.")}`
+      `/login?mode=signup&next=${encodeURIComponent(next)}&error=${encodeURIComponent("Die Passwörter stimmen nicht überein.")}`
     );
   }
 
@@ -63,7 +63,7 @@ export async function signUp(formData: FormData) {
 
   if (!data.session) {
     // Email confirmation is still required on the Supabase project.
-    redirect("/login?message=Check your email to confirm your account");
+    redirect("/login?message=Bitte bestätigen Sie Ihr Konto über den Link in Ihrer E-Mail.");
   }
 
   redirect(next);
