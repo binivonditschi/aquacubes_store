@@ -53,7 +53,7 @@ export default function RegionRestrictionModal() {
               Not Available in Your Region
             </h2>
             <p className="mb-6 text-sm text-gray-500">
-              Aquacubes currently only ships to and accepts orders from Germany, Austria, and Denmark. Ordering
+              Aquacubes currently only ships to and accepts orders from Germany, Switzerland, Norway, Austria and Denmark. Ordering
               is not available outside these countries yet.
             </p>
             <button
