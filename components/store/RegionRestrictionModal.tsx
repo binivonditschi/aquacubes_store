@@ -53,7 +53,7 @@ export default function RegionRestrictionModal() {
               In Ihrer Region nicht verfügbar
             </h2>
             <p className="mb-6 text-body-md text-steel">
-              Aquacubes liefert und nimmt Bestellungen derzeit nur aus Deutschland, Österreich und Dänemark an.
+              Aquacubes liefert und nimmt Bestellungen derzeit nur aus Deutschland, der Schweiz, Norwegen, Österreich und Dänemark an.
               Für andere Regionen kontaktieren Sie bitte unser Vertriebsteam.
             </p>
             <button
