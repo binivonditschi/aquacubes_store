@@ -6,6 +6,8 @@ import { useRouter, usePathname } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import Icon from "@/components/b2b/Icon";
+import { useT } from "@/lib/i18n";
+import dict from "@/content/i18n/landing.json";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +18,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function AccountMenu() {
+  const t = useT(dict);
   const [email, setEmail] = useState<string | null>(null);
   const [name, setName] = useState<string | null>(null);
   const router = useRouter();
@@ -54,12 +57,12 @@ export default function AccountMenu() {
     return (
       <Link
         href={`/login?next=${encodeURIComponent(pathname)}`}
-        aria-label="Anmelden"
-        title="Anmelden"
+        aria-label={t("fl_signin")}
+        title={t("fl_signin")}
         className="inline-flex items-center gap-1 rounded px-1 py-2 text-body-md font-semibold text-surface-navy transition-colors hover:text-primary sm:px-2"
       >
         <Icon name="account_circle" size={22} />
-        <span className="hidden md:inline">Anmelden</span>
+        <span className="hidden md:inline">{t("fl_signin")}</span>
       </Link>
     );
   }
@@ -82,7 +85,7 @@ export default function AccountMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-error">
           <LogOut className="h-4 w-4" />
-          Abmelden
+          {t("acc_signout")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

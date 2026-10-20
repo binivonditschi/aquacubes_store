@@ -2,8 +2,12 @@
 
 import Link from "next/link";
 import Icon from "@/components/b2b/Icon";
+import { useT } from "@/lib/i18n";
 import { openCookieSettings } from "./CookieConsent";
 import content from "@/content/footer.json";
+import dict from "@/content/i18n/landing.json";
+
+type Key = keyof (typeof dict)["de"];
 
 const socialIcons: Record<string, string> = {
   linkedin:
@@ -15,6 +19,7 @@ const socialIcons: Record<string, string> = {
 const linkClass = "transition-colors hover:text-primary-fixed";
 
 export default function Footer() {
+  const t = useT(dict);
   const { contact } = content;
 
   return (
@@ -22,11 +27,15 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-margin md:px-margin-tablet lg:px-margin-desktop">
         <div className="grid grid-cols-1 gap-space-md pb-space-xl min-[420px]:grid-cols-2 lg:grid-cols-4">
           {content.badges.map((badge) => (
-            <div key={badge.title} className="flex items-center gap-space-sm rounded-xs bg-surface-navy-elevated p-space-md">
+            <div key={badge.icon} className="flex items-center gap-space-sm rounded-xs bg-surface-navy-elevated p-space-md">
               <Icon name={badge.icon} className="text-primary-fixed" />
               <div>
-                <div className="text-label-technical text-primary-fixed">{badge.title}</div>
-                <div className="text-body-sm text-secondary-fixed-dim">{badge.text}</div>
+                <div className="text-label-technical text-primary-fixed">
+                  {"titleKey" in badge ? t(badge.titleKey as Key) : badge.title}
+                </div>
+                <div className="text-body-sm text-secondary-fixed-dim">
+                  {"textKey" in badge ? t(badge.textKey as Key) : badge.text}
+                </div>
               </div>
             </div>
           ))}
@@ -37,26 +46,32 @@ export default function Footer() {
           <div className="max-w-4xl text-body-sm leading-relaxed text-secondary-fixed-dim">{content.companyDetails}</div>
         </div>
 
-        <div className="rounded-xs bg-surface-navy-elevated/70 p-space-md text-label-legal leading-relaxed text-secondary-fixed-dim">
-          <span className="font-semibold text-primary-fixed">{content.legalNotice.title}</span> {content.legalNotice.text}
-        </div>
+        {/* Trusted first-party copy (bold lead-in span) */}
+        <div
+          className="rounded-xs bg-surface-navy-elevated/70 p-space-md text-label-legal leading-relaxed text-secondary-fixed-dim"
+          dangerouslySetInnerHTML={{ __html: t("ft_legal") }}
+        />
 
         <div className="grid grid-cols-1 gap-space-xl border-t border-surface-navy-elevated py-space-lg md:grid-cols-3">
           <div>
-            <div className="mb-space-sm text-body-md font-semibold text-primary-fixed">{contact.title}</div>
+            <div className="mb-space-sm text-body-md font-semibold text-primary-fixed">{t("ft_contact_h")}</div>
             <div className="space-y-1.5 text-body-sm text-secondary-fixed-dim">
               <div>
-                Email: <a className={linkClass} href={`mailto:${contact.email}`}>{contact.email}</a>
-              </div>
-              <div>Business Name: {contact.businessName}</div>
-              <div>Address: {contact.address}</div>
-              <div>
-                Phone: <a className={linkClass} href={contact.phoneHref}>{contact.phone}</a>
+                {t("ft_email_l")} <a className={linkClass} href={`mailto:${contact.email}`}>{contact.email}</a>
               </div>
               <div>
-                Whatsapp:{" "}
+                {t("ft_biz_l")} {contact.businessName}
+              </div>
+              <div>
+                {t("ft_addr_l")} {contact.address} {t("ft_addr_v")}
+              </div>
+              <div>
+                {t("ft_phone_l")} <a className={linkClass} href={contact.phoneHref}>{contact.phone}</a>
+              </div>
+              <div>
+                {t("ft_wa_l")}{" "}
                 <a className={linkClass} href={contact.whatsappHref} target="_blank" rel="noopener noreferrer">
-                  {contact.whatsapp}
+                  {t("ft_wa_v")}
                 </a>
               </div>
             </div>
@@ -79,12 +94,12 @@ export default function Footer() {
           </div>
 
           {content.columns.map((column) => (
-            <div key={column.title}>
-              <div className="mb-space-sm text-body-md font-semibold text-primary-fixed">{column.title}</div>
+            <div key={column.titleKey}>
+              <div className="mb-space-sm text-body-md font-semibold text-primary-fixed">{t(column.titleKey as Key)}</div>
               <nav className="flex flex-col gap-y-1.5 text-body-sm text-secondary-fixed-dim">
                 {column.links.map((link) => (
-                  <Link key={link.label} href={link.href} className={linkClass}>
-                    {link.label}
+                  <Link key={link.key} href={link.href} className={linkClass}>
+                    {t(link.key as Key)}
                   </Link>
                 ))}
               </nav>
@@ -94,7 +109,7 @@ export default function Footer() {
 
         <nav className="flex flex-wrap gap-x-space-lg gap-y-space-xs border-t border-surface-navy-elevated py-space-md text-body-sm text-secondary-fixed-dim">
           <button type="button" onClick={openCookieSettings} className={linkClass}>
-            {content.cookieSettingsLabel}
+            {t("ft_cookie")}
           </button>
         </nav>
 

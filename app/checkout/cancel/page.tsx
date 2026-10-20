@@ -13,13 +13,13 @@ export default function CancelPage() {
         <p className="text-body-md text-steel">{content.cancel.description}</p>
         <div className="flex flex-col gap-space-sm sm:flex-row">
           <Link
-            href="/checkout"
+            href="/leasing"
             className="rounded bg-surface-subtle px-space-lg py-3 text-body-md font-bold text-surface-navy transition-colors hover:bg-surface-container"
           >
             {content.cancel.retryButtonText}
           </Link>
           <Link
-            href="/shop"
+            href="/"
             className="rounded bg-primary-container px-space-lg py-3 text-body-md font-bold text-on-primary shadow-md transition-colors hover:bg-primary"
           >
             {content.cancel.shopButtonText}

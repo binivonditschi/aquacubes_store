@@ -1,19 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import Icon from "@/components/b2b/Icon";
-import { useCart } from "@/store/useCart";
+import { useT } from "@/lib/i18n";
+import dict from "@/content/i18n/landing.json";
 import AccountMenu from "./AccountMenu";
 
 export default function Navbar() {
-  const [mounted, setMounted] = useState(false);
-  const itemCount = useCart((s) => s.itemCount());
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const t = useT(dict);
 
   return (
     <header className="fixed top-0 z-50 w-full bg-surface-canvas/95 shadow-[0_1px_8px_rgba(0,0,0,0.04)] backdrop-blur-md">
@@ -25,31 +18,11 @@ export default function Navbar() {
 
         <div className="flex items-center gap-space-sm sm:gap-space-md">
           <AccountMenu />
-
           <Link
-            href="/checkout"
-            aria-label="Warenkorb"
-            className="relative flex h-9 w-9 items-center justify-center rounded text-surface-navy transition-colors hover:bg-surface-subtle"
-          >
-            <Icon name="shopping_bag" size={22} />
-            {mounted && itemCount > 0 && (
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 500, damping: 25 }}
-                className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-accent-aquamarine text-[10px] font-bold text-surface-navy"
-              >
-                {itemCount}
-              </motion.span>
-            )}
-          </Link>
-
-          <Link
-            href="/shop"
+            href="/leasing"
             className="inline-flex items-center rounded-xs bg-primary-container px-space-sm py-2 text-body-sm font-semibold text-on-primary shadow-sm transition-colors hover:bg-primary sm:px-space-md sm:text-body-md"
           >
-            <span className="sm:hidden">Reservieren</span>
-            <span className="hidden sm:inline">Cube reservieren / bestellen</span>
+            {t("hdr_cta")}
           </Link>
         </div>
       </div>

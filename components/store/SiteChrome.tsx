@@ -10,6 +10,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import RegionRestrictionModal from "./RegionRestrictionModal";
 import CookieConsent from "./CookieConsent";
+import { RegionProvider } from "@/lib/i18n";
 
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
@@ -73,16 +74,18 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="relative flex min-h-[100dvh] flex-col">
-      <ScrollProgress />
-      <Navbar />
-      <RegionRestrictionModal />
-      <main className="flex-1 pt-16">
-        <PageTransition>{children}</PageTransition>
-      </main>
-      <Footer />
-      <CookieConsent />
-      <Toaster />
-    </div>
+    <RegionProvider>
+      <div className="relative flex min-h-[100dvh] flex-col">
+        <ScrollProgress />
+        <Navbar />
+        <RegionRestrictionModal />
+        <main className="flex-1 pt-16">
+          <PageTransition>{children}</PageTransition>
+        </main>
+        <Footer />
+        <CookieConsent />
+        <Toaster />
+      </div>
+    </RegionProvider>
   );
 }

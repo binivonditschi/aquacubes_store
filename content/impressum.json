@@ -12,11 +12,11 @@
     },
     {
       "heading": "Vertretungsberechtigte Geschäftsführung",
-      "html": "<p><mark>{Name des Geschäftsführers eintragen}</mark></p>"
+      "html": "<p>Dr. Biniam Samuel</p>"
     },
     {
       "heading": "Registereintrag",
-      "html": "<p>Registergericht: Amtsgericht Pinneberg<br/>Handelsregister: HRB <mark>{HRB-Nummer eintragen}</mark></p>"
+      "html": "<p>Registergericht: Amtsgericht Pinneberg<br/>Handelsregister: HRB 14662 PI</p>"
     },
     {
       "heading": "Steuerliche Angaben",
@@ -28,7 +28,7 @@
     },
     {
       "heading": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
-      "html": "<p><mark>{Name, Anschrift eintragen}</mark></p>"
+      "html": "<p>Dr. Biniam Samuel, Hafentörn 3, 25761 Büsum</p>"
     },
     {
       "heading": "EU-Streitschlichtung",

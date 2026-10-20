@@ -1,24 +1,18 @@
 {
   "badges": [
-    { "icon": "verified", "title": "DIN ISO 9001:2015", "text": "Zertifiziertes Qualitätsmanagement" },
+    { "icon": "verified", "title": "DIN ISO 9001:2015", "textKey": "ft_b1s" },
     { "icon": "build_circle", "title": "CE-KONFORMITÄT", "text": "Machinery Directive 2006/42/EC" },
-    { "icon": "engineering", "title": "ENTWICKELT IN DEUTSCHLAND", "text": "Schleswig-Holstein Biotech" },
-    { "icon": "water_drop", "title": "99% GESCHLOSSENER KREISLAUF", "text": "Bio-RAS ohne Abwasser" }
+    { "icon": "engineering", "titleKey": "ft_b3t", "textKey": "ft_b3s" },
+    { "icon": "water_drop", "titleKey": "ft_b4t", "textKey": "ft_b4s" }
   ],
   "brand": "Aquacubes – Eine Marke der Moina GmbH",
-  "companyDetails": "Hafentörn 3, 25761 Büsum, Deutschland · Registergericht: Amtsgericht Pinneberg HRB · USt. ID: DE32 5521 952 · SteuerNr. 18 292 121 39 · Vertreten durch die Geschäftsführung der Moina GmbH. Aufsichtsbehörde: Kreis Dithmarschen Veterinärwesen und Lebensmittelüberwachung.",
-  "legalNotice": {
-    "title": "Gesetzlicher B2B-Hinweis gem. HGB/BGB:",
-    "text": "Alle Angebote, Spezifikationen und Preisangaben richten sich ausschließlich an gewerbliche Abnehmer (Unternehmer i.S.d. § 14 BGB), juristische Personen des öffentlichen Rechts oder öffentlich-rechtliche Sondervermögen. Sämtliche Beträge verstehen sich rein netto in Euro zzgl. gesetzlicher Umsatzsteuer sowie Fracht- und Bereitstellungspauschale. Der verbindliche Reservierungs-, Leasing- oder Kaufvertrag kommt erst durch die schriftliche Auftragsbestätigung durch die Moina GmbH zustande."
-  },
+  "companyDetails": "Hafentörn 3, 25761 Büsum, Deutschland · Registergericht: Amtsgericht Pinneberg HRB 14662 PI · USt. ID: DE32 5521 952 · SteuerNr. 18 292 121 39 · Vertreten durch die Geschäftsführung der Moina GmbH. Aufsichtsbehörde: Kreis Dithmarschen Veterinärwesen und Lebensmittelüberwachung.",
   "contact": {
-    "title": "Contact Us",
     "email": "sales@aquacubes.fish",
     "businessName": "Aquacubes – eine Marke der Moina GmbH",
-    "address": "Hafentörn 3, 25761 Büsum, Germany",
+    "address": "Hafentörn 3, 25761 Büsum,",
     "phone": "+49 15781371194",
     "phoneHref": "tel:+4915781371194",
-    "whatsapp": "Available (Mon-Fri, 10:00 - 17:00 CET)",
     "whatsappHref": "https://wa.me/4915781371194"
   },
   "social": [
@@ -27,31 +21,30 @@
   ],
   "columns": [
     {
-      "title": "Info",
+      "titleKey": "ft_info_h",
       "links": [
-        { "label": "About Us", "href": "/ueber-uns" },
-        { "label": "Impressum", "href": "/impressum" },
-        { "label": "Blog", "href": "/blog" },
-        { "label": "FAQ", "href": "/faq" },
-        { "label": "Contact us", "href": "/kontakt" },
-        { "label": "Become a Distributor", "href": "/distributor" },
-        { "label": "Sign In", "href": "/login" }
+        { "key": "fl_about", "href": "/ueber-uns" },
+        { "key": "fl_impressum", "href": "/impressum" },
+        { "key": "fl_blog", "href": "/blog" },
+        { "key": "fl_faq", "href": "/faq" },
+        { "key": "fl_contact", "href": "/kontakt" },
+        { "key": "fl_dist", "href": "/distributor" },
+        { "key": "fl_signin", "href": "/login" }
       ]
     },
     {
-      "title": "Service",
+      "titleKey": "ft_service_h",
       "links": [
-        { "label": "Privacy Policy", "href": "/datenschutz" },
-        { "label": "About Payment", "href": "/zahlung-lieferung#zahlung" },
-        { "label": "Shipping Policy", "href": "/zahlung-lieferung#lieferung" },
-        { "label": "Terms of Service", "href": "/agb" },
-        { "label": "Return & Refund Policy", "href": "/widerruf" },
-        { "label": "Contact Us", "href": "/kontakt" },
-        { "label": "Batterie- & ElektroG Rücknahme", "href": "/elektrog" }
+        { "key": "sl_privacy", "href": "/datenschutz" },
+        { "key": "sl_payment", "href": "/zahlung-lieferung#zahlung" },
+        { "key": "sl_shipping", "href": "/zahlung-lieferung#lieferung" },
+        { "key": "sl_terms", "href": "/agb" },
+        { "key": "sl_returns", "href": "/widerruf" },
+        { "key": "sl_contact", "href": "/kontakt" },
+        { "key": "sl_elektrog", "href": "/elektrog" }
       ]
     }
   ],
-  "cookieSettingsLabel": "Cookie-Einstellungen",
   "copyright": "Aquacubes. All rights reserved.",
   "seals": ["DIN 8580 Fabrikationsstandard", "TÜV-Süd geprüfte Sensorik", "Dithmarschen Bio-Innovation"]
 }

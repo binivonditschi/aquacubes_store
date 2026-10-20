@@ -22,6 +22,16 @@ const nextConfig: NextConfig = {
       { source: "/privacy", destination: "/datenschutz", permanent: true },
       { source: "/terms", destination: "/agb", permanent: true },
       { source: "/index.html", destination: "/", permanent: true },
+      // The leasing configurator replaces the old shop + cart pages.
+      { source: "/shop", destination: "/leasing", permanent: true },
+      { source: "/shop/starter", destination: "/leasing?pkg=starter", permanent: true },
+      { source: "/shop/micro-farms", destination: "/leasing?pkg=micro", permanent: true },
+      { source: "/shop/enterprise", destination: "/kontakt", permanent: true },
+      { source: "/shop/:path*", destination: "/leasing", permanent: true },
+      { source: "/checkout", destination: "/leasing", permanent: true },
+      { source: "/checkout/success", destination: "/danke", permanent: true },
+      { source: "/leasing.html", destination: "/leasing", permanent: true },
+      { source: "/danke.html", destination: "/danke", permanent: true },
       {
         source:
           "/:page(ueber-uns|kontakt|faq|distributor|blog|impressum|agb|datenschutz|widerruf|zahlung-lieferung|elektrog).html",

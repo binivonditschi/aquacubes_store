@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useT } from "@/lib/i18n";
+import dict from "@/content/i18n/landing.json";
 
 // Same storage key as the static b2b site, so an existing choice carries over.
 const STORAGE_KEY = "aquacubes-cookie-consent";
@@ -23,6 +24,7 @@ export function openCookieSettings() {
 }
 
 export default function CookieConsent() {
+  const t = useT(dict);
   const [bannerOpen, setBannerOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [analytics, setAnalytics] = useState(false);
@@ -53,32 +55,26 @@ export default function CookieConsent() {
       {bannerOpen && (
         <div className="fixed inset-x-0 bottom-0 z-50 bg-surface-navy text-on-primary shadow-2xl">
           <div className="mx-auto flex max-w-5xl flex-col gap-space-md px-space-lg py-space-md md:flex-row md:items-center">
-            <p className="flex-1 text-sm text-secondary-fixed-dim">
-              Wir verwenden technisch notwendige Cookies sowie – mit Ihrer Einwilligung – optionale Analyse-Cookies, um
-              unsere Website zu verbessern. Details in der{" "}
-              <Link className="text-primary-fixed underline" href="/datenschutz">
-                Datenschutzerklärung
-              </Link>
-              .
-            </p>
+            {/* Trusted first-party copy with a link to the privacy policy */}
+            <p className="flex-1 text-sm text-secondary-fixed-dim" dangerouslySetInnerHTML={{ __html: t("ck_text") }} />
             <div className="flex flex-wrap gap-space-sm">
               <button
                 onClick={openCookieSettings}
                 className="rounded-xs border border-secondary-fixed-dim px-space-md py-2 text-sm transition-colors hover:bg-surface-navy-elevated"
               >
-                Einstellungen
+                {t("ck_settings")}
               </button>
               <button
                 onClick={() => save({ essential: true, analytics: false })}
                 className="rounded-xs bg-surface-navy-elevated px-space-md py-2 text-sm transition-colors hover:bg-surface-container-high hover:text-on-surface"
               >
-                Nur notwendige
+                {t("ck_necessary")}
               </button>
               <button
                 onClick={() => save({ essential: true, analytics: true })}
                 className="rounded-xs bg-primary-container px-space-md py-2 text-sm font-semibold transition-colors hover:bg-primary"
               >
-                Alle akzeptieren
+                {t("ck_accept")}
               </button>
             </div>
           </div>
@@ -98,24 +94,20 @@ export default function CookieConsent() {
             onClick={(e) => e.stopPropagation()}
           >
             <h3 id="cookie-settings-title" className="mb-space-sm text-headline-lg text-surface-navy">
-              Cookie-Einstellungen
+              {t("ck_title")}
             </h3>
             <div className="mb-space-lg space-y-space-md">
               <label className="flex items-start justify-between gap-space-md">
                 <span>
-                  <span className="block text-sm font-semibold text-surface-navy">Technisch notwendige</span>
-                  <span className="block text-sm text-steel">
-                    Erforderlich für Grundfunktionen (z. B. Speicherung dieser Einwilligung). Immer aktiv.
-                  </span>
+                  <span className="block text-sm font-semibold text-surface-navy">{t("ck_tech")}</span>
+                  <span className="block text-sm text-steel">{t("ck_tech_d")}</span>
                 </span>
                 <input type="checkbox" checked disabled className="mt-1 accent-primary" />
               </label>
               <label className="flex items-start justify-between gap-space-md">
                 <span>
-                  <span className="block text-sm font-semibold text-surface-navy">Analyse &amp; Statistik</span>
-                  <span className="block text-sm text-steel">
-                    Anonyme Nutzungsstatistiken zur Verbesserung der Website. Nur mit Einwilligung.
-                  </span>
+                  <span className="block text-sm font-semibold text-surface-navy">{t("ck_an")}</span>
+                  <span className="block text-sm text-steel">{t("ck_an_d")}</span>
                 </span>
                 <input
                   type="checkbox"
@@ -130,13 +122,13 @@ export default function CookieConsent() {
                 onClick={() => setModalOpen(false)}
                 className="rounded-xs px-space-md py-2 text-sm text-steel transition-colors hover:bg-surface-subtle"
               >
-                Abbrechen
+                {t("ck_cancel")}
               </button>
               <button
                 onClick={() => save({ essential: true, analytics })}
                 className="rounded-xs bg-primary-container px-space-md py-2 text-sm font-semibold text-on-primary transition-colors hover:bg-primary"
               >
-                Auswahl speichern
+                {t("ck_save")}
               </button>
             </div>
           </div>

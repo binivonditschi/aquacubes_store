@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { createClient } from "@/lib/supabase/client";
 import Icon from "@/components/b2b/Icon";
-import content from "@/content/home.json";
-
-const { newsletter } = content;
+import { useT } from "@/lib/i18n";
+import dict from "@/content/i18n/landing.json";
 
 export default function Newsletter() {
+  const t = useT(dict);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -40,10 +40,10 @@ export default function Newsletter() {
       if (res.ok) {
         setSubmitted(true);
       } else {
-        setError(newsletter.errorMessage);
+        setError(t("nl_err"));
       }
     } catch {
-      setError(newsletter.errorMessage);
+      setError(t("nl_err"));
     } finally {
       setLoading(false);
     }
@@ -59,9 +59,9 @@ export default function Newsletter() {
         className="mx-auto flex max-w-4xl flex-col items-center gap-space-lg rounded-2xl bg-surface-canvas p-space-lg shadow-sm md:flex-row md:p-space-xl"
       >
         <div className="flex-1 text-center md:text-left">
-          <div className="mb-space-xs text-label-technical font-semibold uppercase text-primary">{newsletter.eyebrow}</div>
-          <h2 className="mb-space-xs text-headline-lg text-surface-navy">{newsletter.title}</h2>
-          <p className="text-body-md text-steel">{newsletter.description}</p>
+          <div className="mb-space-xs text-label-technical font-semibold uppercase text-primary">{t("nl_eyebrow")}</div>
+          <h2 className="mb-space-xs text-headline-lg text-surface-navy">{t("nl_title")}</h2>
+          <p className="text-body-md text-steel">{t("nl_desc")}</p>
         </div>
 
         <div className="w-full md:w-auto md:min-w-[360px]">
@@ -73,7 +73,7 @@ export default function Newsletter() {
               className="flex items-center justify-center gap-2 rounded bg-compliance-green-bg px-space-md py-3.5 text-body-md font-semibold text-compliance-green"
             >
               <Icon name="check_circle" size={20} />
-              {newsletter.successMessage}
+              {t("nl_ok")}
             </motion.div>
           ) : (
             <>
@@ -82,7 +82,7 @@ export default function Newsletter() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder={newsletter.placeholder}
+                  placeholder={t("nl_placeholder")}
                   required
                   className="flex-1 rounded bg-surface-subtle px-space-md py-3 text-body-md text-surface-navy shadow-sm outline-none placeholder:text-steel focus:ring-2 focus:ring-primary/40"
                 />
@@ -91,7 +91,7 @@ export default function Newsletter() {
                   disabled={loading}
                   className="rounded bg-primary-container px-space-lg py-3 text-body-md font-bold text-on-primary shadow-md transition-colors hover:bg-primary disabled:opacity-60"
                 >
-                  {loading ? newsletter.processingText : newsletter.buttonText}
+                  {loading ? t("nl_busy") : t("nl_btn")}
                 </button>
               </form>
               {error && <p className="mt-2 text-body-sm text-error">{error}</p>}

@@ -35,6 +35,8 @@
   --color-compliance-green-bg: #f0fdf4;
   --color-border-subtle: #e2e8f0;
   --color-border-strong: #cbd5e1;
+  --color-outline: #6c7a76;
+  --color-warning-amber: #b45309;
 
   --spacing-space-xs: 0.25rem;
   --spacing-space-sm: 0.5rem;
@@ -313,6 +315,20 @@
   background: #fef08a;
   padding: 0 2px;
   border-radius: 2px;
+}
+
+/* Selectable option cards of the leasing configurator (Last-main `.opt`). */
+.opt {
+  border: 2px solid #e2e8f0;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.opt:hover {
+  border-color: #00a896;
+}
+.opt[data-active="true"] {
+  border-color: #006b5f;
+  background: #f0fdf4;
 }
 
 .material-symbols-outlined {

@@ -1,36 +1,8 @@
 {
-  "eyebrow": "Reservierung",
-  "title": "Kasse",
-  "emptyCart": {
-    "message": "Ihr Warenkorb ist leer.",
-    "buttonText": "Zum Shop"
-  },
-  "orderSummary": {
-    "title": "Ihre Auswahl",
-    "eachLabel": "je Einheit",
-    "priceOnRequest": "Preis auf Anfrage",
-    "totalLabel": "Gesamt (netto)"
-  },
-  "payment": {
-    "redirectNotice": "Firmendaten, Lieferadresse und Zahlungsdetails geben Sie im nächsten Schritt auf der sicheren Checkout-Seite von Stripe ein.",
-    "continueButtonText": "Weiter zur Zahlung",
-    "processingText": "Weiterleitung...",
-    "secureCheckoutText": "Sichere SSL-Zahlung über Stripe",
-    "genericErrorMessage": "Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es erneut.",
-    "networkErrorMessage": "Etwas ist schiefgelaufen."
-  },
-  "success": {
-    "title": "Vielen Dank für Ihre Reservierung",
-    "description": "Ihre Zahlung war erfolgreich. Wir haben Ihnen eine Bestätigung per E-Mail gesendet und melden uns innerhalb von 5 Werktagen zur B2B-Validierung.",
-    "orderLabel": "Bestellung",
-    "totalLabel": "Gesamt",
-    "statusLabel": "Status",
-    "buttonText": "Zurück zur Startseite"
-  },
   "cancel": {
     "title": "Zahlung abgebrochen",
     "description": "Ihre Zahlung wurde nicht abgeschlossen. Es wurde nichts belastet. Sie können jederzeit zu Ihrem Warenkorb zurückkehren und es erneut versuchen.",
     "retryButtonText": "Erneut versuchen",
-    "shopButtonText": "Zurück zum Shop"
+    "shopButtonText": "Zur Startseite"
   }
 }
