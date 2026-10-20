@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Icon from "@/components/b2b/Icon";
+import Flag from "@/components/b2b/Flag";
 import { isRegion, useT, useRegion } from "@/lib/i18n";
 import { orderRef, type LeasingConfig } from "@/lib/leasing";
 import type { Order } from "@/lib/types";
@@ -43,7 +44,8 @@ export default function ThankYou() {
 
   const paid = order?.status === "paid";
   const date = order ? new Date(order.createdAt).toLocaleDateString(locale) : "—";
-  const countryKey = `c_${isRegion(config.region) ? config.region : "OTHER"}` as keyof (typeof dict)["de"];
+  const country = isRegion(config.region) ? config.region : "OTHER";
+  const countryKey = `c_${country}` as keyof (typeof dict)["de"];
 
   return (
     <div>
@@ -143,7 +145,10 @@ export default function ThankYou() {
             </div>
             <div>
               <div className="mb-1 text-label-technical uppercase text-steel">{t("l_country")}</div>
-              <div className="text-headline-md text-surface-navy">{t(countryKey)}</div>
+              <div className="flex items-center gap-2 text-headline-md text-surface-navy">
+                {config.region && <Flag region={country} />}
+                {config.region ? t(countryKey) : "—"}
+              </div>
             </div>
             <div>
               <div className="mb-1 text-label-technical uppercase text-steel">{t("l_rt")}</div>

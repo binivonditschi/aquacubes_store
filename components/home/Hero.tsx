@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Icon from "@/components/b2b/Icon";
-import { REGION_FLAG, REGIONS, useRegion, useT, type Region } from "@/lib/i18n";
+import Flag from "@/components/b2b/Flag";
+import { REGIONS, useRegion, useT, type Region } from "@/lib/i18n";
 import dict from "@/content/i18n/landing.json";
 
 const TRUST = [
@@ -142,13 +143,14 @@ export default function Hero() {
                   type="button"
                   aria-pressed={active}
                   onClick={() => setRegion(r)}
-                  className={`rounded border px-space-md py-2 text-body-md font-semibold transition-colors ${
+                  className={`inline-flex items-center gap-2 rounded border px-space-md py-2 text-body-md font-semibold transition-colors ${
                     active
                       ? "border-primary-container bg-primary-container text-on-primary"
                       : "border-border-strong bg-surface-canvas text-surface-navy hover:bg-surface-subtle"
                   }`}
                 >
-                  {REGION_FLAG[r]} <span>{t(REGION_KEY[r])}</span>
+                  <Flag region={r} />
+                  <span>{t(REGION_KEY[r])}</span>
                 </button>
               );
             })}

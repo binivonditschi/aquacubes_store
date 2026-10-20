@@ -15,7 +15,6 @@ export type Lang = "de" | "da" | "sv" | "no" | "en";
 export const DELIVERY_REGIONS: Region[] = ["DE", "DK", "SE", "NO", "CH"];
 
 export const REGION_LANG: Record<Region, Lang> = { DE: "de", DK: "da", SE: "sv", NO: "no", CH: "de", OTHER: "en" };
-export const REGION_FLAG: Record<Region, string> = { DE: "🇩🇪", DK: "🇩🇰", SE: "🇸🇪", NO: "🇳🇴", CH: "🇨🇭", OTHER: "🌍" };
 export const LOCALES: Record<Lang, string> = { de: "de-DE", da: "da-DK", sv: "sv-SE", no: "nb-NO", en: "en-GB" };
 
 const STORAGE_KEY = "ac-region";

@@ -5,7 +5,8 @@ import Link from "next/link";
 import Icon from "@/components/b2b/Icon";
 import { SalesForm } from "@/components/embeds";
 import { createClient } from "@/lib/supabase/client";
-import { DELIVERY_REGIONS, REGION_FLAG, REGIONS, isRegion, useRegion, useT, type Region } from "@/lib/i18n";
+import Flag from "@/components/b2b/Flag";
+import { DELIVERY_REGIONS, REGIONS, isRegion, useRegion, useT, type Region } from "@/lib/i18n";
 import {
   PACKAGES,
   SPECIES,
@@ -178,9 +179,10 @@ export default function LeasingConfigurator() {
                 type="button"
                 data-active={region === r}
                 onClick={() => isRegion(r) && setRegion(r)}
-                className="opt rounded-lg px-space-lg py-2.5 text-sm font-semibold text-surface-navy"
+                className="opt inline-flex items-center gap-2 rounded-lg px-space-lg py-2.5 text-sm font-semibold text-surface-navy"
               >
-                {REGION_FLAG[r]} {r === "OTHER" ? t("region_other") : tl(REGION_LABEL_KEY[r])}
+                <Flag region={r} />
+                {r === "OTHER" ? t("region_other") : tl(REGION_LABEL_KEY[r])}
               </button>
             ))}
           </div>
@@ -423,8 +425,9 @@ export default function LeasingConfigurator() {
             <p className="mb-space-lg mt-2 flex flex-wrap items-center gap-1.5 text-sm text-steel">
               <Icon name="location_on" size={18} className="text-primary" />
               <span>{t("auth_country")}</span>
-              <strong>
-                {REGION_FLAG[region]} {tl(REGION_LABEL_KEY[region])}
+              <strong className="inline-flex items-center gap-1.5">
+                <Flag region={region} />
+                {tl(REGION_LABEL_KEY[region])}
               </strong>
             </p>
             <div className="space-y-space-sm">
