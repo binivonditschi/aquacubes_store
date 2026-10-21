@@ -14,6 +14,13 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async rewrites() {
+    return [
+      // The Stripe webhook endpoint is registered as https://shop.aquacubes.fish/webhook.
+      // A rewrite (not a redirect) keeps the POST body intact for signature checks.
+      { source: "/webhook", destination: "/api/stripe/webhook" },
+    ];
+  },
   async redirects() {
     // Old English URLs and the static b2b site's *.html links → German routes.
     return [
