@@ -1,27 +1,16 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { LOCALES, REGION_LANG, isRegion, type Lang, type Region } from "./regions";
+
+export { DELIVERY_REGIONS, LOCALES, REGIONS, REGION_LANG, isRegion, type Lang, type Region } from "./regions";
 
 /**
  * Region → language switching from the Last-main site. The visitor picks their
  * installation country; that sets the page language and is remembered under the
  * same storage key the static site used ("ac-region").
  */
-export const REGIONS = ["DE", "DK", "SE", "NO", "CH", "OTHER"] as const;
-export type Region = (typeof REGIONS)[number];
-export type Lang = "de" | "da" | "sv" | "no" | "en";
-
-/** Countries we deliver to and sell in directly. */
-export const DELIVERY_REGIONS: Region[] = ["DE", "DK", "SE", "NO", "CH"];
-
-export const REGION_LANG: Record<Region, Lang> = { DE: "de", DK: "da", SE: "sv", NO: "no", CH: "de", OTHER: "en" };
-export const LOCALES: Record<Lang, string> = { de: "de-DE", da: "da-DK", sv: "sv-SE", no: "nb-NO", en: "en-GB" };
-
 const STORAGE_KEY = "ac-region";
-
-export function isRegion(value: unknown): value is Region {
-  return typeof value === "string" && (REGIONS as readonly string[]).includes(value);
-}
 
 interface RegionContextValue {
   region: Region;

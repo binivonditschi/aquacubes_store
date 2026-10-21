@@ -3,7 +3,7 @@ import type Stripe from "stripe";
 import { stripe } from "@/lib/stripe";
 import { prisma } from "@/lib/prisma";
 import { createClient } from "@/lib/supabase/server";
-import { DELIVERY_REGIONS, isRegion } from "@/lib/i18n";
+import { DELIVERY_REGIONS, isRegion } from "@/lib/regions";
 import {
   PACKAGES,
   SPARES_KIT_PRICE,
