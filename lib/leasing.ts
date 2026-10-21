@@ -12,16 +12,31 @@ export interface LeasingPackage {
   cubes: number;
   /** Monthly lease rate in EUR, net. Starts only after on-site acceptance. */
   monthlyRate: number;
-  /** Refundable reservation deposit in EUR, net — the amount charged today via Stripe. */
+  /** Refundable reservation deposit in EUR, net — the only amount ever paid online. */
   deposit: number;
   minMonths: number;
   extMonths: number;
 }
 
+/** Flat online reservation deposit for every package; customer service arranges the rest. */
+export const RESERVATION_DEPOSIT = 1000;
+
 export const PACKAGES: Record<PackageId, LeasingPackage> = {
-  starter: { id: "starter", name: "Starter · 1 Cube", cubes: 1, monthlyRate: 699, deposit: 1000, minMonths: 6, extMonths: 12 },
-  micro: { id: "micro", name: "Micro-Farm · 10 Cubes", cubes: 10, monthlyRate: 4990, deposit: 10000, minMonths: 24, extMonths: 36 },
+  starter: { id: "starter", name: "Starter · 1 Cube", cubes: 1, monthlyRate: 699, deposit: RESERVATION_DEPOSIT, minMonths: 6, extMonths: 12 },
+  micro: { id: "micro", name: "Micro-Farm · 10 Cubes", cubes: 10, monthlyRate: 4990, deposit: RESERVATION_DEPOSIT, minMonths: 24, extMonths: 36 },
 };
+
+/**
+ * Live Stripe Payment Links (one per package, each a €1,000 one-time charge).
+ * The amount is set in the Stripe dashboard — the website cannot change it.
+ */
+export const STRIPE_PAYMENT_LINKS: Record<PackageId, string> = {
+  starter: "https://abo.aquacubes.fish/b/bJebJ2abU8EWcZQ10od3i03",
+  micro: "https://abo.aquacubes.fish/b/8x26oIabUbR89NEbF2d3i04",
+};
+
+/** Browser storage key: the order being paid, read by /danke after the Stripe redirect. */
+export const LAST_ORDER_KEY = "ac-last-order-id";
 
 /** Optional one-time spare parts & wear kit (billed with the contract, not with the deposit). */
 export const SPARES_KIT_PRICE = 1850;

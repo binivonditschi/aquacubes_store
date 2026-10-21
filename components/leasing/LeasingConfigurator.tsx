@@ -8,6 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 import Flag from "@/components/b2b/Flag";
 import { DELIVERY_REGIONS, REGIONS, isRegion, useRegion, useT, type Region } from "@/lib/i18n";
 import {
+  LAST_ORDER_KEY,
   PACKAGES,
   SPECIES,
   isPackageId,
@@ -95,7 +96,7 @@ export default function LeasingConfigurator() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/stripe/create-checkout-session", {
+      const res = await fetch("/api/leasing/reserve", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pkg, term, species, region, sparesKit }),
@@ -106,8 +107,15 @@ export default function LeasingConfigurator() {
         return;
       }
       const data = await res.json();
-      if (data.checkoutUrl) {
-        window.location.href = data.checkoutUrl;
+      if (data.paymentUrl) {
+        // The Stripe Payment Link redirects to /danke without our order id,
+        // so the thank-you page reads it from here.
+        try {
+          localStorage.setItem(LAST_ORDER_KEY, data.orderId);
+        } catch {
+          // Without storage the thank-you page shows the generic confirmation.
+        }
+        window.location.href = data.paymentUrl;
         return;
       }
       setError(t("err_checkout"));
@@ -240,6 +248,10 @@ export default function LeasingConfigurator() {
                       </span>
                     </div>
                     <div className="mt-1 text-sm text-steel">{t("pkg_micro_desc")}</div>
+                    <div className="mt-2 flex items-start gap-1.5 text-xs text-primary">
+                      <Icon name="support_agent" size={16} />
+                      <span>{t("micro_contact")}</span>
+                    </div>
                   </button>
                 </div>
               </section>
@@ -398,6 +410,11 @@ export default function LeasingConfigurator() {
                 </button>
                 {showHint && <p className="mt-2 text-xs text-error">{t("hint")}</p>}
                 {error && <p className="mt-2 text-xs text-error">{error}</p>}
+                <p className="mt-space-sm flex items-start gap-1.5 text-xs leading-relaxed text-compliance-green">
+                  <Icon name="lock" size={14} className="mt-0.5" />
+                  <span>{t("pay_secure")}</span>
+                </p>
+                <p className="mt-space-sm text-xs leading-relaxed text-surface-navy">{t("pay_note")}</p>
                 <p className="mt-space-md text-xs leading-relaxed text-steel">{t("fine_print")}</p>
               </div>
             </aside>
