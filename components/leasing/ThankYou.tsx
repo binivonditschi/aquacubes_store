@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import Icon from "@/components/b2b/Icon";
 import Flag from "@/components/b2b/Flag";
 import { isRegion, useT, useRegion } from "@/lib/i18n";
-import { LAST_ORDER_KEY, RESERVATION_DEPOSIT, orderRef, type LeasingConfig } from "@/lib/leasing";
+import { orderRef, type LeasingConfig } from "@/lib/leasing";
 import type { Order } from "@/lib/types";
 import dict from "@/content/i18n/danke.json";
 import leasing from "@/content/i18n/leasing.json";
@@ -15,18 +15,15 @@ export default function ThankYou() {
   const t = useT(dict);
   const tl = useT(leasing);
   const { locale } = useRegion();
-  const orderIdParam = useSearchParams().get("orderId");
+  const orderId = useSearchParams().get("orderId");
   const [order, setOrder] = useState<Order | null>(null);
   const [missing, setMissing] = useState(false);
 
   useEffect(() => {
-    // Stripe Payment Links redirect here without our order id — use the one saved at checkout.
-    let orderId = orderIdParam;
     try {
-      orderId ??= localStorage.getItem(LAST_ORDER_KEY);
       localStorage.removeItem("ac-leasing-config");
     } catch {
-      // Storage blocked — only ?orderId= works.
+      // Nothing to clean up.
     }
     if (!orderId) {
       setMissing(true);
@@ -36,7 +33,7 @@ export default function ThankYou() {
       .then((res) => (res.ok ? res.json() : null))
       .then((data: Order | null) => (data ? setOrder(data) : setMissing(true)))
       .catch(() => setMissing(true));
-  }, [orderIdParam]);
+  }, [orderId]);
 
   let config: Partial<LeasingConfig> = {};
   try {
@@ -136,10 +133,7 @@ export default function ThankYou() {
             <div className="mb-1 text-label-technical uppercase text-steel">{t("l_total")}</div>
             <div className="text-display-hero-mobile text-surface-navy md:text-display-hero">
               €{" "}
-              {(order?.total || RESERVATION_DEPOSIT).toLocaleString(locale, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
+              {(order?.total ?? 0).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
             <div className="mt-1 text-body-sm text-steel">{t("total_sub")}</div>
           </div>
@@ -192,8 +186,8 @@ export default function ThankYou() {
       <section className="bg-surface-subtle px-margin py-space-2xl md:px-margin-tablet lg:px-margin-desktop">
         <div className="mx-auto max-w-7xl">
           <div className="mb-space-sm text-label-technical uppercase tracking-widest text-steel">{t("next_h")}</div>
-          <div className="grid grid-cols-1 gap-space-md md:grid-cols-2 lg:grid-cols-4">
-            {(["n1", "n2", "n3", "n4"] as const).map((step, i) => (
+          <div className="grid grid-cols-1 gap-space-md md:grid-cols-3">
+            {(["n1", "n2", "n3"] as const).map((step, i) => (
               <div key={step} className="rounded-lg bg-surface-canvas p-space-lg shadow-sm">
                 <div className="mb-space-sm flex h-9 w-9 items-center justify-center rounded-full bg-primary-container text-sm font-bold text-on-primary">
                   {i + 1}

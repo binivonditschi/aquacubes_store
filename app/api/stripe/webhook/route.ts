@@ -28,23 +28,14 @@ export async function POST(req: NextRequest) {
       const country =
         session.collected_information?.shipping_details?.address?.country ??
         session.customer_details?.address?.country;
-      const paidData = {
-        status: "paid",
-        ...(email ? { customerEmail: email } : {}),
-        ...(country ? { country } : {}),
-      };
-      const updated = await prisma.order.updateMany({
+      await prisma.order.updateMany({
         where: { stripeSessionId: session.id },
-        data: paidData,
+        data: {
+          status: "paid",
+          ...(email ? { customerEmail: email } : {}),
+          ...(country ? { country } : {}),
+        },
       });
-      // Payment Link checkouts aren't created by us, so match them by the order id
-      // we passed along as client_reference_id.
-      if (updated.count === 0 && session.client_reference_id) {
-        await prisma.order.updateMany({
-          where: { id: session.client_reference_id },
-          data: { ...paidData, stripeSessionId: session.id },
-        });
-      }
     } else if (event.type === "checkout.session.async_payment_failed" || event.type === "checkout.session.expired") {
       const session = event.data.object as { id: string };
       await prisma.order.updateMany({

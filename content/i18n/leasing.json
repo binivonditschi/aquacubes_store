@@ -60,10 +60,7 @@
     "auth_continue": "Ich bin angemeldet – weiter zur Zahlung",
     "auth_country": "Ihr Land (bestätigt als Lieferadresse):",
     "busy": "Weiterleitung zu Stripe...",
-    "err_checkout": "Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es erneut.",
-    "micro_contact": "Nach der Zahlung kontaktiert Sie unser Kundenservice zu den weiteren Details Ihrer Reservierung und Ihres Abonnements.",
-    "pay_note": "Nach der Zahlung kontaktiert Sie unser Kundenservice zu den weiteren Details Ihrer Reservierung und Ihres Abonnements.",
-    "pay_secure": "Sichere Zahlung via Stripe · Kaution vollständig rückzahlbar bis zur finalen Auftragsbestätigung"
+    "err_checkout": "Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es erneut."
   },
   "da": {
     "nav_help": "Hjælp",
@@ -126,10 +123,7 @@
     "auth_continue": "Jeg er logget ind – fortsæt til betaling",
     "auth_country": "Dit land (bekræftet som leveringsadresse):",
     "busy": "Viderestiller til Stripe...",
-    "err_checkout": "Betalingen kunne ikke startes. Prøv venligst igen.",
-    "micro_contact": "Efter betaling kontakter vores kundeservice dig om de videre detaljer for din reservation og dit abonnement.",
-    "pay_note": "Efter betaling kontakter vores kundeservice dig om de videre detaljer for din reservation og dit abonnement.",
-    "pay_secure": "Sikker betaling via Stripe · depositum refunderes fuldt ud indtil endelig ordrebekræftelse"
+    "err_checkout": "Betalingen kunne ikke startes. Prøv venligst igen."
   },
   "sv": {
     "nav_help": "Hjälp",
@@ -192,10 +186,7 @@
     "auth_continue": "Jag är inloggad – fortsätt till betalning",
     "auth_country": "Ditt land (bekräftat som leveransadress):",
     "busy": "Omdirigerar till Stripe...",
-    "err_checkout": "Betalningen kunde inte startas. Försök igen.",
-    "micro_contact": "Efter betalning kontaktar vår kundtjänst dig om de vidare detaljerna för din reservation och ditt abonnemang.",
-    "pay_note": "Efter betalning kontaktar vår kundtjänst dig om de vidare detaljerna för din reservation och ditt abonnemang.",
-    "pay_secure": "Säker betalning via Stripe · depositionen återbetalas fullt fram till slutlig orderbekräftelse"
+    "err_checkout": "Betalningen kunde inte startas. Försök igen."
   },
   "no": {
     "nav_help": "Hjelp",
@@ -258,10 +249,7 @@
     "auth_continue": "Jeg er logget inn – fortsett til betaling",
     "auth_country": "Ditt land (bekreftet som leveringsadresse):",
     "busy": "Videresender til Stripe...",
-    "err_checkout": "Betalingen kunne ikke startes. Vennligst prøv igjen.",
-    "micro_contact": "Etter betaling kontakter kundeservicen vår deg om de videre detaljene for reservasjonen og abonnementet ditt.",
-    "pay_note": "Etter betaling kontakter kundeservicen vår deg om de videre detaljene for reservasjonen og abonnementet ditt.",
-    "pay_secure": "Sikker betaling via Stripe · depositumet refunderes fullt ut frem til endelig ordrebekreftelse"
+    "err_checkout": "Betalingen kunne ikke startes. Vennligst prøv igjen."
   },
   "en": {
     "nav_help": "Help",
@@ -324,9 +312,6 @@
     "auth_continue": "I am signed in – continue to payment",
     "auth_country": "Your country (confirmed as delivery address):",
     "busy": "Redirecting to Stripe...",
-    "err_checkout": "The payment could not be started. Please try again.",
-    "micro_contact": "After payment, our customer service will contact you with the remaining details of your reservation and subscription.",
-    "pay_note": "After payment, our customer service will contact you with the remaining details of your reservation and subscription.",
-    "pay_secure": "Secure payment via Stripe · deposit fully refundable until final order confirmation"
+    "err_checkout": "The payment could not be started. Please try again."
   }
 }
