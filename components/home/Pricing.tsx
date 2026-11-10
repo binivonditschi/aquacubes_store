@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import Icon from "@/components/b2b/Icon";
-import { useT } from "@/lib/i18n";
+import { PriceDrop, Strike, useBlackFriday } from "@/components/store/BlackFriday";
+import { useRegion, useT } from "@/lib/i18n";
+import { PACKAGES, packagePrice } from "@/lib/leasing";
 import dict from "@/content/i18n/landing.json";
 
 type Key = keyof (typeof dict)["de"];
@@ -53,6 +55,13 @@ function FeatureList({ items, t }: { items: Feature[]; t: (k: Key) => string }) 
 
 export default function Pricing() {
   const t = useT(dict);
+  const { locale } = useRegion();
+  const promo = useBlackFriday();
+  const money = (n: number) => "€" + n.toLocaleString(locale);
+  const starter = packagePrice("starter", promo);
+  const micro = packagePrice("micro", promo);
+  const microListRate = PACKAGES.micro.monthlyRate / PACKAGES.micro.cubes;
+  const microRate = micro.monthlyRate / PACKAGES.micro.cubes;
   const button = "block w-full rounded px-space-md py-3.5 text-center text-body-md font-bold transition-colors";
 
   return (
@@ -75,8 +84,11 @@ export default function Pricing() {
               <h3 className="mb-1 text-headline-lg text-surface-navy">Starter</h3>
               <p className="mb-space-lg text-body-md text-steel">{t("starter_desc")}</p>
               <div className="mb-space-lg rounded-lg bg-surface-subtle p-space-md">
+                {promo && (
+                  <PriceDrop list={PACKAGES.starter.monthlyRate} price={starter.monthlyRate} label={money(PACKAGES.starter.monthlyRate)} />
+                )}
                 <div className="flex items-baseline gap-1">
-                  <span className="text-label-numeric-lg text-surface-navy">€699</span>
+                  <span className="text-label-numeric-lg text-surface-navy">{money(starter.monthlyRate)}</span>
                   <span className="text-body-md text-steel">{t("per_month_cube")}</span>
                 </div>
                 <div className="mt-1 text-label-legal text-steel">{t("starter_vat")}</div>
@@ -87,7 +99,14 @@ export default function Pricing() {
               <Link href="/leasing?pkg=starter" className={`${button} bg-surface-subtle text-surface-navy shadow-sm hover:bg-surface-container`}>
                 {t("starter_cta")}
               </Link>
-              <div className="mt-2 text-center text-label-legal text-steel">{t("starter_dep")}</div>
+              {promo ? (
+                <div className="mt-2 text-center text-label-legal text-steel">
+                  {t("bf_starter_dep")} <Strike className="mx-0.5">{money(PACKAGES.starter.deposit)}</Strike>{" "}
+                  <strong className="text-surface-navy">{money(starter.deposit)}</strong> {t("bf_net")}
+                </div>
+              ) : (
+                <div className="mt-2 text-center text-label-legal text-steel">{t("starter_dep")}</div>
+              )}
             </div>
           </div>
 
@@ -104,11 +123,13 @@ export default function Pricing() {
               <h3 className="mb-1 text-headline-lg text-surface-navy">Micro-Farms</h3>
               <p className="mb-space-lg text-body-md text-steel">{t("micro_desc")}</p>
               <div className="mb-space-lg rounded-lg bg-surface-container-low p-space-md">
+                {promo && <PriceDrop list={microListRate} price={microRate} label={money(microListRate)} />}
                 <div className="flex items-baseline gap-1">
-                  <span className="text-label-numeric-lg text-primary">€499</span>
+                  <span className="text-label-numeric-lg text-primary">{money(microRate)}</span>
                   <span className="text-body-md font-semibold text-surface-navy">{t("per_month_cube2")}</span>
                 </div>
-                <div className="mt-1 text-label-legal text-steel">{t("micro_vat")}</div>
+                {/* The total sits inside translated copy; each language writes 4,990 with its own separator. */}
+                <div className="mt-1 text-label-legal text-steel">{promo ? t("micro_vat").replace(/4(.)990/, "3$1990") : t("micro_vat")}</div>
               </div>
               <FeatureList items={MICRO} t={t} />
             </div>
@@ -116,7 +137,13 @@ export default function Pricing() {
               <Link href="/leasing?pkg=micro" className={`${button} bg-primary-container text-on-primary shadow-md hover:bg-primary`}>
                 {t("micro_cta")}
               </Link>
-              <div className="mt-2 text-center text-label-legal font-semibold text-compliance-green">{t("micro_pay")}</div>
+              {promo ? (
+                <div className="mt-2 text-center text-label-legal font-semibold text-compliance-green">
+                  {t("bf_micro_pay")} <Strike className="mx-0.5 text-steel">{money(PACKAGES.micro.deposit)}</Strike> {money(micro.deposit)}
+                </div>
+              ) : (
+                <div className="mt-2 text-center text-label-legal font-semibold text-compliance-green">{t("micro_pay")}</div>
+              )}
             </div>
           </div>
 

@@ -3,7 +3,9 @@
 import Link from "next/link";
 import Icon from "@/components/b2b/Icon";
 import Flag from "@/components/b2b/Flag";
+import { PriceDrop, useBlackFriday } from "@/components/store/BlackFriday";
 import { REGIONS, useRegion, useT, type Region } from "@/lib/i18n";
+import { PACKAGES, packagePrice } from "@/lib/leasing";
 import dict from "@/content/i18n/landing.json";
 
 const TRUST = [
@@ -31,6 +33,9 @@ const REGION_KEY: Record<Region, keyof (typeof dict)["de"]> = {
 export default function Hero() {
   const t = useT(dict);
   const { region, setRegion } = useRegion();
+  const promo = useBlackFriday();
+  const listRate = PACKAGES.micro.monthlyRate / PACKAGES.micro.cubes;
+  const rate = packagePrice("micro", promo).monthlyRate / PACKAGES.micro.cubes;
 
   return (
     <>
@@ -59,8 +64,13 @@ export default function Hero() {
 
             <div className="mb-space-lg rounded-lg bg-surface-canvas p-space-md shadow-sm">
               <div className="text-label-technical uppercase text-steel">{t("hero_lease_label")}</div>
+              {promo && (
+                <div className="mt-1">
+                  <PriceDrop list={listRate} price={rate} label={`ab €${listRate}`} />
+                </div>
+              )}
               <div className="mt-1 flex items-baseline gap-2">
-                <span className="text-label-numeric-lg text-surface-navy">ab €499</span>
+                <span className="text-label-numeric-lg text-surface-navy">ab €{rate}</span>
                 <span className="text-body-md text-on-surface-variant">{t("hero_per_month")}</span>
               </div>
             </div>

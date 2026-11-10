@@ -2,14 +2,19 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Strike, useBlackFriday } from "@/components/store/BlackFriday";
 import { useRegion, useT } from "@/lib/i18n";
+import { PACKAGES, packagePrice } from "@/lib/leasing";
 import dict from "@/content/i18n/landing.json";
 
 const YIELD_PER_CUBE_KG = 600;
 const FOOTPRINT_PER_CUBE_M2 = 8;
-// Micro-Farm rate applies from 10 cubes, Starter rate below that.
-const LEASE_RATE_SMALL = 699;
-const LEASE_RATE_FARM = 499;
+
+/** Yearly lease total: the Micro-Farm rate applies from 10 cubes, the Starter rate below that. */
+function annualLeaseFor(cubes: number, promo: boolean) {
+  const perCube = cubes >= 10 ? packagePrice("micro", promo).monthlyRate / PACKAGES.micro.cubes : packagePrice("starter", promo).monthlyRate;
+  return cubes * perCube * 12;
+}
 
 const SPECIES = [
   { key: "cs1", pricePerKg: 28 },
@@ -21,6 +26,7 @@ const SPECIES = [
 export default function RoiCalculator() {
   const t = useT(dict);
   const { locale } = useRegion();
+  const promo = useBlackFriday();
   const [cubes, setCubes] = useState(10);
   const [pricePerKg, setPricePerKg] = useState<number>(SPECIES[0].pricePerKg);
 
@@ -28,7 +34,7 @@ export default function RoiCalculator() {
   const annualYield = cubes * YIELD_PER_CUBE_KG;
   const revenue = annualYield * pricePerKg;
   const footprint = cubes * FOOTPRINT_PER_CUBE_M2;
-  const annualLease = cubes * (cubes >= 10 ? LEASE_RATE_FARM : LEASE_RATE_SMALL) * 12;
+  const annualLease = annualLeaseFor(cubes, promo);
 
   return (
     <section id="yield-calculator" className="bg-surface-subtle px-margin py-space-2xl md:px-margin-tablet lg:px-margin-desktop">
@@ -127,7 +133,10 @@ export default function RoiCalculator() {
               <div className="mb-space-lg space-y-space-xs text-body-sm text-secondary-fixed-dim">
                 <div className="flex justify-between gap-4 py-1">
                   <span>{t("res_lease")}</span>
-                  <span className="font-semibold text-on-primary">€{fmt(annualLease)}</span>
+                  <span className="font-semibold text-on-primary">
+                    {promo && <Strike className="mr-2 font-normal text-secondary-fixed-dim">€{fmt(annualLeaseFor(cubes, false))}</Strike>}
+                    €{fmt(annualLease)}
+                  </span>
                 </div>
                 <div className="flex justify-between gap-4 py-1">
                   <span>{t("res_water")}</span>

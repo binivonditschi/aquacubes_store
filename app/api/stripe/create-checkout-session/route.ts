@@ -7,9 +7,11 @@ import { DELIVERY_REGIONS, isRegion } from "@/lib/regions";
 import {
   PACKAGES,
   SPARES_KIT_PRICE,
+  isBlackFriday,
   isPackageId,
   isSpecies,
   isTerm,
+  packagePrice,
   termMonths,
   type LeasingConfig,
 } from "@/lib/leasing";
@@ -33,6 +35,7 @@ export async function POST(req: NextRequest) {
     }
 
     const plan = PACKAGES[pkg];
+    const { monthlyRate, deposit } = packagePrice(pkg, isBlackFriday());
     const config: LeasingConfig = {
       pkg,
       term,
@@ -40,8 +43,8 @@ export async function POST(req: NextRequest) {
       species,
       region,
       sparesKit: sparesKit === true,
-      monthlyRate: plan.monthlyRate,
-      deposit: plan.deposit,
+      monthlyRate,
+      deposit,
     };
     const productName = `Aquacube Model Pro · ${plan.name}`;
 
@@ -50,17 +53,17 @@ export async function POST(req: NextRequest) {
     const order = await prisma.order.create({
       data: {
         status: "pending",
-        total: plan.deposit,
+        total: deposit,
         customerEmail: user.email,
         country: region,
         items: JSON.stringify([
-          { id: pkg, name: `Kaution · ${productName}`, price: plan.deposit, quantity: 1, config },
+          { id: pkg, name: `Kaution · ${productName}`, price: deposit, quantity: 1, config },
         ]),
       },
     });
 
     const description = [
-      `${config.months} Monate Leasing à €${plan.monthlyRate.toLocaleString("de-DE")}/Monat netto`,
+      `${config.months} Monate Leasing à €${monthlyRate.toLocaleString("de-DE")}/Monat netto`,
       `Ziel-Spezies: ${species}`,
       config.sparesKit ? `Ersatzteilset (+ €${SPARES_KIT_PRICE.toLocaleString("de-DE")} einmalig, separat)` : null,
       "Kaution rückzahlbar bis zur finalen Auftragsbestätigung",
@@ -81,7 +84,7 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: "eur",
             product_data: { name: `Kaution · ${productName}`, description },
-            unit_amount: plan.deposit * 100,
+            unit_amount: deposit * 100,
           },
           quantity: 1,
         },

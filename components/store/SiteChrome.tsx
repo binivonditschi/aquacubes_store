@@ -10,6 +10,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import RegionRestrictionModal from "./RegionRestrictionModal";
 import CookieConsent from "./CookieConsent";
+import { BlackFridayBanner } from "./BlackFriday";
 import { RegionProvider } from "@/lib/i18n";
 
 function ScrollProgress() {
@@ -80,6 +81,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
         <Navbar />
         <RegionRestrictionModal />
         <main className="flex-1 pt-16">
+          <BlackFridayBanner />
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />

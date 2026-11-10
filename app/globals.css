@@ -286,6 +286,22 @@
   .animate-shimmer {
     animation: shimmer 1.5s infinite;
   }
+
+  /* Band of light that travels across the Black Friday banner and price badges. */
+  @keyframes bf-sweep {
+    0%,
+    35% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  .bf-sweep {
+    background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.16) 50%, transparent 65%);
+    pointer-events: none;
+    animation: bf-sweep 4.5s ease-in-out infinite;
+  }
 }
 
 /* Rich-text body of the legal / info pages (same rules as the b2b `.legal` class). */

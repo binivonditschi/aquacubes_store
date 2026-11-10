@@ -6,6 +6,7 @@ import Icon from "@/components/b2b/Icon";
 import { SalesForm } from "@/components/embeds";
 import { createClient } from "@/lib/supabase/client";
 import Flag from "@/components/b2b/Flag";
+import { PriceDrop, Strike, useBlackFriday } from "@/components/store/BlackFriday";
 import { DELIVERY_REGIONS, REGIONS, isRegion, useRegion, useT, type Region } from "@/lib/i18n";
 import {
   PACKAGES,
@@ -13,6 +14,7 @@ import {
   isPackageId,
   isSpecies,
   isTerm,
+  packagePrice,
   termMonths,
   type PackageId,
   type Species,
@@ -80,7 +82,11 @@ export default function LeasingConfigurator() {
     }
   }, [pkg, term, species, sparesKit]);
 
+  const promo = useBlackFriday();
   const plan = PACKAGES[pkg];
+  const price = packagePrice(pkg, promo);
+  const starterPrice = packagePrice("starter", promo);
+  const microPrice = packagePrice("micro", promo);
   const months = termMonths(pkg, term);
   const deliverable = DELIVERY_REGIONS.includes(region);
   const money = (n: number) => "€" + n.toLocaleString(locale);
@@ -218,8 +224,9 @@ export default function LeasingConfigurator() {
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="font-bold text-surface-navy">Starter</div>
-                      <span className="text-sm font-semibold text-primary">
-                        {money(PACKAGES.starter.monthlyRate)} {t("per_month")}
+                      <span className="text-right text-sm font-semibold text-primary">
+                        {promo && <Strike className="mr-1.5 font-normal text-steel">{money(PACKAGES.starter.monthlyRate)}</Strike>}
+                        {money(starterPrice.monthlyRate)} {t("per_month")}
                       </span>
                     </div>
                     <div className="mt-1 text-sm text-steel">{t("pkg_starter_desc")}</div>
@@ -235,11 +242,14 @@ export default function LeasingConfigurator() {
                     </span>
                     <div className="flex items-start justify-between gap-2">
                       <div className="font-bold text-surface-navy">Micro-Farm</div>
-                      <span className="text-sm font-semibold text-primary">
-                        {money(PACKAGES.micro.monthlyRate)} {t("per_month")}
+                      <span className="text-right text-sm font-semibold text-primary">
+                        {promo && <Strike className="mr-1.5 font-normal text-steel">{money(PACKAGES.micro.monthlyRate)}</Strike>}
+                        {money(microPrice.monthlyRate)} {t("per_month")}
                       </span>
                     </div>
-                    <div className="mt-1 text-sm text-steel">{t("pkg_micro_desc")}</div>
+                    <div className="mt-1 text-sm text-steel">
+                      {t("pkg_micro_desc").replace("€499", money(microPrice.monthlyRate / PACKAGES.micro.cubes))}
+                    </div>
                   </button>
                 </div>
               </section>
@@ -323,12 +333,13 @@ export default function LeasingConfigurator() {
             <aside className="lg:sticky lg:top-24">
               <div className="rounded-2xl bg-surface-canvas p-space-lg shadow-lg md:p-space-xl">
                 <div className="mb-1 text-sm text-steel">{t("sum_est")}</div>
+                {promo && <PriceDrop list={plan.monthlyRate} price={price.monthlyRate} label={money(plan.monthlyRate)} />}
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold text-surface-navy">{money(plan.monthlyRate)}</span>
+                  <span className="text-4xl font-extrabold text-surface-navy">{money(price.monthlyRate)}</span>
                   <span className="text-steel">{t("sum_permonth")}</span>
                 </div>
                 <div className="mt-1 text-sm text-steel">
-                  {money(plan.deposit)} {kaution} · {months} {t("months")} · {plan.name}
+                  {money(price.deposit)} {kaution} · {months} {t("months")} · {plan.name}
                 </div>
                 <button
                   type="button"
@@ -341,7 +352,10 @@ export default function LeasingConfigurator() {
                 <div className="mt-space-md border-t border-border-subtle pt-space-md">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-surface-navy">{t("sum_due")}</span>
-                    <span className="text-2xl font-bold text-surface-navy">{money(plan.deposit)}</span>
+                    <span className="flex items-baseline gap-2">
+                      {promo && <Strike className="text-body-lg text-steel">{money(plan.deposit)}</Strike>}
+                      <span className="text-2xl font-bold text-surface-navy">{money(price.deposit)}</span>
+                    </span>
                   </div>
                   <div className="text-sm text-steel">{t("sum_kaution_note")}</div>
                 </div>
