@@ -73,7 +73,7 @@ export function PriceDrop({ list, price, label }: { list: number; price: number;
 function CountdownUnit({ value, label }: { value: number | null; label: string }) {
   const digits = value === null ? "--" : String(value).padStart(2, "0");
   return (
-    <div className="flex min-w-11 flex-col items-center rounded bg-white/10 px-1.5 py-1 ring-1 ring-white/10">
+    <div className="flex min-w-9 flex-col items-center sm:min-w-11 rounded bg-white/10 px-1.5 py-1 ring-1 ring-white/10">
       <div className="h-5 overflow-hidden text-body-lg font-bold leading-5 tabular-nums">
         <motion.span
           key={digits}
@@ -121,27 +121,27 @@ export function BlackFridayBanner() {
   if (!promo || NO_BANNER_PATHS.some((path) => pathname.startsWith(path))) return null;
 
   return (
-    <aside className="relative overflow-hidden bg-[#05080f] px-margin py-space-sm text-on-primary md:px-margin-tablet lg:px-margin-desktop">
+    <aside className="sticky top-16 z-40 overflow-hidden bg-[#05080f] px-margin py-1.5 text-on-primary shadow-md md:px-margin-tablet lg:px-margin-desktop lg:py-space-sm">
       <div aria-hidden className="bf-sweep absolute inset-0" />
       <div aria-hidden className="pointer-events-none absolute -left-16 -top-24 h-56 w-56 rounded-full bg-accent-aquamarine/20 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute -bottom-24 -right-16 h-56 w-56 rounded-full bg-tertiary/40 blur-3xl" />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-x-space-lg gap-y-space-sm lg:flex-row">
-        <div className="flex flex-col items-center gap-x-space-md gap-y-1 text-center sm:flex-row sm:text-left">
-          <span className="inline-flex shrink-0 items-center gap-2 text-body-md font-extrabold uppercase tracking-[0.18em] text-accent-aquamarine">
+      <div className="relative mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-2 gap-y-1 sm:gap-x-space-md lg:flex-nowrap lg:gap-x-space-lg">
+        <div className="contents">
+          <span className="inline-flex shrink-0 items-center gap-1.5 text-body-sm font-extrabold uppercase tracking-[0.08em] text-accent-aquamarine sm:gap-2 sm:text-body-md sm:tracking-[0.18em]">
             <span className="h-2 w-2 animate-pulse rounded-full bg-accent-aquamarine" />
             Black Friday
           </span>
-          <span className="text-body-md font-medium">{t("bf_headline")}</span>
+          <span className="order-last w-full text-center text-body-sm font-medium lg:order-none lg:w-auto lg:flex-1 lg:text-left lg:text-body-md">{t("bf_headline")}</span>
         </div>
 
-        <div className="flex shrink-0 flex-wrap items-center justify-center gap-x-space-md gap-y-space-sm">
+        <div className="flex shrink-0 items-center gap-x-2 sm:gap-x-space-md">
           <Countdown />
           <Link
-            href="/leasing"
-            className="group inline-flex items-center gap-1 rounded bg-accent-aquamarine px-space-md py-2 text-body-md font-bold text-surface-navy transition-colors hover:bg-primary-fixed"
+            href="/leasing" aria-label={t("bf_cta")}
+            className="group inline-flex items-center gap-1 rounded bg-accent-aquamarine p-2 text-body-md sm:px-space-md font-bold text-surface-navy transition-colors hover:bg-primary-fixed"
           >
-            <span>{t("bf_cta")}</span>
+            <span className="hidden sm:inline">{t("bf_cta")}</span>
             <Icon name="arrow_forward" size={18} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>

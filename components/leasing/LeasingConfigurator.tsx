@@ -213,7 +213,7 @@ export default function LeasingConfigurator() {
           <div className="grid grid-cols-1 items-start gap-space-xl lg:grid-cols-3">
             <div className="space-y-space-lg lg:col-span-2">
               {/* Package */}
-              <section id="leasing-package" className="scroll-mt-24 rounded-2xl bg-surface-canvas p-space-lg shadow-sm md:p-space-xl">
+              <section id="leasing-package" className="scroll-mt-40 rounded-2xl bg-surface-canvas p-space-lg shadow-sm md:p-space-xl">
                 <h2 className="mb-space-md text-headline-lg text-surface-navy">{t("pkg_title")}</h2>
                 <div className="grid grid-cols-1 gap-space-md sm:grid-cols-2">
                   <button
@@ -330,7 +330,7 @@ export default function LeasingConfigurator() {
             </div>
 
             {/* Sticky summary */}
-            <aside className="lg:sticky lg:top-24">
+            <aside className={`lg:sticky ${promo ? "lg:top-36" : "lg:top-24"}`}>
               <div className="rounded-2xl bg-surface-canvas p-space-lg shadow-lg md:p-space-xl">
                 <div className="mb-1 text-sm text-steel">{t("sum_est")}</div>
                 {promo && <PriceDrop list={plan.monthlyRate} price={price.monthlyRate} label={money(plan.monthlyRate)} />}

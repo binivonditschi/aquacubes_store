@@ -25,7 +25,7 @@ export default function LegalPage({ content, children }: { content: LegalContent
           <p className="mb-6 text-sm text-steel">{content.subtitle}</p>
 
           {content.sections.map((section) => (
-            <section key={section.heading} id={section.id} className="scroll-mt-24">
+            <section key={section.heading} id={section.id} className="scroll-mt-40">
               <h2>{section.heading}</h2>
               {/* Trusted first-party copy from content/*.json */}
               <div dangerouslySetInnerHTML={{ __html: section.html }} />

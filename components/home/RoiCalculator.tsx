@@ -37,7 +37,7 @@ export default function RoiCalculator() {
   const annualLease = annualLeaseFor(cubes, promo);
 
   return (
-    <section id="yield-calculator" className="bg-surface-subtle px-margin py-space-2xl md:px-margin-tablet lg:px-margin-desktop">
+    <section id="yield-calculator" className="scroll-mt-24 bg-surface-subtle px-margin py-space-2xl md:px-margin-tablet lg:px-margin-desktop">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto mb-space-xl max-w-3xl text-center">
           <div className="mb-space-xs text-label-technical font-semibold uppercase text-primary">{t("calc_eyebrow")}</div>
